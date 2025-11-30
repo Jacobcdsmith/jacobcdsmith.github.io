@@ -158,6 +158,21 @@ this.mouse.radius = 150;           // Mouse interaction radius
    - 1st Place / 527 competitors (DataCamp)
    - ML-powered adoption matching
 
+5. **AutoMeta - Autonomous Browser Agent**
+   - AI-powered web automation
+   - Computer vision and NLP integration
+   - TypeScript/Node.js
+
+6. **USBFREEDOM - USB OS Toolkit Collection**
+   - Bootable system recovery tools
+   - Hardware diagnostics and security auditing
+   - Python-based automation
+
+7. **Nightmare Pentesting Suite**
+   - Authorized security testing automation
+   - Reconnaissance and vulnerability scanning
+   - JavaScript/Node.js
+
 ### Professional Impact
 - **18% YoY revenue increase** at FleetPride through predictive analytics
 - **25% contract renewal improvement** via CRM data mining
