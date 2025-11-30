@@ -259,19 +259,6 @@ function initTypingEffect() {
 // PROJECT CARD INTERACTIONS
 // ================================
 
-function initProjectCardEffects() {
-    const cards = document.querySelectorAll('.project-card');
-
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            // Subtle glitch effect on hover
-            this.style.animation = 'none';
-            setTimeout(() => {
-                this.style.animation = '';
-            }, 10);
-        });
-    });
-}
 
 // ================================
 // EASTER EGG: KONAMI CODE
