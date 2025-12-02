@@ -9,17 +9,18 @@
 }
 
 :root {
-    /* Color Palette */
-    --color-bg: #0a0a0a;
-    --color-bg-alt: #121212;
-    --color-surface: #1a1a1a;
-    --color-text: #e0e0e0;
-    --color-text-dim: #888888;
+    /* Color Palette - Biological/Psychological Dark Theme */
+    --color-bg: #0d0b0e;              /* Deep purple-black */
+    --color-bg-alt: #13111a;          /* Slightly warmer dark */
+    --color-surface: #1a1520;         /* Dark surface with purple undertone */
+    --color-text: #e8e4ec;            /* Soft off-white */
+    --color-text-dim: #9a8fa6;        /* Muted lavender-gray */
 
-    --color-primary: #00D9FF;      /* Electric Blue */
-    --color-secondary: #FF0055;    /* Crimson Red */
-    --color-accent: #00FF41;       /* Matrix Green */
-    --color-border: #333333;
+    --color-primary: #c9485b;         /* Deep Crimson - blood, life force */
+    --color-secondary: #b8a9c9;       /* Pastel Purple - consciousness, mind */
+    --color-accent: #7d9f7a;          /* Sage Green - biological, organic growth */
+    --color-highlight: #d4a574;       /* Warm amber - neural warmth */
+    --color-border: #2d2538;          /* Purple-tinted border */
 
     /* Typography */
     --font-mono: 'Courier New', Courier, monospace;
@@ -34,7 +35,8 @@
 
     /* Effects */
     --transition: 0.3s ease;
-    --shadow-glow: 0 0 20px rgba(0, 217, 255, 0.3);
+    --shadow-glow: 0 0 20px rgba(201, 72, 91, 0.3);
+    --shadow-glow-secondary: 0 0 20px rgba(184, 169, 201, 0.2);
 }
 
 /* ================================
@@ -50,7 +52,8 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: var(--color-text);
-    background-color: var(--color-bg);
+    background: linear-gradient(135deg, var(--color-bg) 0%, #120f18 50%, var(--color-bg) 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
 }
 
@@ -92,7 +95,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(13, 11, 14, 0.95);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
     z-index: 1000;
@@ -408,7 +412,7 @@ body {
 .project-card:hover {
     border-color: var(--color-primary);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(201, 72, 91, 0.15);
 }
 
 .project-card.featured {
@@ -442,8 +446,8 @@ body {
 }
 
 .status-deployed {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
 }
 
 .status-completed {
@@ -452,13 +456,13 @@ body {
 }
 
 .status-award {
-    color: var(--color-secondary);
-    border-color: var(--color-secondary);
+    color: var(--color-highlight);
+    border-color: var(--color-highlight);
 }
 
 .status-published {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .project-description {

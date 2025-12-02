@@ -40,7 +40,7 @@ class ParticleSystem {
     }
 
     getRandomColor() {
-        const colors = ['#00D9FF', '#FF0055', '#00FF41'];
+        const colors = ['#c9485b', '#b8a9c9', '#7d9f7a', '#d4a574'];
         return colors[Math.floor(Math.random() * colors.length)];
     }
 
@@ -94,7 +94,7 @@ class ParticleSystem {
 
                 if (distance < 120) {
                     this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(0, 217, 255, ${1 - distance / 120})`;
+                    this.ctx.strokeStyle = `rgba(184, 169, 201, ${1 - distance / 120})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
