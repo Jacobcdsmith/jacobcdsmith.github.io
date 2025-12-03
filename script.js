@@ -7,8 +7,8 @@ class ParticleSystem {
         this.canvas = document.getElementById('particle-canvas');
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 80;
-        this.mouse = { x: null, y: null, radius: 150 };
+        this.particleCount = 100; // Increased for richer effect
+        this.mouse = { x: null, y: null, radius: 180 };
 
         this.init();
         this.animate();
@@ -31,10 +31,12 @@ class ParticleSystem {
             this.particles.push({
                 x: Math.random() * this.canvas.width,
                 y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                radius: Math.random() * 2 + 1,
-                color: this.getRandomColor()
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4,
+                radius: Math.random() * 2.5 + 0.5,
+                color: this.getRandomColor(),
+                pulsePhase: Math.random() * Math.PI * 2,
+                pulseSpeed: 0.02 + Math.random() * 0.02
             });
         }
     }
@@ -50,21 +52,33 @@ class ParticleSystem {
         for (let i = 0; i < this.particles.length; i++) {
             const particle = this.particles[i];
 
-            // Draw particle
+            // Pulsing effect
+            particle.pulsePhase += particle.pulseSpeed;
+            const pulse = 1 + Math.sin(particle.pulsePhase) * 0.3;
+
+            // Draw particle with glow
             this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-            this.ctx.fillStyle = particle.color;
+            this.ctx.arc(particle.x, particle.y, particle.radius * pulse, 0, Math.PI * 2);
+            
+            // Add subtle glow
+            const gradient = this.ctx.createRadialGradient(
+                particle.x, particle.y, 0,
+                particle.x, particle.y, particle.radius * pulse * 2
+            );
+            gradient.addColorStop(0, particle.color);
+            gradient.addColorStop(1, 'transparent');
+            this.ctx.fillStyle = gradient;
             this.ctx.fill();
 
             // Update position
             particle.x += particle.vx;
             particle.y += particle.vy;
 
-            // Bounce off edges
-            if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
-            if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+            // Bounce off edges with damping
+            if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -0.95;
+            if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -0.95;
 
-            // Mouse interaction
+            // Mouse interaction - attraction/repulsion
             if (this.mouse.x !== null && this.mouse.y !== null) {
                 const dx = this.mouse.x - particle.x;
                 const dy = this.mouse.y - particle.y;
@@ -75,8 +89,9 @@ class ParticleSystem {
                     const directionX = dx / distance;
                     const directionY = dy / distance;
 
-                    particle.x -= directionX * force * 2;
-                    particle.y -= directionY * force * 2;
+                    // Gentle repulsion
+                    particle.x -= directionX * force * 1.5;
+                    particle.y -= directionY * force * 1.5;
                 }
             }
         }
@@ -92,9 +107,10 @@ class ParticleSystem {
                 const dy = this.particles[i].y - this.particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < 120) {
+                if (distance < 140) {
+                    const opacity = (1 - distance / 140) * 0.5;
                     this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(184, 169, 201, ${1 - distance / 120})`;
+                    this.ctx.strokeStyle = `rgba(184, 169, 201, ${opacity})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
@@ -110,10 +126,10 @@ class ParticleSystem {
     }
 
     setupEventListeners() {
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', debounce(() => {
             this.resizeCanvas();
             this.createParticles();
-        });
+        }, 250));
 
         window.addEventListener('mousemove', (e) => {
             this.mouse.x = e.x;
@@ -414,10 +430,145 @@ function throttle(func, limit) {
 }
 
 // ================================
+// 3D TILT EFFECT FOR CARDS
+// ================================
+
+function init3DTiltEffect() {
+    const cards = document.querySelectorAll('.project-card, .skill-category, .stat');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            
+            // Update CSS custom property for radial gradient
+            card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+            card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+}
+
+// ================================
+// TEXT SPLITTING FOR ANIMATIONS
+// ================================
+
+function initTextSplitting() {
+    const brandName = document.querySelector('.brand-name');
+    if (!brandName) return;
+    
+    // Add letter-by-letter animation on load
+    const text = brandName.textContent;
+    brandName.innerHTML = '';
+    
+    text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.display = 'inline-block';
+        span.style.animation = `letterFade 0.5s ease forwards`;
+        span.style.animationDelay = `${i * 0.05}s`;
+        span.style.opacity = '0';
+        brandName.appendChild(span);
+    });
+    
+    // Re-add the data attribute for glitch effect
+    brandName.setAttribute('data-text', text);
+}
+
+// Add letter fade animation
+const letterFadeStyle = document.createElement('style');
+letterFadeStyle.textContent = `
+    @keyframes letterFade {
+        0% { opacity: 0; transform: translateY(-20px) rotateX(90deg); }
+        100% { opacity: 1; transform: translateY(0) rotateX(0); }
+    }
+`;
+document.head.appendChild(letterFadeStyle);
+
+// ================================
+// COUNTER ANIMATION FOR STATS
+// ================================
+
+function animateCounters() {
+    const stats = document.querySelectorAll('.stat-number');
+    
+    stats.forEach(stat => {
+        const text = stat.textContent;
+        const hasPlus = text.includes('+');
+        const hasSuffix = text.match(/[a-zA-Z]+$/);
+        const number = parseInt(text.replace(/[^0-9]/g, ''));
+        
+        if (isNaN(number)) return;
+        
+        let current = 0;
+        const duration = 2000;
+        const increment = number / (duration / 16);
+        
+        const animate = () => {
+            current += increment;
+            if (current < number) {
+                stat.textContent = Math.floor(current) + (hasPlus ? '+' : '') + (hasSuffix ? hasSuffix[0] : '');
+                requestAnimationFrame(animate);
+            } else {
+                stat.textContent = text; // Restore original
+            }
+        };
+        
+        // Only animate when visible
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                current = 0;
+                animate();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(stat);
+    });
+}
+
+// ================================
+// MAGNETIC BUTTONS
+// ================================
+
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.tab-btn, .project-link, .contact-method');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
+
+// ================================
 // INITIALIZATION
 // ================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
     // Initialize particle system
     new ParticleSystem();
 
@@ -432,8 +583,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize performance optimizations
     initPerformanceOptimizations();
+    
+    // Enhanced interactions (skip if reduced motion)
+    if (!prefersReducedMotion) {
+        init3DTiltEffect();
+        initTextSplitting();
+        animateCounters();
+        initMagneticButtons();
+    }
 
+    // Console branding
     console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;');
     console.log('%c🧠 Systems-Oriented Data Analyst • Consciousness Researcher', 'color: #b8a9c9; font-size: 12px;');
     console.log('%c🌿 Try the Konami code...', 'color: #7d9f7a; font-size: 11px;');
+    console.log('%c✨ Enhanced with micro-interactions and 3D effects', 'color: #d4a574; font-size: 11px;');
 });
