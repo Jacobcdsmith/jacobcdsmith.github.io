@@ -128,41 +128,70 @@ class ParticleSystem {
 }
 
 // ================================
-// SMOOTH SCROLLING
+// TAB NAVIGATION SYSTEM
 // ================================
 
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
+function initTabNavigation() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
 
-            // Don't prevent default for empty hash
-            if (href === '#') return;
+    if (tabButtons.length === 0) return;
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.dataset.tab;
+
+            // Remove active class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding panel
+            button.classList.add('active');
+            const targetPanel = document.getElementById(targetTab);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+
+            // Scroll to top of content area
+            document.querySelector('.tab-content-area')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+
+    // Keyboard navigation for tabs
+    tabButtons.forEach((button, index) => {
+        button.addEventListener('keydown', (e) => {
+            let targetIndex = index;
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                targetIndex = (index + 1) % tabButtons.length;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                targetIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+            } else if (e.key === 'Home') {
+                targetIndex = 0;
+            } else if (e.key === 'End') {
+                targetIndex = tabButtons.length - 1;
+            } else {
+                return;
+            }
 
             e.preventDefault();
-            const target = document.querySelector(href);
-
-            if (target) {
-                const navHeight = document.querySelector('.nav').offsetHeight;
-                const targetPosition = target.offsetTop - navHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            tabButtons[targetIndex].focus();
+            tabButtons[targetIndex].click();
         });
     });
 }
 
 // ================================
-// SCROLL ANIMATIONS
+// SCROLL ANIMATIONS FOR TAB CONTENT
 // ================================
 
-function initScrollAnimations() {
+function initContentAnimations() {
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -175,7 +204,7 @@ function initScrollAnimations() {
     }, observerOptions);
 
     // Observe elements
-    const animatedElements = document.querySelectorAll('.project-card, .timeline-item, .skill-category, .education-item');
+    const animatedElements = document.querySelectorAll('.project-card, .timeline-item, .skill-category, .education-item, .stat, .contact-method');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
@@ -184,81 +213,83 @@ function initScrollAnimations() {
     });
 }
 
-// ================================
-// NAVBAR SCROLL EFFECT
-// ================================
+// Re-trigger animations when switching tabs
+function refreshTabAnimations(tabId) {
+    const panel = document.getElementById(tabId);
+    if (!panel) return;
 
-function initNavbarScroll() {
-    const nav = document.querySelector('.nav');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        // Add shadow on scroll
-        if (currentScroll > 100) {
-            nav.style.boxShadow = '0 2px 20px rgba(0, 217, 255, 0.1)';
-        } else {
-            nav.style.boxShadow = 'none';
-        }
-
-        lastScroll = currentScroll;
+    const animatedElements = panel.querySelectorAll('.project-card, .timeline-item, .skill-category, .education-item, .stat, .contact-method');
+    
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, index * 50); // Staggered animation
     });
+}
 
-    // Highlight active section
-    const sections = document.querySelectorAll('section[id]');
+// Enhanced tab click handler with animations
+function initEnhancedTabNavigation() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
 
-    window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset;
+    if (tabButtons.length === 0) return;
 
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 150;
-            const sectionId = section.getAttribute('id');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.dataset.tab;
 
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.style.color = '';
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.style.color = 'var(--color-primary)';
-                    }
-                });
+            // Remove active class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding panel
+            button.classList.add('active');
+            const targetPanel = document.getElementById(targetTab);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+                
+                // Trigger staggered animations for panel content
+                setTimeout(() => refreshTabAnimations(targetTab), 50);
             }
         });
     });
-}
 
-// ================================
-// TERMINAL TYPING EFFECT
-// ================================
-
-function initTypingEffect() {
-    const title = document.querySelector('.hero-title');
-    if (!title) return;
-
-    const text = title.textContent;
-    title.textContent = '';
-    title.style.opacity = '1';
-
-    let index = 0;
-    const speed = 100;
-
-    function type() {
-        if (index < text.length) {
-            title.textContent += text.charAt(index);
-            index++;
-            setTimeout(type, speed);
+    // Initial animation for first tab
+    setTimeout(() => {
+        const activeTab = document.querySelector('.tab-panel.active');
+        if (activeTab) {
+            refreshTabAnimations(activeTab.id);
         }
-    }
-
-    // Start typing after a short delay
-    setTimeout(type, 500);
+    }, 100);
 }
 
 // ================================
-// PROJECT CARD INTERACTIONS
+// HEADER SCROLL EFFECT
 // ================================
 
+function initHeaderScroll() {
+    const header = document.querySelector('.app-header');
+    if (!header) return;
+
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', throttle(() => {
+        const currentScroll = window.pageYOffset;
+
+        // Add shadow on scroll
+        if (currentScroll > 50) {
+            header.style.boxShadow = '0 4px 30px rgba(201, 72, 91, 0.15)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+
+        lastScroll = currentScroll;
+    }, 100));
+}
 
 // ================================
 // EASTER EGG: KONAMI CODE
@@ -298,14 +329,17 @@ function activateMatrixMode() {
         font-size: 3rem;
         font-weight: bold;
         z-index: 9999;
+        text-shadow: 0 0 20px #00FF41;
         animation: fadeOut 2s forwards;
+        font-family: 'Courier New', monospace;
     `;
     document.body.appendChild(message);
 
     setTimeout(() => {
         message.remove();
-        root.style.setProperty('--color-primary', '#00D9FF');
-        root.style.setProperty('--color-secondary', '#FF0055');
+        // Reset to biological theme colors
+        root.style.setProperty('--color-primary', '#c9485b');
+        root.style.setProperty('--color-secondary', '#b8a9c9');
     }, 3000);
 }
 
@@ -313,8 +347,9 @@ function activateMatrixMode() {
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeOut {
-        0% { opacity: 0; }
-        20% { opacity: 1; }
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        30% { transform: translate(-50%, -50%) scale(1); }
         80% { opacity: 1; }
         100% { opacity: 0; }
     }
@@ -348,30 +383,6 @@ function initPerformanceOptimizations() {
 }
 
 // ================================
-// INITIALIZATION
-// ================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize particle system
-    new ParticleSystem();
-
-    // Initialize all features
-    initSmoothScroll();
-    initScrollAnimations();
-    initNavbarScroll();
-    initProjectCardEffects();
-    initKonamiCode();
-    initPerformanceOptimizations();
-
-    // Optional: Uncomment for typing effect on hero title
-    // initTypingEffect();
-
-    console.log('%c🚀 Portfolio System Online', 'color: #00D9FF; font-size: 20px; font-weight: bold;');
-    console.log('%cBuilt by Jacob C. Smith', 'color: #00FF41; font-size: 14px;');
-    console.log('%cTry the Konami code...', 'color: #FF0055; font-size: 12px;');
-});
-
-// ================================
 // UTILITY FUNCTIONS
 // ================================
 
@@ -401,3 +412,28 @@ function throttle(func, limit) {
         }
     };
 }
+
+// ================================
+// INITIALIZATION
+// ================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize particle system
+    new ParticleSystem();
+
+    // Initialize tab navigation (primary feature)
+    initEnhancedTabNavigation();
+    
+    // Initialize header effects
+    initHeaderScroll();
+    
+    // Initialize easter egg
+    initKonamiCode();
+    
+    // Initialize performance optimizations
+    initPerformanceOptimizations();
+
+    console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;');
+    console.log('%c🧠 Systems-Oriented Data Analyst • Consciousness Researcher', 'color: #b8a9c9; font-size: 12px;');
+    console.log('%c🌿 Try the Konami code...', 'color: #7d9f7a; font-size: 11px;');
+});
