@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jacob C. Smith - Systems-Oriented Data Analyst, Consciousness Researcher, and Emergence Theorist. Portfolio showcasing data analytics, machine learning, and theoretical frameworks.">
+    <meta name="description" content="Jacob C. Smith - Data Analyst &amp; AI Systems Builder. Portfolio showcasing data analytics, machine learning, AI systems, and theoretical frameworks.">
     <meta name="author" content="Jacob C. Smith">
-    <meta name="keywords" content="data analyst, machine learning, consciousness research, Python, SQL, portfolio">
-    <title>Jacob C. Smith | Systems-Oriented Data Analyst</title>
+    <meta name="keywords" content="data analyst, AI systems builder, machine learning, consciousness research, Python, SQL, TypeScript, MCP protocol, portfolio">
+    <title>Jacob C. Smith | Data Analyst &amp; AI Systems Builder</title>
     
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
         <header class="app-header">
             <div class="header-brand">
                 <h1 class="brand-name" data-text="JACOB C. SMITH">JACOB C. SMITH</h1>
-                <span class="brand-tagline">Systems-Oriented Data Analyst • Consciousness Researcher • Emergence Theorist</span>
+                <span class="brand-tagline">Data Analyst • AI Systems Builder • Consciousness Researcher</span>
                 <span class="brand-location">Buckhannon, West Virginia</span>
             </div>
             <nav class="tab-nav">
@@ -76,7 +76,7 @@
                                 <span class="stat-label">Years Experience</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number">9</span>
+                                <span class="stat-number">11</span>
                                 <span class="stat-label">Featured Projects</span>
                             </div>
                             <div class="stat">
@@ -111,6 +111,8 @@
                                 <li>Proxmox/Virtualization</li>
                                 <li>Git/GitHub Actions</li>
                                 <li>GPU Acceleration (CUDA, PyTorch, JAX)</li>
+                                <li>TypeScript / Node.js</li>
+                                <li>MCP Protocol (server + client)</li>
                             </ul>
                         </div>
                         <div class="skill-category">
@@ -129,6 +131,8 @@
                                 <li>Consciousness Engineering</li>
                                 <li>Automation Architecture</li>
                                 <li>Hardware Liberation</li>
+                                <li>Elixir / Phoenix / LiveView</li>
+                                <li>OTP / BEAM Concurrency</li>
                             </ul>
                         </div>
                     </div>
@@ -219,7 +223,79 @@
                             </div>
                         </article>
 
-                        <!-- Project 3: Local AI Stack -->
+                        <!-- Project 3: JCLAW Framework -->
+                        <article class="project-card featured">
+                            <div class="project-header">
+                                <h3>JCLAW Framework: Local-First LLM Runtime</h3>
+                                <span class="project-status status-active">Active Development</span>
+                            </div>
+                            <p class="project-description">A local-first LLM runtime that treats the model API as a programmable execution environment—not a chatbox. Persistent sessions, multi-provider support, conversation branching, response diffing, agentic workflow loops, eval/benchmarking, prompt injection sandboxing, and MCP dual-mode operation (server + client).</p>
+                            <div class="project-highlights">
+                                <h4>Technical Architecture:</h4>
+                                <ul>
+                                    <li><strong>Gate Server:</strong> Express + WebSocket JSON-RPC protocol router (~30 methods) with React + Vite LCARS-aesthetic dashboard</li>
+                                    <li><strong>Storage Layer:</strong> SQLite (WAL + FTS5)—sessions, messages, prompts, evals, sandbox config; all local, zero telemetry</li>
+                                    <li><strong>Runtime Modules:</strong> chat, eval, fine-tune, embeddings, diffing, pipeline output piping (files, clipboard, webhooks, shell scripts)</li>
+                                    <li><strong>Agent Runtime:</strong> Multi-step autonomous task orchestration with tool-calling loops</li>
+                                </ul>
+                                <h4>Capabilities:</h4>
+                                <ul>
+                                    <li>Fork any session at any message; explore alternative reasoning paths non-destructively</li>
+                                    <li>Word/line-level response diffs; parallel model comparison across providers</li>
+                                    <li>Prompt injection detection, red-team harness, system prompt sandboxing</li>
+                                    <li>MCP dual-mode: expose JCLAW as tool provider; consume external MCP servers in-session</li>
+                                    <li>Providers: Anthropic, OpenAI, Groq, Google Gemini, Ollama, LM Studio</li>
+                                </ul>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Vite</span>
+                                <span class="tech-tag">MCP Protocol</span>
+                                <span class="tech-tag">WebSocket</span>
+                                <span class="tech-tag">Express</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Jacobcdsmith/jclaw-framework" target="_blank" rel="noopener" class="project-link">Repository →</a>
+                            </div>
+                        </article>
+
+                        <!-- Project 4: MCPStarfleetCommand -->
+                        <article class="project-card">
+                            <div class="project-header">
+                                <h3>MCPStarfleetCommand: Enhanced MCP Server + Dashboard</h3>
+                                <span class="project-status status-active">Active Development</span>
+                            </div>
+                            <p class="project-description">A comprehensive Model Context Protocol server with a custom-built dashboard UI providing developer tools, system operations, and data processing capabilities. Dual-interface design: MCP stdio transport for Claude Code integration alongside an HTTP dashboard for interactive use.</p>
+                            <div class="project-highlights">
+                                <h4>Interface Layers:</h4>
+                                <ul>
+                                    <li><strong>MCP Server:</strong> Protocol-compliant stdio transport for direct Claude Code integration</li>
+                                    <li><strong>HTTP Dashboard:</strong> Express.js + vanilla frontend with interactive terminal, live system stats, and one-click tool execution</li>
+                                    <li><strong>Shared Engine:</strong> Unified tool execution layer serving both interfaces simultaneously</li>
+                                </ul>
+                                <h4>Tool Categories:</h4>
+                                <ul>
+                                    <li><strong>Developer Tools:</strong> Git operations (status, log, diff, branches), file system management, code search</li>
+                                    <li><strong>System Operations:</strong> Command execution (sync/async), process management, system monitoring</li>
+                                    <li><strong>Data Processing:</strong> JSON parsing/formatting, file content manipulation, search capabilities</li>
+                                </ul>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MCP Protocol</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">Git</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Jacobcdsmith/MCPStarfleetCommand" target="_blank" rel="noopener" class="project-link">Repository →</a>
+                            </div>
+                        </article>
+
+                        <!-- Project 5: Local AI Stack -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>Local AI Stack: Offline Intelligence Infrastructure</h3>
@@ -255,7 +331,7 @@
                             </div>
                         </article>
 
-                        <!-- Project 4: USB Pentesting Toolkit -->
+                        <!-- Project 6: USB Pentesting Toolkit -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>USB Pentesting Toolkit: Bootable Security Research Environment</h3>
@@ -291,7 +367,7 @@
                             </div>
                         </article>
 
-                        <!-- Project 5: Biology Sandbox Simulator -->
+                        <!-- Project 7: Biology Sandbox Simulator -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>Biology Sandbox Simulator: Evolutionary Modeling Platform</h3>
@@ -324,7 +400,7 @@
                             </div>
                         </article>
 
-                        <!-- Project 6: WeGo Transit Optimization -->
+                        <!-- Project 8: WeGo Transit Optimization -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>WeGo Public Transit Optimization</h3>
@@ -358,7 +434,7 @@
                             </div>
                         </article>
 
-                        <!-- Project 7: PawMatch AI -->
+                        <!-- Project 9: PawMatch AI -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>PawMatch AI: Pet Adoption Recommendation Engine</h3>
@@ -386,7 +462,7 @@
                             </div>
                         </article>
 
-                        <!-- Project 8: Peace as Voltage -->
+                        <!-- Project 10: Peace as Voltage -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>Peace as Voltage: Conflict Resolution Framework</h3>
@@ -413,7 +489,7 @@
                             </div>
                         </article>
 
-                        <!-- Project 9: Protocols for Myth-Driven Life -->
+                        <!-- Project 11: Protocols for Myth-Driven Life -->
                         <article class="project-card">
                             <div class="project-header">
                                 <h3>Protocols for a Myth-Driven Life</h3>
@@ -451,6 +527,20 @@
                 </div>
                 <div class="panel-content">
                     <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024 - Present</div>
+                            <div class="timeline-content">
+                                <h3>Internal Technical Lead</h3>
+                                <p class="timeline-company">Readyfuels</p>
+                                <ul>
+                                    <li>Leading internal tooling and systems development for operations and field workflows</li>
+                                    <li>Built <strong>WVRTP Facility Inspection System</strong>: React/Vite/TypeScript SPA with Power Automate integration for field inspection workflows</li>
+                                    <li>Architecting data pipelines and automation infrastructure to streamline business processes</li>
+                                    <li>Bridging operational requirements and technical implementation across cross-functional teams</li>
+                                </ul>
+                            </div>
+                        </div>
+
                         <div class="timeline-item">
                             <div class="timeline-date">May 2024 - Present</div>
                             <div class="timeline-content">
@@ -577,7 +667,7 @@
 
         <!-- Footer -->
         <footer class="app-footer">
-            <p>&copy; 2025 Jacob C. Smith. Built with raw HTML, CSS, and JavaScript. No frameworks, no bloat.</p>
+            <p>&copy; 2026 Jacob C. Smith. Built with raw HTML, CSS, and JavaScript. No frameworks, no bloat.</p>
             <p class="footer-tagline">Unraveling the universe, one data point at a time.</p>
         </footer>
 
