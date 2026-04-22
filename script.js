@@ -267,6 +267,11 @@ function initEnhancedTabNavigation() {
             const targetPanel = document.getElementById(targetTab);
             if (targetPanel) {
                 targetPanel.classList.add('active');
+
+                // When switching to blog tab, show the post list
+                if (targetTab === 'blog') {
+                    BlogEngine.showListView();
+                }
                 
                 // Trigger staggered animations for panel content
                 setTimeout(() => refreshTabAnimations(targetTab), 50);
@@ -562,6 +567,144 @@ function initMagneticButtons() {
 }
 
 // ================================
+// BLOG ENGINE
+// ================================
+
+const BlogEngine = {
+    posts: [],
+    postsManifestUrl: 'blog/posts.json',
+
+    async init() {
+        await this.loadManifest();
+        this.setupRouting();
+        this.handleRoute();
+    },
+
+    async loadManifest() {
+        try {
+            const res = await fetch(this.postsManifestUrl);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            this.posts = await res.json();
+            this.renderList();
+        } catch (err) {
+            document.getElementById('blog-list').innerHTML =
+                `<p class="blog-error">Could not load posts. (${err.message})</p>`;
+        }
+    },
+
+    renderList() {
+        const listEl = document.getElementById('blog-list');
+        if (!this.posts.length) {
+            listEl.innerHTML = '<p class="blog-empty">No posts yet.</p>';
+            return;
+        }
+
+        listEl.innerHTML = this.posts.map(post => `
+            <article class="blog-card" data-slug="${post.slug}" tabindex="0" role="button" aria-label="Read: ${this.escapeHtml(post.title)}">
+                <div class="blog-card-meta">
+                    <time class="blog-date">${this.formatDate(post.date)}</time>
+                    <div class="blog-tags">
+                        ${post.tags.map(t => `<span class="blog-tag">${this.escapeHtml(t)}</span>`).join('')}
+                    </div>
+                </div>
+                <h3 class="blog-card-title">${this.escapeHtml(post.title)}</h3>
+                <p class="blog-card-excerpt">${this.escapeHtml(post.excerpt)}</p>
+                <span class="blog-read-more">read more →</span>
+            </article>
+        `).join('');
+
+        listEl.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('click', () => this.openPost(card.dataset.slug));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.openPost(card.dataset.slug);
+                }
+            });
+        });
+    },
+
+    async openPost(slug) {
+        const post = this.posts.find(p => p.slug === slug);
+        if (!post) return;
+
+        window.location.hash = `blog/${slug}`;
+
+        const contentEl = document.getElementById('blog-post-content');
+        contentEl.innerHTML = '<div class="blog-loading">Loading post...</div>';
+
+        this.showPostView();
+
+        try {
+            const res = await fetch(`blog/posts/${slug}.md`);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const markdown = await res.text();
+            contentEl.innerHTML = marked.parse(markdown);
+        } catch (err) {
+            contentEl.innerHTML = `<p class="blog-error">Could not load post. (${err.message})</p>`;
+        }
+
+        contentEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+
+    showListView() {
+        document.getElementById('blog-list').hidden = false;
+        document.getElementById('blog-post').hidden = true;
+    },
+
+    showPostView() {
+        document.getElementById('blog-list').hidden = true;
+        document.getElementById('blog-post').hidden = false;
+    },
+
+    setupRouting() {
+        document.getElementById('blog-back-btn').addEventListener('click', () => {
+            window.location.hash = 'blog';
+        });
+
+        window.addEventListener('hashchange', () => this.handleRoute());
+    },
+
+    handleRoute() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash.startsWith('blog/')) {
+            const slug = hash.slice(5);
+            if (slug) {
+                // Activate blog tab if not already active
+                this.activateBlogTab();
+                this.openPost(slug);
+                return;
+            }
+        }
+        if (hash === 'blog') {
+            this.activateBlogTab();
+            this.showListView();
+        }
+    },
+
+    activateBlogTab() {
+        const blogBtn = document.querySelector('[data-tab="blog"]');
+        if (blogBtn && !blogBtn.classList.contains('active')) {
+            blogBtn.click();
+        }
+    },
+
+    formatDate(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    },
+
+    escapeHtml(str) {
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+};
+
+// ================================
 // INITIALIZATION
 // ================================
 
@@ -591,6 +734,9 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCounters();
         initMagneticButtons();
     }
+
+    // Initialize blog engine
+    BlogEngine.init();
 
     // Console branding
     console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;');

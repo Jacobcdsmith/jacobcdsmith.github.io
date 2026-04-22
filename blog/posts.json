@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "consciousness-as-spectral-filter",
+    "title": "Consciousness as a Spectral Filter: A Mathematical Framework",
+    "date": "2026-04-15",
+    "excerpt": "What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework.",
+    "tags": ["consciousness", "mathematics", "fourier", "research"]
+  },
+  {
+    "slug": "peace-as-voltage",
+    "title": "Peace as Voltage: Why Harmony Requires High-Tension Infrastructure",
+    "date": "2026-04-01",
+    "excerpt": "Stability is not the absence of conflict. It is the successful management of opposing forces through robust infrastructure. A deep dive into the 'high-tension wiring' model of conflict resolution.",
+    "tags": ["philosophy", "systems", "conflict-resolution"]
+  },
+  {
+    "slug": "building-local-first-ai",
+    "title": "Building Local-First AI: Why Zero Telemetry Changes Everything",
+    "date": "2026-03-18",
+    "excerpt": "When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW.",
+    "tags": ["AI", "local-first", "privacy", "development"]
+  }
+]
