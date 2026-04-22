@@ -1,0 +1,25 @@
+{
+  "name": "jacobcdsmith.github.io",
+  "version": "1.0.0",
+  "description": "Jacob C. Smith - Data Analyst & AI Systems Builder portfolio",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/generate-blog-pages.mjs",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "Jacob C. Smith",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^18.0.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^7.14.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.9"
+  }
+}
