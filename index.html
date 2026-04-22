@@ -50,6 +50,10 @@
                     <span class="tab-icon">⚡</span>
                     <span class="tab-label">contact</span>
                 </button>
+                <button class="tab-btn" data-tab="blog">
+                    <span class="tab-icon">✍</span>
+                    <span class="tab-label">blog</span>
+                </button>
             </nav>
         </header>
 
@@ -631,6 +635,29 @@
                 </div>
             </section>
 
+            <!-- ==================== BLOG TAB ==================== -->
+            <section id="blog" class="tab-panel">
+                <div class="panel-header">
+                    <h2><span class="prompt">$</span> cat blog/</h2>
+                </div>
+                <div class="panel-content">
+
+                    <!-- Blog post list -->
+                    <div id="blog-list" class="blog-list">
+                        <div class="blog-loading">Loading posts...</div>
+                    </div>
+
+                    <!-- Blog post detail -->
+                    <div id="blog-post" class="blog-post" hidden>
+                        <button class="blog-back-btn" id="blog-back-btn">
+                            <span>←</span> back to posts
+                        </button>
+                        <article id="blog-post-content" class="blog-post-content"></article>
+                    </div>
+
+                </div>
+            </section>
+
         </main>
 
         <!-- Footer -->
@@ -641,6 +668,7 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
