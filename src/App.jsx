@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import ParticleCanvas from './components/ParticleCanvas.jsx'
@@ -24,16 +24,25 @@ export default function App() {
 
   // Keep --header-height CSS variable in sync with the actual rendered header height
   // so that .tab-content-area margin-top always clears the fixed header.
-  useEffect(() => {
+  // useLayoutEffect runs synchronously after DOM mutations, before the browser paints,
+  // eliminating the layout shift that would occur if the runtime height differs from
+  // the 245px CSS fallback.
+  useLayoutEffect(() => {
     const header = headerRef.current
     if (!header) return
     const update = () => {
       document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`)
     }
     update()
-    const ro = new ResizeObserver(update)
-    ro.observe(header)
-    return () => ro.disconnect()
+    // ResizeObserver is broadly supported but guard against environments that lack it.
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(update)
+      ro.observe(header)
+      return () => ro.disconnect()
+    }
+    // Fallback: re-measure on window resize (covers older browsers / embedded webviews).
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
   }, [])
 
   return (
