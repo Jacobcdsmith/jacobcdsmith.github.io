@@ -9,6 +9,9 @@
 }
 
 :root {
+    /* Header height offset – kept in sync with JS via ResizeObserver in App.jsx */
+    --header-height: 245px;
+
     /* Color Palette - Biological/Psychological Dark Theme */
     --color-bg: #0d0b0e;              /* Deep purple-black */
     --color-bg-alt: #13111a;          /* Slightly warmer dark */
@@ -251,7 +254,7 @@ body {
    ================================ */
 
 .tab-content-area {
-    margin-top: 180px; /* Offset for fixed header */
+    margin-top: var(--header-height); /* Dynamically kept in sync with header via JS */
     padding: var(--spacing-md);
     flex: 1;
     max-width: 1400px;
@@ -919,7 +922,7 @@ body {
 
 @media (max-width: 968px) {
     .tab-content-area {
-        margin-top: 200px;
+        padding: var(--spacing-sm);
     }
 
     .about-content {
@@ -938,7 +941,6 @@ body {
 
 @media (max-width: 768px) {
     .tab-content-area {
-        margin-top: 220px;
         padding: var(--spacing-sm);
     }
 
@@ -965,10 +967,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    .tab-content-area {
-        margin-top: 250px;
-    }
-
     .tab-nav {
         gap: 0.25rem;
     }

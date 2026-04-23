@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, forwardRef } from 'react'
 
 const tabs = [
   { path: '/about',      icon: '⌘', label: 'about'      },
@@ -10,7 +10,7 @@ const tabs = [
   { path: '/blog',       icon: '✍', label: 'blog'       },
 ]
 
-export default function Header() {
+export default forwardRef(function Header(_, ref) {
   const location = useLocation()
 
   // Keyboard navigation between tabs (arrow keys)
@@ -37,7 +37,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="app-header">
+    <header ref={ref} className="app-header">
       <div className="header-brand">
         <h1 className="brand-name" data-text="JACOB C. SMITH">JACOB C. SMITH</h1>
         <span className="brand-tagline">Data Analyst • AI Systems Builder • Consciousness Researcher</span>
@@ -70,4 +70,4 @@ export default function Header() {
       </nav>
     </header>
   )
-}
+})
