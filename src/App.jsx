@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import ParticleCanvas from './components/ParticleCanvas.jsx'
@@ -12,6 +12,8 @@ import BlogList from './pages/BlogList.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 
 export default function App() {
+  const headerRef = useRef(null)
+
   useEffect(() => {
     if (import.meta.env.DEV) {
       console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;')
@@ -20,11 +22,25 @@ export default function App() {
     }
   }, [])
 
+  // Keep --header-height CSS variable in sync with the actual rendered header height
+  // so that .tab-content-area margin-top always clears the fixed header.
+  useEffect(() => {
+    const header = headerRef.current
+    if (!header) return
+    const update = () => {
+      document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`)
+    }
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(header)
+    return () => ro.disconnect()
+  }, [])
+
   return (
     <>
       <ParticleCanvas />
       <div className="app-container">
-        <Header />
+        <Header ref={headerRef} />
         <main className="tab-content-area">
           <Routes>
             <Route path="/" element={<Navigate to="/about" replace />} />
