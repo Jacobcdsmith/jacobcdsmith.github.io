@@ -55,7 +55,7 @@ export default function ParticleCanvas() {
         if (mouse.x !== null) {
           const dx = mouse.x - p.x, dy = mouse.y - p.y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < mouse.radius) {
+          if (dist > 0 && dist < mouse.radius) {
             const f = (mouse.radius - dist) / mouse.radius
             p.x -= (dx / dist) * f * 1.5
             p.y -= (dy / dist) * f * 1.5

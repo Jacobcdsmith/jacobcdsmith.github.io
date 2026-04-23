@@ -1244,14 +1244,18 @@ body {
 }
 
 .blog-card:hover,
-.blog-card:focus {
+.blog-card:focus-visible {
     border-color: var(--color-primary);
     background: rgba(201, 72, 91, 0.05);
-    outline: none;
+}
+
+.blog-card:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 .blog-card:hover::before,
-.blog-card:focus::before {
+.blog-card:focus-visible::before {
     transform: scaleY(1);
 }
 

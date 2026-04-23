@@ -13,9 +13,11 @@ import BlogPost from './pages/BlogPost.jsx'
 
 export default function App() {
   useEffect(() => {
-    console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;')
-    console.log('%c🧠 Systems-Oriented Data Analyst • Consciousness Researcher', 'color: #b8a9c9; font-size: 12px;')
-    console.log('%c🌿 Try the Konami code...', 'color: #7d9f7a; font-size: 11px;')
+    if (import.meta.env.DEV) {
+      console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;')
+      console.log('%c🧠 Systems-Oriented Data Analyst • Consciousness Researcher', 'color: #b8a9c9; font-size: 12px;')
+      console.log('%c🌿 Try the Konami code...', 'color: #7d9f7a; font-size: 11px;')
+    }
   }, [])
 
   return (

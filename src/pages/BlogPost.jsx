@@ -3,6 +3,9 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { marked } from 'marked'
 
+// Strip raw HTML from markdown to prevent XSS from inline HTML in .md files
+marked.use({ renderer: { html() { return '' } } })
+
 function formatDate(dateStr) {
   if (!dateStr) return ''
   const d = new Date(dateStr + 'T00:00:00')
@@ -44,7 +47,7 @@ export default function BlogPost() {
     )
   }
 
-  const canonicalUrl = `https://jacobcdsmith.github.io/blog/${slug}`
+  const canonicalUrl = `https://jacobcdsmith.github.io/blog/${slug}/`
 
   return (
     <section id="blog-post" className="tab-panel active">
