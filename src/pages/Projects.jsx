@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet-async'
 
 export default function Projects() {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
   return (
-    <section id="projects" className="tab-panel active">
+    <section id="projects" >
       <Helmet>
         <title>Projects | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
         <meta name="description" content="Portfolio of 10 featured projects: EMERGENT-MCF-EI consciousness framework, GitHub Language Analysis Platform, JCLAW local-first LLM runtime, MCP servers, and more." />
         <meta property="og:title" content="Projects — Jacob C. Smith" />
-        <meta property="og:url" content="https://jacobcdsmith.github.io/projects" />
-        <link rel="canonical" href="https://jacobcdsmith.github.io/projects" />
+        <meta property="og:url" content={`${baseUrl}/projects`} />
+        <link rel="canonical" href={`${baseUrl}/projects`} />
       </Helmet>
 
       <div className="panel-header">

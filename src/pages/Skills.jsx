@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet-async'
 
 export default function Skills() {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
   return (
-    <section id="skills" className="tab-panel active">
+    <section id="skills" >
       <Helmet>
         <title>Skills | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
         <meta name="description" content="Technical skills: SQL, Python, Pandas, Tableau, Power BI, Machine Learning, TypeScript, Node.js, MCP Protocol, Fourier Analysis, AI Red Teaming, and more." />
         <meta property="og:title" content="Skills — Jacob C. Smith" />
-        <meta property="og:url" content="https://jacobcdsmith.github.io/skills" />
-        <link rel="canonical" href="https://jacobcdsmith.github.io/skills" />
+        <meta property="og:url" content={`${baseUrl}/skills`} />
+        <link rel="canonical" href={`${baseUrl}/skills`} />
       </Helmet>
 
       <div className="panel-header">

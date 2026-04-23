@@ -10,6 +10,7 @@ function formatDate(dateStr) {
 export default function BlogList() {
   const [posts, setPosts] = useState(null)
   const [error, setError] = useState(null)
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
 
   useEffect(() => {
     fetch('/blog/posts.json')
@@ -19,15 +20,15 @@ export default function BlogList() {
   }, [])
 
   return (
-    <section id="blog" className="tab-panel active">
+    <section id="blog" >
       <Helmet>
         <title>Blog | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
         <meta name="description" content="Essays and research notes on consciousness, AI systems, data analysis, and the philosophy of complex systems — by Jacob C. Smith." />
         <meta property="og:title" content="Blog — Jacob C. Smith" />
         <meta property="og:description" content="Essays on consciousness, AI, and systems theory." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://jacobcdsmith.github.io/blog" />
-        <link rel="canonical" href="https://jacobcdsmith.github.io/blog" />
+        <meta property="og:url" content={`${baseUrl}/blog`} />
+        <link rel="canonical" href={`${baseUrl}/blog`} />
       </Helmet>
 
       <div className="panel-header">

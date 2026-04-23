@@ -22,12 +22,12 @@ export default function BlogPost() {
   useEffect(() => {
     // Load post metadata from manifest
     fetch('/blog/posts.json')
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
       .then(posts => {
         const found = posts.find(p => p.slug === slug)
         setMeta(found || null)
       })
-      .catch(() => {})
+      .catch(e => setError(`Failed to load posts: ${e.message}`))
 
     // Load markdown content
     fetch(`/blog/posts/${slug}.md`)
@@ -38,7 +38,7 @@ export default function BlogPost() {
 
   if (error) {
     return (
-      <section id="blog-post" className="tab-panel active">
+      <section id="blog-post" >
         <div className="panel-content">
           <p className="blog-error">Could not load post. ({error})</p>
           <Link to="/blog" className="blog-back-btn">← back to posts</Link>
@@ -47,10 +47,11 @@ export default function BlogPost() {
     )
   }
 
-  const canonicalUrl = `https://jacobcdsmith.github.io/blog/${slug}/`
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
+  const canonicalUrl = `${baseUrl}/blog/${slug}/`
 
   return (
-    <section id="blog-post" className="tab-panel active">
+    <section id="blog-post" >
       {meta && (
         <Helmet>
           <title>{meta.title} | Jacob C. Smith</title>

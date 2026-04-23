@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet-async'
 
 export default function Experience() {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
   return (
-    <section id="experience" className="tab-panel active">
+    <section id="experience" >
       <Helmet>
         <title>Experience | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
         <meta name="description" content="Work history: Internal Technical Lead at Readyfuels, Freelance Developer, Account Manager at FleetPride, and more. NewForce Data Analytics graduate." />
         <meta property="og:title" content="Experience — Jacob C. Smith" />
-        <meta property="og:url" content="https://jacobcdsmith.github.io/experience" />
-        <link rel="canonical" href="https://jacobcdsmith.github.io/experience" />
+        <meta property="og:url" content={`${baseUrl}/experience`} />
+        <link rel="canonical" href={`${baseUrl}/experience`} />
       </Helmet>
 
       <div className="panel-header">

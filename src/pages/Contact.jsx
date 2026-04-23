@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet-async'
 
 export default function Contact() {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
   return (
-    <section id="contact" className="tab-panel active">
+    <section id="contact" >
       <Helmet>
         <title>Contact | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
         <meta name="description" content="Get in touch with Jacob C. Smith for data analytics, AI systems, or consciousness research collaboration. Based in Buckhannon, West Virginia." />
         <meta property="og:title" content="Contact Jacob C. Smith" />
-        <meta property="og:url" content="https://jacobcdsmith.github.io/contact" />
-        <link rel="canonical" href="https://jacobcdsmith.github.io/contact" />
+        <meta property="og:url" content={`${baseUrl}/contact`} />
+        <link rel="canonical" href={`${baseUrl}/contact`} />
       </Helmet>
 
       <div className="panel-header">

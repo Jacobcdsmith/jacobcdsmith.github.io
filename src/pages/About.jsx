@@ -1,16 +1,17 @@
 import { Helmet } from 'react-helmet-async'
 
 export default function About() {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
   return (
-    <section id="about" className="tab-panel active">
+    <section id="about">
       <Helmet>
         <title>About | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
         <meta name="description" content="Jacob C. Smith is a Data Analyst and AI Systems Builder based in Buckhannon, WV. Seven years of experience bridging data science, consciousness research, and production engineering." />
         <meta property="og:title" content="About Jacob C. Smith" />
         <meta property="og:description" content="Systems-oriented data analyst who bridges raw systems logic and high-concept theoretical frameworks." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://jacobcdsmith.github.io/about" />
-        <link rel="canonical" href="https://jacobcdsmith.github.io/about" />
+        <meta property="og:url" content={`${baseUrl}/about`} />
+        <link rel="canonical" href={`${baseUrl}/about`} />
       </Helmet>
 
       <div className="panel-header">
