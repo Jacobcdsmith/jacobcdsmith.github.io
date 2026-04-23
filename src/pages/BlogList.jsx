@@ -44,7 +44,7 @@ export default function BlogList() {
                 <div className="blog-card-meta">
                   <time className="blog-date" dateTime={post.date}>{formatDate(post.date)}</time>
                   <div className="blog-tags">
-                    {post.tags.map(t => <span key={t} className="blog-tag">{t}</span>)}
+                    {(Array.isArray(post.tags) ? post.tags : []).map(t => <span key={t} className="blog-tag">{t}</span>)}
                   </div>
                 </div>
                 <h3 className="blog-card-title">

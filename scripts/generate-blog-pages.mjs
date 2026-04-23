@@ -15,6 +15,9 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { marked } from 'marked'
 
+// Strip raw HTML from markdown to prevent XSS from inline HTML in .md files
+marked.use({ renderer: { html() { return '' } } })
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT      = resolve(__dirname, '..')
 const DIST      = resolve(ROOT, 'dist')
@@ -40,9 +43,8 @@ function escHtml(str) {
 
 const BASE_URL = 'https://jacobcdsmith.github.io'
 
-// Shared CSS vars + minimal blog styling embedded in each static page.
-// We inline the full stylesheet so the page renders correctly even without
-// the React bundle loading.
+// We inline only the styles needed for the static blog page to render
+// correctly even without the React bundle loading.
 function blogPostHtml({ title, excerpt, date, slug, tags = [], htmlContent }) {
   const canonical = `${BASE_URL}/blog/${slug}/`
   const dateIso   = date
