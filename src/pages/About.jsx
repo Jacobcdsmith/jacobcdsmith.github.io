@@ -9,12 +9,20 @@ import { personSchema, professionalServiceSchema, breadcrumbSchema } from '../li
 
 const skillClusters = [
   {
-    title: 'Data & Analytics',
-    skills: ['SQL', 'Python', 'pandas', 'numpy', 'Tableau', 'Power BI', 'Streamlit', 'dbt-style modeling', 'experiment design'],
+    title: 'Web & Industrial Tooling',
+    skills: ['React', 'Vite', 'TypeScript', 'Vercel', 'Power Automate', 'Microsoft 365', 'Excel formula systems', 'protected routes', 'QR capture flows'],
   },
   {
-    title: 'AI / ML Systems',
-    skills: ['LLM evaluation', 'prompt engineering', 'agentic loops', 'red-teaming', 'MCP', 'llama.cpp', 'Ollama', 'multi-provider routing'],
+    title: 'Data & Analytics',
+    skills: ['SQL', 'Python', 'pandas', 'numpy', 'Tableau', 'Power BI', 'Streamlit', 'KPI modeling', 'experiment design'],
+  },
+  {
+    title: 'Agent & AI Systems',
+    skills: ['LLM evaluation', 'subagent orchestration', 'persistent identity (SOUL.md)', 'OpenRouter routing', 'MCP (stdio / SSE / WebSocket)', 'red-teaming', 'JCLAW runtime', 'llama.cpp', 'Ollama', 'LM Studio'],
+  },
+  {
+    title: 'Embedded & Edge',
+    skills: ['ESP32-S3', 'ESP-IDF (C)', 'MicroPython', 'UNIHIKER K10 / M10', 'BLE / Wi-Fi / MQTT', 'modular firmware'],
   },
   {
     title: 'Research & Modeling',
@@ -48,18 +56,19 @@ export default function About() {
           <p className="page-eyebrow">About</p>
           <h1 className="page-title">{profile.name}.</h1>
           <p className="page-lead">
-            Independent data analyst, AI systems builder, and consciousness researcher based in
-            {' '}{profile.location}. I work at the intersection of operational analytics and
-            local-first AI tooling.
+            Industrial systems engineer and AI systems builder spanning industrial → web → AI →
+            embedded. Based in {profile.location}; works remotely worldwide.
           </p>
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              <strong>{profile.name}</strong> is an independent data analyst, AI systems builder, and
-              consciousness researcher based in {profile.location}. He works remotely with teams
-              worldwide on operational analytics, AI red-teaming, and local-first AI tooling. He
-              previously led consciousness research on the EMERGENT-MCF-EI framework and architects
-              the open-source local-first LLM runtime <em>JCLAW</em>.
+              <strong>{profile.name}</strong> is a systems engineer and AI systems builder based in{' '}
+              {profile.location}. Industrial work for <strong>Readyfuels</strong> (WVRTP facility
+              inspection system, 1,135-formula safety + KPI Excel workbook); agent / AI work for{' '}
+              <strong>Nous Research</strong> (the <strong>Hermes plugin</strong>) and on his own
+              stacks (<em>JCLAW</em>, <em>MCPStarfleetCommand</em>, a local WebSocket MCP gateway);
+              embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate.{' '}
+              {profile.availability}
             </p>
           </aside>
           <div className="hero-actions">
@@ -74,21 +83,29 @@ export default function About() {
         <div className="about-grid">
           <div className="about-prose">
             <p>
-              I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The
-              work tends to look like one of three things: a dashboard that finally makes a decision
-              clear, a red-team report that catches an AI feature before it embarrasses someone, or a
-              local-first runtime that lets a team use LLMs without surrendering their data.
+              The industrial work is the anchor. At <strong>Readyfuels</strong> I designed and
+              shipped the WVRTP facility inspection system — a React/Vite/TypeScript app on Vercel
+              with QR-driven capture, Power Automate pipelines, and protected routes — alongside a
+              1,135-formula Excel workbook for safety scoring and KPIs that operators actually use.
+              That work runs in real facilities for real people, and it sets the bar for everything
+              else.
             </p>
             <p>
-              In parallel, I run a long research thread on consciousness modeling — building
-              GPU-accelerated lattice simulations and writing toward a paper on emergent
-              meta-cognitive filtering. The same systems-thinking that powers the research shows up
-              in every client engagement: model the dynamics, instrument the system, and build
-              decisions you can defend.
+              The agent and AI work runs in parallel. I built the <strong>Hermes plugin</strong> for{' '}
+              <strong>Nous Research</strong> — a three-subagent stack (codegen, red-team,
+              resource-gathering) with a persistent <code>SOUL.md</code> identity layer and OpenRouter
+              multi-provider routing. On my own infrastructure side I architect{' '}
+              <strong>JCLAW</strong> (a SQLite-backed agentic runtime), <strong>MCPStarfleetCommand</strong>{' '}
+              (dual-transport MCP server), and a local WebSocket MCP gateway built so cloud
+              dependencies are severed by design. Building and red-teaming the same kind of system
+              has taught me more about agent failure modes than either would on its own.
             </p>
             <p>
-              I am based in Buckhannon, West Virginia, work remotely with clients worldwide, and
-              prefer engagements that produce an artifact someone can hold and own.
+              The embedded thread is the third leg. ESP32-S3 firmware in C/ESP-IDF and a UNIHIKER
+              K10 skill package (MicroPython plus full C/C++ SDK coverage grounded in the actual
+              hardware schematic) — with the UNIHIKER M10 scoped as the next personalized AI
+              companion build. I am a NewForce Cohort 11 graduate, a Bridging Innovations
+              Morgantown member, and {profile.availability.toLowerCase()}
             </p>
           </div>
 
@@ -104,11 +121,15 @@ export default function About() {
               </li>
               <li>
                 <span className="fact-label">Focus</span>
-                <span className="fact-value">Analytics · AI · systems</span>
+                <span className="fact-value">Industrial · Agent · Embedded</span>
               </li>
               <li>
-                <span className="fact-label">Available</span>
-                <span className="fact-value">For new engagements</span>
+                <span className="fact-label">Availability</span>
+                <span className="fact-value">Open to FT roles + consulting</span>
+              </li>
+              <li>
+                <span className="fact-label">Network</span>
+                <span className="fact-value">Bridging Innovations · NewForce C11</span>
               </li>
             </ul>
           </aside>
@@ -134,7 +155,7 @@ export default function About() {
           </p>
           <p>
             <strong>Documented work.</strong> Every engagement ends with written documentation, a
-            Loom walkthrough, and a clear handoff so your team owns the result.
+            walkthrough, and a clear handoff so your team owns the result.
           </p>
           <p>
             <strong>Plain language.</strong> I don’t hide behind jargon. If I can’t explain

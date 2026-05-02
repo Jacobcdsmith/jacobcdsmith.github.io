@@ -19,7 +19,7 @@ export default function Services() {
     <>
       <SEO
         title="Services"
-        description="Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits — scoped engagements with clear deliverables."
+        description="Industrial / operations tooling, agent & AI systems, local-first AI, and embedded & edge integration — scoped engagements with clear deliverables."
         path="/services"
         jsonLd={[
           breadcrumbSchema([
@@ -42,8 +42,13 @@ export default function Services() {
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture
-              audits. Most engagements are 2–4 weeks with optional retainer.
+              Industrial / operations tooling (proven on the WVRTP facility inspection system at{' '}
+              <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer">Readyfuels</a>),
+              agent &amp; AI systems (Hermes plugin for{' '}
+              <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer">Nous Research</a>),
+              local-first AI systems (JCLAW + MCP infrastructure), and embedded &amp; edge
+              integration (ESP32-S3, UNIHIKER K10/M10). Most engagements are 2–4 weeks with optional
+              retainer.
             </p>
           </aside>
           <div className="hero-actions">
@@ -51,7 +56,7 @@ export default function Services() {
               Start a conversation
             </Button>
             <Button href="#faq" variant="ghost" size="lg">
-              Pricing &amp; FAQ
+              FAQ
             </Button>
           </div>
         </div>
@@ -65,6 +70,14 @@ export default function Services() {
             <p className="service-forwho">
               <strong>For:</strong> {s.forWho}
             </p>
+            {s.proofUrl && (
+              <p className="service-forwho">
+                <strong>{s.proofLabel.split(':')[0]}:</strong>{' '}
+                <a href={s.proofUrl} target="_blank" rel="noopener noreferrer">
+                  {s.proofLabel.split(':').slice(1).join(':').trim()}
+                </a>
+              </p>
+            )}
             <div className="service-grid">
               <div>
                 <h4>Deliverables</h4>
@@ -88,9 +101,9 @@ export default function Services() {
       </Section>
 
       <Section
-        eyebrow="What clients say"
-        title="Selected feedback"
-        lead="Placeholders ready for real quotes as engagements complete."
+        eyebrow="Selected delivery"
+        title="Recent shipped work"
+        lead="Three engagements from the last six months — deliverable, client, and when."
         tone="muted"
       >
         <div className="card-grid card-grid-3">
@@ -103,7 +116,7 @@ export default function Services() {
       <Section
         id="faq"
         eyebrow="FAQ"
-        title="Pricing &amp; logistics"
+        title="Common questions"
         lead="Quick answers to the things I get asked most."
         tone="muted"
       >

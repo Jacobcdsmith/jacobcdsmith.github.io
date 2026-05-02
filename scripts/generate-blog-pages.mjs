@@ -22,6 +22,7 @@ import { fileURLToPath } from 'url'
 import { marked } from 'marked'
 import { services as servicesData } from '../src/data/services.js'
 import { homeFaq, servicesFaq } from '../src/data/faq.js'
+import { profile } from '../src/data/profile.js'
 
 marked.use({ renderer: { html() { return '' } } })
 
@@ -31,9 +32,12 @@ const DIST = resolve(ROOT, 'dist')
 const BLOG_DIR = resolve(ROOT, 'blog')
 const PUBLIC_DIR = resolve(ROOT, 'public')
 
-const BASE_URL = 'https://jacobcdsmith.github.io'
-const SITE_NAME = 'Jacob C. Smith'
-const ROLE = 'Data Analyst & AI Systems Builder'
+const BASE_URL = profile.siteUrl
+const SITE_NAME = profile.name
+const ROLE = profile.role
+const PERSON_DESCRIPTION = profile.authorBio
+const SERVICE_DESCRIPTION = profile.subtagline
+const AVAILABILITY = profile.availability
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -239,7 +243,7 @@ const personJson = {
   telephone: '+13044739980',
   address: { '@type': 'PostalAddress', addressLocality: 'Buckhannon', addressRegion: 'WV', addressCountry: 'US' },
   sameAs: ['https://github.com/Jacobcdsmith', 'https://linkedin.com/in/jacobcsmith'],
-  description: 'Independent data analyst and AI systems builder.',
+  description: PERSON_DESCRIPTION,
 }
 
 const profServiceJson = {
@@ -251,7 +255,7 @@ const profServiceJson = {
   priceRange: '$$',
   address: { '@type': 'PostalAddress', addressLocality: 'Buckhannon', addressRegion: 'WV', addressCountry: 'US' },
   areaServed: 'Worldwide (remote)',
-  description: 'Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits.',
+  description: SERVICE_DESCRIPTION,
 }
 
 const websiteJson = {
@@ -308,24 +312,24 @@ function staticRoutes(posts) {
     {
       path: '/',
       title: null,
-      description: 'Jacob C. Smith — independent data analyst and AI systems builder based in Buckhannon, West Virginia. Operational analytics, AI red-teaming, local-first AI systems.',
+      description: 'Jacob C. Smith — industrial systems engineer and AI systems builder based in Buckhannon, West Virginia. Readyfuels (WVRTP), Hermes plugin for Nous Research, JCLAW, MCPStarfleetCommand, ESP32-S3, UNIHIKER.',
       jsonLd: [personJson, profServiceJson, websiteJson, faqJson(homeFaq)],
       visibleBody: visibleBlock({
-        eyebrow: `Independent practice · Buckhannon, WV`,
-        title: 'I help teams turn messy reality into measurable systems.',
-        lead: 'For clients who need analytics or AI tooling that ships, for peers who want the writing, and for curious visitors who just want a tour.',
-        tldr: 'Jacob C. Smith is an independent data analyst and AI systems builder based in Buckhannon, West Virginia. Three kinds of engagements: operational analytics, AI red-teaming and safety reviews, and local-first AI system design.',
+        eyebrow: `Industrial systems · Agent stacks · Buckhannon, WV`,
+        title: 'I build industrial systems and dissect AI agent stacks.',
+        lead: 'Industrial systems engineer at Readyfuels shipping the WVRTP facility inspection system, while building and red-teaming agent stacks — Hermes plugin for Nous Research, JCLAW, and MCPStarfleetCommand. Embedded/edge work on ESP32-S3 and UNIHIKER.',
+        tldr: 'Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels, the Hermes plugin for Nous Research, and the JCLAW / MCPStarfleetCommand agent + MCP infrastructure stack. Embedded work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; actively targeting remote Data Analyst / BI / Junior Data Engineer roles at $70K+.',
         body: `
           <p style="margin:1.5rem 0;">
             <a href="/contact" style="color:#c9485b;font-weight:500;">Work with me →</a> &nbsp;
-            <a href="/blog" style="color:#c9485b;">Read the writing →</a> &nbsp;
+            <a href="/experience" style="color:#c9485b;">See experience →</a> &nbsp;
             <a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a>
           </p>
           <h2 style="font-family:Georgia,serif;font-size:1.6rem;margin:2rem 0 0.85rem;color:#ecebe8;">Three things I do</h2>
           <ul style="padding-left:1.2rem;color:#ecebe8;">
-            <li><strong>Operational analytics engagements</strong> — SQL, Python, BI dashboards, forecasts.</li>
-            <li><strong>AI red-teaming and safety reviews</strong> — adversarial testing of LLM-powered features.</li>
-            <li><strong>Local-first AI systems</strong> — JCLAW runtime, MCP servers, sovereignty-first tooling.</li>
+            <li><strong>Industrial / operations tooling</strong> — WVRTP-style web apps, QR + Power Automate, Excel formula systems.</li>
+            <li><strong>Agent &amp; AI systems</strong> — Hermes plugin, JCLAW, MCP infrastructure, built and red-teamed.</li>
+            <li><strong>Embedded &amp; edge</strong> — ESP32-S3 firmware in C, UNIHIKER K10/M10 SDK work.</li>
           </ul>
           <p><a href="/services" style="color:#c9485b;">See all services →</a></p>
         `,
@@ -334,21 +338,21 @@ function staticRoutes(posts) {
     {
       path: '/about',
       title: 'About',
-      description: 'Jacob C. Smith — independent data analyst and AI systems builder. Bridging operational analytics, local-first AI tooling, and consciousness research.',
+      description: 'Jacob C. Smith — industrial systems engineer and AI systems builder spanning industrial → web → AI → embedded. Readyfuels, Nous Research, JCLAW, ESP32-S3, UNIHIKER.',
       jsonLd: [personJson, bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'About', url: `${BASE_URL}/about` }])],
       visibleBody: visibleBlock({
         eyebrow: 'About',
         title: 'Jacob C. Smith.',
-        lead: 'Independent data analyst, AI systems builder, and consciousness researcher based in Buckhannon, West Virginia.',
-        tldr: 'Jacob C. Smith is an independent data analyst, AI systems builder, and consciousness researcher based in Buckhannon, West Virginia. He works at the intersection of operational analytics and local-first AI tooling — bridging applied data work with open research on consciousness modeling.',
-        body: `<p>I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The work tends to look like a dashboard that finally makes a decision clear, a red-team report that catches an AI feature before launch, or a local-first runtime that lets a team use LLMs without surrendering their data.</p>
+        lead: 'Industrial systems engineer and AI systems builder spanning industrial → web → AI → embedded. Based in Buckhannon, West Virginia.',
+        tldr: 'Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. Industrial work for Readyfuels (WVRTP facility inspection system, 1,135-formula safety + KPI Excel workbook); agent / AI work for Nous Research (Hermes plugin) and on his own stacks (JCLAW, MCPStarfleetCommand, a local WebSocket MCP gateway); embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate. Actively targeting remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.',
+        body: `<p>The industrial work at <strong>Readyfuels</strong> is the anchor — a React/Vite/TypeScript facility inspection system on Vercel with QR-driven capture and Power Automate pipelines, alongside a 1,135-formula safety + KPI Excel workbook. The agent work runs in parallel: the <strong>Hermes plugin</strong> for <strong>Nous Research</strong> (three-subagent stack with persistent SOUL.md identity and OpenRouter routing), plus <strong>JCLAW</strong>, <strong>MCPStarfleetCommand</strong>, and a local WebSocket MCP gateway. The embedded thread is ESP32-S3 in C/ESP-IDF and a UNIHIKER K10 skill package grounded in the actual hardware schematic.</p>
         <p><a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a></p>`,
       }),
     },
     {
       path: '/services',
       title: 'Services',
-      description: 'Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits — scoped engagements with clear deliverables.',
+      description: 'Industrial / operations tooling, agent & AI systems, local-first AI systems, and embedded & edge integration — scoped engagements with clear deliverables.',
       jsonLd: [
         bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Services', url: `${BASE_URL}/services` }]),
         profServiceJson,
@@ -359,12 +363,12 @@ function staticRoutes(posts) {
         eyebrow: 'Services',
         title: 'Engagements that ship.',
         lead: 'Four ways I work with teams. Each one is scoped, time-bound, and produces an artifact your team owns.',
-        tldr: 'Four scoped engagements: operational analytics, AI red-teaming and safety reviews, local-first AI systems, and decision-architecture audits. All time-bound, with clear deliverables your team owns.',
+        tldr: 'Industrial / operations tooling (proven on the WVRTP facility inspection system at Readyfuels), agent & AI systems (Hermes plugin for Nous Research), local-first AI systems (JCLAW + MCP infrastructure), and embedded & edge integration (ESP32-S3, UNIHIKER K10/M10). Most engagements are 2–4 weeks with optional retainer.',
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
-          <li>Operational analytics engagements</li>
-          <li>AI red-teaming &amp; safety reviews</li>
-          <li>Local-first AI systems</li>
-          <li>Systems audits &amp; decision architecture</li>
+          <li><strong>Industrial / operations tooling</strong> — proof case: <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Readyfuels</a> (WVRTP facility inspection system).</li>
+          <li><strong>Agent &amp; AI systems</strong> — delivery example: <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Nous Research</a> (Hermes plugin).</li>
+          <li><strong>Local-first AI systems</strong> — JCLAW, MCPStarfleetCommand, local WebSocket MCP gateway.</li>
+          <li><strong>Embedded &amp; edge integration</strong> — ESP32-S3 firmware in C/ESP-IDF, UNIHIKER K10/M10 SDK work.</li>
         </ul>
         <p>Discovery calls are free. Email <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a> to start.</p>`,
       }),
@@ -372,43 +376,50 @@ function staticRoutes(posts) {
     {
       path: '/projects',
       title: 'Projects',
-      description: 'EMERGENT-MCF-EI consciousness research, JCLAW local-first LLM runtime, and operational analytics engagements.',
+      description: 'WVRTP facility inspection system (Readyfuels), Hermes plugin (Nous Research), JCLAW, MCPStarfleetCommand, UNIHIKER and ESP32-S3 work, EMERGENT-MCF-EI research.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Projects', url: `${BASE_URL}/projects` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Projects',
         title: 'Things I’m building.',
-        lead: 'A mix of open research, infrastructure, and client work.',
-        tldr: 'Two flagship projects: EMERGENT-MCF-EI (a GPU-accelerated lattice simulation modeling consciousness as a spectral filter) and JCLAW (a local-first LLM runtime with multi-provider routing, MCP support, and agentic loops). Plus selected client engagements.',
+        lead: 'Industrial tooling, agent infrastructure, embedded/edge work, and open research. Ordered roughly by what is most active right now.',
+        tldr: 'Flagship work right now: the WVRTP facility inspection system for Readyfuels (React/Vite/TS, Vercel, QR + Power Automate), the Hermes plugin for Nous Research (three-subagent stack with persistent SOUL.md identity), JCLAW + MCPStarfleetCommand + a local WebSocket MCP gateway, ESP32-S3 firmware and a UNIHIKER K10 skill package, plus the ongoing EMERGENT-MCF-EI consciousness-modeling research thread.',
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
+          <li><strong>WVRTP Facility Inspection System</strong> — React/Vite/TypeScript on Vercel for <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Readyfuels</a>; QR + Power Automate.</li>
+          <li><strong>Hermes plugin</strong> — three-subagent stack with persistent SOUL.md identity for <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Nous Research</a>.</li>
+          <li><strong>JCLAW</strong> — SQLite-backed agentic runtime with multi-provider routing, MCP, branching, evals.</li>
+          <li><strong>MCPStarfleetCommand</strong> — dual-transport MCP server.</li>
+          <li><strong>Local WebSocket MCP gateway</strong> — cloud dependencies severed by design.</li>
+          <li><strong>UNIHIKER K10 skill package</strong> — MicroPython + full C/C++ SDK against the real hardware schematic.</li>
+          <li><strong>ESP32-S3 firmware</strong> — modular ESP-IDF / C work with documented module boundaries.</li>
           <li><strong>EMERGENT-MCF-EI</strong> — GPU-accelerated lattice simulation modeling consciousness as a spectral filter.</li>
-          <li><strong>JCLAW</strong> — local-first LLM runtime with multi-provider routing, MCP, and agentic loops.</li>
           <li><strong>jacobcdsmith.github.io</strong> — this site. Static React + Vite SPA with pre-rendered HTML.</li>
+          <li><strong>Pro bono</strong> — regional hospitality client (BigCommerce → Clover evaluation), Spark / sparkwv.org (HostGator → Google Workspace migration).</li>
         </ul>`,
       }),
     },
     {
       path: '/experience',
       title: 'Experience',
-      description: 'Selected experience: independent practice, EMERGENT-MCF-EI consciousness research, and JCLAW local-first LLM runtime.',
+      description: 'Systems Engineer at Readyfuels (WVRTP), Hermes plugin for Nous Research, JCLAW + MCP infrastructure, ESP32-S3 + UNIHIKER embedded work, EMERGENT-MCF-EI research, NewForce Cohort 11.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Experience', url: `${BASE_URL}/experience` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Experience',
         title: 'Selected work.',
-        lead: 'For the long version, download the CV or email for references on specific engagements.',
-        tldr: 'Independent practice today; previously hands-on operational analytics, BI, and AI tooling roles. Open research on consciousness modeling (EMERGENT-MCF-EI) and local-first LLM runtimes (JCLAW) runs alongside client work.',
+        lead: 'A short version of the last six months and what came before. For the long version, download the CV or email for references.',
+        tldr: 'Jacob C. Smith is currently Systems Engineer at Readyfuels shipping the WVRTP facility inspection system, alongside agent / AI work (the Hermes plugin for Nous Research, JCLAW, MCPStarfleetCommand) and embedded / edge work (ESP32-S3, UNIHIKER K10/M10). NewForce Cohort 11 graduate; Bridging Innovations Morgantown member. Actively targeting remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.',
         body: `<p><a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a></p>`,
       }),
     },
     {
       path: '/contact',
       title: 'Contact',
-      description: 'Get in touch with Jacob C. Smith. Email is the fastest way; phone for urgent matters.',
+      description: 'Get in touch with Jacob C. Smith. Open to remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements. Email is the fastest way.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Contact', url: `${BASE_URL}/contact` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Contact',
         title: 'Let’s talk.',
-        lead: 'One paragraph about the problem you’re trying to solve is enough to start.',
-        tldr: 'Email <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a> for new engagements (fastest), or call (304) 473-9980 for urgent matters. Based in Buckhannon, West Virginia; remote work worldwide.',
+        lead: 'One paragraph about the problem you’re trying to solve is enough to start. Open to remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.',
+        tldr: `The fastest way to reach ${SITE_NAME} is email (jacobcsmithd@gmail.com) or phone ((304) 473-9980). ${AVAILABILITY} Most consulting engagements start with a free 30-minute discovery call. Based in Buckhannon, West Virginia; works remotely worldwide.`,
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
           <li>Email: <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a></li>
           <li>Phone: <a href="tel:+13044739980" style="color:#c9485b;">(304) 473-9980</a></li>
@@ -618,7 +629,9 @@ function generateLlmsFull(posts) {
   out += `\nGenerated: ${new Date().toISOString()}\n`
   out += `Site: ${BASE_URL}\n\n`
   out += `## About\n`
-  out += `Jacob C. Smith is an independent data analyst and AI systems builder based in Buckhannon, West Virginia. Practice areas: operational analytics, AI red-teaming, local-first AI systems, consciousness research.\n\n`
+  out += `Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels (https://readyfuels.com), the Hermes plugin for Nous Research (https://nousresearch.com), and the JCLAW / MCPStarfleetCommand agent + MCP infrastructure stack. Embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.\n\n`
+  out += `Practice areas: industrial / operations tooling, agent & AI systems, local-first AI systems, embedded & edge integration. Open research on consciousness modeling (EMERGENT-MCF-EI).\n\n`
+  out += `Availability: Actively targeting remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.\n\n`
   out += `Contact: jacobcsmithd@gmail.com · (304) 473-9980 · github.com/Jacobcdsmith · linkedin.com/in/jacobcsmith\n\n`
   out += `---\n\n## Blog Posts (full text)\n\n`
   for (const p of posts) {

@@ -42,32 +42,33 @@ export default function Home() {
         <div className="container">
           <div className="hero-grid">
             <div>
-              <p className="hero-eyebrow">Independent practice · {profile.location}</p>
+              <p className="hero-eyebrow">Industrial systems · Agent stacks · {profile.location}</p>
               <h1 className="hero-title">
-                I help teams turn messy reality into <span className="accent">measurable systems</span>.
+                I build <span className="accent">industrial systems</span> and dissect AI agent stacks.
               </h1>
               <p className="hero-sub">
-                For <strong>clients</strong> who need analytics or AI tooling that ships, for{' '}
-                <strong>peers</strong> who want the writing, and for{' '}
-                <strong>curious visitors</strong> who just want a tour.
+                Industrial systems engineer at <strong>Readyfuels</strong> shipping the WVRTP facility
+                inspection system, while building and red-teaming agent stacks — the{' '}
+                <strong>Hermes plugin</strong> for Nous Research, <strong>JCLAW</strong>, and{' '}
+                <strong>MCPStarfleetCommand</strong>. Embedded/edge work on ESP32-S3 and UNIHIKER.
               </p>
 
               <div className="hero-actions">
                 <Button to="/contact" variant="primary" size="lg" trackName="hero_cta_hire">
                   Work with me
                 </Button>
-                <Button to="/blog" variant="ghost" size="lg" trackName="hero_cta_blog">
-                  Read the writing
+                <Button to="/experience" variant="ghost" size="lg" trackName="hero_cta_experience">
+                  See experience
                 </Button>
                 <CVDownload variant="ghost" size="lg" />
               </div>
 
               <div className="hero-meta">
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">●</span> Available for engagements
+                  <span aria-hidden="true">●</span> Open to remote Data / BI / Jr Data Engineer roles ($70K+)
                 </span>
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">›</span> SQL · Python · LLM systems · BI
+                  <span aria-hidden="true">›</span> React · TypeScript · Python · MCP · ESP-IDF
                 </span>
               </div>
             </div>
@@ -75,20 +76,20 @@ export default function Home() {
             <aside className="hero-card" aria-label="What I focus on">
               <p className="hero-card-title">Three things I do</p>
               <div className="hero-pillars">
-                <Link to="/services" className="hero-pillar">
-                  <span className="hero-pillar-label">Operational analytics</span>
-                  <span className="hero-pillar-text">Dashboards and forecasts you can defend.</span>
+                <Link to="/services#industrial-operations-tooling" className="hero-pillar">
+                  <span className="hero-pillar-label">Industrial / operations tooling</span>
+                  <span className="hero-pillar-text">WVRTP-style web apps, QR + Power Automate, Excel systems.</span>
                   <span className="hero-pillar-link">→ services</span>
                 </Link>
-                <Link to="/services" className="hero-pillar">
-                  <span className="hero-pillar-label">AI red-teaming</span>
-                  <span className="hero-pillar-text">Find the failure modes before launch.</span>
+                <Link to="/services#agent-and-ai-systems" className="hero-pillar">
+                  <span className="hero-pillar-label">Agent &amp; AI systems</span>
+                  <span className="hero-pillar-text">Hermes, JCLAW, MCP infrastructure — built and red-teamed.</span>
                   <span className="hero-pillar-link">→ services</span>
                 </Link>
-                <Link to="/projects" className="hero-pillar">
-                  <span className="hero-pillar-label">Local-first AI tools</span>
-                  <span className="hero-pillar-text">JCLAW, MCP servers, runtime tooling.</span>
-                  <span className="hero-pillar-link">→ projects</span>
+                <Link to="/services#embedded-and-edge-integration" className="hero-pillar">
+                  <span className="hero-pillar-label">Embedded &amp; edge</span>
+                  <span className="hero-pillar-text">ESP32-S3 in C, UNIHIKER K10/M10 SDK work.</span>
+                  <span className="hero-pillar-link">→ services</span>
                 </Link>
               </div>
             </aside>
@@ -101,10 +102,13 @@ export default function Home() {
         <aside className="answer-box">
           <p className="answer-box-label">TL;DR</p>
           <p>
-            <strong>{profile.name}</strong> is an independent data analyst and AI systems builder based
-            in {profile.location}. I take three kinds of work: operational analytics engagements, AI
-            red-teaming and safety reviews, and local-first AI system design. I also publish open
-            research on consciousness modeling, decision systems, and local-first tooling.
+            <strong>{profile.name}</strong> is a systems engineer and AI systems builder based in{' '}
+            {profile.location}. Currently shipping the WVRTP facility inspection system for{' '}
+            <strong>Readyfuels</strong>, the <strong>Hermes plugin</strong> for{' '}
+            <strong>Nous Research</strong>, and the <strong>JCLAW</strong> /{' '}
+            <strong>MCPStarfleetCommand</strong> agent + MCP infrastructure stack. Embedded work on
+            ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; actively targeting remote
+            Data Analyst / BI / Junior Data Engineer roles at $70K+.
           </p>
         </aside>
 
@@ -122,12 +126,12 @@ export default function Home() {
       {/* Services preview */}
       <Section
         eyebrow="Services"
-        title="Three ways I work with teams"
+        title="Four ways I work with teams"
         lead="Scoped engagements with clear deliverables. Discovery calls are free."
       >
         <div className="card-grid card-grid-3">
-          {services.slice(0, 3).map(s => (
-            <Link key={s.slug} to="/services" className="card">
+          {services.map(s => (
+            <Link key={s.slug} to={`/services#${s.slug}`} className="card">
               <h3 className="card-title">{s.title}</h3>
               <p className="card-summary">{s.summary}</p>
               <span className="card-link">Read more →</span>
@@ -143,7 +147,7 @@ export default function Home() {
       <Section
         eyebrow="Writing"
         title="Recent posts"
-        lead="Notes on consciousness modeling, local-first AI, decision systems, and the practice of building."
+        lead="Notes on agent stacks, MCP infrastructure, local-first AI, decision systems, and the practice of building."
         tone="muted"
       >
         <div className="post-list">
@@ -175,16 +179,19 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Testimonials (placeholders) */}
+      {/* Selected delivery */}
       <Section
-        eyebrow="Words from collaborators"
-        title="What people say"
-        lead="Real testimonials from past work — added as engagements complete. Below are placeholders ready for your quotes."
+        eyebrow="Selected delivery"
+        title="Recent shipped work"
+        lead="Three engagements from the last six months — what was built, for whom, and when."
       >
         <div className="card-grid card-grid-3">
           {testimonials.map((t, i) => (
             <Quote key={i} {...t} />
           ))}
+        </div>
+        <div style={{ marginTop: '1.5rem' }}>
+          <Button to="/projects" variant="ghost" size="md">See all projects →</Button>
         </div>
       </Section>
 

@@ -1,7 +1,7 @@
 # Jacob C. Smith Portfolio
 
 ## Project Overview
-Public-facing professional site and blog for Jacob C. Smith — independent data analyst, AI systems builder, and consciousness researcher based in Buckhannon, West Virginia. Audience: prospective clients/consulting prospects, technical peers, and the general public.
+Public-facing professional site and blog for Jacob C. Smith — industrial systems engineer and AI systems builder based in Buckhannon, West Virginia. Currently shipping industrial tooling for Readyfuels (WVRTP facility inspection system), agent infrastructure for Nous Research (Hermes plugin), and his own agent / MCP stack (JCLAW, MCPStarfleetCommand). Embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate. Audience: prospective clients/consulting prospects, hiring managers (open to remote Data Analyst / BI / Jr Data Engineer roles at $70K+), technical peers, and the general public.
 
 The aesthetic balances editorial warmth (Fraunces serif headings, crimson italic accents) with a measured monospace voice (JetBrains Mono eyebrows, terminal-flavored details). Clean light/dark themes, no loud terminal noise, particles are subtle and skipped on small screens / reduced-motion users.
 
@@ -46,12 +46,12 @@ The aesthetic balances editorial warmth (Fraunces serif headings, crimson italic
 ```
 
 ## Routes
-- `/` Home — hero, three-pillars, featured projects, testimonials, CTA
-- `/about` About bio + CV download
-- `/services` Engagement offerings + pricing/FAQ
-- `/projects` Project showcase (EMERGENT-MCF-EI, JCLAW, etc.)
-- `/experience` Career timeline + CV download
-- `/contact` Contact methods
+- `/` Home — hero, three-pillars, services preview, recent posts, selected delivery, FAQ, newsletter, CTA
+- `/about` About bio + CV download (industrial / agent / embedded skill clusters)
+- `/services` Four scoped offerings (Industrial / Agent & AI / Local-first AI / Embedded & Edge) + FAQ
+- `/projects` Project showcase (WVRTP, Hermes plugin, JCLAW, MCPStarfleetCommand, UNIHIKER, ESP32, EMERGENT-MCF-EI, this site, pro bono)
+- `/experience` Career timeline (Readyfuels, Independent Practice, EMERGENT-MCF-EI, JCLAW, NewForce, Bridging Innovations) + CV download
+- `/contact` Contact methods + active job-search signal
 - `/blog` Blog index with search, category filters, featured post
 - `/blog/:slug` Blog post with reading time, tags, social share, related posts
 - `/skills` → redirects to `/about`
@@ -83,5 +83,9 @@ The aesthetic balances editorial warmth (Fraunces serif headings, crimson italic
 ## Known placeholders to replace before launch
 - `public/jacob-c-smith-resume.pdf` — currently a minimal valid placeholder PDF
 - Plausible `data-domain` in `index.html` and `scripts/generate-blog-pages.mjs` (currently `jacobcdsmith.github.io`)
-- Testimonials in `src/data/testimonials.json` (3 placeholder quotes flagged with `placeholder: true`); rendered on Home and Services
 - Newsletter form is currently `mailto:`-based; wire to a real provider when one is chosen
+
+## Anonymization rules
+- The regional hospitality client (referenced under pro-bono engagements) must NOT be named anywhere in copy, alt text, links, schema, or comments. Refer to it generically (e.g. "regional hospitality client").
+- Spark / sparkwv.org and Bridging Innovations Morgantown are public references and may be named.
+- Readyfuels (https://readyfuels.com) and Nous Research (https://nousresearch.com) are explicitly named external organizations with permission to reference.

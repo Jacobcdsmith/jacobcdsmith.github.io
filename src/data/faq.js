@@ -1,30 +1,34 @@
 export const homeFaq = [
   {
     q: 'Who is Jacob C. Smith?',
-    a: 'Jacob C. Smith is an independent data analyst and AI systems builder based in Buckhannon, West Virginia. He helps teams turn operational data into decisions, audits AI systems for safety issues, and builds local-first AI tooling. He also publishes long-form research on consciousness modeling and systems theory.',
+    a: 'Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. He builds industrial tooling for Readyfuels (WVRTP facility inspection system, Excel formula systems for safety and KPIs), ships and dissects AI agent stacks (Hermes plugin for Nous Research, the JCLAW agentic runtime, MCPStarfleetCommand), and works across embedded/edge hardware (ESP32-S3, UNIHIKER K10/M10). He is a NewForce Cohort 11 graduate and a member of Bridging Innovations Morgantown.',
   },
   {
     q: 'What services does Jacob offer?',
-    a: 'Operational analytics engagements (SQL, Python, BI dashboards), AI red-teaming and safety reviews for LLM-powered features, local-first AI system design, and systems audits for founders and ops leaders. See the Services page for scoped offerings and pricing approach.',
+    a: 'Four scoped offerings: industrial / operations tooling (full-stack web apps, QR + Power Automate, Excel formula systems), agent & AI systems (subagent orchestration, persistent identity layers, MCP infrastructure), local-first AI systems (JCLAW, MCP gateways, sovereignty-first runtimes), and embedded & edge integration (ESP32-S3 firmware in C/ESP-IDF, UNIHIKER SDK work). See the Services page for scope and process.',
   },
   {
-    q: 'What is the EMERGENT-MCF-EI project?',
-    a: 'EMERGENT-MCF-EI is a research project modeling consciousness as a dynamic spectral filter operating in frequency space. It includes a GPU-accelerated lattice simulation, a Streamlit dashboard, and a forthcoming paper targeting Neurons and Cognition (arXiv q-bio.NC).',
+    q: 'What is Jacob currently working on?',
+    a: 'Currently shipping the WVRTP facility inspection system and a 1,135-formula safety + KPI Excel workbook for Readyfuels; the Hermes agent plugin (three-subagent stack with persistent SOUL.md identity) for Nous Research; JCLAW and MCPStarfleetCommand on the agent / MCP infrastructure side; and ESP32-S3 plus UNIHIKER K10 firmware and SDK work on the embedded side.',
+  },
+  {
+    q: 'Is Jacob open to full-time roles?',
+    a: 'Yes. Actively targeting remote Data Analyst, BI Analyst, and Junior Data Engineer roles at $70K+ in addition to consulting engagements. The fastest way to start a conversation is email — jacobcsmithd@gmail.com.',
   },
   {
     q: 'What is JCLAW?',
-    a: 'JCLAW is a local-first LLM runtime that treats the model API as a programmable execution environment. It supports persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio), conversation branching, response diffing, agentic loops, and MCP dual-mode operation.',
+    a: 'JCLAW is a SQLite-backed agentic runtime that treats the LLM API as a programmable execution environment. It supports persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter), conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation.',
   },
   {
     q: 'How do I work with Jacob?',
-    a: 'Start by emailing jacobcsmithd@gmail.com with a one-paragraph description of the problem you are trying to solve. Most engagements begin with a free 30-minute discovery call to confirm fit before any scoping work.',
+    a: 'Email jacobcsmithd@gmail.com with a one-paragraph description of the problem you are trying to solve. Most engagements begin with a free 30-minute discovery call to confirm fit before any scoping work.',
   },
 ]
 
 export const servicesFaq = [
   {
-    q: 'How much do engagements cost?',
-    a: 'Engagement cost depends on scope. Discovery calls are free. A typical 2-week analytics pilot lands in the low five figures; AI red-team reviews scale with surface area; local-first AI builds are quoted after a hardware and architecture assessment.',
+    q: 'Why both industrial tooling and AI?',
+    a: 'Both are systems work. Building a QR-driven facility inspection system that real operators will actually use, and building a three-subagent stack with a persistent identity layer, share more than they look like — both are exercises in modeling a workflow, instrumenting it, and shipping something that survives contact with reality. Working across both keeps the AI work grounded and keeps the industrial work modern.',
   },
   {
     q: 'Do you work with companies outside the US?',
@@ -36,11 +40,15 @@ export const servicesFaq = [
   },
   {
     q: 'Do you offer ongoing retainers?',
-    a: 'Yes. After a successful initial engagement, many clients move into a monthly retainer for iteration, on-call analysis, and training.',
+    a: 'Yes. After a successful initial engagement, many clients move into a monthly retainer for iteration, on-call work, and training.',
   },
   {
     q: 'Why local-first AI?',
-    a: 'Local-first AI keeps data, prompts, and conversations on your infrastructure. It eliminates telemetry leakage, supports air-gapped environments, and gives you full reproducibility. For sensitive work it is often the only defensible architecture.',
+    a: 'Local-first AI keeps data, prompts, and conversations on your infrastructure. It eliminates telemetry leakage, supports air-gapped environments, and gives you full reproducibility. For sensitive industrial and regulated work it is often the only defensible architecture.',
+  },
+  {
+    q: 'Are you available for full-time employment?',
+    a: 'Yes — actively targeting remote Data Analyst, BI Analyst, or Junior Data Engineer roles at $70K+ in parallel with consulting work.',
   },
 ]
 
