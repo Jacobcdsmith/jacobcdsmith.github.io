@@ -36,7 +36,9 @@ export async function fetchRepoStats(owner, repo) {
 
 export async function fetchUserEvents(username) {
   if (!username) return null
-  const data = await cachedFetch(`https://api.github.com/users/${username}/events/public`)
+  const data = await cachedFetch(
+    `https://api.github.com/users/${username}/events/public?per_page=30`,
+  )
   if (!Array.isArray(data)) return null
   return data
 }
@@ -72,6 +74,3 @@ export function relativeTime(iso) {
   return `${y} year${y === 1 ? '' : 's'} ago`
 }
 
-export function _resetCacheForTests() {
-  cache.clear()
-}
