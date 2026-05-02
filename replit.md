@@ -83,5 +83,5 @@ The aesthetic balances editorial warmth (Fraunces serif headings, crimson italic
 ## Known placeholders to replace before launch
 - `public/jacob-c-smith-resume.pdf` — currently a minimal valid placeholder PDF
 - Plausible `data-domain` in `index.html` and `scripts/generate-blog-pages.mjs` (currently `jacobcdsmith.github.io`)
-- Testimonials in `src/data/testimonials.js` (3 placeholder quotes flagged with `placeholder: true`)
+- Testimonials in `src/data/testimonials.json` (3 placeholder quotes flagged with `placeholder: true`); rendered on Home and Services
 - Newsletter form is currently `mailto:`-based; wire to a real provider when one is chosen

@@ -40,6 +40,7 @@ export default function BlogPost() {
         type="article"
         publishedTime={post.date}
         tags={post.tags}
+        image={`${profile.siteUrl}/og/${post.slug}.svg`}
         jsonLd={[
           blogPostingSchema(post),
           breadcrumbSchema([

@@ -102,7 +102,7 @@ export function blogPostingSchema(post) {
     publisher: { '@type': 'Person', name: profile.name },
     url,
     mainEntityOfPage: url,
-    image: `${profile.siteUrl}/og-default.svg`,
+    image: `${profile.siteUrl}/og/${post.slug}.svg`,
     keywords: (post.tags || []).join(', '),
     wordCount: post.markdown ? post.markdown.split(/\s+/).filter(Boolean).length : undefined,
   }

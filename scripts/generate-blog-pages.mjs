@@ -427,6 +427,7 @@ function staticRoutes(posts) {
 
 function blogPostHtml({ post, htmlContent }) {
   const canonical = `${BASE_URL}/blog/${post.slug}/`
+  const ogImage = `${BASE_URL}/og/${post.slug}.svg`
   const json = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -436,7 +437,7 @@ function blogPostHtml({ post, htmlContent }) {
     author: { '@type': 'Person', name: SITE_NAME, url: BASE_URL },
     publisher: { '@type': 'Person', name: SITE_NAME },
     url: canonical,
-    image: `${BASE_URL}/og-default.svg`,
+    image: ogImage,
     keywords: (post.tags || []).join(', '),
     mainEntityOfPage: canonical,
   }
@@ -464,7 +465,63 @@ function blogPostHtml({ post, htmlContent }) {
     tags: post.tags || [],
     jsonLd: [json, breadcrumb],
     visibleBody,
+    ogImage,
   })
+}
+
+// ─── Per-post OG image (templated SVG) ──────────────────────────────────────
+
+function wrapTitleForOg(title, maxCharsPerLine = 26) {
+  const words = title.split(/\s+/)
+  const lines = []
+  let current = ''
+  for (const w of words) {
+    const candidate = current ? `${current} ${w}` : w
+    if (candidate.length > maxCharsPerLine && current) {
+      lines.push(current)
+      current = w
+    } else {
+      current = candidate
+    }
+  }
+  if (current) lines.push(current)
+  return lines.slice(0, 4)
+}
+
+function postOgSvg(post) {
+  const lines = wrapTitleForOg(post.title)
+  const baseY = 230
+  const lineHeight = 88
+  const titleSvg = lines
+    .map((line, i) => `<tspan x="80" y="${baseY + i * lineHeight}">${escHtml(line)}</tspan>`)
+    .join('')
+  const dateLabel = formatDate(post.date)
+  const category = (post.category || 'Notes').toUpperCase()
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17161c"/>
+      <stop offset="100%" stop-color="#0f0e12"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9485b"/>
+      <stop offset="100%" stop-color="#d4a574"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="6" height="630" fill="url(#accent)"/>
+  <text x="80" y="120" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="6" fill="#c9485b">${escHtml(category)} · ${SITE_NAME.toUpperCase()}</text>
+  <text font-family="Georgia, 'Fraunces', serif" font-size="68" font-weight="600" fill="#ecebe8">${titleSvg}</text>
+  <text x="80" y="560" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9a9694">${escHtml(dateLabel)} · ${readingTime(post.markdown)} min read · by ${SITE_NAME}</text>
+  <text x="1120" y="560" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="20" fill="#6a6764">jacobcdsmith.github.io</text>
+</svg>
+`
+}
+
+function writePostOgImage(post) {
+  const ogDir = resolve(DIST, 'og')
+  mkdirSync(ogDir, { recursive: true })
+  writeFileSync(resolve(ogDir, `${post.slug}.svg`), postOgSvg(post), 'utf-8')
 }
 
 // ─── Sitemap, robots, RSS, llms ─────────────────────────────────────────────
@@ -569,13 +626,14 @@ async function main() {
     }
   }
 
-  // 2. Blog posts
+  // 2. Blog posts (and their per-post OG images)
   for (const post of posts) {
     const html = marked.parse(post.markdown)
     const outDir = resolve(DIST, 'blog', post.slug)
     mkdirSync(outDir, { recursive: true })
     writeFileSync(resolve(outDir, 'index.html'), blogPostHtml({ post, htmlContent: html }), 'utf-8')
-    console.log(`  ✓ blog/${post.slug}/index.html`)
+    writePostOgImage(post)
+    console.log(`  ✓ blog/${post.slug}/index.html (+ og/${post.slug}.svg)`)
   }
 
   // 3. Sitemap
