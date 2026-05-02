@@ -5,7 +5,7 @@
 
 > **Systems-Oriented Data Analyst | Consciousness Researcher | Emergence Theorist**
 
-A high-tension minimalist portfolio showcasing data analytics projects, consciousness research, and theoretical frameworks. Built with raw HTML, CSS, and JavaScript—no frameworks, no bloat.
+**What is jacobcdsmith.github.io?** It is a React 19 + Vite portfolio site built by Jacob C. Smith—a data analyst and AI systems builder—that showcases analytics projects, consciousness research, and theoretical frameworks through a high-tension minimalist, terminal-inspired interface with an integrated blog.
 
 ---
 
@@ -17,6 +17,7 @@ A high-tension minimalist portfolio showcasing data analytics projects, consciou
 - **Smooth Scrolling**: Seamless navigation between sections
 - **Scroll Animations**: Fade-in effects for content as you scroll
 - **Active Section Highlighting**: Navigation updates based on scroll position
+- **Integrated Blog**: Markdown-based blog with static page generation
 - **Easter Egg**: Konami code activation (try it!)
 
 ### Design Philosophy
@@ -27,10 +28,10 @@ A high-tension minimalist portfolio showcasing data analytics projects, consciou
 - **Accessibility**: Semantic HTML5, ARIA labels, keyboard navigation
 
 ### Performance
-- **No Dependencies**: Zero external libraries or frameworks
+- **Minimal Runtime Dependencies**: React 19, React Router 7, Marked (blog parsing)
 - **Optimized Canvas**: 60fps particle system
 - **Lazy Loading**: Intersection Observer for animations
-- **Minimal Bundle**: < 50KB total uncompressed
+- **Static Blog Generation**: Pre-rendered blog pages via build-time script
 
 ---
 
@@ -38,11 +39,23 @@ A high-tension minimalist portfolio showcasing data analytics projects, consciou
 
 ```
 jacobcdsmith.github.io/
-├── index.html          # Main HTML structure
-├── style.css           # Dark mode styling
-├── script.js           # Particle system & interactivity
-├── README.md           # This file
-└── LICENSE             # MIT License
+├── src/
+│   ├── App.jsx             # Root component and route definitions
+│   ├── main.jsx            # React entry point
+│   ├── style.css           # Global dark mode styling
+│   ├── components/         # Reusable UI components
+│   └── pages/              # Route-level page components
+├── blog/
+│   ├── posts/              # Markdown source files for blog posts
+│   └── posts.json          # Blog post manifest (title, date, slug)
+├── scripts/
+│   └── generate-blog-pages.mjs  # Build-time static blog page generator
+├── public/                 # Static assets served as-is
+├── index.html              # Vite HTML entry point
+├── vite.config.js          # Vite build configuration
+├── package.json            # Dependencies and build scripts
+├── README.md               # This file
+└── LICENSE                 # MIT License
 ```
 
 ---
@@ -51,54 +64,52 @@ jacobcdsmith.github.io/
 
 ### GitHub Pages (Automatic)
 
-This site is configured for **GitHub Pages** and will deploy automatically:
+This site is configured for **GitHub Pages** and will deploy automatically on push to `main`.
 
-1. **Push to Main Branch**:
-   ```bash
-   git add .
-   git commit -m "Update portfolio"
-   git push origin main
-   ```
+The following commands push a new version live:
 
-2. **Enable GitHub Pages** (if not already enabled):
-   - Go to repository **Settings** → **Pages**
-   - Source: **Deploy from a branch**
-   - Branch: **main** / **(root)**
-   - Click **Save**
+```bash
+git add .
+git commit -m "Update portfolio"
+git push origin main
+```
 
-3. **Access Your Site**:
-   - Live at: `https://jacobcdsmith.github.io`
-   - May take 1-2 minutes for initial deployment
+To enable GitHub Pages (one-time setup):
+- Go to repository **Settings** → **Pages**
+- Source: **Deploy from a branch**
+- Branch: **main** / **(root)**
+- Click **Save** — the site will be live at `https://jacobcdsmith.github.io` within 1-2 minutes
 
 ### Local Development
 
-Run locally using any static file server:
+The following steps install dependencies and start the Vite dev server with hot module replacement:
 
-**Option 1: Python**
 ```bash
-# Python 3
-python -m http.server 8000
-
-# Then visit: http://localhost:8000
+npm install
+npm run dev
+# Then visit: http://localhost:5173
 ```
 
-**Option 2: Node.js**
-```bash
-npx http-server -p 8000
+To build the production bundle (Vite build + static blog page generation):
 
-# Then visit: http://localhost:8000
+```bash
+npm run build
+# Output goes to dist/
 ```
 
-**Option 3: VS Code Live Server**
-- Install "Live Server" extension
-- Right-click `index.html` → **Open with Live Server**
+To preview the production build locally before deploying:
+
+```bash
+npm run preview
+# Then visit: http://localhost:4173
+```
 
 ---
 
 ## 🎨 Customization
 
 ### Colors
-Edit CSS variables in `style.css`:
+The following CSS variables in `src/style.css` control the entire site palette:
 
 ```css
 :root {
@@ -108,19 +119,18 @@ Edit CSS variables in `style.css`:
 }
 ```
 
-### Particle Settings
-Adjust particle system in `script.js`:
+### Adding a Blog Post
+The following steps add a new blog post and make it appear in the blog index:
 
-```javascript
-this.particleCount = 80;           // Number of particles
-this.mouse.radius = 150;           // Mouse interaction radius
-```
+1. Create a Markdown file in `blog/posts/` (e.g., `blog/posts/my-new-post.md`)
+2. Add an entry to `blog/posts.json`:
+   ```json
+   { "slug": "my-new-post", "title": "My New Post", "date": "2025-01-01" }
+   ```
+3. Run `npm run build` to regenerate static blog pages
 
 ### Content Updates
-- **Projects**: Edit project cards in `index.html` (lines ~170-400)
-- **Experience**: Update timeline items (lines ~420-520)
-- **Skills**: Modify skill categories (lines ~120-170)
-- **Contact**: Update links in contact section (lines ~570-600)
+- **Projects / Experience / Skills / Contact**: Edit the corresponding components under `src/pages/` and `src/components/`
 
 ---
 
@@ -128,8 +138,9 @@ this.mouse.radius = 150;           // Mouse interaction radius
 
 | Category | Technology |
 |----------|-----------|
-| **Frontend** | HTML5, CSS3, JavaScript (ES6+) |
-| **Animation** | Canvas API, Intersection Observer |
+| **Frontend Framework** | React 19, React Router 7 |
+| **Build Tool** | Vite 8 |
+| **Blog Parsing** | Marked 18 (Markdown → HTML) |
 | **Deployment** | GitHub Pages |
 | **Version Control** | Git |
 
@@ -175,7 +186,6 @@ Lighthouse Score (Desktop):
 └── SEO: 100/100
 
 Load Time: < 1s
-Total Size: ~45KB (uncompressed)
 ```
 
 ---
@@ -205,6 +215,34 @@ Total Size: ~45KB (uncompressed)
 
 ---
 
+## ❓ FAQ
+
+### What is jacobcdsmith.github.io?
+It is Jacob C. Smith's personal portfolio and blog—a React 19 web application hosted on GitHub Pages that showcases data analytics projects, consciousness research, and theoretical systems work.
+
+### How do I run this portfolio site locally?
+Install Node.js (v18+), then run `npm install` followed by `npm run dev`. The site will be available at `http://localhost:5173` with hot module replacement enabled.
+
+### What tech stack does this portfolio use?
+The site is built with React 19, React Router 7, and Vite 8. Blog posts are written in Markdown and converted to static HTML at build time using a custom Node.js script powered by the `marked` library.
+
+### How do I add a new blog post?
+Create a `.md` file in `blog/posts/`, add a corresponding entry (slug, title, date) to `blog/posts.json`, then run `npm run build`. The build script automatically generates a static page for the new post.
+
+### How is this site deployed?
+Pushing to the `main` branch triggers GitHub Pages to deploy from the repository root. The production build is generated by `npm run build` and outputs to `dist/`.
+
+### Does this site collect any user data?
+No. There are zero analytics scripts, no cookies, and no third-party data collection. HTTPS is enforced by GitHub Pages.
+
+### What is the Multiversal Consciousness Framework (MCF)?
+MCF is a mathematical framework that formalizes consciousness as interference patterns across multidimensional state spaces. It includes CONSIM, a 60fps WebGL simulator for visualizing these patterns. An academic publication is in progress.
+
+### How can I contact Jacob C. Smith?
+Reach out via [jacobcsmithd@gmail.com](mailto:jacobcsmithd@gmail.com), [LinkedIn](https://linkedin.com/in/jacobcsmith), or [GitHub](https://github.com/Jacobcdsmith).
+
+---
+
 ## 📝 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
@@ -227,14 +265,13 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Aesthetic**: High-Tension Minimalist
 **Inspiration**: Terminal interfaces, sacred geometry, cosmic surrealism
-**Built**: 100% by hand, zero dependencies, maximum control
+**Built**: React 19 + Vite 8, deployed on GitHub Pages
 
 ---
 
 ## 🔮 Future Enhancements
 
 - [ ] WebGL consciousness visualization (MCF integration)
-- [ ] Blog section for research updates
 - [ ] Dark/Light mode toggle
 - [ ] Project filtering by technology
 - [ ] Interactive data visualizations
