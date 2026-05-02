@@ -37,7 +37,6 @@ const SITE_NAME = profile.name
 const ROLE = profile.role
 const PERSON_DESCRIPTION = profile.authorBio
 const SERVICE_DESCRIPTION = profile.subtagline
-const AVAILABILITY = profile.availability
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -113,7 +112,7 @@ function spaAssetTags() {
 // The same logic also exists (verbatim) in `index.html` <head> and as a
 // JS fallback in `src/main.jsx`. If you change the rules here (storage key,
 // preference detection), keep all three in sync to avoid theme flash.
-const THEME_BOOTSTRAP_SCRIPT = `<script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>`
+const THEME_BOOTSTRAP_SCRIPT = `<script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>`
 
 const ASSETS = spaAssetTags()
 
@@ -142,8 +141,8 @@ function routeShell({
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f0e12" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a1230" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
   ${THEME_BOOTSTRAP_SCRIPT}
 
@@ -185,7 +184,7 @@ ${tagMeta}
   </noscript>
   <div id="app">
     <!-- Static crawler-visible content; replaced by SPA on hydration. -->
-    <div class="crawl-only" style="max-width:780px;margin:2rem auto;padding:1.5rem;font-family:Inter,system-ui,sans-serif;color:#ecebe8;background:#0f0e12;">
+    <div class="crawl-only" style="max-width:780px;margin:2rem auto;padding:1.5rem;font-family:Inter,system-ui,sans-serif;color:#0a0f1f;background:#ffffff;">
       ${visibleBody}
     </div>
   </div>
@@ -209,24 +208,24 @@ ${tagMeta}
 // Static body builder
 function visibleBlock({ eyebrow, title, lead, body, tldr }) {
   const tldrBlock = tldr ? `
-      <aside style="border-left:2px solid #c9485b;background:rgba(201,72,91,0.06);padding:0.9rem 1.15rem;margin:1.25rem 0 1.5rem;border-radius:0 4px 4px 0;max-width:64ch;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#c9485b;margin:0 0 0.4rem;font-weight:600;">TL;DR</p>
-        <p style="margin:0;color:#ecebe8;font-size:0.97rem;line-height:1.6;">${tldr}</p>
+      <aside style="border-left:2px solid #1d4dba;background:rgba(29,77,186,0.06);padding:0.9rem 1.15rem;margin:1.25rem 0 1.5rem;border-radius:0 4px 4px 0;max-width:64ch;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.4rem;font-weight:600;">TL;DR</p>
+        <p style="margin:0;color:#0a0f1f;font-size:0.97rem;line-height:1.6;">${tldr}</p>
       </aside>` : ''
   return `
-      <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#c9485b;margin:0 0 0.85rem;">${escHtml(eyebrow)}</p>
-      <h1 style="font-family:Georgia,serif;font-size:2.5rem;line-height:1.1;margin:0 0 1rem;color:#ecebe8;">${escHtml(title)}</h1>
-      <p style="font-size:1.1rem;color:#9a9694;margin:0 0 1.5rem;max-width:60ch;">${escHtml(lead)}</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.85rem;">${escHtml(eyebrow)}</p>
+      <h1 style="font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;font-size:2.25rem;line-height:1.15;letter-spacing:0;margin:0 0 1rem;color:#0a0f1f;font-weight:700;">${escHtml(title)}</h1>
+      <p style="font-size:1.1rem;color:#7a8090;margin:0 0 1.5rem;max-width:60ch;">${escHtml(lead)}</p>
       ${tldrBlock}
       ${body}
-      <p style="margin-top:2rem;font-size:0.85rem;color:#9a9694;">
-        <a href="/" style="color:#c9485b;">Home</a> ·
-        <a href="/about" style="color:#c9485b;">About</a> ·
-        <a href="/services" style="color:#c9485b;">Services</a> ·
-        <a href="/projects" style="color:#c9485b;">Projects</a> ·
-        <a href="/experience" style="color:#c9485b;">Experience</a> ·
-        <a href="/blog" style="color:#c9485b;">Blog</a> ·
-        <a href="/contact" style="color:#c9485b;">Contact</a>
+      <p style="margin-top:2rem;font-size:0.85rem;color:#7a8090;">
+        <a href="/" style="color:#1d4dba;">Home</a> ·
+        <a href="/about" style="color:#1d4dba;">About</a> ·
+        <a href="/services" style="color:#1d4dba;">Services</a> ·
+        <a href="/projects" style="color:#1d4dba;">Projects</a> ·
+        <a href="/experience" style="color:#1d4dba;">Experience</a> ·
+        <a href="/blog" style="color:#1d4dba;">Blog</a> ·
+        <a href="/contact" style="color:#1d4dba;">Contact</a>
       </p>
   `
 }
@@ -312,47 +311,49 @@ function staticRoutes(posts) {
     {
       path: '/',
       title: null,
-      description: 'Jacob C. Smith — industrial systems engineer and AI systems builder based in Buckhannon, West Virginia. Readyfuels (WVRTP), Hermes plugin for Nous Research, JCLAW, MCPStarfleetCommand, ESP32-S3, UNIHIKER.',
+      description: 'Jacob C. Smith — independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research.',
       jsonLd: [personJson, profServiceJson, websiteJson, faqJson(homeFaq)],
       visibleBody: visibleBlock({
-        eyebrow: `Industrial systems · Agent stacks · Buckhannon, WV`,
-        title: 'I build industrial systems and dissect AI agent stacks.',
-        lead: 'Industrial systems engineer at Readyfuels shipping the WVRTP facility inspection system, while building and red-teaming agent stacks — Hermes plugin for Nous Research, JCLAW, and MCPStarfleetCommand. Embedded/edge work on ESP32-S3 and UNIHIKER.',
-        tldr: 'Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels, the Hermes plugin for Nous Research, and the JCLAW / MCPStarfleetCommand agent + MCP infrastructure stack. Embedded work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; actively targeting remote Data Analyst / BI / Junior Data Engineer roles at $70K+.',
+        eyebrow: `Independent practice · Buckhannon, WV`,
+        title: 'I help teams turn messy reality into measurable systems.',
+        lead: 'Independent systems engineer, AI red-teamer, and consciousness researcher. Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits — for teams that have outgrown spreadsheets but haven’t yet earned a data team.',
+        tldr: 'Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Architects the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway. Embedded work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.',
         body: `
           <p style="margin:1.5rem 0;">
-            <a href="/contact" style="color:#c9485b;font-weight:500;">Work with me →</a> &nbsp;
-            <a href="/experience" style="color:#c9485b;">See experience →</a> &nbsp;
-            <a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a>
+            <a href="/contact" style="color:#1d4dba;font-weight:500;">Work with me →</a> &nbsp;
+            <a href="/blog" style="color:#1d4dba;">Read the writing →</a> &nbsp;
+            <a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download CV →</a>
           </p>
-          <h2 style="font-family:Georgia,serif;font-size:1.6rem;margin:2rem 0 0.85rem;color:#ecebe8;">Three things I do</h2>
-          <ul style="padding-left:1.2rem;color:#ecebe8;">
-            <li><strong>Industrial / operations tooling</strong> — WVRTP-style web apps, QR + Power Automate, Excel formula systems.</li>
-            <li><strong>Agent &amp; AI systems</strong> — Hermes plugin, JCLAW, MCP infrastructure, built and red-teamed.</li>
-            <li><strong>Embedded &amp; edge</strong> — ESP32-S3 firmware in C, UNIHIKER K10/M10 SDK work.</li>
+          <h2 style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;font-size:1.1rem;letter-spacing:0.05em;margin:2rem 0 0.85rem;color:#0a0f1f;">Three things I do</h2>
+          <ul style="padding-left:1.2rem;color:#0a0f1f;">
+            <li><strong>Operational analytics</strong> — dashboards, forecasts, KPI / safety formula systems you can defend in a meeting.</li>
+            <li><strong>AI red-teaming</strong> — adversarial reviews of LLM features and agent stacks. Delivered as a subagent inside the Hermes plugin for Nous Research.</li>
+            <li><strong>Local-first AI tools</strong> — JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway built so cloud dependencies are severed by design.</li>
           </ul>
-          <p><a href="/services" style="color:#c9485b;">See all services →</a></p>
+          <p><a href="/services" style="color:#1d4dba;">See all services →</a></p>
         `,
       }),
     },
     {
       path: '/about',
       title: 'About',
-      description: 'Jacob C. Smith — industrial systems engineer and AI systems builder spanning industrial → web → AI → embedded. Readyfuels, Nous Research, JCLAW, ESP32-S3, UNIHIKER.',
+      description: 'Jacob C. Smith — independent systems engineer, AI red-teamer, and consciousness researcher bridging operational analytics, local-first AI tooling, and industrial systems work.',
       jsonLd: [personJson, bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'About', url: `${BASE_URL}/about` }])],
       visibleBody: visibleBlock({
         eyebrow: 'About',
         title: 'Jacob C. Smith.',
-        lead: 'Industrial systems engineer and AI systems builder spanning industrial → web → AI → embedded. Based in Buckhannon, West Virginia.',
-        tldr: 'Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. Industrial work for Readyfuels (WVRTP facility inspection system, 1,135-formula safety + KPI Excel workbook); agent / AI work for Nous Research (Hermes plugin) and on his own stacks (JCLAW, MCPStarfleetCommand, a local WebSocket MCP gateway); embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate. Actively targeting remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.',
-        body: `<p>The industrial work at <strong>Readyfuels</strong> is the anchor — a React/Vite/TypeScript facility inspection system on Vercel with QR-driven capture and Power Automate pipelines, alongside a 1,135-formula safety + KPI Excel workbook. The agent work runs in parallel: the <strong>Hermes plugin</strong> for <strong>Nous Research</strong> (three-subagent stack with persistent SOUL.md identity and OpenRouter routing), plus <strong>JCLAW</strong>, <strong>MCPStarfleetCommand</strong>, and a local WebSocket MCP gateway. The embedded thread is ESP32-S3 in C/ESP-IDF and a UNIHIKER K10 skill package grounded in the actual hardware schematic.</p>
-        <p><a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a></p>`,
+        lead: 'Independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia.',
+        tldr: 'Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Works remotely with teams worldwide on operational analytics, AI red-teaming, and local-first AI tooling. Current engagements include the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com). Leads the EMERGENT-MCF-EI consciousness research thread; architects the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway.',
+        body: `<p>I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The work tends to look like one of three things: a dashboard that finally makes a decision clear, a red-team report that catches an AI feature before it embarrasses someone, or a local-first runtime that lets a team use LLMs without surrendering their data.</p>
+        <p>Right now that thread runs through two named engagements. For <strong>Readyfuels</strong> I shipped the WVRTP facility inspection system — a React/Vite/TypeScript app on Vercel with QR-driven capture, Power Automate pipelines, and protected routes — alongside a 1,135-formula safety + KPI Excel workbook used by operators in the field. For <strong>Nous Research</strong> I built the Hermes plugin: a three-subagent stack (codegen, red-team, resource-gathering) under a persistent SOUL.md identity layer with OpenRouter multi-provider routing.</p>
+        <p>In parallel I run a long research thread on consciousness modeling (EMERGENT-MCF-EI) and architect a small constellation of agent / MCP infrastructure: <strong>JCLAW</strong>, <strong>MCPStarfleetCommand</strong>, and a local WebSocket MCP gateway designed so cloud dependencies are severed by default. Embedded work in C/ESP-IDF on the ESP32-S3 and a UNIHIKER K10 skill package round out the practice.</p>
+        <p><a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download CV →</a></p>`,
       }),
     },
     {
       path: '/services',
       title: 'Services',
-      description: 'Industrial / operations tooling, agent & AI systems, local-first AI systems, and embedded & edge integration — scoped engagements with clear deliverables.',
+      description: 'Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits — scoped engagements with clear deliverables.',
       jsonLd: [
         bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Services', url: `${BASE_URL}/services` }]),
         profServiceJson,
@@ -363,68 +364,68 @@ function staticRoutes(posts) {
         eyebrow: 'Services',
         title: 'Engagements that ship.',
         lead: 'Four ways I work with teams. Each one is scoped, time-bound, and produces an artifact your team owns.',
-        tldr: 'Industrial / operations tooling (proven on the WVRTP facility inspection system at Readyfuels), agent & AI systems (Hermes plugin for Nous Research), local-first AI systems (JCLAW + MCP infrastructure), and embedded & edge integration (ESP32-S3, UNIHIKER K10/M10). Most engagements are 2–4 weeks with optional retainer.',
-        body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
-          <li><strong>Industrial / operations tooling</strong> — proof case: <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Readyfuels</a> (WVRTP facility inspection system).</li>
-          <li><strong>Agent &amp; AI systems</strong> — delivery example: <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Nous Research</a> (Hermes plugin).</li>
+        tldr: 'Operational analytics engagements (proven on the WVRTP work for Readyfuels), AI red-teaming and safety reviews (delivered as a subagent inside the Hermes plugin for Nous Research), local-first AI systems (JCLAW + MCP infrastructure), and systems audits / decision-architecture work. Most engagements are 2–4 weeks with optional retainer.',
+        body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
+          <li><strong>Operational analytics</strong> — proof case: <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Readyfuels</a> (WVRTP facility inspection system + 1,135-formula safety / KPI workbook).</li>
+          <li><strong>AI red-teaming &amp; safety reviews</strong> — delivery example: <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Nous Research</a> (red-team subagent inside the Hermes plugin).</li>
           <li><strong>Local-first AI systems</strong> — JCLAW, MCPStarfleetCommand, local WebSocket MCP gateway.</li>
-          <li><strong>Embedded &amp; edge integration</strong> — ESP32-S3 firmware in C/ESP-IDF, UNIHIKER K10/M10 SDK work.</li>
+          <li><strong>Systems audits &amp; decision architecture</strong> — for founders and ops leaders who need an outside systems-thinker to map what’s actually happening and what to do next.</li>
         </ul>
-        <p>Discovery calls are free. Email <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a> to start.</p>`,
+        <p>Discovery calls are free. Email <a href="mailto:jacobcsmithd@gmail.com" style="color:#1d4dba;">jacobcsmithd@gmail.com</a> to start.</p>`,
       }),
     },
     {
       path: '/projects',
       title: 'Projects',
-      description: 'WVRTP facility inspection system (Readyfuels), Hermes plugin (Nous Research), JCLAW, MCPStarfleetCommand, UNIHIKER and ESP32-S3 work, EMERGENT-MCF-EI research.',
+      description: 'EMERGENT-MCF-EI consciousness research, JCLAW agentic runtime, Hermes plugin (Nous Research), MCPStarfleetCommand, WVRTP facility inspection system (Readyfuels), UNIHIKER and ESP32-S3 work, plus operational analytics engagements.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Projects', url: `${BASE_URL}/projects` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Projects',
         title: 'Things I’m building.',
-        lead: 'Industrial tooling, agent infrastructure, embedded/edge work, and open research. Ordered roughly by what is most active right now.',
-        tldr: 'Flagship work right now: the WVRTP facility inspection system for Readyfuels (React/Vite/TS, Vercel, QR + Power Automate), the Hermes plugin for Nous Research (three-subagent stack with persistent SOUL.md identity), JCLAW + MCPStarfleetCommand + a local WebSocket MCP gateway, ESP32-S3 firmware and a UNIHIKER K10 skill package, plus the ongoing EMERGENT-MCF-EI consciousness-modeling research thread.',
-        body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
-          <li><strong>WVRTP Facility Inspection System</strong> — React/Vite/TypeScript on Vercel for <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Readyfuels</a>; QR + Power Automate.</li>
-          <li><strong>Hermes plugin</strong> — three-subagent stack with persistent SOUL.md identity for <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#c9485b;">Nous Research</a>.</li>
+        lead: 'A mix of open research, agent / MCP infrastructure, industrial systems work, and client engagements.',
+        tldr: 'Open research: EMERGENT-MCF-EI (consciousness as a spectral filter). Agent / MCP infrastructure: JCLAW, the Hermes plugin for Nous Research, MCPStarfleetCommand, and a local WebSocket MCP gateway. Industrial: the WVRTP facility inspection system for Readyfuels. Embedded: a UNIHIKER K10 skill package and ESP32-S3 firmware. Most paid client work is operational analytics under NDA.',
+        body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
+          <li><strong>EMERGENT-MCF-EI</strong> — GPU-accelerated lattice simulation modeling consciousness as a spectral filter; forthcoming preprint (q-bio.NC).</li>
           <li><strong>JCLAW</strong> — SQLite-backed agentic runtime with multi-provider routing, MCP, branching, evals.</li>
+          <li><strong>Hermes plugin</strong> — three-subagent stack with persistent SOUL.md identity for <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Nous Research</a>.</li>
           <li><strong>MCPStarfleetCommand</strong> — dual-transport MCP server.</li>
           <li><strong>Local WebSocket MCP gateway</strong> — cloud dependencies severed by design.</li>
+          <li><strong>WVRTP Facility Inspection System</strong> — React/Vite/TypeScript on Vercel for <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Readyfuels</a>; QR + Power Automate; companion 1,135-formula safety + KPI workbook.</li>
           <li><strong>UNIHIKER K10 skill package</strong> — MicroPython + full C/C++ SDK against the real hardware schematic.</li>
           <li><strong>ESP32-S3 firmware</strong> — modular ESP-IDF / C work with documented module boundaries.</li>
-          <li><strong>EMERGENT-MCF-EI</strong> — GPU-accelerated lattice simulation modeling consciousness as a spectral filter.</li>
           <li><strong>jacobcdsmith.github.io</strong> — this site. Static React + Vite SPA with pre-rendered HTML.</li>
-          <li><strong>Pro bono</strong> — regional hospitality client (BigCommerce → Clover evaluation), Spark / sparkwv.org (HostGator → Google Workspace migration).</li>
+          <li><strong>Pro bono</strong> — regional hospitality client (ecommerce platform pivot evaluation), Spark / sparkwv.org (HostGator → Google Workspace email migration, zero downtime).</li>
         </ul>`,
       }),
     },
     {
       path: '/experience',
       title: 'Experience',
-      description: 'Systems Engineer at Readyfuels (WVRTP), Hermes plugin for Nous Research, JCLAW + MCP infrastructure, ESP32-S3 + UNIHIKER embedded work, EMERGENT-MCF-EI research, NewForce Cohort 11.',
+      description: 'Independent practice in operational analytics, AI red-teaming, and local-first AI; current engagements with Readyfuels (WVRTP) and Nous Research (Hermes plugin); JCLAW + MCP infrastructure; ESP32-S3 + UNIHIKER embedded work; EMERGENT-MCF-EI research; NewForce Cohort 11.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Experience', url: `${BASE_URL}/experience` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Experience',
         title: 'Selected work.',
-        lead: 'A short version of the last six months and what came before. For the long version, download the CV or email for references.',
-        tldr: 'Jacob C. Smith is currently Systems Engineer at Readyfuels shipping the WVRTP facility inspection system, alongside agent / AI work (the Hermes plugin for Nous Research, JCLAW, MCPStarfleetCommand) and embedded / edge work (ESP32-S3, UNIHIKER K10/M10). NewForce Cohort 11 graduate; Bridging Innovations Morgantown member. Actively targeting remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.',
-        body: `<p><a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a></p>`,
+        lead: 'A short version. For the long version, download the CV or email for references on specific engagements.',
+        tldr: 'Jacob C. Smith runs an independent practice in operational analytics, AI red-teaming, and local-first AI systems out of Buckhannon, West Virginia. Current engagements: the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. In parallel he leads the EMERGENT-MCF-EI consciousness research thread and architects the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.',
+        body: `<p><a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download CV →</a></p>`,
       }),
     },
     {
       path: '/contact',
       title: 'Contact',
-      description: 'Get in touch with Jacob C. Smith. Open to remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements. Email is the fastest way.',
+      description: 'Get in touch with Jacob C. Smith. Email is the fastest way; phone for urgent matters. Discovery calls are free; NDAs welcome.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Contact', url: `${BASE_URL}/contact` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Contact',
         title: 'Let’s talk.',
-        lead: 'One paragraph about the problem you’re trying to solve is enough to start. Open to remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.',
-        tldr: `The fastest way to reach ${SITE_NAME} is email (jacobcsmithd@gmail.com) or phone ((304) 473-9980). ${AVAILABILITY} Most consulting engagements start with a free 30-minute discovery call. Based in Buckhannon, West Virginia; works remotely worldwide.`,
-        body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
-          <li>Email: <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a></li>
-          <li>Phone: <a href="tel:+13044739980" style="color:#c9485b;">(304) 473-9980</a></li>
-          <li>GitHub: <a href="https://github.com/Jacobcdsmith" style="color:#c9485b;">github.com/Jacobcdsmith</a></li>
-          <li>LinkedIn: <a href="https://linkedin.com/in/jacobcsmith" style="color:#c9485b;">linkedin.com/in/jacobcsmith</a></li>
+        lead: 'One paragraph about the problem you’re trying to solve is enough to start. Discovery calls are free; NDAs welcome.',
+        tldr: `The fastest way to reach ${SITE_NAME} is email (jacobcsmithd@gmail.com) or phone ((304) 473-9980). Most engagements start with a free 30-minute discovery call. Based in Buckhannon, West Virginia; works remotely worldwide.`,
+        body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
+          <li>Email: <a href="mailto:jacobcsmithd@gmail.com" style="color:#1d4dba;">jacobcsmithd@gmail.com</a></li>
+          <li>Phone: <a href="tel:+13044739980" style="color:#1d4dba;">(304) 473-9980</a></li>
+          <li>GitHub: <a href="https://github.com/Jacobcdsmith" style="color:#1d4dba;">github.com/Jacobcdsmith</a></li>
+          <li>LinkedIn: <a href="https://linkedin.com/in/jacobcsmith" style="color:#1d4dba;">linkedin.com/in/jacobcsmith</a></li>
           <li>Location: Buckhannon, West Virginia, USA</li>
         </ul>`,
       }),
@@ -456,8 +457,8 @@ function staticRoutes(posts) {
         title: 'The blog.',
         lead: 'Notes on consciousness modeling, local-first AI, decision systems, and the slow craft of shipping useful things.',
         tldr: 'Long-form posts by Jacob C. Smith, organized into three categories — Research (consciousness modeling, EMERGENT-MCF-EI, mathematics), Engineering (local-first AI, runtimes, tooling), and Essays (systems thinking, decision architecture).',
-        body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
-          ${posts.map(p => `<li><a href="/blog/${p.slug}/" style="color:#c9485b;">${escHtml(p.title)}</a> — <span style="color:#9a9694;">${formatDate(p.date)}</span></li>`).join('\n          ')}
+        body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
+          ${posts.map(p => `<li><a href="/blog/${p.slug}/" style="color:#1d4dba;">${escHtml(p.title)}</a> — <span style="color:#7a8090;">${formatDate(p.date)}</span></li>`).join('\n          ')}
         </ul>`,
       }),
     },
@@ -490,12 +491,12 @@ function blogPostHtml({ post, htmlContent }) {
   ])
 
   const visibleBody = `
-    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#c9485b;margin:0 0 0.85rem;">Blog</p>
-    <h1 style="font-family:Georgia,serif;font-size:2.25rem;line-height:1.15;margin:0 0 1rem;color:#ecebe8;">${escHtml(post.title)}</h1>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#9a9694;margin:0 0 1.5rem;">${formatDate(post.date)} · ${readingTime(post.markdown)} min read · by Jacob C. Smith</p>
-    <p style="font-size:1.1rem;color:#9a9694;margin:0 0 2rem;">${escHtml(post.excerpt)}</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.85rem;">Blog</p>
+    <h1 style="font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;font-size:2rem;line-height:1.2;letter-spacing:0;margin:0 0 1rem;color:#0a0f1f;font-weight:700;">${escHtml(post.title)}</h1>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#7a8090;margin:0 0 1.5rem;">${formatDate(post.date)} · ${readingTime(post.markdown)} min read · by Jacob C. Smith</p>
+    <p style="font-size:1.1rem;color:#7a8090;margin:0 0 2rem;">${escHtml(post.excerpt)}</p>
     <article style="font-size:1.05rem;line-height:1.75;">${htmlContent}</article>
-    <p style="margin-top:2rem;font-size:0.85rem;color:#9a9694;"><a href="/blog" style="color:#c9485b;">← All posts</a></p>
+    <p style="margin-top:2rem;font-size:0.85rem;color:#7a8090;"><a href="/blog" style="color:#1d4dba;">← All posts</a></p>
   `
 
   return routeShell({
@@ -542,20 +543,18 @@ function postOgSvg(post) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#17161c"/>
-      <stop offset="100%" stop-color="#0f0e12"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c9485b"/>
-      <stop offset="100%" stop-color="#d4a574"/>
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f4f2"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect x="0" y="0" width="6" height="630" fill="url(#accent)"/>
-  <text x="80" y="120" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="6" fill="#c9485b">${escHtml(category)} · ${SITE_NAME.toUpperCase()}</text>
-  <text font-family="Georgia, 'Fraunces', serif" font-size="68" font-weight="600" fill="#ecebe8">${titleSvg}</text>
-  <text x="80" y="560" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9a9694">${escHtml(dateLabel)} · ${readingTime(post.markdown)} min read · by ${SITE_NAME}</text>
-  <text x="1120" y="560" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="20" fill="#6a6764">jacobcdsmith.github.io</text>
+  <rect x="0" y="0" width="6" height="630" fill="#1d4dba"/>
+  <line x1="60" y1="60" x2="1140" y2="60" stroke="#1d4dba" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="60" y1="570" x2="1140" y2="570" stroke="#1d4dba" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="80" y="120" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" font-weight="600" letter-spacing="6" fill="#1d4dba">[ ${escHtml(category)} ] · ${SITE_NAME.toUpperCase()}</text>
+  <text font-family="'JetBrains Mono', ui-monospace, monospace" font-size="60" font-weight="700" fill="#0a0f1f" letter-spacing="-1">${titleSvg}</text>
+  <text x="80" y="560" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="20" fill="#4b5263">${escHtml(dateLabel)} · ${readingTime(post.markdown)} min read · by ${SITE_NAME}</text>
+  <text x="1120" y="560" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="20" fill="#7a8090">jacobcdsmith.github.io</text>
 </svg>
 `
 }
@@ -629,9 +628,8 @@ function generateLlmsFull(posts) {
   out += `\nGenerated: ${new Date().toISOString()}\n`
   out += `Site: ${BASE_URL}\n\n`
   out += `## About\n`
-  out += `Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels (https://readyfuels.com), the Hermes plugin for Nous Research (https://nousresearch.com), and the JCLAW / MCPStarfleetCommand agent + MCP infrastructure stack. Embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.\n\n`
-  out += `Practice areas: industrial / operations tooling, agent & AI systems, local-first AI systems, embedded & edge integration. Open research on consciousness modeling (EMERGENT-MCF-EI).\n\n`
-  out += `Availability: Actively targeting remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to consulting engagements.\n\n`
+  out += `Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com); architects JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway. Embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.\n\n`
+  out += `Practice areas: operational analytics, AI red-teaming and safety reviews, local-first AI systems, and decision-architecture audits. Open research on consciousness modeling (EMERGENT-MCF-EI).\n\n`
   out += `Contact: jacobcsmithd@gmail.com · (304) 473-9980 · github.com/Jacobcdsmith · linkedin.com/in/jacobcsmith\n\n`
   out += `---\n\n## Blog Posts (full text)\n\n`
   for (const p of posts) {

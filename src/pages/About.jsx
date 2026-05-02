@@ -9,16 +9,16 @@ import { personSchema, professionalServiceSchema, breadcrumbSchema } from '../li
 
 const skillClusters = [
   {
-    title: 'Web & Industrial Tooling',
-    skills: ['React', 'Vite', 'TypeScript', 'Vercel', 'Power Automate', 'Microsoft 365', 'Excel formula systems', 'protected routes', 'QR capture flows'],
-  },
-  {
     title: 'Data & Analytics',
-    skills: ['SQL', 'Python', 'pandas', 'numpy', 'Tableau', 'Power BI', 'Streamlit', 'KPI modeling', 'experiment design'],
+    skills: ['SQL', 'Python', 'pandas', 'numpy', 'Tableau', 'Power BI', 'Streamlit', 'Excel formula systems', 'experiment design'],
   },
   {
-    title: 'Agent & AI Systems',
-    skills: ['LLM evaluation', 'subagent orchestration', 'persistent identity (SOUL.md)', 'OpenRouter routing', 'MCP (stdio / SSE / WebSocket)', 'red-teaming', 'JCLAW runtime', 'llama.cpp', 'Ollama', 'LM Studio'],
+    title: 'AI / ML Systems',
+    skills: ['LLM evaluation', 'prompt engineering', 'subagent orchestration', 'persistent identity (SOUL.md)', 'red-teaming', 'MCP (stdio / SSE / WebSocket)', 'OpenRouter', 'llama.cpp', 'Ollama', 'LM Studio'],
+  },
+  {
+    title: 'Web & Industrial Tooling',
+    skills: ['React', 'Vite', 'TypeScript', 'Vercel', 'Power Automate', 'Microsoft 365', 'protected routes', 'QR capture flows'],
   },
   {
     title: 'Embedded & Edge',
@@ -56,19 +56,21 @@ export default function About() {
           <p className="page-eyebrow">About</p>
           <h1 className="page-title">{profile.name}.</h1>
           <p className="page-lead">
-            Industrial systems engineer and AI systems builder spanning industrial → web → AI →
-            embedded. Based in {profile.location}; works remotely worldwide.
+            Independent systems engineer, AI red-teamer, and consciousness researcher based in
+            {' '}{profile.location}. I work at the intersection of operational analytics,
+            local-first AI tooling, and industrial systems.
           </p>
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              <strong>{profile.name}</strong> is a systems engineer and AI systems builder based in{' '}
-              {profile.location}. Industrial work for <strong>Readyfuels</strong> (WVRTP facility
-              inspection system, 1,135-formula safety + KPI Excel workbook); agent / AI work for{' '}
-              <strong>Nous Research</strong> (the <strong>Hermes plugin</strong>) and on his own
-              stacks (<em>JCLAW</em>, <em>MCPStarfleetCommand</em>, a local WebSocket MCP gateway);
-              embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate.{' '}
-              {profile.availability}
+              <strong>{profile.name}</strong> is an independent systems engineer, AI red-teamer, and
+              consciousness researcher based in {profile.location}. He works remotely with teams
+              worldwide on operational analytics, AI red-teaming, and local-first AI tooling.
+              Current engagements include the WVRTP facility inspection system for{' '}
+              <strong>Readyfuels</strong> and the Hermes plugin for <strong>Nous Research</strong>.
+              He leads the EMERGENT-MCF-EI consciousness research thread and architects the{' '}
+              <em>JCLAW</em> agentic runtime, <em>MCPStarfleetCommand</em>, and a local WebSocket
+              MCP gateway.
             </p>
           </aside>
           <div className="hero-actions">
@@ -83,29 +85,37 @@ export default function About() {
         <div className="about-grid">
           <div className="about-prose">
             <p>
-              The industrial work is the anchor. At <strong>Readyfuels</strong> I designed and
-              shipped the WVRTP facility inspection system — a React/Vite/TypeScript app on Vercel
-              with QR-driven capture, Power Automate pipelines, and protected routes — alongside a
-              1,135-formula Excel workbook for safety scoring and KPIs that operators actually use.
-              That work runs in real facilities for real people, and it sets the bar for everything
-              else.
+              I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The
+              work tends to look like one of three things: a dashboard that finally makes a decision
+              clear, a red-team report that catches an AI feature before it embarrasses someone, or
+              a local-first runtime that lets a team use LLMs without surrendering their data.
             </p>
             <p>
-              The agent and AI work runs in parallel. I built the <strong>Hermes plugin</strong> for{' '}
-              <strong>Nous Research</strong> — a three-subagent stack (codegen, red-team,
-              resource-gathering) with a persistent <code>SOUL.md</code> identity layer and OpenRouter
-              multi-provider routing. On my own infrastructure side I architect{' '}
-              <strong>JCLAW</strong> (a SQLite-backed agentic runtime), <strong>MCPStarfleetCommand</strong>{' '}
-              (dual-transport MCP server), and a local WebSocket MCP gateway built so cloud
-              dependencies are severed by design. Building and red-teaming the same kind of system
-              has taught me more about agent failure modes than either would on its own.
+              Right now that thread runs through two named engagements. For{' '}
+              <strong>Readyfuels</strong> I shipped the WVRTP facility inspection system — a
+              React/Vite/TypeScript app on Vercel with QR-driven capture, Power Automate
+              pipelines, and protected routes — alongside a 1,135-formula safety + KPI Excel
+              workbook that operators actually use in the field. For <strong>Nous Research</strong>{' '}
+              I built the Hermes plugin: a three-subagent stack (codegen, red-team,
+              resource-gathering) running under a persistent <code>SOUL.md</code> identity layer
+              with OpenRouter multi-provider routing.
             </p>
             <p>
-              The embedded thread is the third leg. ESP32-S3 firmware in C/ESP-IDF and a UNIHIKER
-              K10 skill package (MicroPython plus full C/C++ SDK coverage grounded in the actual
-              hardware schematic) — with the UNIHIKER M10 scoped as the next personalized AI
-              companion build. I am a NewForce Cohort 11 graduate, a Bridging Innovations
-              Morgantown member, and {profile.availability.toLowerCase()}
+              In parallel, I run a long research thread on consciousness modeling — building
+              GPU-accelerated lattice simulations and writing toward a paper on emergent
+              meta-cognitive filtering (EMERGENT-MCF-EI) — and architect a small constellation of
+              agent / MCP infrastructure: <em>JCLAW</em> (a SQLite-backed agentic runtime),{' '}
+              <em>MCPStarfleetCommand</em> (a dual-transport MCP server), and a local WebSocket
+              MCP gateway designed so cloud dependencies are severed by default. The same
+              systems-thinking that powers the research shows up in every client engagement: model
+              the dynamics, instrument the system, and build decisions you can defend.
+            </p>
+            <p>
+              On the embedded side I work in C/ESP-IDF on the ESP32-S3 and have built a UNIHIKER
+              K10 skill package covering MicroPython plus the full C/C++ SDK against the actual
+              hardware schematic — with the UNIHIKER M10 scoped as the next personalized AI
+              companion build. I am based in Buckhannon, West Virginia, work remotely with clients
+              worldwide, and prefer engagements that produce an artifact someone can hold and own.
             </p>
           </div>
 
@@ -121,15 +131,15 @@ export default function About() {
               </li>
               <li>
                 <span className="fact-label">Focus</span>
-                <span className="fact-value">Industrial · Agent · Embedded</span>
+                <span className="fact-value">Analytics · AI · systems</span>
               </li>
               <li>
-                <span className="fact-label">Availability</span>
-                <span className="fact-value">Open to FT roles + consulting</span>
+                <span className="fact-label">Available</span>
+                <span className="fact-value">For new engagements</span>
               </li>
               <li>
                 <span className="fact-label">Network</span>
-                <span className="fact-value">Bridging Innovations · NewForce C11</span>
+                <span className="fact-value">NewForce C11 · Bridging Innovations</span>
               </li>
             </ul>
           </aside>

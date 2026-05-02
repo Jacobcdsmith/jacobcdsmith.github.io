@@ -42,33 +42,32 @@ export default function Home() {
         <div className="container">
           <div className="hero-grid">
             <div>
-              <p className="hero-eyebrow">Industrial systems · Agent stacks · {profile.location}</p>
+              <p className="hero-eyebrow">Independent practice · {profile.location}</p>
               <h1 className="hero-title">
-                I build <span className="accent">industrial systems</span> and dissect AI agent stacks.
+                I help teams turn messy reality into <span className="accent">measurable systems</span>.
               </h1>
               <p className="hero-sub">
-                Industrial systems engineer at <strong>Readyfuels</strong> shipping the WVRTP facility
-                inspection system, while building and red-teaming agent stacks — the{' '}
-                <strong>Hermes plugin</strong> for Nous Research, <strong>JCLAW</strong>, and{' '}
-                <strong>MCPStarfleetCommand</strong>. Embedded/edge work on ESP32-S3 and UNIHIKER.
+                For <strong>clients</strong> who need analytics or AI tooling that ships, for{' '}
+                <strong>peers</strong> who want the writing, and for{' '}
+                <strong>curious visitors</strong> who just want a tour.
               </p>
 
               <div className="hero-actions">
                 <Button to="/contact" variant="primary" size="lg" trackName="hero_cta_hire">
                   Work with me
                 </Button>
-                <Button to="/experience" variant="ghost" size="lg" trackName="hero_cta_experience">
-                  See experience
+                <Button to="/blog" variant="ghost" size="lg" trackName="hero_cta_blog">
+                  Read the writing
                 </Button>
                 <CVDownload variant="ghost" size="lg" />
               </div>
 
               <div className="hero-meta">
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">●</span> Open to remote Data / BI / Jr Data Engineer roles ($70K+)
+                  <span aria-hidden="true">●</span> Available for engagements
                 </span>
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">›</span> React · TypeScript · Python · MCP · ESP-IDF
+                  <span aria-hidden="true">›</span> SQL · Python · LLM systems · BI · MCP · ESP-IDF
                 </span>
               </div>
             </div>
@@ -76,20 +75,20 @@ export default function Home() {
             <aside className="hero-card" aria-label="What I focus on">
               <p className="hero-card-title">Three things I do</p>
               <div className="hero-pillars">
-                <Link to="/services#industrial-operations-tooling" className="hero-pillar">
-                  <span className="hero-pillar-label">Industrial / operations tooling</span>
-                  <span className="hero-pillar-text">WVRTP-style web apps, QR + Power Automate, Excel systems.</span>
+                <Link to="/services#analytics-engagements" className="hero-pillar">
+                  <span className="hero-pillar-label">Operational analytics</span>
+                  <span className="hero-pillar-text">Dashboards, forecasts, and KPI / safety formula systems you can defend.</span>
                   <span className="hero-pillar-link">→ services</span>
                 </Link>
-                <Link to="/services#agent-and-ai-systems" className="hero-pillar">
-                  <span className="hero-pillar-label">Agent &amp; AI systems</span>
-                  <span className="hero-pillar-text">Hermes, JCLAW, MCP infrastructure — built and red-teamed.</span>
+                <Link to="/services#ai-red-teaming" className="hero-pillar">
+                  <span className="hero-pillar-label">AI red-teaming</span>
+                  <span className="hero-pillar-text">Find the failure modes before launch. (See: Hermes red-team subagent.)</span>
                   <span className="hero-pillar-link">→ services</span>
                 </Link>
-                <Link to="/services#embedded-and-edge-integration" className="hero-pillar">
-                  <span className="hero-pillar-label">Embedded &amp; edge</span>
-                  <span className="hero-pillar-text">ESP32-S3 in C, UNIHIKER K10/M10 SDK work.</span>
-                  <span className="hero-pillar-link">→ services</span>
+                <Link to="/projects" className="hero-pillar">
+                  <span className="hero-pillar-label">Local-first AI tools</span>
+                  <span className="hero-pillar-text">JCLAW, MCPStarfleetCommand, local WebSocket MCP gateway.</span>
+                  <span className="hero-pillar-link">→ projects</span>
                 </Link>
               </div>
             </aside>
@@ -102,13 +101,13 @@ export default function Home() {
         <aside className="answer-box">
           <p className="answer-box-label">TL;DR</p>
           <p>
-            <strong>{profile.name}</strong> is a systems engineer and AI systems builder based in{' '}
-            {profile.location}. Currently shipping the WVRTP facility inspection system for{' '}
-            <strong>Readyfuels</strong>, the <strong>Hermes plugin</strong> for{' '}
-            <strong>Nous Research</strong>, and the <strong>JCLAW</strong> /{' '}
-            <strong>MCPStarfleetCommand</strong> agent + MCP infrastructure stack. Embedded work on
-            ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; actively targeting remote
-            Data Analyst / BI / Junior Data Engineer roles at $70K+.
+            <strong>{profile.name}</strong> is an independent systems engineer, AI red-teamer, and
+            consciousness researcher based in {profile.location}. I take three kinds of work:
+            operational analytics engagements, AI red-teaming and safety reviews, and local-first
+            AI system design. Currently shipping the WVRTP facility inspection system for{' '}
+            <strong>Readyfuels</strong> and the Hermes plugin for <strong>Nous Research</strong>;
+            ongoing open research on consciousness modeling (EMERGENT-MCF-EI), the JCLAW agentic
+            runtime, and embedded work on ESP32-S3 / UNIHIKER K10.
           </p>
         </aside>
 
@@ -147,7 +146,7 @@ export default function Home() {
       <Section
         eyebrow="Writing"
         title="Recent posts"
-        lead="Notes on agent stacks, MCP infrastructure, local-first AI, decision systems, and the practice of building."
+        lead="Notes on consciousness modeling, agent stacks, local-first AI, decision systems, and the practice of building."
         tone="muted"
       >
         <div className="post-list">

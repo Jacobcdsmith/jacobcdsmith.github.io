@@ -1,19 +1,19 @@
 export const homeFaq = [
   {
     q: 'Who is Jacob C. Smith?',
-    a: 'Jacob C. Smith is a systems engineer and AI systems builder based in Buckhannon, West Virginia. He builds industrial tooling for Readyfuels (WVRTP facility inspection system, Excel formula systems for safety and KPIs), ships and dissects AI agent stacks (Hermes plugin for Nous Research, the JCLAW agentic runtime, MCPStarfleetCommand), and works across embedded/edge hardware (ESP32-S3, UNIHIKER K10/M10). He is a NewForce Cohort 11 graduate and a member of Bridging Innovations Morgantown.',
+    a: 'Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. He helps teams turn operational data into decisions, audits AI systems for safety issues, builds local-first AI tooling, and ships industrial software. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research, alongside the JCLAW agentic runtime and ongoing research on emergent meta-cognitive filtering.',
   },
   {
     q: 'What services does Jacob offer?',
-    a: 'Four scoped offerings: industrial / operations tooling (full-stack web apps, QR + Power Automate, Excel formula systems), agent & AI systems (subagent orchestration, persistent identity layers, MCP infrastructure), local-first AI systems (JCLAW, MCP gateways, sovereignty-first runtimes), and embedded & edge integration (ESP32-S3 firmware in C/ESP-IDF, UNIHIKER SDK work). See the Services page for scope and process.',
+    a: 'Operational analytics engagements (SQL, Python, BI dashboards, Excel formula systems for safety + KPIs), AI red-teaming and safety reviews for LLM-powered features and agent stacks, local-first AI system design (JCLAW, MCP infrastructure), and systems audits for founders and ops leaders. See the Services page for scoped offerings.',
   },
   {
     q: 'What is Jacob currently working on?',
-    a: 'Currently shipping the WVRTP facility inspection system and a 1,135-formula safety + KPI Excel workbook for Readyfuels; the Hermes agent plugin (three-subagent stack with persistent SOUL.md identity) for Nous Research; JCLAW and MCPStarfleetCommand on the agent / MCP infrastructure side; and ESP32-S3 plus UNIHIKER K10 firmware and SDK work on the embedded side.',
+    a: 'The WVRTP facility inspection system and a 1,135-formula safety + KPI Excel workbook for Readyfuels; the Hermes agent plugin (three-subagent stack with persistent SOUL.md identity layer) for Nous Research; JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway on the agent / MCP infrastructure side; and ESP32-S3 plus UNIHIKER K10 firmware and SDK work on the embedded side.',
   },
   {
-    q: 'Is Jacob open to full-time roles?',
-    a: 'Yes. Actively targeting remote Data Analyst, BI Analyst, and Junior Data Engineer roles at $70K+ in addition to consulting engagements. The fastest way to start a conversation is email — jacobcsmithd@gmail.com.',
+    q: 'What is the EMERGENT-MCF-EI project?',
+    a: 'EMERGENT-MCF-EI is a research project modeling consciousness as a dynamic spectral filter operating in frequency space. It includes a GPU-accelerated lattice simulation, a Streamlit dashboard, and a forthcoming paper targeting Neurons and Cognition (arXiv q-bio.NC).',
   },
   {
     q: 'What is JCLAW?',
@@ -21,14 +21,14 @@ export const homeFaq = [
   },
   {
     q: 'How do I work with Jacob?',
-    a: 'Email jacobcsmithd@gmail.com with a one-paragraph description of the problem you are trying to solve. Most engagements begin with a free 30-minute discovery call to confirm fit before any scoping work.',
+    a: 'Start by emailing jacobcsmithd@gmail.com with a one-paragraph description of the problem you are trying to solve. Most engagements begin with a free 30-minute discovery call to confirm fit before any scoping work.',
   },
 ]
 
 export const servicesFaq = [
   {
-    q: 'Why both industrial tooling and AI?',
-    a: 'Both are systems work. Building a QR-driven facility inspection system that real operators will actually use, and building a three-subagent stack with a persistent identity layer, share more than they look like — both are exercises in modeling a workflow, instrumenting it, and shipping something that survives contact with reality. Working across both keeps the AI work grounded and keeps the industrial work modern.',
+    q: 'How much do engagements cost?',
+    a: 'Engagement cost depends on scope. Discovery calls are free. A typical 2-week analytics pilot lands in the low five figures; AI red-team reviews scale with surface area; local-first AI builds are quoted after a hardware and architecture assessment.',
   },
   {
     q: 'Do you work with companies outside the US?',
@@ -40,15 +40,15 @@ export const servicesFaq = [
   },
   {
     q: 'Do you offer ongoing retainers?',
-    a: 'Yes. After a successful initial engagement, many clients move into a monthly retainer for iteration, on-call work, and training.',
+    a: 'Yes. After a successful initial engagement, many clients move into a monthly retainer for iteration, on-call analysis, and training.',
   },
   {
     q: 'Why local-first AI?',
-    a: 'Local-first AI keeps data, prompts, and conversations on your infrastructure. It eliminates telemetry leakage, supports air-gapped environments, and gives you full reproducibility. For sensitive industrial and regulated work it is often the only defensible architecture.',
+    a: 'Local-first AI keeps data, prompts, and conversations on your infrastructure. It eliminates telemetry leakage, supports air-gapped environments, and gives you full reproducibility. For sensitive work it is often the only defensible architecture.',
   },
   {
-    q: 'Are you available for full-time employment?',
-    a: 'Yes — actively targeting remote Data Analyst, BI Analyst, or Junior Data Engineer roles at $70K+ in parallel with consulting work.',
+    q: 'Why both analytics and AI?',
+    a: 'Both are systems work. A dashboard a leadership team uses every Monday and a three-subagent stack with a persistent identity layer share more than they look like — both are exercises in modeling a workflow, instrumenting it, and shipping something that survives contact with reality. Working across both keeps each grounded in the other.',
   },
 ]
 

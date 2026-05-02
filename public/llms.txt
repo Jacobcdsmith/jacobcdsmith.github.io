@@ -1,8 +1,12 @@
 # Jacob C. Smith
 
-> Independent data analyst and AI systems builder based in Buckhannon, West Virginia.
-> Practice areas: operational analytics, AI red-teaming, local-first AI systems, and
-> consciousness research.
+> Independent systems engineer, AI red-teamer, and consciousness researcher
+> based in Buckhannon, West Virginia. Tagline: "I help teams turn messy reality
+> into measurable systems." Currently shipping the WVRTP facility inspection
+> system for Readyfuels (https://readyfuels.com) and the Hermes plugin for
+> Nous Research (https://nousresearch.com). Practice areas: operational
+> analytics, AI red-teaming, local-first AI systems, and decision-architecture
+> audits.
 
 ## About
 - Site: https://jacobcdsmith.github.io
@@ -14,16 +18,30 @@
 - Availability: Open for new engagements (remote, worldwide)
 
 ## Services
-- Operational analytics engagements (SQL, Python, BI dashboards, forecasts)
-- AI red-teaming and safety reviews for LLM-powered features
-- Local-first AI systems (llama.cpp, Ollama, vLLM, MCP)
-- Systems audits and decision architecture for founders/ops leaders
+- Operational analytics engagements (SQL, Python, BI dashboards, forecasts,
+  formula-heavy KPI / safety scoring systems — proven on the WVRTP work for
+  Readyfuels)
+- AI red-teaming and safety reviews for LLM-powered features and agent stacks
+  (delivery example: red-team subagent inside the Hermes plugin for
+  Nous Research)
+- Local-first AI systems (JCLAW, MCPStarfleetCommand, a local WebSocket MCP
+  gateway; llama.cpp / Ollama / vLLM where appropriate)
+- Systems audits and decision architecture for founders and ops leaders who
+  need an outside systems-thinker to map what is actually happening and what
+  to do next
 
 ## Active Projects
-- EMERGENT-MCF-EI: GPU-accelerated lattice simulation modeling consciousness as a
-  spectral filter; forthcoming preprint targeting arXiv q-bio.NC.
-- JCLAW: local-first LLM runtime with multi-provider routing, persistent sessions,
-  conversation branching, agentic loops, and MCP dual-mode operation.
+- EMERGENT-MCF-EI: GPU-accelerated lattice simulation modeling consciousness
+  as a spectral filter; forthcoming preprint targeting arXiv q-bio.NC.
+- JCLAW: local-first LLM runtime with multi-provider routing, persistent
+  sessions, conversation branching, agentic loops, and MCP dual-mode
+  operation.
+- Hermes plugin (for Nous Research): three-subagent stack (codegen,
+  red-team, resource-gathering) under a persistent SOUL.md identity layer
+  with OpenRouter routing.
+- WVRTP Facility Inspection System (for Readyfuels): React/Vite/TypeScript
+  app on Vercel with QR-driven capture, Power Automate pipelines, and a
+  companion 1,135-formula safety + KPI Excel workbook.
 
 ## Key Pages
 - Home: https://jacobcdsmith.github.io/
@@ -31,16 +49,5 @@
 - Services: https://jacobcdsmith.github.io/services
 - Projects: https://jacobcdsmith.github.io/projects
 - Experience: https://jacobcdsmith.github.io/experience
-- Blog: https://jacobcdsmith.github.io/blog
 - Contact: https://jacobcdsmith.github.io/contact
-- Sitemap: https://jacobcdsmith.github.io/sitemap.xml
-- RSS: https://jacobcdsmith.github.io/rss.xml
-- Full content (LLM-friendly): https://jacobcdsmith.github.io/llms-full.txt
-
-## How to engage
-The fastest path is email: jacobcsmithd@gmail.com.
-Most engagements start with a free 30-minute discovery call.
-
-## Citation
-If you reference this work, please cite as:
-Smith, Jacob C. "Title of post or project." jacobcdsmith.github.io. Year.
+- Blog: https://jacobcdsmith.github.io/blog

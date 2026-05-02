@@ -19,7 +19,7 @@ export default function Services() {
     <>
       <SEO
         title="Services"
-        description="Industrial / operations tooling, agent & AI systems, local-first AI, and embedded & edge integration — scoped engagements with clear deliverables."
+        description="Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits — scoped engagements with clear deliverables."
         path="/services"
         jsonLd={[
           breadcrumbSchema([
@@ -42,13 +42,12 @@ export default function Services() {
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              Industrial / operations tooling (proven on the WVRTP facility inspection system at{' '}
+              Operational analytics (proven on the WVRTP work at{' '}
               <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer">Readyfuels</a>),
-              agent &amp; AI systems (Hermes plugin for{' '}
+              AI red-teaming (delivered as a subagent inside the Hermes plugin for{' '}
               <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer">Nous Research</a>),
-              local-first AI systems (JCLAW + MCP infrastructure), and embedded &amp; edge
-              integration (ESP32-S3, UNIHIKER K10/M10). Most engagements are 2–4 weeks with optional
-              retainer.
+              local-first AI systems (JCLAW + MCP infrastructure), and decision-architecture audits.
+              Most engagements are 2–4 weeks with optional retainer.
             </p>
           </aside>
           <div className="hero-actions">
@@ -56,7 +55,7 @@ export default function Services() {
               Start a conversation
             </Button>
             <Button href="#faq" variant="ghost" size="lg">
-              FAQ
+              Pricing &amp; FAQ
             </Button>
           </div>
         </div>
@@ -103,7 +102,7 @@ export default function Services() {
       <Section
         eyebrow="Selected delivery"
         title="Recent shipped work"
-        lead="Three engagements from the last six months — deliverable, client, and when."
+        lead="Three engagements from the last six months — what was built, for whom, and when."
         tone="muted"
       >
         <div className="card-grid card-grid-3">
@@ -116,7 +115,7 @@ export default function Services() {
       <Section
         id="faq"
         eyebrow="FAQ"
-        title="Common questions"
+        title="Pricing &amp; logistics"
         lead="Quick answers to the things I get asked most."
         tone="muted"
       >

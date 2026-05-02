@@ -15,12 +15,12 @@ if (!document.documentElement.getAttribute('data-theme')) {
     const theme =
       stored === 'light' || stored === 'dark'
         ? stored
-        : window.matchMedia('(prefers-color-scheme: light)').matches
-          ? 'light'
-          : 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
     document.documentElement.setAttribute('data-theme', theme)
   } catch {
-    document.documentElement.setAttribute('data-theme', 'dark')
+    document.documentElement.setAttribute('data-theme', 'light')
   }
 }
 

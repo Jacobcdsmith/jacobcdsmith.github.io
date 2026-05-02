@@ -6,33 +6,19 @@ import { breadcrumbSchema } from '../lib/structured-data.js'
 
 const items = [
   {
-    title: 'Systems Engineer — Readyfuels',
-    org: (
-      <>
-        <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer">
-          readyfuels.com
-        </a>
-      </>
-    ),
-    period: 'Nov 2025 — present',
-    location: 'Remote',
-    bullets: [
-      'Designed and shipped the WVRTP facility inspection system: React/Vite/TypeScript on Vercel, QR-driven capture, Power Automate pipelines, protected routes, role-aware UI.',
-      'Built a 1,135-formula Excel workbook for safety scoring and KPIs that operators use in the field.',
-      'Coordinated stakeholders across operations and EHS to keep the system shipping against real-world use.',
-      'Industrial-context systems thinking: the same modeling discipline applied to the agent / AI work.',
-    ],
-  },
-  {
-    title: 'Independent Practice — Systems Engineer & AI Systems Builder',
+    title: 'Independent Practice — Systems Engineer & AI Researcher',
     org: 'Self-employed',
     period: '2024 — present',
     location: 'Buckhannon, WV (remote, worldwide)',
     bullets: [
-      'Agent & AI systems: built the Hermes plugin (three-subagent stack with SOUL.md persistent identity, OpenRouter routing) for Nous Research.',
-      'Architecting JCLAW (SQLite-backed agentic runtime), MCPStarfleetCommand (dual-transport MCP server), and a local WebSocket MCP gateway designed to sever cloud dependencies.',
-      'Embedded / edge: ESP32-S3 firmware in ESP-IDF / C and a UNIHIKER K10 skill package covering MicroPython + the full C/C++ SDK against the actual hardware schematic.',
-      'Pro bono digital infrastructure: regional hospitality client (ecommerce platform pivot evaluation, BigCommerce → Clover) and Spark / sparkwv.org (email infrastructure migration, HostGator → Google Workspace).',
+      'Operational analytics engagements: SQL, Python, BI dashboards, forecasts, decision systems, and Excel formula systems for KPIs and safety scoring.',
+      'AI red-teaming and safety reviews for LLM-powered features and agent stacks; reproducible attack harnesses, severity-ranked findings.',
+      'Local-first AI system design: model selection, runtime integration (llama.cpp, Ollama, LM Studio), MCP servers and gateways, and team training.',
+      'Industrial systems work for Readyfuels: shipped the WVRTP facility inspection system (React/Vite/TypeScript on Vercel, QR + Power Automate, protected routes) and a 1,135-formula safety + KPI Excel workbook.',
+      'Agent infrastructure for Nous Research: built the Hermes plugin — three-subagent stack (codegen, red-team, resource-gathering) under a persistent SOUL.md identity layer with OpenRouter multi-provider routing.',
+      'Embedded / edge: ESP32-S3 firmware in C/ESP-IDF and a UNIHIKER K10 skill package covering MicroPython plus the full C/C++ SDK against the actual hardware schematic.',
+      'Pro bono digital infrastructure: regional hospitality client (ecommerce platform pivot evaluation) and Spark / sparkwv.org (zero-downtime email infrastructure migration to Google Workspace).',
+      'Active research thread on consciousness modeling and spectral filtering; forthcoming preprint.',
     ],
   },
   {
@@ -55,6 +41,7 @@ const items = [
       'Designed a SQLite-backed agentic runtime treating the LLM API as a programmable execution environment.',
       'Implemented multi-provider routing across Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter.',
       'Added persistent sessions, conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation.',
+      'Companion projects: MCPStarfleetCommand (dual-transport MCP server) and a local WebSocket MCP gateway built to sever cloud dependencies by default.',
     ],
   },
   {
@@ -83,7 +70,7 @@ export default function Experience() {
     <>
       <SEO
         title="Experience"
-        description="Systems Engineer at Readyfuels (WVRTP), Hermes plugin for Nous Research, JCLAW + MCP infrastructure, ESP32-S3 + UNIHIKER embedded work, EMERGENT-MCF-EI research, NewForce Cohort 11."
+        description="Independent practice in operational analytics, AI red-teaming, and local-first AI; current engagements with Readyfuels (WVRTP) and Nous Research (Hermes plugin); JCLAW + MCP infrastructure; ESP32-S3 + UNIHIKER embedded work; EMERGENT-MCF-EI consciousness research; NewForce Cohort 11."
         path="/experience"
         jsonLd={[
           breadcrumbSchema([
@@ -98,18 +85,21 @@ export default function Experience() {
           <p className="page-eyebrow">Experience</p>
           <h1 className="page-title">Selected work.</h1>
           <p className="page-lead">
-            A short version of the last six months and what came before. For the long version,
-            download the CV or email for references.
+            A short version. For the long version, download the CV or email for references on
+            specific engagements.
           </p>
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              <strong>{profile.name}</strong> is currently Systems Engineer at{' '}
+              <strong>{profile.name}</strong> runs an independent practice in operational analytics,
+              AI red-teaming, and local-first AI systems out of {profile.location}. Current
+              engagements: the WVRTP facility inspection system for{' '}
               <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer">Readyfuels</a>{' '}
-              shipping the WVRTP facility inspection system, alongside agent / AI work (the Hermes
-              plugin for Nous Research, JCLAW, MCPStarfleetCommand) and embedded / edge work
-              (ESP32-S3, UNIHIKER K10/M10). NewForce Cohort 11 graduate; Bridging Innovations
-              Morgantown member. {profile.availability}
+              and the Hermes plugin for{' '}
+              <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer">Nous Research</a>.
+              In parallel he leads the EMERGENT-MCF-EI consciousness research thread and architects
+              the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway.
+              NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.
             </p>
           </aside>
           <div className="hero-actions">

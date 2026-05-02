@@ -1,29 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#17161c"/>
-      <stop offset="100%" stop-color="#0f0e12"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c9485b"/>
-      <stop offset="100%" stop-color="#d4a574"/>
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f4f2"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <g transform="translate(80, 90)">
-    <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="6" fill="#c9485b">JCS · BUCKHANNON, WV</text>
-    <text x="0" y="180" font-family="Georgia, 'Fraunces', serif" font-size="92" font-weight="600" fill="#ecebe8">
-      <tspan x="0" dy="0">Jacob C. Smith</tspan>
+  <line x1="60" y1="60" x2="1140" y2="60" stroke="#1d4dba" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="60" y1="570" x2="1140" y2="570" stroke="#1d4dba" stroke-width="2" stroke-dasharray="6 6"/>
+  <g transform="translate(80, 110)">
+    <text x="0" y="0" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" letter-spacing="6" font-weight="600" fill="#1d4dba">[ JCS ] · BUCKHANNON, WV</text>
+    <text x="0" y="180" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="80" font-weight="700" fill="#0a0f1f" letter-spacing="-1">
+      <tspan x="0" dy="0">JACOB C. SMITH</tspan>
     </text>
-    <text x="0" y="280" font-family="Georgia, 'Fraunces', serif" font-size="48" fill="#9a9694">
-      <tspan x="0" dy="0">Data analyst &amp; AI systems builder</tspan>
+    <text x="0" y="270" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="32" font-weight="500" fill="#1d4dba" letter-spacing="2">
+      <tspan x="0" dy="0">SYSTEMS ENGINEER &amp; AI RESEARCHER</tspan>
     </text>
-    <text x="0" y="380" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#ecebe8">
+    <text x="0" y="360" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#4b5263">
       <tspan x="0" dy="0">Operational analytics · AI red-teaming · local-first AI</tspan>
     </text>
-    <rect x="0" y="430" width="220" height="6" fill="url(#accent)" rx="3"/>
-    <text x="0" y="490" font-family="'JetBrains Mono', monospace" font-size="22" fill="#9a9694">
-      jacobcdsmith.github.io
+    <text x="0" y="405" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#4b5263">
+      <tspan x="0" dy="0">Currently shipping for Readyfuels &amp; Nous Research.</tspan>
+    </text>
+    <rect x="0" y="445" width="220" height="3" fill="#1d4dba"/>
+    <text x="0" y="490" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" font-weight="600" fill="#7a8090" letter-spacing="2">
+      JACOBCDSMITH.GITHUB.IO
     </text>
   </g>
 </svg>

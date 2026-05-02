@@ -1,7 +1,7 @@
 {
   "name": "jacobcdsmith.github.io",
   "version": "1.0.0",
-  "description": "Jacob C. Smith - Data Analyst & AI Systems Builder portfolio",
+  "description": "Jacob C. Smith - Systems Engineer & AI Researcher portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",

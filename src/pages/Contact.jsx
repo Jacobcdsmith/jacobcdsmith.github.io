@@ -25,7 +25,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact"
-        description={`Get in touch with ${profile.name}. ${profile.availability} Email is the fastest way.`}
+        description={`Get in touch with ${profile.name}. Email is the fastest way; phone for urgent matters.`}
         path="/contact"
         jsonLd={[
           breadcrumbSchema([
@@ -40,18 +40,17 @@ export default function Contact() {
           <p className="page-eyebrow">Contact</p>
           <h1 className="page-title">Let’s talk.</h1>
           <p className="page-lead">
-            One paragraph about the problem you’re trying to solve is enough to start. Open to
-            remote Data Analyst / BI Analyst / Junior Data Engineer roles ($70K+) in addition to
-            consulting engagements. Discovery calls are free; NDAs welcome.
+            One paragraph about the problem you’re trying to solve is enough to start. Discovery
+            calls are free; NDAs welcome.
           </p>
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
               The fastest way to reach <strong>{profile.name}</strong> is email
               (<a href={`mailto:${profile.email}`}>{profile.email}</a>) or phone
-              (<a href={`tel:${profile.phone}`}>{profile.phoneDisplay}</a>). {profile.availability}{' '}
-              Most consulting engagements start with a free 30-minute discovery call. Based in{' '}
-              {profile.location}; works remotely worldwide.
+              (<a href={`tel:${profile.phone}`}>{profile.phoneDisplay}</a>). Most engagements start
+              with a free 30-minute discovery call. Based in {profile.location}; works remotely
+              worldwide.
             </p>
           </aside>
         </div>

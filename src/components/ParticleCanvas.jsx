@@ -5,7 +5,7 @@ function debounce(fn, wait) {
   return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait) }
 }
 
-const COLORS = ['#c9485b', '#b8a9c9', '#7d9f7a', '#d4a574']
+const COLORS = ['#1d4dba', '#b8a9c9', '#7d9f7a', '#d4a574']
 
 export default function ParticleCanvas() {
   const canvasRef = useRef(null)

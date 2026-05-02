@@ -1,81 +1,89 @@
 /* ============================================================
    Jacob C. Smith — Portfolio
-   Modern, distinctive, editorial. Toned-down terminal accent.
+   Archival / cyanotype aesthetic. Monospace-heavy, blue-accented.
+   Inspired by nousresearch.com (light) + readyfuels.com (dark).
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-/* ---------- Tokens (dark default) ---------- */
+/* ---------- Tokens (LIGHT default — archival cyanotype) ---------- */
 :root {
-  /* Brand */
-  --color-primary: #c9485b;
-  --color-primary-strong: #b53a4d;
-  --color-secondary: #b8a9c9;
-  --color-accent: #7d9f7a;
-  --color-highlight: #d4a574;
+  /* Brand — cyanotype blue */
+  --color-primary: #1d4dba;
+  --color-primary-strong: #163d8f;
+  --color-secondary: #3b6fd8;
+  --color-accent: #1d4dba;
+  --color-highlight: #ff7a3d;
 
-  /* Surface — dark */
-  --bg: #0f0e12;
-  --bg-2: #17161c;
-  --bg-3: #1f1d25;
-  --surface-card: rgba(255, 255, 255, 0.03);
-  --surface-card-hover: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  /* Surface — clean white archival */
+  --bg: #ffffff;
+  --bg-2: #f4f4f2;
+  --bg-3: #e8e8e6;
+  --surface-card: #ffffff;
+  --surface-card-hover: #f7f8fb;
+  --border: rgba(20, 30, 60, 0.18);
+  --border-strong: rgba(20, 30, 60, 0.32);
 
   /* Text */
-  --text: #ecebe8;
-  --text-muted: #9a9694;
-  --text-subtle: #6c6970;
+  --text: #0a0f1f;
+  --text-muted: #4b5263;
+  --text-subtle: #7a8090;
   --text-on-primary: #ffffff;
 
-  /* Type */
+  /* Type — monospace primary, sans secondary */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-serif: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
 
   /* Scale */
-  --fs-xs: 0.78rem;
+  --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-base: 1rem;
-  --fs-md: 1.125rem;
+  --fs-md: 1.0625rem;
   --fs-lg: 1.25rem;
   --fs-xl: 1.5rem;
   --fs-2xl: 2rem;
-  --fs-3xl: 2.75rem;
-  --fs-4xl: 3.75rem;
+  --fs-3xl: 2.5rem;
+  --fs-4xl: 3.25rem;
 
-  /* Layout */
+  /* Layout — square architectural */
   --container: 1200px;
   --container-prose: 720px;
-  --radius-sm: 6px;
-  --radius: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 0px;
+  --radius: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
 
   /* Effect */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.45);
-  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 2px rgba(20, 30, 60, 0.04);
+  --shadow: 0 1px 0 rgba(20, 30, 60, 0.08);
+  --shadow-lg: 0 2px 0 rgba(20, 30, 60, 0.10);
+  --transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---------- Light mode ---------- */
-:root[data-theme='light'] {
-  --bg: #faf7f2;
-  --bg-2: #ffffff;
-  --bg-3: #f1ede5;
-  --surface-card: #ffffff;
-  --surface-card-hover: #fbf9f4;
-  --border: rgba(20, 20, 25, 0.08);
-  --border-strong: rgba(20, 20, 25, 0.18);
-  --text: #1a1a1f;
-  --text-muted: #56565c;
-  --text-subtle: #84838a;
-  --color-primary-strong: #a83548;
-  --shadow-sm: 0 1px 2px rgba(20, 20, 25, 0.06);
-  --shadow: 0 8px 24px rgba(20, 20, 25, 0.08);
-  --shadow-lg: 0 24px 48px rgba(20, 20, 25, 0.12);
+/* ---------- Dark mode (Readyfuels navy) ---------- */
+:root[data-theme='dark'] {
+  --color-primary: #4d8aff;
+  --color-primary-strong: #6b9bff;
+  --color-secondary: #3b6fd8;
+  --color-accent: #4d8aff;
+  --color-highlight: #ff7a3d;
+
+  --bg: #0a1230;
+  --bg-2: #0f1a3e;
+  --bg-3: #16224d;
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-card-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(120, 160, 230, 0.22);
+  --border-strong: rgba(120, 160, 230, 0.42);
+
+  --text: #e8edf7;
+  --text-muted: #a8b2c8;
+  --text-subtle: #6f7a92;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 2px 0 rgba(0, 0, 0, 0.45);
 }
 
 /* ---------- Reset / base ---------- */
@@ -98,22 +106,23 @@ button { font: inherit; color: inherit; }
 
 ::selection { background: var(--color-primary); color: var(--text-on-primary); }
 
-/* Headings */
+/* Headings — mono, ALL-CAPS, archival */
 h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1.15;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
   margin: 0;
   color: var(--text);
+  text-transform: uppercase;
 }
-h1 { font-size: clamp(2.25rem, 5vw, var(--fs-4xl)); font-weight: 600; letter-spacing: -0.025em; }
-h2 { font-size: clamp(1.75rem, 3.2vw, var(--fs-3xl)); }
-h3 { font-size: clamp(1.25rem, 2vw, var(--fs-xl)); font-weight: 600; }
-h4 { font-size: var(--fs-lg); font-weight: 600; }
+h1 { font-size: clamp(2rem, 4.5vw, var(--fs-4xl)); font-weight: 700; letter-spacing: 0; line-height: 1.1; }
+h2 { font-size: clamp(1.4rem, 2.6vw, var(--fs-2xl)); letter-spacing: 0.01em; }
+h3 { font-size: clamp(1.05rem, 1.6vw, var(--fs-lg)); font-weight: 600; letter-spacing: 0.04em; }
+h4 { font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; }
 p { margin: 0 0 1em; }
 strong { font-weight: 600; color: var(--text); }
-em { font-style: italic; }
+em { font-style: normal; color: var(--color-primary); }
 
 .visually-hidden {
   position: absolute !important;
@@ -179,21 +188,29 @@ main { flex: 1; }
 .brand {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.5rem;
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text);
-}
-.brand-mark {
-  color: var(--color-primary);
+  gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.95em;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-transform: uppercase;
 }
+.brand::before {
+  content: '[';
+  color: var(--color-primary);
+  font-weight: 400;
+  margin-right: -0.15rem;
+}
+.brand::after {
+  content: ']';
+  color: var(--color-primary);
+  font-weight: 400;
+  margin-left: -0.15rem;
+}
+.brand-mark { display: none; }
 .brand-name { color: var(--text); }
-.brand-dot { color: var(--color-primary); margin-left: -2px; }
+.brand-dot { display: none; }
 
 .nav-toggle {
   display: inline-flex;
@@ -267,7 +284,7 @@ main { flex: 1; }
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0;
   width: 36px;
   height: 36px;
   display: inline-flex;
@@ -338,7 +355,7 @@ main { flex: 1; }
   font-weight: 500;
   letter-spacing: 0.02em;
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid var(--border);
   background: var(--surface-card);
   color: var(--text-muted);
@@ -364,17 +381,29 @@ main { flex: 1; }
 .section-align-center .section-body { text-align: center; }
 .section-align-center .section-header { margin-left: auto; margin-right: auto; max-width: 720px; }
 
-.section-header { margin-bottom: 2.5rem; max-width: 720px; }
+.section { position: relative; }
+.section + .section,
+.section-tone-muted + .section,
+.section + .section-tone-muted {
+  border-top: 1px dashed var(--border);
+}
+.section-header { margin-bottom: 2.5rem; max-width: 720px; padding-top: 0.5rem; }
 .section-eyebrow {
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
 }
-.section-title { margin: 0 0 0.75rem; }
+.section-title {
+  margin: 0 0 0.75rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--color-primary);
+}
 .section-lead {
   font-size: var(--fs-md);
   color: var(--text-muted);
@@ -417,12 +446,21 @@ main { flex: 1; }
   background: var(--color-primary);
 }
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin: 0 0 1.25rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
 }
-.hero-title .accent { color: var(--color-primary); font-style: italic; font-family: var(--font-serif); }
+.hero-title .accent {
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
 .hero-sub {
   font-size: var(--fs-md);
   color: var(--text-muted);
@@ -596,20 +634,13 @@ main { flex: 1; }
 }
 .quote-text {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: var(--fs-md);
-  line-height: 1.55;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
   color: var(--text);
   position: relative;
 }
-.quote-mark {
-  font-family: var(--font-serif);
-  color: var(--color-primary);
-  font-size: 2.5rem;
-  line-height: 0;
-  margin-right: 0.25rem;
-  vertical-align: -0.5rem;
-}
+.quote-mark { display: none; }
 .quote-attribution {
   display: flex;
   flex-direction: column;
@@ -649,7 +680,7 @@ main { flex: 1; }
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 1.1rem;
   color: var(--color-primary);
   flex-shrink: 0;
@@ -779,15 +810,16 @@ main { flex: 1; }
   font-family: var(--font-mono);
 }
 
-/* ---------- Particle canvas ---------- */
+/* ---------- Particle canvas (suppressed by default — archival aesthetic) ---------- */
 .particles {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0;
+  display: none;
 }
-:root[data-theme='light'] .particles { opacity: 0.06; }
+:root[data-theme='dark'] .particles { opacity: 0.18; display: block; }
 @media (prefers-reduced-motion: reduce) { .particles { display: none; } }
 
 /* ---------- Page intros ---------- */
@@ -804,7 +836,7 @@ main { flex: 1; }
   color: var(--color-primary);
   margin: 0 0 0.85rem;
 }
-.page-title { font-size: clamp(2rem, 4.5vw, 3.25rem); margin: 0 0 1rem; line-height: 1.05; letter-spacing: -0.025em; }
+.page-title { font-family: var(--font-mono); font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1rem; line-height: 1.15; letter-spacing: 0; text-transform: uppercase; font-weight: 700; }
 .page-lead { font-size: var(--fs-md); color: var(--text-muted); max-width: 60ch; margin: 0 0 1.5rem; }
 
 /* ---------- Prose (markdown) ---------- */
@@ -907,9 +939,10 @@ main { flex: 1; }
   font-family: var(--font-mono);
   font-size: 0.72rem;
   padding: 0.25rem 0.65rem;
-  border-radius: 999px;
+  border-radius: 0;
   cursor: pointer;
-  text-transform: lowercase;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .tag-filter button:hover { border-color: var(--color-primary); color: var(--text); }
 .tag-filter button.is-active { background: var(--color-primary); color: var(--text-on-primary); border-color: var(--color-primary); }
@@ -1226,3 +1259,233 @@ main { flex: 1; }
   body { background: white; color: black; }
   a { color: black; text-decoration: underline; }
 }
+
+/* ---------- Archival aesthetic overrides (Nous + Readyfuels DNA) ---------- */
+
+/* Tighter top border on header — dashed underline like Nous */
+.site-header { border-bottom: 1px dashed var(--border); }
+
+/* Eyebrows everywhere get the Nous "OUTPUT 96 / SEED" feel */
+.hero-eyebrow,
+.page-eyebrow,
+.featured-eyebrow,
+.post-eyebrow,
+.audience-label {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+/* Hero card — dashed border, square corners */
+.hero-card {
+  border: 1px dashed var(--border);
+  border-radius: 0;
+  background: var(--bg-2);
+  box-shadow: none;
+}
+.hero-pillar {
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: transparent;
+}
+.hero-pillar:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--color-primary);
+}
+
+/* Cards / project cards / service cards — square, flat, dashed accents */
+.card,
+.service-card,
+.project-card,
+.timeline-item,
+.audience-card,
+.quote-card,
+.fact-list li,
+.contact-list li,
+.related-link,
+.post-card,
+.featured-post,
+.newsletter-footer {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Timeline accent bar in cyanotype blue */
+.timeline-item { border-left: 3px solid var(--color-primary); }
+
+/* Project card hover — blue border */
+.card:hover,
+.project-card:hover,
+.audience-card:hover,
+.related-link:hover,
+.post-card:hover {
+  border-color: var(--color-primary);
+}
+
+/* Service "for who" — dashed blue accent instead of secondary */
+.service-forwho {
+  border-radius: 0;
+  border-left: 2px solid var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+}
+
+/* Answer box — dashed left border, mono body, archival */
+.answer-box {
+  border-left: 2px solid var(--color-primary);
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  border-radius: 0;
+  background: var(--bg-2);
+  padding: 1.1rem 1.25rem;
+}
+.answer-box p { font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.7; }
+
+/* Buttons — square + mono uppercase */
+.btn {
+  border-radius: 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+.btn-sm { font-size: 0.7rem; padding: 0.45rem 0.85rem; }
+.btn-md { font-size: 0.78rem; padding: 0.65rem 1.1rem; }
+.btn-lg { font-size: 0.85rem; padding: 0.85rem 1.4rem; }
+.btn-primary:hover { transform: none; box-shadow: var(--shadow); }
+.btn-ghost { border-color: var(--border-strong); }
+
+/* Tags — square */
+.tag {
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.tag-filter button { border-radius: 0; }
+
+/* CTA banner — archival flat */
+.cta-banner {
+  background: var(--bg-2);
+  border: 1px dashed var(--color-primary);
+  border-radius: 0;
+}
+
+/* Featured post — flat */
+.featured-post {
+  background: var(--bg-2);
+  border: 1px dashed var(--border);
+  border-radius: 0;
+}
+
+/* Inputs — square */
+.newsletter-input,
+.search-input,
+.contact-form input,
+.contact-form textarea {
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+
+/* Theme toggle — square architectural */
+.theme-toggle { border-radius: 0; width: 32px; height: 32px; }
+
+/* FAQ icon — square */
+.faq-icon { border-radius: 0; }
+
+/* Nav links — mono, lower weight */
+.nav-link {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Card titles use mono uppercase already via h3, just tighten */
+.card-title,
+.post-card-title,
+.project-title,
+.timeline-item h3 {
+  letter-spacing: 0.02em;
+}
+
+/* Timeline meta + project meta + post meta — mono */
+.timeline-meta,
+.project-meta,
+.post-card-meta,
+.featured-meta,
+.related-meta,
+.post-byline-meta {
+  letter-spacing: 0.04em;
+}
+
+/* Hero accent for project status dot — blue not green */
+.project-status { color: var(--color-primary); }
+
+/* Skill cluster heading — match section eyebrow */
+.skill-cluster h3 { font-size: var(--fs-xs); letter-spacing: 0.14em; }
+
+/* Fact list — flat with dashed bottom */
+.fact-list li {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px dashed var(--border);
+  background: transparent;
+  padding: 0.75rem 0;
+}
+.fact-label { letter-spacing: 0.1em; font-weight: 600; }
+
+/* Contact label — make the mono style consistent */
+.contact-label { letter-spacing: 0.1em; font-weight: 600; }
+.contact-list li { border-radius: 0; }
+
+/* Subtle dashed hr in prose */
+.prose hr { border-top: 1px dashed var(--border); }
+
+/* Selection blue */
+::selection { background: var(--color-primary); color: var(--text-on-primary); }
+
+/* Remove the bouncy header backdrop blur — flat archival surface */
+.site-header {
+  background: var(--bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Hero sub uses mono small */
+.hero-sub {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+/* Page lead similarly */
+.page-lead { font-family: var(--font-sans); color: var(--text); }
+
+/* Service summary — sans for readability */
+.service-summary { font-family: var(--font-sans); font-size: var(--fs-md); color: var(--text); line-height: 1.6; }
+
+/* Project + card summaries — sans */
+.card-summary,
+.project-summary,
+.audience-blurb,
+.post-card-excerpt { font-family: var(--font-sans); }
+
+/* Hero pillar text — sans */
+.hero-pillar-text { font-family: var(--font-sans); }
+.hero-pillar-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.hero-card-title { font-weight: 700; letter-spacing: 0.14em; }
+
+/* Footer title columns — mono uppercase */
+.footer-col h4 { letter-spacing: 0.14em; font-weight: 600; }
+.footer-tagline { font-family: var(--font-sans); }

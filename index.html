@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f0e12" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a1230" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
   <!-- Pre-paint theme apply: must run before CSS loads to avoid flash.
        Keep in sync with THEME_BOOTSTRAP_SCRIPT in scripts/generate-blog-pages.mjs
@@ -15,26 +15,26 @@
         var stored = localStorage.getItem('jcs-theme');
         var theme = (stored === 'light' || stored === 'dark')
           ? stored
-          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
       } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.setAttribute('data-theme', 'light');
       }
     })();
   </script>
 
-  <title>Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
-  <meta name="description" content="Jacob C. Smith is an independent data analyst and AI systems builder based in Buckhannon, West Virginia. Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
+  <title>Jacob C. Smith — Systems Engineer &amp; AI Researcher</title>
+  <meta name="description" content="Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
   <meta name="author" content="Jacob C. Smith" />
-  <meta name="keywords" content="data analyst, AI systems, AI red-teaming, local-first AI, consciousness research, MCP, LLM tooling, Buckhannon West Virginia, independent consultant" />
+  <meta name="keywords" content="systems engineer, AI systems, AI red-teaming, local-first AI, consciousness research, MCP, LLM tooling, agent stacks, Readyfuels, Nous Research, Buckhannon West Virginia, independent consultant" />
 
   <link rel="canonical" href="https://jacobcdsmith.github.io/" />
   <link rel="alternate" type="application/rss+xml" title="Jacob C. Smith — Blog" href="/rss.xml" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Jacob C. Smith — Data Analyst &amp; AI Systems Builder" />
-  <meta property="og:description" content="Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
+  <meta property="og:title" content="Jacob C. Smith — Systems Engineer &amp; AI Researcher" />
+  <meta property="og:description" content="Operational analytics, AI red-teaming, local-first AI systems, and consciousness research. Currently shipping for Readyfuels and Nous Research." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jacobcdsmith.github.io/" />
   <meta property="og:image" content="https://jacobcdsmith.github.io/og-default.svg" />
@@ -42,8 +42,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jacob C. Smith — Data Analyst &amp; AI Systems Builder" />
-  <meta name="twitter:description" content="Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
+  <meta name="twitter:title" content="Jacob C. Smith — Systems Engineer &amp; AI Researcher" />
+  <meta name="twitter:description" content="Operational analytics, AI red-teaming, local-first AI systems, and consciousness research. Currently shipping for Readyfuels and Nous Research." />
   <meta name="twitter:image" content="https://jacobcdsmith.github.io/og-default.svg" />
 
   <!-- Fonts (preconnect handled inside style.css @import) -->
