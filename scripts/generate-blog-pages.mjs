@@ -20,6 +20,8 @@ import { readFileSync, writeFileSync, mkdirSync, copyFileSync, readdirSync, exis
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { marked } from 'marked'
+import { services as servicesData } from '../src/data/services.js'
+import { homeFaq, servicesFaq } from '../src/data/faq.js'
 
 marked.use({ renderer: { html() { return '' } } })
 
@@ -275,13 +277,37 @@ function bcrumb(items) {
   }
 }
 
+function faqJson(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(it => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: { '@type': 'Answer', text: it.a },
+    })),
+  }
+}
+
+function serviceJson(svc) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: svc.title,
+    description: svc.summary,
+    provider: { '@type': 'Person', name: SITE_NAME, url: BASE_URL },
+    areaServed: 'Worldwide (remote)',
+    serviceType: svc.title,
+  }
+}
+
 function staticRoutes(posts) {
   return [
     {
       path: '/',
       title: null,
       description: 'Jacob C. Smith — independent data analyst and AI systems builder based in Buckhannon, West Virginia. Operational analytics, AI red-teaming, local-first AI systems.',
-      jsonLd: [personJson, profServiceJson, websiteJson],
+      jsonLd: [personJson, profServiceJson, websiteJson, faqJson(homeFaq)],
       visibleBody: visibleBlock({
         eyebrow: `Independent practice · Buckhannon, WV`,
         title: 'I help teams turn messy reality into measurable systems.',
@@ -324,6 +350,8 @@ function staticRoutes(posts) {
       jsonLd: [
         bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Services', url: `${BASE_URL}/services` }]),
         profServiceJson,
+        ...servicesData.map(serviceJson),
+        faqJson(servicesFaq),
       ],
       visibleBody: visibleBlock({
         eyebrow: 'Services',
