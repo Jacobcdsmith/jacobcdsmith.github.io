@@ -2,12 +2,15 @@ import SEO from '../components/SEO.jsx'
 import Section from '../components/Section.jsx'
 import Tag from '../components/Tag.jsx'
 import Button from '../components/Button.jsx'
+import RepoStats from '../components/RepoStats.jsx'
+import GitHubActivity from '../components/GitHubActivity.jsx'
 import profile from '../data/profile.js'
 import { breadcrumbSchema } from '../lib/structured-data.js'
 
 const projects = [
   {
     name: 'EMERGENT-MCF-EI',
+    repo: 'Jacobcdsmith/EMERGENT-MCF-EI',
     status: 'Active research',
     summary:
       'GPU-accelerated lattice simulation modeling consciousness as a dynamic spectral filter operating in frequency space.',
@@ -18,6 +21,7 @@ const projects = [
   },
   {
     name: 'JCLAW',
+    repo: 'Jacobcdsmith/JCLAW',
     status: 'Active development',
     summary:
       'SQLite-backed agentic runtime that treats the LLM API as a programmable execution environment.',
@@ -38,6 +42,7 @@ const projects = [
   },
   {
     name: 'MCPStarfleetCommand',
+    repo: 'Jacobcdsmith/MCPStarfleetCommand',
     status: 'Active development',
     summary:
       'Dual-transport MCP server for routing tools and resources across stdio, SSE, and a local WebSocket gateway.',
@@ -91,6 +96,7 @@ const projects = [
   },
   {
     name: 'jacobcdsmith.github.io',
+    repo: 'Jacobcdsmith/jacobcdsmith.github.io',
     status: 'Live',
     summary:
       'This site. Static React + Vite SPA with pre-rendered HTML for SEO/AEO, RSS, and an LLM-friendly llms.txt manifest.',
@@ -168,6 +174,7 @@ export default function Projects() {
                   <Tag key={t} tone="neutral">{t}</Tag>
                 ))}
               </div>
+              {p.repo && <RepoStats repo={p.repo} />}
               <div className="project-actions">
                 {p.actions.map(a => (
                   <Button
@@ -184,6 +191,14 @@ export default function Projects() {
             </article>
           ))}
         </div>
+      </Section>
+
+      <Section
+        eyebrow="GitHub activity"
+        title="Recent commits & releases."
+        lead="Live feed of the last public events from the Jacobcdsmith GitHub account. Pulled from the public GitHub API on page load and cached for a minute."
+      >
+        <GitHubActivity username="Jacobcdsmith" limit={10} />
       </Section>
     </>
   )
