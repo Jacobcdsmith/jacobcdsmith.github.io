@@ -91,7 +91,14 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 - `public/jacob-c-smith-resume.pdf` — currently a minimal valid placeholder PDF (follow-up task #6)
 - WVRTP case study (anonymized) is a follow-up task (#7) — not yet on the site
 - Plausible `data-domain` in `index.html` and `scripts/generate-blog-pages.mjs` (currently `jacobcdsmith.github.io`)
-- Newsletter form is currently `mailto:`-based; wire to a real provider when one is chosen
+- `VITE_BUTTONDOWN_USERNAME` build-time env var must be set to the Buttondown account username for the newsletter form to actually subscribe people. When unset (e.g. during local dev or PR previews), the form gracefully falls back to a `mailto:` to `profile.email`.
+
+## Newsletter
+- **Provider:** [Buttondown](https://buttondown.com) — chosen for its privacy-respecting posture, indie/research-friendly tone, simple form-encoded subscribe endpoint that works from a static site without an API key in the browser, and lack of third-party tracking scripts. Matches the site's "ad-free, privacy-respecting" stance.
+- **Wiring:** `src/components/NewsletterForm.jsx` POSTs `email` + `embed=1` (form-encoded) to `https://buttondown.com/api/emails/embed-subscribe/<username>` via `fetch` with `mode: 'no-cors'`. Because that mode produces an opaque response, the form treats a resolved request as success and tells the visitor to check their inbox for Buttondown's double-opt-in confirmation email.
+- **Configuration:** Set `VITE_BUTTONDOWN_USERNAME` at build time (e.g. as a GitHub Actions repository variable used by the build step). The value is embedded in the bundle; Buttondown's embed endpoint is public, so this is the intended pattern. Without it, the form falls back to `mailto:`.
+- **States:** idle → loading (button disabled, "Subscribing…") → success ("check your inbox…") or error ("Something went wrong…"). Status messages use `role="status"` / `role="alert"` with `aria-live="polite"`.
+- **Consent:** Fineprint under every form discloses Buttondown as the data processor with a link to their privacy policy and notes the unsubscribe path. No third-party sharing, no spam.
 
 ## Anonymization & naming rules
 - The regional hospitality client (referenced under pro-bono engagements) must NOT be named anywhere in copy, alt text, links, schema, or comments. Refer to it generically (e.g. "regional hospitality client").
