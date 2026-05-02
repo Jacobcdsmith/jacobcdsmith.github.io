@@ -5,7 +5,7 @@ import CVDownload from '../components/CVDownload.jsx'
 import Tag from '../components/Tag.jsx'
 import CTABanner from '../components/CTABanner.jsx'
 import profile from '../data/profile.js'
-import { personSchema, breadcrumbSchema } from '../lib/structured-data.js'
+import { personSchema, professionalServiceSchema, breadcrumbSchema } from '../lib/structured-data.js'
 
 const skillClusters = [
   {
@@ -35,6 +35,7 @@ export default function About() {
         path="/about"
         jsonLd={[
           personSchema(),
+          professionalServiceSchema(),
           breadcrumbSchema([
             { name: 'Home', url: profile.siteUrl },
             { name: 'About', url: `${profile.siteUrl}/about` },

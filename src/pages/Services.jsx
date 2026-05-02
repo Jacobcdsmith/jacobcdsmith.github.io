@@ -3,9 +3,11 @@ import Section from '../components/Section.jsx'
 import Button from '../components/Button.jsx'
 import FAQ from '../components/FAQ.jsx'
 import CTABanner from '../components/CTABanner.jsx'
+import Quote from '../components/Quote.jsx'
 import services from '../data/services.js'
 import profile from '../data/profile.js'
 import { servicesFaq } from '../data/faq.js'
+import testimonials from '../data/testimonials.json'
 import {
   breadcrumbSchema,
   faqSchema,
@@ -83,6 +85,19 @@ export default function Services() {
             </div>
           </article>
         ))}
+      </Section>
+
+      <Section
+        eyebrow="What clients say"
+        title="Selected feedback"
+        lead="Placeholders ready for real quotes as engagements complete."
+        tone="muted"
+      >
+        <div className="card-grid card-grid-3">
+          {testimonials.map((t, i) => (
+            <Quote key={i} {...t} />
+          ))}
+        </div>
       </Section>
 
       <Section

@@ -1,0 +1,23 @@
+[
+  {
+    "quote": "Add your quote here — Jacob delivered a dashboard our leadership uses every Monday. No fluff, no over-engineering, just the answer we needed.",
+    "name": "Add Name",
+    "role": "Add Role",
+    "company": "Add Company",
+    "placeholder": true
+  },
+  {
+    "quote": "Add your quote here — the red-team report was the most useful security review we have ever paid for. Found three critical issues before launch.",
+    "name": "Add Name",
+    "role": "Add Role",
+    "company": "Add Company",
+    "placeholder": true
+  },
+  {
+    "quote": "Add your quote here — Jacob's ability to translate between technical and operational language is rare. Our analyst team learned from every session.",
+    "name": "Add Name",
+    "role": "Add Role",
+    "company": "Add Company",
+    "placeholder": true
+  }
+]

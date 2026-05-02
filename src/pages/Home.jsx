@@ -10,7 +10,7 @@ import NewsletterForm from '../components/NewsletterForm.jsx'
 import Tag from '../components/Tag.jsx'
 import profile from '../data/profile.js'
 import services from '../data/services.js'
-import testimonials from '../data/testimonials.js'
+import testimonials from '../data/testimonials.json'
 import { homeFaq } from '../data/faq.js'
 import { posts } from '../data/posts.js'
 import {
