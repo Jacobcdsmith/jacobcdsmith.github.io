@@ -105,8 +105,10 @@ function spaAssetTags() {
   return { head: headTags.join('\n  '), body: bodyTags.join('\n  ') }
 }
 
-// Inline pre-paint theme script — duplicated in index.html so light-pref
-// users never see a dark flash on first paint of generated route HTML.
+// Inline pre-paint theme script — CANONICAL SOURCE.
+// The same logic also exists (verbatim) in `index.html` <head> and as a
+// JS fallback in `src/main.jsx`. If you change the rules here (storage key,
+// preference detection), keep all three in sync to avoid theme flash.
 const THEME_BOOTSTRAP_SCRIPT = `<script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>`
 
 const ASSETS = spaAssetTags()
@@ -467,6 +469,7 @@ function blogPostHtml({ post, htmlContent }) {
     url: canonical,
     image: ogImage,
     keywords: (post.tags || []).join(', '),
+    wordCount: post.markdown ? post.markdown.split(/\s+/).filter(Boolean).length : undefined,
     mainEntityOfPage: canonical,
   }
   const breadcrumb = bcrumb([

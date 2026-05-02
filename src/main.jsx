@@ -6,7 +6,9 @@ import './style.css'
 
 // Theme bootstrap is inlined in index.html <head> to run before CSS paints.
 // Fallback in case the inline script was stripped or the document was injected
-// after parse — keep this idempotent.
+// after parse — keep this idempotent. Canonical version lives in
+// scripts/generate-blog-pages.mjs (THEME_BOOTSTRAP_SCRIPT); index.html copies
+// the same logic verbatim. If you change theme rules, update all three.
 if (!document.documentElement.getAttribute('data-theme')) {
   try {
     const stored = localStorage.getItem('jcs-theme')

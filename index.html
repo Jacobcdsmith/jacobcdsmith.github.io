@@ -6,7 +6,9 @@
   <meta name="theme-color" content="#0f0e12" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
 
-  <!-- Pre-paint theme apply: must run before CSS loads to avoid flash -->
+  <!-- Pre-paint theme apply: must run before CSS loads to avoid flash.
+       Keep in sync with THEME_BOOTSTRAP_SCRIPT in scripts/generate-blog-pages.mjs
+       (canonical) and the fallback block in src/main.jsx. -->
   <script>
     (function () {
       try {
