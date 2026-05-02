@@ -173,6 +173,11 @@ ${tagMeta}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+  <!-- Plausible analytics. data-domain MUST match the live site hostname and
+       the site registered in the Plausible dashboard. Keep in sync with the
+       same <script> tag in /index.html. If the production hostname ever
+       changes (e.g. a custom domain replaces GitHub Pages), update both
+       places together. -->
   <script defer data-domain="jacobcdsmith.github.io" src="https://plausible.io/js/script.outbound-links.js"></script>
   <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 

@@ -90,8 +90,14 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 ## Known placeholders to replace before launch
 - `public/jacob-c-smith-resume.pdf` — currently a minimal valid placeholder PDF (follow-up task #6)
 - WVRTP case study (anonymized) is a follow-up task (#7) — not yet on the site
-- Plausible `data-domain` in `index.html` and `scripts/generate-blog-pages.mjs` (currently `jacobcdsmith.github.io`)
 - `VITE_BUTTONDOWN_USERNAME` build-time env var must be set to the Buttondown account username for the newsletter form to actually subscribe people. When unset (e.g. during local dev or PR previews), the form gracefully falls back to a `mailto:` to `profile.email`.
+
+## Plausible analytics
+- `data-domain="jacobcdsmith.github.io"` is the **confirmed production value**, matching `profile.siteUrl`, the canonical/OG URLs, and the GitHub Pages hostname. The "placeholder" comment has been removed in both occurrences.
+- Two places must stay in sync: the `<script defer data-domain="…">` tag in `index.html` and the same tag re-emitted by `scripts/generate-blog-pages.mjs` (route shell + blog post pre-renders). Comments in both files call this out.
+- For events to actually record, a site with the hostname `jacobcdsmith.github.io` must exist in the Plausible dashboard. This is a manual one-time setup step in the Plausible account — it cannot be done from the codebase.
+- Outbound link tracking is enabled via the `script.outbound-links.js` variant. 404 tracking can be added by switching to `script.outbound-links.404.js` (or `script.404.js`) once the dashboard is configured to receive 404 events; verify in production after the dashboard site is created.
+- If a custom domain ever replaces the GitHub Pages URL, update both `<script>` tags together (and create a new site / migrate stats in the Plausible dashboard).
 
 ## Newsletter
 - **Provider:** [Buttondown](https://buttondown.com) — chosen for its privacy-respecting posture, indie/research-friendly tone, simple form-encoded subscribe endpoint that works from a static site without an API key in the browser, and lack of third-party tracking scripts. Matches the site's "ad-free, privacy-respecting" stance.
