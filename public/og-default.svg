@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17161c"/>
+      <stop offset="100%" stop-color="#0f0e12"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9485b"/>
+      <stop offset="100%" stop-color="#d4a574"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(80, 90)">
+    <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="6" fill="#c9485b">JCS · BUCKHANNON, WV</text>
+    <text x="0" y="180" font-family="Georgia, 'Fraunces', serif" font-size="92" font-weight="600" fill="#ecebe8">
+      <tspan x="0" dy="0">Jacob C. Smith</tspan>
+    </text>
+    <text x="0" y="280" font-family="Georgia, 'Fraunces', serif" font-size="48" fill="#9a9694">
+      <tspan x="0" dy="0">Data analyst &amp; AI systems builder</tspan>
+    </text>
+    <text x="0" y="380" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#ecebe8">
+      <tspan x="0" dy="0">Operational analytics · AI red-teaming · local-first AI</tspan>
+    </text>
+    <rect x="0" y="430" width="220" height="6" fill="url(#accent)" rx="3"/>
+    <text x="0" y="490" font-family="'JetBrains Mono', monospace" font-size="22" fill="#9a9694">
+      jacobcdsmith.github.io
+    </text>
+  </g>
+</svg>

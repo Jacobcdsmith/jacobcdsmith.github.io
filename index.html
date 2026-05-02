@@ -3,16 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jacob C. Smith - Data Analyst &amp; AI Systems Builder. Portfolio showcasing data analytics, machine learning, AI systems, and theoretical frameworks." />
+  <meta name="theme-color" content="#0f0e12" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+
+  <!-- Pre-paint theme apply: must run before CSS loads to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('jcs-theme');
+        var theme = (stored === 'light' || stored === 'dark')
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <title>Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
+  <meta name="description" content="Jacob C. Smith is an independent data analyst and AI systems builder based in Buckhannon, West Virginia. Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
   <meta name="author" content="Jacob C. Smith" />
-  <meta name="keywords" content="data analyst, AI systems builder, machine learning, consciousness research, Python, SQL, TypeScript, MCP protocol, portfolio" />
-  <title>Jacob C. Smith | Data Analyst &amp; AI Systems Builder</title>
+  <meta name="keywords" content="data analyst, AI systems, AI red-teaming, local-first AI, consciousness research, MCP, LLM tooling, Buckhannon West Virginia, independent consultant" />
+
+  <link rel="canonical" href="https://jacobcdsmith.github.io/" />
+  <link rel="alternate" type="application/rss+xml" title="Jacob C. Smith — Blog" href="/rss.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jacob C. Smith — Data Analyst &amp; AI Systems Builder" />
+  <meta property="og:description" content="Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jacobcdsmith.github.io/" />
+  <meta property="og:image" content="https://jacobcdsmith.github.io/og-default.svg" />
+  <meta property="og:site_name" content="Jacob C. Smith" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jacob C. Smith — Data Analyst &amp; AI Systems Builder" />
+  <meta name="twitter:description" content="Operational analytics, AI red-teaming, local-first AI systems, and consciousness research." />
+  <meta name="twitter:image" content="https://jacobcdsmith.github.io/og-default.svg" />
+
+  <!-- Fonts (preconnect handled inside style.css @import) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Plausible analytics (placeholder domain — replace before deploy) -->
+  <script defer data-domain="jacobcdsmith.github.io" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
   <div id="app"></div>
+
   <!-- GitHub Pages SPA routing: restore path from 404.html query param redirect -->
   <script>
     (function(l) {
@@ -26,6 +68,7 @@
       }
     }(window.location));
   </script>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

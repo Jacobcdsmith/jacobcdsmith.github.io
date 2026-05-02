@@ -1,128 +1,96 @@
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO.jsx'
+import Section from '../components/Section.jsx'
+import CVDownload from '../components/CVDownload.jsx'
+import profile from '../data/profile.js'
+import { breadcrumbSchema } from '../lib/structured-data.js'
+
+const items = [
+  {
+    title: 'Independent Practice — Data Analyst & AI Systems Builder',
+    org: 'Self-employed',
+    period: '2024 — present',
+    location: 'Buckhannon, WV (remote, worldwide)',
+    bullets: [
+      'Operational analytics engagements: SQL, Python, BI dashboards, forecasts, and decision systems for ops-led teams.',
+      'AI red-teaming and safety reviews for LLM-powered features; reproducible attack harnesses, severity-ranked findings.',
+      'Local-first AI system design: model selection, runtime integration (llama.cpp, Ollama, vLLM), MCP servers, and team training.',
+      'Active research thread on consciousness modeling and spectral filtering; forthcoming preprint.',
+    ],
+  },
+  {
+    title: 'EMERGENT-MCF-EI — Lead Researcher',
+    org: 'Independent research',
+    period: '2024 — present',
+    location: 'Remote',
+    bullets: [
+      'Designed and implemented GPU-accelerated lattice simulations of meta-cognitive filtering dynamics.',
+      'Built a Streamlit dashboard for live spectral exploration and reproducible experiments.',
+      'Drafting paper for arXiv q-bio.NC (Neurons and Cognition).',
+    ],
+  },
+  {
+    title: 'JCLAW — Architect & Maintainer',
+    org: 'Open source',
+    period: '2024 — present',
+    location: 'Remote',
+    bullets: [
+      'Designed a local-first LLM runtime treating the model API as a programmable execution environment.',
+      'Implemented multi-provider routing across Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio.',
+      'Added persistent sessions, conversation branching, response diffing, agentic loops, and MCP dual-mode operation.',
+    ],
+  },
+]
 
 export default function Experience() {
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://jacobcdsmith.github.io'
   return (
-    <section id="experience" >
-      <Helmet>
-        <title>Experience | Jacob C. Smith — Data Analyst &amp; AI Systems Builder</title>
-        <meta name="description" content="Work history: Internal Technical Lead at Readyfuels, Freelance Developer, Account Manager at FleetPride, and more. NewForce Data Analytics graduate." />
-        <meta property="og:title" content="Experience — Jacob C. Smith" />
-        <meta property="og:url" content={`${baseUrl}/experience`} />
-        <link rel="canonical" href={`${baseUrl}/experience`} />
-      </Helmet>
+    <>
+      <SEO
+        title="Experience"
+        description="Selected experience: independent practice, EMERGENT-MCF-EI consciousness research, and JCLAW local-first LLM runtime."
+        path="/experience"
+        jsonLd={[
+          breadcrumbSchema([
+            { name: 'Home', url: profile.siteUrl },
+            { name: 'Experience', url: `${profile.siteUrl}/experience` },
+          ]),
+        ]}
+      />
 
-      <div className="panel-header">
-        <h2><span className="prompt">$</span> cat experience.log</h2>
-      </div>
-      <div className="panel-content">
+      <header className="page-intro">
+        <div className="container">
+          <p className="page-eyebrow">Experience</p>
+          <h1 className="page-title">Selected work.</h1>
+          <p className="page-lead">
+            A short version. For the long version, download the CV or email for references on
+            specific engagements.
+          </p>
+          <div className="hero-actions">
+            <CVDownload variant="primary" size="md" />
+          </div>
+        </div>
+      </header>
+
+      <Section>
         <div className="timeline">
-
-          <div className="timeline-item">
-            <div className="timeline-date">May 2024 - Present</div>
-            <div className="timeline-content">
-              <h3>Internal Technical Lead</h3>
-              <p className="timeline-company">Readyfuels</p>
+          {items.map(item => (
+            <article key={item.title} className="timeline-item">
+              <h3>{item.title}</h3>
+              <div className="timeline-meta">
+                <span>{item.org}</span>
+                <span>·</span>
+                <span>{item.period}</span>
+                <span>·</span>
+                <span>{item.location}</span>
+              </div>
               <ul>
-                <li>Leading internal tooling and systems development for operations and field workflows</li>
-                <li>Built <strong>WVRTP Facility Inspection System</strong>: React/Vite/TypeScript SPA with Power Automate integration for field inspection workflows</li>
-                <li>Architecting data pipelines and automation infrastructure to streamline business processes</li>
-                <li>Bridging operational requirements and technical implementation across cross-functional teams</li>
+                {item.bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
               </ul>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-date">May 2024 - Present</div>
-            <div className="timeline-content">
-              <h3>Freelance Developer &amp; Data Consultant</h3>
-              <ul>
-                <li>Custom analytics solutions and web applications for diverse clients</li>
-                <li>Time tracking systems with Stripe integration, automated invoicing</li>
-                <li>End-to-end delivery: requirements gathering → deployment → training</li>
-                <li>Stakeholder translation: technical concepts → business value</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-date">Sept 2022 - June 2024</div>
-            <div className="timeline-content">
-              <h3>Account Manager</h3>
-              <p className="timeline-company">FleetPride, Buckhannon, WV</p>
-              <ul>
-                <li><strong>18% YoY revenue increase</strong> ($500K+ territory) through predictive analytics</li>
-                <li><strong>25% contract renewal improvement</strong> via CRM data mining and SQL analysis</li>
-                <li><strong>82% accuracy</strong> seasonal forecasting models for inventory optimization</li>
-                <li>Power BI dashboards: CLV, churn risk, conversion rates, pipeline metrics</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-date">Aug 2021 - Sept 2022</div>
-            <div className="timeline-content">
-              <h3>Outside Sales Representative</h3>
-              <p className="timeline-company">Cole Truck Parts</p>
-              <ul>
-                <li><strong>18% lead conversion increase</strong> through CRM analytics and behavioral data</li>
-                <li>Territory expansion strategy based on geographic/demographic analysis</li>
-                <li>B2B acquisition using data-driven targeting</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-date">Aug 2018 - May 2020</div>
-            <div className="timeline-content">
-              <h3>Sales Agent</h3>
-              <p className="timeline-company">U.S. Cellular</p>
-              <ul>
-                <li><strong>86% monthly target achievement</strong> (12 of 14 months)</li>
-                <li>KPI tracking: conversion rates, deal size, customer acquisition cost</li>
-                <li>Technical problem-solving for optimal service plan recommendations</li>
-              </ul>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
-
-        {/* Education */}
-        <div className="education-section">
-          <h3 className="subsection-title">Education &amp; Certifications</h3>
-          <div className="education-grid">
-            <div className="education-item">
-              <h4>NewForce Intensive Data Analytics Program</h4>
-              <p className="education-location">Nashville, TN | July - Dec 2024</p>
-              <p>SQL, Python, Tableau, Power BI, Machine Learning, Statistical Analysis</p>
-              <p><strong>Capstone:</strong> GitHub Language Analysis (live deployment, 78% predictive accuracy)</p>
-            </div>
-            <div className="education-item">
-              <h4>Self-Directed Continuous Learning</h4>
-              <ul>
-                <li>Linux Foundation: System administration, kernel tuning, embedded systems</li>
-                <li>Machine Learning: PyTorch, JAX, inference optimization, LLM prototyping</li>
-                <li>Consciousness Research: Academic paper preparation, mathematical formalization</li>
-                <li>Cloud/DevOps: CI/CD pipelines, containerization, infrastructure automation</li>
-              </ul>
-            </div>
-          </div>
-          <div className="certifications">
-            <h4>Certifications:</h4>
-            <div className="cert-tags">
-              {[
-                'Data Literacy - DataCamp (Oct 2024, ID: DL0038972051530)',
-                'Python Data Associate - DataCamp (Oct 2024, ID: PDA0019023690945)',
-                'AI Engineering for Data Science',
-                'Data Manipulation in SQL',
-                'Exploratory Data Analysis in Python',
-                'Advanced Window Functions (SQL)',
-              ].map(c => (
-                <span key={c} className="cert-tag">{c}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </Section>
+    </>
   )
 }

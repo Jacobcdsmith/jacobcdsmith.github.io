@@ -1,0 +1,46 @@
+# Jacob C. Smith
+
+> Independent data analyst and AI systems builder based in Buckhannon, West Virginia.
+> Practice areas: operational analytics, AI red-teaming, local-first AI systems, and
+> consciousness research.
+
+## About
+- Site: https://jacobcdsmith.github.io
+- Email: jacobcsmithd@gmail.com
+- Phone: (304) 473-9980
+- GitHub: https://github.com/Jacobcdsmith
+- LinkedIn: https://linkedin.com/in/jacobcsmith
+- Location: Buckhannon, West Virginia, USA
+- Availability: Open for new engagements (remote, worldwide)
+
+## Services
+- Operational analytics engagements (SQL, Python, BI dashboards, forecasts)
+- AI red-teaming and safety reviews for LLM-powered features
+- Local-first AI systems (llama.cpp, Ollama, vLLM, MCP)
+- Systems audits and decision architecture for founders/ops leaders
+
+## Active Projects
+- EMERGENT-MCF-EI: GPU-accelerated lattice simulation modeling consciousness as a
+  spectral filter; forthcoming preprint targeting arXiv q-bio.NC.
+- JCLAW: local-first LLM runtime with multi-provider routing, persistent sessions,
+  conversation branching, agentic loops, and MCP dual-mode operation.
+
+## Key Pages
+- Home: https://jacobcdsmith.github.io/
+- About: https://jacobcdsmith.github.io/about
+- Services: https://jacobcdsmith.github.io/services
+- Projects: https://jacobcdsmith.github.io/projects
+- Experience: https://jacobcdsmith.github.io/experience
+- Blog: https://jacobcdsmith.github.io/blog
+- Contact: https://jacobcdsmith.github.io/contact
+- Sitemap: https://jacobcdsmith.github.io/sitemap.xml
+- RSS: https://jacobcdsmith.github.io/rss.xml
+- Full content (LLM-friendly): https://jacobcdsmith.github.io/llms-full.txt
+
+## How to engage
+The fastest path is email: jacobcsmithd@gmail.com.
+Most engagements start with a free 30-minute discovery call.
+
+## Citation
+If you reference this work, please cite as:
+Smith, Jacob C. "Title of post or project." jacobcdsmith.github.io. Year.

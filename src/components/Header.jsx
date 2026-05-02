@@ -1,73 +1,68 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import { useEffect, forwardRef } from 'react'
+import { useEffect, useState } from 'react'
+import ThemeToggle from './ThemeToggle.jsx'
 
 const tabs = [
-  { path: '/about',      icon: '⌘', label: 'about'      },
-  { path: '/skills',     icon: '◈', label: 'skills'     },
-  { path: '/projects',   icon: '⬡', label: 'projects'   },
-  { path: '/experience', icon: '◉', label: 'experience' },
-  { path: '/contact',    icon: '⚡', label: 'contact'    },
-  { path: '/blog',       icon: '✍', label: 'blog'       },
+  { path: '/',           label: 'Home',       end: true },
+  { path: '/about',      label: 'About'                  },
+  { path: '/services',   label: 'Services'               },
+  { path: '/projects',   label: 'Projects'               },
+  { path: '/experience', label: 'Experience'             },
+  { path: '/blog',       label: 'Blog',       blogActive: true },
+  { path: '/contact',    label: 'Contact'                },
 ]
 
-export default forwardRef(function Header(_, ref) {
+export default function Header() {
   const location = useLocation()
+  const [open, setOpen] = useState(false)
 
-  // Keyboard navigation between tabs (arrow keys)
   useEffect(() => {
-    function handleKeyDown(e) {
-      const btns = Array.from(document.querySelectorAll('.tab-btn'))
-      const active = document.activeElement
-      const idx = btns.indexOf(active)
-      if (idx === -1) return
-
-      let next = idx
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  next = (idx + 1) % btns.length
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (idx - 1 + btns.length) % btns.length
-      else if (e.key === 'Home') next = 0
-      else if (e.key === 'End')  next = btns.length - 1
-      else return
-
-      e.preventDefault()
-      btns[next].focus()
-      btns[next].click()
-    }
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [])
+    setOpen(false)
+  }, [location.pathname])
 
   return (
-    <header ref={ref} className="app-header">
-      <div className="header-brand">
-        <h1 className="brand-name" data-text="JACOB C. SMITH">JACOB C. SMITH</h1>
-        <span className="brand-tagline">Data Analyst • AI Systems Builder • Consciousness Researcher</span>
-        <span className="brand-location">Buckhannon, West Virginia</span>
+    <header className="site-header">
+      <div className="container header-row">
+        <NavLink to="/" className="brand" aria-label="Jacob C. Smith — home">
+          <span className="brand-mark">jcs</span>
+          <span className="brand-name">Jacob C. Smith<span className="brand-dot">.</span></span>
+        </NavLink>
+
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-controls="primary-nav"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen(o => !o)}
+        >
+          <span aria-hidden="true">{open ? '✕' : '☰'}</span>
+        </button>
+
+        <nav id="primary-nav" className={`nav${open ? ' is-open' : ''}`} aria-label="Primary">
+          {tabs.map(tab => {
+            const active = tab.blogActive
+              ? location.pathname.startsWith('/blog')
+              : tab.end
+                ? location.pathname === tab.path
+                : location.pathname === tab.path
+            return (
+              <NavLink
+                key={tab.path}
+                to={tab.path}
+                end={tab.end}
+                className={() => `nav-link${active ? ' is-active' : ''}`}
+              >
+                {tab.label}
+              </NavLink>
+            )
+          })}
+        </nav>
+
+        <div className="header-actions">
+          <ThemeToggle />
+        </div>
       </div>
-      <nav className="tab-nav" role="tablist" aria-label="Portfolio sections">
-        {tabs.map(({ path, icon, label }) => {
-          // The blog tab should match /blog and /blog/* as active
-          const isBlogActive = label === 'blog' && location.pathname.startsWith('/blog')
-          return (
-            <NavLink
-              key={path}
-              to={path}
-              className={({ isActive }) =>
-                'tab-btn' + (isActive || isBlogActive ? ' active' : '')
-              }
-              end={label !== 'blog'}
-              role="tab"
-              aria-selected={
-                label === 'blog'
-                  ? location.pathname.startsWith('/blog')
-                  : location.pathname === path
-              }
-            >
-              <span className="tab-icon">{icon}</span>
-              <span className="tab-label">{label}</span>
-            </NavLink>
-          )
-        })}
-      </nav>
     </header>
   )
-})
+}

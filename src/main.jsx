@@ -4,10 +4,28 @@ import { HelmetProvider } from 'react-helmet-async'
 import App from './App.jsx'
 import './style.css'
 
+// Theme bootstrap is inlined in index.html <head> to run before CSS paints.
+// Fallback in case the inline script was stripped or the document was injected
+// after parse — keep this idempotent.
+if (!document.documentElement.getAttribute('data-theme')) {
+  try {
+    const stored = localStorage.getItem('jcs-theme')
+    const theme =
+      stored === 'light' || stored === 'dark'
+        ? stored
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light'
+          : 'dark'
+    document.documentElement.setAttribute('data-theme', theme)
+  } catch {
+    document.documentElement.setAttribute('data-theme', 'dark')
+  }
+}
+
 createRoot(document.getElementById('app')).render(
   <HelmetProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </HelmetProvider>
+  </HelmetProvider>,
 )
