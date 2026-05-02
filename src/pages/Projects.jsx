@@ -10,25 +10,25 @@ import { breadcrumbSchema } from '../lib/structured-data.js'
 const projects = [
   {
     name: 'EMERGENT-MCF-EI',
-    repo: 'Jacobcdsmith/EMERGENT-MCF-EI',
+    repo: 'Jacobcdsmith/CONSIM',
     status: 'Active research',
     summary:
       'GPU-accelerated lattice simulation modeling consciousness as a dynamic spectral filter operating in frequency space.',
     detail:
       'Includes a Streamlit dashboard for live exploration of meta-cognitive filtering dynamics, a results pipeline, and a forthcoming preprint targeting Neurons and Cognition (arXiv q-bio.NC).',
     tags: ['research', 'gpu', 'consciousness', 'streamlit'],
-    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/EMERGENT-MCF-EI', external: true }],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/CONSIM', external: true }],
   },
   {
     name: 'JCLAW',
-    repo: 'Jacobcdsmith/JCLAW',
+    repo: 'Jacobcdsmith/jclaw-framework',
     status: 'Active development',
     summary:
       'SQLite-backed agentic runtime that treats the LLM API as a programmable execution environment.',
     detail:
       'Persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter), conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation. Designed for sovereignty: zero telemetry, fully local.',
     tags: ['llm', 'local-first', 'mcp', 'agent-stacks', 'sqlite'],
-    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/JCLAW', external: true }],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/jclaw-framework', external: true }],
   },
   {
     name: 'Hermes plugin (Nous Research)',
@@ -42,14 +42,14 @@ const projects = [
   },
   {
     name: 'MCPStarfleetCommand',
-    repo: 'Jacobcdsmith/MCPStarfleetCommand',
+    repo: 'Jacobcdsmith/MCPStarfleetCommand-',
     status: 'Active development',
     summary:
       'Dual-transport MCP server for routing tools and resources across stdio, SSE, and a local WebSocket gateway.',
     detail:
       'Designed alongside JCLAW so the same agent runtime can speak to local-only tools, cloud-hosted MCP servers, and a sovereignty-first WebSocket gateway from one configuration surface.',
     tags: ['mcp', 'agent-infrastructure', 'tooling'],
-    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/MCPStarfleetCommand', external: true }],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/MCPStarfleetCommand-', external: true }],
   },
   {
     name: 'Local WebSocket MCP gateway',
