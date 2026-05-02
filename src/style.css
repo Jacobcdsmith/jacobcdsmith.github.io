@@ -1548,10 +1548,6 @@ main { flex: 1; }
 }
 .github-activity-kind.kind-release { color: #1d8a4d; }
 .github-activity-kind.kind-pr { color: #6a3fb5; }
-.github-activity-kind.kind-issue { color: #b56a1a; }
-.github-activity-kind.kind-star { color: #b58a1a; }
-.github-activity-kind.kind-fork,
-.github-activity-kind.kind-create { color: #4b5263; }
 .github-activity-label {
   color: var(--text);
   line-height: 1.45;
@@ -1588,15 +1584,6 @@ main { flex: 1; }
   font-weight: 600;
 }
 .github-activity-footer a:hover { text-decoration: underline; }
-.github-activity-status {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  padding: 1rem 1.2rem;
-  border: 1px dashed var(--border);
-  background: var(--surface-card);
-  margin: 0;
-}
 @media (max-width: 640px) {
   .github-activity-item {
     grid-template-columns: 1fr;

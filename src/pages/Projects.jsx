@@ -17,7 +17,7 @@ const projects = [
     detail:
       'Includes a Streamlit dashboard for live exploration of meta-cognitive filtering dynamics, a results pipeline, and a forthcoming preprint targeting Neurons and Cognition (arXiv q-bio.NC).',
     tags: ['research', 'gpu', 'consciousness', 'streamlit'],
-    actions: [{ label: 'GitHub', href: profile.github, external: true }],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/EMERGENT-MCF-EI', external: true }],
   },
   {
     name: 'JCLAW',
@@ -28,7 +28,7 @@ const projects = [
     detail:
       'Persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter), conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation. Designed for sovereignty: zero telemetry, fully local.',
     tags: ['llm', 'local-first', 'mcp', 'agent-stacks', 'sqlite'],
-    actions: [{ label: 'GitHub', href: profile.github, external: true }],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/JCLAW', external: true }],
   },
   {
     name: 'Hermes plugin (Nous Research)',
@@ -49,7 +49,7 @@ const projects = [
     detail:
       'Designed alongside JCLAW so the same agent runtime can speak to local-only tools, cloud-hosted MCP servers, and a sovereignty-first WebSocket gateway from one configuration surface.',
     tags: ['mcp', 'agent-infrastructure', 'tooling'],
-    actions: [{ label: 'GitHub', href: profile.github, external: true }],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/MCPStarfleetCommand', external: true }],
   },
   {
     name: 'Local WebSocket MCP gateway',
