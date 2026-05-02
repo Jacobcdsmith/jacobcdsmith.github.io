@@ -201,9 +201,9 @@ ${tagMeta}
 // Static body builder
 function visibleBlock({ eyebrow, title, lead, body, tldr }) {
   const tldrBlock = tldr ? `
-      <aside style="border-left:3px solid #c9485b;background:rgba(201,72,91,0.08);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:4px;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#c9485b;margin:0 0 0.5rem;">TL;DR</p>
-        <p style="margin:0;color:#ecebe8;font-size:1rem;line-height:1.6;">${tldr}</p>
+      <aside style="border-left:2px solid #c9485b;background:rgba(201,72,91,0.06);padding:0.9rem 1.15rem;margin:1.25rem 0 1.5rem;border-radius:0 4px 4px 0;max-width:64ch;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#c9485b;margin:0 0 0.4rem;font-weight:600;">TL;DR</p>
+        <p style="margin:0;color:#ecebe8;font-size:0.97rem;line-height:1.6;">${tldr}</p>
       </aside>` : ''
   return `
       <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#c9485b;margin:0 0 0.85rem;">${escHtml(eyebrow)}</p>

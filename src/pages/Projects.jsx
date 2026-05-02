@@ -71,21 +71,18 @@ export default function Projects() {
             A mix of open research, infrastructure, and client work. Code is on GitHub where
             permitted; client work is documented under NDA.
           </p>
+          <aside className="answer-box">
+            <p className="answer-box-label">TL;DR</p>
+            <p>
+              Active projects include <strong>EMERGENT-MCF-EI</strong> — a GPU-accelerated lattice
+              simulation modeling consciousness as a spectral filter — and <strong>JCLAW</strong>, a
+              local-first LLM runtime with multi-provider routing, persistent sessions, conversation
+              branching, agentic loops, and MCP dual-mode operation. Most client work is operational
+              analytics under NDA; references on request.
+            </p>
+          </aside>
         </div>
       </header>
-
-      <Section eyebrow="In short" title="The TL;DR" tone="muted">
-        <div className="answer-box">
-          <p className="answer-box-label">TL;DR</p>
-          <p>
-            Active projects include <strong>EMERGENT-MCF-EI</strong> — a GPU-accelerated lattice
-            simulation modeling consciousness as a spectral filter — and <strong>JCLAW</strong>, a
-            local-first LLM runtime with multi-provider routing, persistent sessions, conversation
-            branching, agentic loops, and MCP dual-mode operation. Most client work is operational
-            analytics under NDA; references on request.
-          </p>
-        </div>
-      </Section>
 
       <Section>
         <div className="card-grid">

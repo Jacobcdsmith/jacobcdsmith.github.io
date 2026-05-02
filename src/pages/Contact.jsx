@@ -43,21 +43,18 @@ export default function Contact() {
             One paragraph about the problem you’re trying to solve is enough to start. Discovery
             calls are free; NDAs welcome.
           </p>
+          <aside className="answer-box">
+            <p className="answer-box-label">TL;DR</p>
+            <p>
+              The fastest way to reach <strong>{profile.name}</strong> is email
+              (<a href={`mailto:${profile.email}`}>{profile.email}</a>) or phone
+              (<a href={`tel:${profile.phone}`}>{profile.phoneDisplay}</a>). Most engagements start
+              with a free 30-minute discovery call. Based in {profile.location}; works remotely
+              worldwide.
+            </p>
+          </aside>
         </div>
       </header>
-
-      <Section eyebrow="In short" title="The TL;DR" tone="muted">
-        <div className="answer-box">
-          <p className="answer-box-label">TL;DR</p>
-          <p>
-            The fastest way to reach <strong>{profile.name}</strong> is email
-            (<a href={`mailto:${profile.email}`}>{profile.email}</a>) or phone
-            (<a href={`tel:${profile.phone}`}>{profile.phoneDisplay}</a>). Most engagements start
-            with a free 30-minute discovery call. Based in {profile.location}; works remotely
-            worldwide.
-          </p>
-        </div>
-      </Section>
 
       <Section>
         <div className="contact-grid">

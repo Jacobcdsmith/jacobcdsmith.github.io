@@ -76,21 +76,18 @@ export default function BlogList() {
             Notes from the practice — consciousness modeling, local-first AI, decision systems, and
             the slow craft of shipping useful things.
           </p>
+          <aside className="answer-box">
+            <p className="answer-box-label">TL;DR</p>
+            <p>
+              Long-form posts by <strong>{profile.name}</strong>, organized into three categories —
+              <strong> Research</strong> (consciousness modeling, EMERGENT-MCF-EI, mathematics),
+              <strong> Engineering</strong> (local-first AI, runtimes, tooling), and
+              <strong> Essays</strong> (systems thinking, decision architecture). Filter or search
+              below.
+            </p>
+          </aside>
         </div>
       </header>
-
-      <Section eyebrow="In short" title="The TL;DR" tone="muted">
-        <div className="answer-box">
-          <p className="answer-box-label">TL;DR</p>
-          <p>
-            Long-form posts by <strong>{profile.name}</strong>, organized into three categories —
-            <strong> Research</strong> (consciousness modeling, EMERGENT-MCF-EI, mathematics),
-            <strong> Engineering</strong> (local-first AI, runtimes, tooling), and
-            <strong> Essays</strong> (systems thinking, decision architecture). Search across post
-            text below, or filter by category and tag.
-          </p>
-        </div>
-      </Section>
 
       <Section>
         <div className="blog-toolbar">

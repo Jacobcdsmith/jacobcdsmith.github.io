@@ -96,14 +96,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TL;DR / answer block for AEO */}
-      <Section
-        eyebrow="In short"
-        title="What this site is"
-        lead={null}
-        tone="muted"
-      >
-        <div className="answer-box">
+      {/* TL;DR / answer block for AEO + audience grid */}
+      <Section tone="muted">
+        <aside className="answer-box">
           <p className="answer-box-label">TL;DR</p>
           <p>
             <strong>{profile.name}</strong> is an independent data analyst and AI systems builder based
@@ -111,7 +106,7 @@ export default function Home() {
             red-teaming and safety reviews, and local-first AI system design. I also publish open
             research on consciousness modeling, decision systems, and local-first tooling.
           </p>
-        </div>
+        </aside>
 
         <div className="audience-grid">
           {profile.audiences.map(a => (

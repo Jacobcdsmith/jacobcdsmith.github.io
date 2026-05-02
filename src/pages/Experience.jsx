@@ -64,24 +64,21 @@ export default function Experience() {
             A short version. For the long version, download the CV or email for references on
             specific engagements.
           </p>
+          <aside className="answer-box">
+            <p className="answer-box-label">TL;DR</p>
+            <p>
+              <strong>{profile.name}</strong> runs an independent practice in operational analytics,
+              AI red-teaming, and local-first AI systems out of {profile.location}. In parallel he
+              leads the EMERGENT-MCF-EI consciousness research thread and architects the JCLAW
+              local-first LLM runtime. Engagements span SQL, Python, BI, LLM evaluation, llama.cpp /
+              Ollama / vLLM, MCP, and decision-architecture audits.
+            </p>
+          </aside>
           <div className="hero-actions">
             <CVDownload variant="primary" size="md" />
           </div>
         </div>
       </header>
-
-      <Section eyebrow="In short" title="The TL;DR" tone="muted">
-        <div className="answer-box">
-          <p className="answer-box-label">TL;DR</p>
-          <p>
-            <strong>{profile.name}</strong> runs an independent practice in operational analytics,
-            AI red-teaming, and local-first AI systems out of {profile.location}. In parallel he
-            leads the EMERGENT-MCF-EI consciousness research thread and architects the JCLAW
-            local-first LLM runtime. Engagements span SQL, Python, BI, LLM evaluation, llama.cpp /
-            Ollama / vLLM, MCP, and decision-architecture audits.
-          </p>
-        </div>
-      </Section>
 
       <Section>
         <div className="timeline">

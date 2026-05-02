@@ -52,15 +52,29 @@ export default function BlogPost() {
 
       <Section>
         <header className="post-header">
-          <div className="post-meta">
-            <span className="post-card-category">{post.category}</span>
-            <span>·</span>
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
-            <span>·</span>
-            <span>{post.readingTime} min read</span>
-          </div>
+          <p className="post-eyebrow">{post.category}</p>
           <h1>{post.title}</h1>
           <p className="excerpt">{post.excerpt}</p>
+          <div className="post-byline">
+            <img
+              src="/avatar.svg"
+              alt=""
+              width="44"
+              height="44"
+              className="post-byline-avatar"
+              loading="lazy"
+            />
+            <div className="post-byline-text">
+              <span className="post-byline-name">
+                By <Link to="/about">{profile.name}</Link>
+              </span>
+              <span className="post-byline-meta">
+                <time dateTime={post.date}>{formatDate(post.date)}</time>
+                <span aria-hidden="true"> · </span>
+                <span>{post.readingTime} min read</span>
+              </span>
+            </div>
+          </div>
           {post.tags.length > 0 && (
             <div className="post-header-tags">
               {post.tags.map(t => (
@@ -68,22 +82,6 @@ export default function BlogPost() {
               ))}
             </div>
           )}
-          <div className="post-byline">
-            <Link to="/about" className="post-byline-link" aria-label={`About ${profile.name}`}>
-              <img
-                src="/avatar.svg"
-                alt=""
-                width="40"
-                height="40"
-                className="post-byline-avatar"
-                loading="lazy"
-              />
-              <span className="post-byline-text">
-                <span className="post-byline-by">By</span>
-                <span className="post-byline-name">{profile.name}</span>
-              </span>
-            </Link>
-          </div>
         </header>
 
         <article

@@ -37,6 +37,13 @@ export default function Services() {
             Four ways I work with teams. Each one is scoped, time-bound, and produces an artifact
             your team owns. Discovery calls are free; NDAs welcome.
           </p>
+          <aside className="answer-box">
+            <p className="answer-box-label">TL;DR</p>
+            <p>
+              Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture
+              audits. Most engagements are 2–4 weeks with optional retainer.
+            </p>
+          </aside>
           <div className="hero-actions">
             <Button href={`mailto:${profile.email}`} variant="primary" size="lg" trackName="services_cta_email">
               Start a conversation
@@ -49,14 +56,6 @@ export default function Services() {
       </header>
 
       <Section eyebrow="Offerings" title="What I do">
-        <div className="answer-box">
-          <p className="answer-box-label">TL;DR</p>
-          <p>
-            Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture
-            audits. Most engagements are 2–4 weeks with optional retainer.
-          </p>
-        </div>
-
         {services.map(s => (
           <article key={s.slug} id={s.slug} className="service-card">
             <h3>{s.title}</h3>

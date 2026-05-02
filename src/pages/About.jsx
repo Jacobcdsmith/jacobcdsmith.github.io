@@ -51,6 +51,16 @@ export default function About() {
             {' '}{profile.location}. I work at the intersection of operational analytics and
             local-first AI tooling.
           </p>
+          <aside className="answer-box">
+            <p className="answer-box-label">TL;DR</p>
+            <p>
+              <strong>{profile.name}</strong> is an independent data analyst, AI systems builder, and
+              consciousness researcher based in {profile.location}. He works remotely with teams
+              worldwide on operational analytics, AI red-teaming, and local-first AI tooling. He
+              previously led consciousness research on the EMERGENT-MCF-EI framework and architects
+              the open-source local-first LLM runtime <em>JCLAW</em>.
+            </p>
+          </aside>
           <div className="hero-actions">
             <CVDownload variant="primary" size="md" />
             <Button to="/services" variant="ghost" size="md">See services</Button>
@@ -58,19 +68,6 @@ export default function About() {
           </div>
         </div>
       </header>
-
-      <Section eyebrow="In short" title="The TL;DR" tone="muted">
-        <div className="answer-box">
-          <p className="answer-box-label">TL;DR</p>
-          <p>
-            <strong>{profile.name}</strong> is an independent data analyst, AI systems builder, and
-            consciousness researcher based in {profile.location}. He works remotely with teams
-            worldwide on operational analytics, AI red-teaming, and local-first AI tooling. He
-            previously led consciousness research on the EMERGENT-MCF-EI framework and architects
-            the open-source local-first LLM runtime <em>JCLAW</em>.
-          </p>
-        </div>
-      </Section>
 
       <Section eyebrow="Bio" title="Short version">
         <div className="about-grid">
