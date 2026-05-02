@@ -3,30 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jacob C. Smith - Systems-Oriented Data Analyst, Consciousness Researcher, and Emergence Theorist. Portfolio showcasing data analytics, machine learning, and theoretical frameworks.">
+    <meta name="description" content="Jacob C. Smith — Systems-Oriented Data Analyst, AI Engineer, Consciousness Researcher, and Emergence Theorist based in Buckhannon, West Virginia. Expert in Python, SQL, machine learning, GPU acceleration, LLM infrastructure, and theoretical computing frameworks.">
     <meta name="author" content="Jacob C. Smith">
-    <meta name="keywords" content="data analyst, machine learning, consciousness research, Python, SQL, portfolio">
-    <title>Jacob C. Smith | Systems-Oriented Data Analyst</title>
-    
+    <meta name="keywords" content="data analyst, machine learning, AI engineering, LLM, consciousness research, Python, SQL, PyTorch, JAX, portfolio, West Virginia, freelance developer, emergence theory, full-stack, MCP protocol, local AI, RAG, Ollama">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jacob C. Smith | Data Analyst &amp; AI Engineer">
+    <meta property="og:description" content="Portfolio of Jacob C. Smith — bridging data systems, AI infrastructure, and theoretical frameworks.">
+    <meta property="og:url" content="https://jacobcdsmith.github.io">
+    <meta property="og:site_name" content="Jacob C. Smith Portfolio">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jacob C. Smith | Data Analyst &amp; AI Engineer">
+    <meta name="twitter:description" content="Portfolio of Jacob C. Smith — data analytics, AI engineering, consciousness research.">
+    <link rel="canonical" href="https://jacobcdsmith.github.io">
+    <title>Jacob C. Smith | Data Analyst • AI Engineer • Consciousness Researcher</title>
+
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Scroll progress indicator -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
     <!-- Particle system canvas -->
     <canvas id="particle-canvas"></canvas>
 
     <!-- Main App Container -->
     <div class="app-container">
-        
+
         <!-- Fixed Header with Name and Tabs -->
         <header class="app-header">
             <div class="header-brand">
                 <h1 class="brand-name" data-text="JACOB C. SMITH">JACOB C. SMITH</h1>
-                <span class="brand-tagline">Systems-Oriented Data Analyst • Consciousness Researcher • Emergence Theorist</span>
+                <span class="brand-tagline" id="typing-tagline">Systems-Oriented Data Analyst • AI Engineer • Consciousness Researcher</span>
                 <span class="brand-location">Buckhannon, West Virginia</span>
             </div>
             <nav class="tab-nav">
@@ -41,6 +54,7 @@
                 <button class="tab-btn" data-tab="projects">
                     <span class="tab-icon">⬡</span>
                     <span class="tab-label">projects</span>
+                    <span class="tab-count">9</span>
                 </button>
                 <button class="tab-btn" data-tab="experience">
                     <span class="tab-icon">◉</span>
@@ -63,16 +77,29 @@
                 </div>
                 <div class="panel-content">
                     <div class="about-content">
+                        <div class="about-avatar">
+                            <div class="avatar-ring-outer">
+                                <div class="avatar-ring-inner">
+                                    <div class="avatar-initials">JCS</div>
+                                </div>
+                            </div>
+                            <div class="avatar-status">
+                                <span class="status-dot"></span>
+                                <span>Available for projects</span>
+                            </div>
+                        </div>
                         <div class="about-text">
                             <p>I unapologetically unravel the universe. I operate in the live space between thought and execution, functioning less like a traditional analyst and more like an extension of the data itself. My work bridges the gap between raw systems logic and high-concept theoretical frameworks—from red-teaming AI to modeling consciousness through spectral analysis to treating conflict resolution as a high-voltage engineering problem.</p>
 
-                            <p>I don't sugar-coat reality; I map it. Seven years in sales taught me how humans actually make decisions (spoiler: it's messy). NewForce Cohort 11 gave me the tools to quantify that mess. Now I build systems that think in frequencies, navigate multiverses, and turn philosophical thought experiments into production-ready code.</p>
+                            <p>I don't sugar-coat reality; I map it. Eight years in sales and systems taught me how humans actually make decisions (spoiler: it's messy). NewForce Cohort 11 gave me the tools to quantify that mess. Now I build systems that think in frequencies, navigate multiverses, and turn philosophical thought experiments into production-ready code.</p>
+
+                            <p>In 2026, that means maintaining a fully local offline AI stack, preparing the EMERGENT-MCF-EI paper for arXiv submission, and architecting systems that most people haven't thought to build yet.</p>
 
                             <p>If you need someone who can explain quantum interference patterns to your grandmother while simultaneously debugging your ETL pipeline at 3 AM, I'm your polymath.</p>
                         </div>
                         <div class="about-stats">
                             <div class="stat">
-                                <span class="stat-number">7+</span>
+                                <span class="stat-number">8+</span>
                                 <span class="stat-label">Years Experience</span>
                             </div>
                             <div class="stat">
@@ -82,6 +109,10 @@
                             <div class="stat">
                                 <span class="stat-number">1st</span>
                                 <span class="stat-label">Place DataCamp</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">6</span>
+                                <span class="stat-label">Certifications</span>
                             </div>
                         </div>
                     </div>
@@ -95,42 +126,141 @@
                 </div>
                 <div class="panel-content">
                     <div class="skills-grid">
+
                         <div class="skill-category">
-                            <h3>Data & Analytics Core</h3>
+                            <h3>Data &amp; Analytics Core</h3>
                             <ul>
-                                <li>SQL (PostgreSQL, MySQL)</li>
-                                <li>Python (Pandas, NumPy, scikit-learn)</li>
-                                <li>Business Intelligence (Tableau, Power BI)</li>
-                                <li>Machine Learning</li>
+                                <li class="skill-item">
+                                    <span class="skill-name">SQL (PostgreSQL, MySQL)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="92" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Python (Pandas, NumPy, scikit-learn, Polars)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="90" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Business Intelligence (Tableau, Power BI)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="82" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Machine Learning (scikit-learn, XGBoost)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="78" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Statistical Analysis &amp; Hypothesis Testing</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="80" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">dbt (Data Build Tool)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="65" style="width:0%"></div></div>
+                                </li>
                             </ul>
                         </div>
+
                         <div class="skill-category">
-                            <h3>Systems & Infrastructure</h3>
+                            <h3>Systems &amp; Infrastructure</h3>
                             <ul>
-                                <li>Linux (Debian/Ubuntu)</li>
-                                <li>Proxmox/Virtualization</li>
-                                <li>Git/GitHub Actions</li>
-                                <li>GPU Acceleration (CUDA, PyTorch, JAX)</li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Linux (Debian/Ubuntu, kernel tuning)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Proxmox / Virtualization</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="72" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Git / GitHub Actions (CI/CD)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">GPU Acceleration (CUDA, PyTorch, JAX)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="75" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Docker / Containers</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="74" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Bash Scripting &amp; Automation</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="84" style="width:0%"></div></div>
+                                </li>
                             </ul>
                         </div>
+
                         <div class="skill-category">
-                            <h3>Theoretical & Mathematical</h3>
+                            <h3>AI &amp; Language Models</h3>
                             <ul>
-                                <li>Fourier Analysis</li>
-                                <li>Complex Systems Modeling</li>
-                                <li>Quantum Mechanics</li>
-                                <li>Sacred Geometry</li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Local LLM Deployment (Ollama, llama.cpp)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="85" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">MCP Protocol (Model Context Protocol)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="82" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">RAG Pipelines &amp; Vector Databases</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="76" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">LLM Fine-tuning &amp; Prompt Engineering</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="72" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">AI Red Teaming &amp; Safety Research</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="72" style="width:0%"></div></div>
+                                </li>
                             </ul>
                         </div>
+
                         <div class="skill-category">
-                            <h3>Specialized Domains</h3>
+                            <h3>Web &amp; Full-Stack Development</h3>
                             <ul>
-                                <li>AI Red Teaming</li>
-                                <li>Consciousness Engineering</li>
-                                <li>Automation Architecture</li>
-                                <li>Hardware Liberation</li>
+                                <li class="skill-item">
+                                    <span class="skill-name">React / TypeScript / Vite</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="75" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">REST APIs &amp; Web Services</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="80" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">HTML / CSS / Vanilla JavaScript</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="85" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Tailwind CSS / Streamlit</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="78" style="width:0%"></div></div>
+                                </li>
                             </ul>
                         </div>
+
+                        <div class="skill-category">
+                            <h3>Theoretical &amp; Mathematical</h3>
+                            <ul>
+                                <li class="skill-item">
+                                    <span class="skill-name">Fourier Analysis &amp; Spectral Methods</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="72" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Complex Systems &amp; Emergence Modeling</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="83" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Quantum Mechanics (Applied Concepts)</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="68" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Consciousness Engineering &amp; Research</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88" style="width:0%"></div></div>
+                                </li>
+                                <li class="skill-item">
+                                    <span class="skill-name">Automation Architecture &amp; Systems Design</span>
+                                    <div class="skill-bar-track"><div class="skill-bar-fill" data-level="80" style="width:0%"></div></div>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
             </section>
@@ -139,12 +269,14 @@
             <section id="projects" class="tab-panel">
                 <div class="panel-header">
                     <h2><span class="prompt">$</span> ls projects/</h2>
+                    <a href="#" class="resume-download-btn" aria-label="Download Resume PDF">⬇ Resume PDF</a>
                 </div>
                 <div class="panel-content">
                     <div class="projects-grid">
 
                         <!-- Project 1: EMERGENT-MCF-EI (CONSIM) -->
                         <article class="project-card featured">
+                            <div class="project-type-icon" aria-hidden="true">⟁</div>
                             <div class="project-header">
                                 <h3>EMERGENT‑MCF‑EI: Multiversal Consciousness Framework</h3>
                                 <span class="project-status status-active">Active Research</span>
@@ -176,12 +308,13 @@
                             </div>
                             <div class="project-links">
                                 <a href="https://github.com/Jacobcdsmith/CONSIM" target="_blank" rel="noopener" class="project-link">Repository →</a>
-                                <span class="project-meta">Paper Status: Targeting Neurons and Cognition (arXiv q-bio.NC)</span>
+                                <span class="project-meta">Paper Status: Targeting arXiv (q-bio.NC) — 2026</span>
                             </div>
                         </article>
 
                         <!-- Project 2: GitHub Language Analysis Platform -->
                         <article class="project-card featured">
+                            <div class="project-type-icon" aria-hidden="true">⬡</div>
                             <div class="project-header">
                                 <h3>GitHub Language Analysis Platform</h3>
                                 <span class="project-status status-deployed">Production Deployed</span>
@@ -194,7 +327,7 @@
                                     <li><strong>Language Comparison:</strong> ANOVA significance testing, radar charts, performance heatmap matrices</li>
                                     <li><strong>Correlation Analysis:</strong> Stars vs Forks modeling, popularity-activity quadrants, contributor impact</li>
                                     <li><strong>Advanced Visualizations:</strong> Executive dashboards, interactive Plotly bubble charts, 3D scatter plots, animated timelines</li>
-                                    <li><strong>ML Predictions:</strong> Repository success modeling with exportable comparison tables</li>
+                                    <li><strong>ML Predictions:</strong> Repository success modeling with 78% accuracy — exportable comparison tables</li>
                                 </ul>
                                 <h4>Business Impact:</h4>
                                 <ul>
@@ -221,6 +354,7 @@
 
                         <!-- Project 3: Local AI Stack -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">◬</div>
                             <div class="project-header">
                                 <h3>Local AI Stack: Offline Intelligence Infrastructure</h3>
                                 <span class="project-status status-active">Active Development</span>
@@ -245,9 +379,9 @@
                             <div class="project-tech">
                                 <span class="tech-tag">Python</span>
                                 <span class="tech-tag">MCP Protocol</span>
+                                <span class="tech-tag">Ollama</span>
                                 <span class="tech-tag">REST API</span>
                                 <span class="tech-tag">YAML</span>
-                                <span class="tech-tag">PowerShell</span>
                                 <span class="tech-tag">Bash</span>
                             </div>
                             <div class="project-links">
@@ -257,6 +391,7 @@
 
                         <!-- Project 4: USB Pentesting Toolkit -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">⚿</div>
                             <div class="project-header">
                                 <h3>USB Pentesting Toolkit: Bootable Security Research Environment</h3>
                                 <span class="project-status status-active">Active Development</span>
@@ -293,6 +428,7 @@
 
                         <!-- Project 5: Biology Sandbox Simulator -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">⊛</div>
                             <div class="project-header">
                                 <h3>Biology Sandbox Simulator: Evolutionary Modeling Platform</h3>
                                 <span class="project-status status-active">Active Development</span>
@@ -326,6 +462,7 @@
 
                         <!-- Project 6: WeGo Transit Optimization -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">⊕</div>
                             <div class="project-header">
                                 <h3>WeGo Public Transit Optimization</h3>
                                 <span class="project-status status-completed">Completed</span>
@@ -360,6 +497,7 @@
 
                         <!-- Project 7: PawMatch AI -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">⋆</div>
                             <div class="project-header">
                                 <h3>PawMatch AI: Pet Adoption Recommendation Engine</h3>
                                 <span class="project-status status-award">1st Place / 527</span>
@@ -388,6 +526,7 @@
 
                         <!-- Project 8: Peace as Voltage -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">⚡</div>
                             <div class="project-header">
                                 <h3>Peace as Voltage: Conflict Resolution Framework</h3>
                                 <span class="project-status status-published">Published</span>
@@ -409,12 +548,13 @@
                                 </ul>
                             </div>
                             <div class="project-links">
-                                <span class="project-meta">Long-form Essay / Theoretical Framework</span>
+                                <span class="project-meta">Long-form Essay / Theoretical Framework · Available on request</span>
                             </div>
                         </article>
 
                         <!-- Project 9: Protocols for Myth-Driven Life -->
                         <article class="project-card">
+                            <div class="project-type-icon" aria-hidden="true">⌘</div>
                             <div class="project-header">
                                 <h3>Protocols for a Myth-Driven Life</h3>
                                 <span class="project-status status-active">Living Document</span>
@@ -454,12 +594,14 @@
                         <div class="timeline-item">
                             <div class="timeline-date">May 2024 - Present</div>
                             <div class="timeline-content">
-                                <h3>Freelance Developer & Data Consultant</h3>
+                                <h3>Freelance Developer &amp; Data Consultant</h3>
                                 <ul>
-                                    <li>Custom analytics solutions and web applications for diverse clients</li>
-                                    <li>Time tracking systems with Stripe integration, automated invoicing</li>
-                                    <li>End-to-end delivery: requirements gathering → deployment → training</li>
-                                    <li>Stakeholder translation: technical concepts → business value</li>
+                                    <li><strong>Local AI infrastructure:</strong> Full offline LLM stack with MCP server integrations, zero-telemetry design for privacy-conscious deployments</li>
+                                    <li><strong>Client analytics:</strong> Custom dashboards, time-tracking systems with Stripe payment integration, automated invoicing pipelines</li>
+                                    <li><strong>Security research:</strong> Bootable USB pentesting environments for authorized penetration testing assessments</li>
+                                    <li><strong>EMERGENT-MCF-EI:</strong> Advancing consciousness modeling paper toward arXiv (q-bio.NC) submission — 2026 target</li>
+                                    <li>End-to-end project delivery: requirements → architecture → deployment → client training</li>
+                                    <li>Stakeholder translation: technical complexity → quantifiable business value</li>
                                 </ul>
                             </div>
                         </div>
@@ -470,10 +612,10 @@
                                 <h3>Account Manager</h3>
                                 <p class="timeline-company">FleetPride, Buckhannon, WV</p>
                                 <ul>
-                                    <li><strong>18% YoY revenue increase</strong> ($500K+ territory) through predictive analytics</li>
-                                    <li><strong>25% contract renewal improvement</strong> via CRM data mining and SQL analysis</li>
-                                    <li><strong>82% accuracy</strong> seasonal forecasting models for inventory optimization</li>
-                                    <li>Power BI dashboards: CLV, churn risk, conversion rates, pipeline metrics</li>
+                                    <li><strong>18% YoY revenue increase</strong> ($500K+ territory) through predictive analytics and data-driven account strategy</li>
+                                    <li><strong>25% contract renewal improvement</strong> via CRM data mining and SQL-driven churn risk analysis</li>
+                                    <li><strong>82% accuracy</strong> seasonal forecasting models built in Python for inventory optimization</li>
+                                    <li>Power BI dashboards: CLV, churn risk, conversion rates, pipeline velocity metrics</li>
                                 </ul>
                             </div>
                         </div>
@@ -484,9 +626,9 @@
                                 <h3>Outside Sales Representative</h3>
                                 <p class="timeline-company">Cole Truck Parts</p>
                                 <ul>
-                                    <li><strong>18% lead conversion increase</strong> through CRM analytics and behavioral data</li>
-                                    <li>Territory expansion strategy based on geographic/demographic analysis</li>
-                                    <li>B2B acquisition using data-driven targeting</li>
+                                    <li><strong>18% lead conversion increase</strong> through CRM analytics and behavioral data-driven targeting</li>
+                                    <li>Territory expansion strategy based on geographic and demographic data analysis</li>
+                                    <li>B2B acquisition pipeline using data-driven prospecting and segmentation</li>
                                 </ul>
                             </div>
                         </div>
@@ -497,9 +639,9 @@
                                 <h3>Sales Agent</h3>
                                 <p class="timeline-company">U.S. Cellular</p>
                                 <ul>
-                                    <li><strong>86% monthly target achievement</strong> (12 of 14 months)</li>
-                                    <li>KPI tracking: conversion rates, deal size, customer acquisition cost</li>
-                                    <li>Technical problem-solving for optimal service plan recommendations</li>
+                                    <li><strong>86% monthly target achievement</strong> (12 of 14 months) — consistent top-performer recognition</li>
+                                    <li>KPI tracking: conversion rates, deal size, customer acquisition cost optimization</li>
+                                    <li>Technical problem-solving for optimal service plan recommendations and upsell strategies</li>
                                 </ul>
                             </div>
                         </div>
@@ -507,33 +649,82 @@
 
                     <!-- Education -->
                     <div class="education-section">
-                        <h3 class="subsection-title">Education & Certifications</h3>
+                        <h3 class="subsection-title">Education &amp; Certifications</h3>
                         <div class="education-grid">
                             <div class="education-item">
                                 <h4>NewForce Intensive Data Analytics Program</h4>
                                 <p class="education-location">Nashville, TN | July - Dec 2024</p>
                                 <p>SQL, Python, Tableau, Power BI, Machine Learning, Statistical Analysis</p>
-                                <p><strong>Capstone:</strong> GitHub Language Analysis (live deployment, 78% predictive accuracy)</p>
+                                <p><strong>Capstone:</strong> GitHub Language Analysis Platform (live deployment, 78% predictive accuracy, 200K+ data points)</p>
                             </div>
                             <div class="education-item">
                                 <h4>Self-Directed Continuous Learning</h4>
                                 <ul>
                                     <li>Linux Foundation: System administration, kernel tuning, embedded systems</li>
-                                    <li>Machine Learning: PyTorch, JAX, inference optimization, LLM prototyping</li>
-                                    <li>Consciousness Research: Academic paper preparation, mathematical formalization</li>
-                                    <li>Cloud/DevOps: CI/CD pipelines, containerization, infrastructure automation</li>
+                                    <li>AI/ML: PyTorch, JAX, LLM inference optimization, local AI deployment (Ollama)</li>
+                                    <li>Consciousness Research: Academic paper formalization, mathematical modeling (arXiv prep)</li>
+                                    <li>Cloud/DevOps: CI/CD pipelines, containerization, infrastructure-as-code</li>
+                                    <li>Security Research: Ethical hacking, network analysis, hardware exploitation</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="certifications">
-                            <h4>Certifications:</h4>
-                            <div class="cert-tags">
-                                <span class="cert-tag">Data Literacy - DataCamp (Oct 2024, ID: DL0038972051530)</span>
-                                <span class="cert-tag">Python Data Associate - DataCamp (Oct 2024, ID: PDA0019023690945)</span>
-                                <span class="cert-tag">AI Engineering for Data Science</span>
-                                <span class="cert-tag">Data Manipulation in SQL</span>
-                                <span class="cert-tag">Exploratory Data Analysis in Python</span>
-                                <span class="cert-tag">Advanced Window Functions (SQL)</span>
+                            <h4>Certifications</h4>
+                            <div class="cert-grid">
+                                <div class="cert-card">
+                                    <div class="cert-card-icon">◈</div>
+                                    <div class="cert-card-body">
+                                        <div class="cert-card-title">Python Data Associate</div>
+                                        <div class="cert-card-issuer">DataCamp</div>
+                                        <div class="cert-card-meta">Oct 2024 · ID: PDA0019023690945</div>
+                                    </div>
+                                    <div class="cert-card-verified">✓</div>
+                                </div>
+                                <div class="cert-card">
+                                    <div class="cert-card-icon">◈</div>
+                                    <div class="cert-card-body">
+                                        <div class="cert-card-title">Data Literacy Certification</div>
+                                        <div class="cert-card-issuer">DataCamp</div>
+                                        <div class="cert-card-meta">Oct 2024 · ID: DL0038972051530</div>
+                                    </div>
+                                    <div class="cert-card-verified">✓</div>
+                                </div>
+                                <div class="cert-card">
+                                    <div class="cert-card-icon">◉</div>
+                                    <div class="cert-card-body">
+                                        <div class="cert-card-title">AI Engineering for Data Science</div>
+                                        <div class="cert-card-issuer">DataCamp</div>
+                                        <div class="cert-card-meta">2024</div>
+                                    </div>
+                                    <div class="cert-card-verified">✓</div>
+                                </div>
+                                <div class="cert-card">
+                                    <div class="cert-card-icon">◉</div>
+                                    <div class="cert-card-body">
+                                        <div class="cert-card-title">Data Manipulation in SQL</div>
+                                        <div class="cert-card-issuer">DataCamp</div>
+                                        <div class="cert-card-meta">2024</div>
+                                    </div>
+                                    <div class="cert-card-verified">✓</div>
+                                </div>
+                                <div class="cert-card">
+                                    <div class="cert-card-icon">◉</div>
+                                    <div class="cert-card-body">
+                                        <div class="cert-card-title">Exploratory Data Analysis in Python</div>
+                                        <div class="cert-card-issuer">DataCamp</div>
+                                        <div class="cert-card-meta">2024</div>
+                                    </div>
+                                    <div class="cert-card-verified">✓</div>
+                                </div>
+                                <div class="cert-card">
+                                    <div class="cert-card-icon">◉</div>
+                                    <div class="cert-card-body">
+                                        <div class="cert-card-title">Advanced Window Functions (SQL)</div>
+                                        <div class="cert-card-issuer">DataCamp</div>
+                                        <div class="cert-card-meta">2024</div>
+                                    </div>
+                                    <div class="cert-card-verified">✓</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -548,7 +739,7 @@
                 <div class="panel-content">
                     <div class="contact-content">
                         <div class="contact-text">
-                            <p>Ready to collaborate on data-driven solutions, consciousness research, or systems that operate at the intersection of theory and production?</p>
+                            <p>Ready to collaborate on data-driven solutions, AI infrastructure, consciousness research, or systems that operate at the intersection of theory and production?</p>
                             <p>Let's build something that maps reality.</p>
                         </div>
                         <div class="contact-methods">
@@ -577,8 +768,9 @@
 
         <!-- Footer -->
         <footer class="app-footer">
-            <p>&copy; 2025 Jacob C. Smith. Built with raw HTML, CSS, and JavaScript. No frameworks, no bloat.</p>
+            <p>&copy; 2026 Jacob C. Smith. Built with raw HTML, CSS, and JavaScript. No frameworks, no bloat.</p>
             <p class="footer-tagline">Unraveling the universe, one data point at a time.</p>
+            <p class="footer-meta">Last updated: April 2026 · <a href="https://github.com/Jacobcdsmith/jacobcdsmith.github.io" target="_blank" rel="noopener" class="footer-link">View Source</a></p>
         </footer>
 
     </div>

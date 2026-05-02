@@ -7,7 +7,7 @@ class ParticleSystem {
         this.canvas = document.getElementById('particle-canvas');
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 100; // Increased for richer effect
+        this.particleCount = 120;
         this.mouse = { x: null, y: null, radius: 180 };
 
         this.init();
@@ -108,10 +108,13 @@ class ParticleSystem {
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
                 if (distance < 140) {
-                    const opacity = (1 - distance / 140) * 0.5;
+                    const baseOpacity = (1 - distance / 140) * 0.5;
+                    const isFiring = Math.random() < 0.003;
                     this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(184, 169, 201, ${opacity})`;
-                    this.ctx.lineWidth = 0.5;
+                    this.ctx.strokeStyle = isFiring
+                        ? `rgba(201, 72, 91, ${Math.min(baseOpacity * 4, 0.9)})`
+                        : `rgba(184, 169, 201, ${baseOpacity})`;
+                    this.ctx.lineWidth = isFiring ? 1.5 : 0.5;
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
                     this.ctx.stroke();
@@ -235,16 +238,28 @@ function refreshTabAnimations(tabId) {
     if (!panel) return;
 
     const animatedElements = panel.querySelectorAll('.project-card, .timeline-item, .skill-category, .education-item, .stat, .contact-method');
-    
+
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
-        }, index * 50); // Staggered animation
+        }, index * 50);
     });
+
+    // Re-animate skill bars when skills tab is shown
+    if (tabId === 'skills') {
+        const bars = panel.querySelectorAll('.skill-bar-fill');
+        bars.forEach((bar, index) => {
+            bar.style.width = '0%';
+            const level = bar.dataset.level || '0';
+            setTimeout(() => {
+                bar.style.width = `${level}%`;
+            }, 200 + index * 55);
+        });
+    }
 }
 
 // Enhanced tab click handler with animations
@@ -534,9 +549,82 @@ function animateCounters() {
                 observer.disconnect();
             }
         }, { threshold: 0.5 });
-        
+
         observer.observe(stat);
     });
+}
+
+// ================================
+// SCROLL PROGRESS INDICATOR
+// ================================
+
+function initScrollProgress() {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    const updateProgress = throttle(() => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = `${Math.min(progress, 100)}%`;
+    }, 16);
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+}
+
+// ================================
+// TYPING ANIMATION FOR TAGLINE
+// ================================
+
+function initTypingAnimation() {
+    const element = document.getElementById('typing-tagline');
+    if (!element) return;
+
+    const fullText = element.textContent;
+    element.textContent = '';
+
+    // Start after brand name letter animation completes (~1400ms)
+    setTimeout(() => {
+        let charIndex = 0;
+        const typingSpeed = 42;
+
+        const typeChar = () => {
+            if (charIndex < fullText.length) {
+                element.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, typingSpeed);
+            } else {
+                element.classList.add('typed-done');
+            }
+        };
+        typeChar();
+    }, 1400);
+}
+
+// ================================
+// SKILL BAR INITIAL ANIMATION
+// ================================
+
+function initSkillBars() {
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    if (bars.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const level = bar.dataset.level || '0';
+                const siblings = bar.closest('ul')?.querySelectorAll('.skill-bar-fill') || [];
+                const idx = Array.from(siblings).indexOf(bar);
+                setTimeout(() => {
+                    bar.style.width = `${level}%`;
+                }, idx * 60);
+                observer.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    bars.forEach(bar => observer.observe(bar));
 }
 
 // ================================
@@ -566,35 +654,37 @@ function initMagneticButtons() {
 // ================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // Initialize particle system
-    new ParticleSystem();
 
-    // Initialize tab navigation (primary feature)
+    // Core systems
+    new ParticleSystem();
     initEnhancedTabNavigation();
-    
-    // Initialize header effects
     initHeaderScroll();
-    
-    // Initialize easter egg
     initKonamiCode();
-    
-    // Initialize performance optimizations
     initPerformanceOptimizations();
-    
-    // Enhanced interactions (skip if reduced motion)
+    initScrollProgress();
+
     if (!prefersReducedMotion) {
         init3DTiltEffect();
         initTextSplitting();
+        initTypingAnimation();
         animateCounters();
         initMagneticButtons();
+        initSkillBars();
+    } else {
+        // Instant fill for reduced motion users
+        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = `${bar.dataset.level || 0}%`;
+        });
+        const tagline = document.getElementById('typing-tagline');
+        if (tagline && !tagline.textContent) {
+            tagline.textContent = 'Systems-Oriented Data Analyst • AI Engineer • Consciousness Researcher';
+        }
     }
 
     // Console branding
-    console.log('%c⚡ JACOB C. SMITH | PORTFOLIO SYSTEM ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;');
-    console.log('%c🧠 Systems-Oriented Data Analyst • Consciousness Researcher', 'color: #b8a9c9; font-size: 12px;');
-    console.log('%c🌿 Try the Konami code...', 'color: #7d9f7a; font-size: 11px;');
-    console.log('%c✨ Enhanced with micro-interactions and 3D effects', 'color: #d4a574; font-size: 11px;');
+    console.log('%c⚡ JACOB C. SMITH | PORTFOLIO v2.0 ONLINE', 'color: #c9485b; font-size: 16px; font-weight: bold;');
+    console.log('%c🧠 Data Analyst • AI Engineer • Consciousness Researcher', 'color: #b8a9c9; font-size: 12px;');
+    console.log('%c📍 Buckhannon, WV | Available for collaboration', 'color: #7d9f7a; font-size: 11px;');
+    console.log('%c🌿 Try the Konami code... ↑↑↓↓←→←→BA', 'color: #d4a574; font-size: 11px;');
 });
