@@ -193,13 +193,13 @@ export default function Projects() {
         </div>
       </Section>
 
-      <Section
+      <GitHubActivity
+        username="Jacobcdsmith"
+        limit={10}
         eyebrow="GitHub activity"
         title="Recent commits & releases."
         lead="Live feed of the last public events from the Jacobcdsmith GitHub account. Pulled from the public GitHub API on page load and cached for a minute."
-      >
-        <GitHubActivity username="Jacobcdsmith" limit={10} />
-      </Section>
+      />
     </>
   )
 }

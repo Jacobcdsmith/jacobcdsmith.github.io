@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Section from './Section.jsx'
 import { fetchUserEvents, relativeTime } from '../lib/github.js'
 
 function describeEvent(ev) {
@@ -33,7 +34,13 @@ function describeEvent(ev) {
   }
 }
 
-export default function GitHubActivity({ username = 'Jacobcdsmith', limit = 10 }) {
+export default function GitHubActivity({
+  username = 'Jacobcdsmith',
+  limit = 10,
+  eyebrow,
+  title,
+  lead,
+}) {
   const [events, setEvents] = useState(null)
 
   useEffect(() => {
@@ -56,7 +63,7 @@ export default function GitHubActivity({ username = 'Jacobcdsmith', limit = 10 }
 
   if (items.length === 0) return null
 
-  return (
+  const list = (
     <ul className="github-activity">
       {items.map(({ ev, desc }) => {
         const repo = ev?.repo?.name || ''
@@ -92,4 +99,14 @@ export default function GitHubActivity({ username = 'Jacobcdsmith', limit = 10 }
       </li>
     </ul>
   )
+
+  if (eyebrow || title || lead) {
+    return (
+      <Section eyebrow={eyebrow} title={title} lead={lead}>
+        {list}
+      </Section>
+    )
+  }
+
+  return list
 }
