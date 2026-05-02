@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 import Section from '../components/Section.jsx'
 import Button from '../components/Button.jsx'
+import CVDownload from '../components/CVDownload.jsx'
 import FAQ from '../components/FAQ.jsx'
 import Quote from '../components/Quote.jsx'
 import CTABanner from '../components/CTABanner.jsx'
@@ -45,20 +46,20 @@ export default function Home() {
               <h1 className="hero-title">
                 I help teams turn messy reality into <span className="accent">measurable systems</span>.
               </h1>
-              <p className="hero-sub">{profile.subtagline}</p>
+              <p className="hero-sub">
+                For <strong>clients</strong> who need analytics or AI tooling that ships, for{' '}
+                <strong>peers</strong> who want the writing, and for{' '}
+                <strong>curious visitors</strong> who just want a tour.
+              </p>
 
               <div className="hero-actions">
-                <Button to="/services" variant="primary" size="lg" trackName="hero_cta_services">
-                  See how I work
+                <Button to="/contact" variant="primary" size="lg" trackName="hero_cta_hire">
+                  Work with me
                 </Button>
-                <Button
-                  href={`mailto:${profile.email}`}
-                  variant="ghost"
-                  size="lg"
-                  trackName="hero_cta_email"
-                >
-                  Start a conversation
+                <Button to="/blog" variant="ghost" size="lg" trackName="hero_cta_blog">
+                  Read the writing
                 </Button>
+                <CVDownload variant="ghost" size="lg" />
               </div>
 
               <div className="hero-meta">
@@ -154,6 +155,8 @@ export default function Home() {
           {recentPosts.map(p => (
             <article key={p.slug} className="post-card">
               <div className="post-card-meta">
+                <span className="post-card-category">{p.category}</span>
+                <span>·</span>
                 <time dateTime={p.date}>{new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
                 <span>·</span>
                 <span>{p.readingTime} min read</span>

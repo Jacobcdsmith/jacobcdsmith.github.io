@@ -199,11 +199,17 @@ ${tagMeta}
 }
 
 // Static body builder
-function visibleBlock({ eyebrow, title, lead, body }) {
+function visibleBlock({ eyebrow, title, lead, body, tldr }) {
+  const tldrBlock = tldr ? `
+      <aside style="border-left:3px solid #c9485b;background:rgba(201,72,91,0.08);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:4px;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#c9485b;margin:0 0 0.5rem;">TL;DR</p>
+        <p style="margin:0;color:#ecebe8;font-size:1rem;line-height:1.6;">${tldr}</p>
+      </aside>` : ''
   return `
       <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#c9485b;margin:0 0 0.85rem;">${escHtml(eyebrow)}</p>
       <h1 style="font-family:Georgia,serif;font-size:2.5rem;line-height:1.1;margin:0 0 1rem;color:#ecebe8;">${escHtml(title)}</h1>
       <p style="font-size:1.1rem;color:#9a9694;margin:0 0 1.5rem;max-width:60ch;">${escHtml(lead)}</p>
+      ${tldrBlock}
       ${body}
       <p style="margin-top:2rem;font-size:0.85rem;color:#9a9694;">
         <a href="/" style="color:#c9485b;">Home</a> ·
@@ -279,8 +285,14 @@ function staticRoutes(posts) {
       visibleBody: visibleBlock({
         eyebrow: `Independent practice · Buckhannon, WV`,
         title: 'I help teams turn messy reality into measurable systems.',
-        lead: 'Independent data analyst, AI red-teamer, and consciousness researcher building local-first tools, decision systems, and operational analytics.',
+        lead: 'For clients who need analytics or AI tooling that ships, for peers who want the writing, and for curious visitors who just want a tour.',
+        tldr: 'Jacob C. Smith is an independent data analyst and AI systems builder based in Buckhannon, West Virginia. Three kinds of engagements: operational analytics, AI red-teaming and safety reviews, and local-first AI system design.',
         body: `
+          <p style="margin:1.5rem 0;">
+            <a href="/contact" style="color:#c9485b;font-weight:500;">Work with me →</a> &nbsp;
+            <a href="/blog" style="color:#c9485b;">Read the writing →</a> &nbsp;
+            <a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a>
+          </p>
           <h2 style="font-family:Georgia,serif;font-size:1.6rem;margin:2rem 0 0.85rem;color:#ecebe8;">Three things I do</h2>
           <ul style="padding-left:1.2rem;color:#ecebe8;">
             <li><strong>Operational analytics engagements</strong> — SQL, Python, BI dashboards, forecasts.</li>
@@ -300,6 +312,7 @@ function staticRoutes(posts) {
         eyebrow: 'About',
         title: 'Jacob C. Smith.',
         lead: 'Independent data analyst, AI systems builder, and consciousness researcher based in Buckhannon, West Virginia.',
+        tldr: 'Jacob C. Smith is an independent data analyst, AI systems builder, and consciousness researcher based in Buckhannon, West Virginia. He works at the intersection of operational analytics and local-first AI tooling — bridging applied data work with open research on consciousness modeling.',
         body: `<p>I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The work tends to look like a dashboard that finally makes a decision clear, a red-team report that catches an AI feature before launch, or a local-first runtime that lets a team use LLMs without surrendering their data.</p>
         <p><a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a></p>`,
       }),
@@ -316,6 +329,7 @@ function staticRoutes(posts) {
         eyebrow: 'Services',
         title: 'Engagements that ship.',
         lead: 'Four ways I work with teams. Each one is scoped, time-bound, and produces an artifact your team owns.',
+        tldr: 'Four scoped engagements: operational analytics, AI red-teaming and safety reviews, local-first AI systems, and decision-architecture audits. All time-bound, with clear deliverables your team owns.',
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
           <li>Operational analytics engagements</li>
           <li>AI red-teaming &amp; safety reviews</li>
@@ -334,6 +348,7 @@ function staticRoutes(posts) {
         eyebrow: 'Projects',
         title: 'Things I’m building.',
         lead: 'A mix of open research, infrastructure, and client work.',
+        tldr: 'Two flagship projects: EMERGENT-MCF-EI (a GPU-accelerated lattice simulation modeling consciousness as a spectral filter) and JCLAW (a local-first LLM runtime with multi-provider routing, MCP support, and agentic loops). Plus selected client engagements.',
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
           <li><strong>EMERGENT-MCF-EI</strong> — GPU-accelerated lattice simulation modeling consciousness as a spectral filter.</li>
           <li><strong>JCLAW</strong> — local-first LLM runtime with multi-provider routing, MCP, and agentic loops.</li>
@@ -350,6 +365,7 @@ function staticRoutes(posts) {
         eyebrow: 'Experience',
         title: 'Selected work.',
         lead: 'For the long version, download the CV or email for references on specific engagements.',
+        tldr: 'Independent practice today; previously hands-on operational analytics, BI, and AI tooling roles. Open research on consciousness modeling (EMERGENT-MCF-EI) and local-first LLM runtimes (JCLAW) runs alongside client work.',
         body: `<p><a href="/jacob-c-smith-resume.pdf" style="color:#c9485b;">Download CV →</a></p>`,
       }),
     },
@@ -362,6 +378,7 @@ function staticRoutes(posts) {
         eyebrow: 'Contact',
         title: 'Let’s talk.',
         lead: 'One paragraph about the problem you’re trying to solve is enough to start.',
+        tldr: 'Email <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a> for new engagements (fastest), or call (304) 473-9980 for urgent matters. Based in Buckhannon, West Virginia; remote work worldwide.',
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
           <li>Email: <a href="mailto:jacobcsmithd@gmail.com" style="color:#c9485b;">jacobcsmithd@gmail.com</a></li>
           <li>Phone: <a href="tel:+13044739980" style="color:#c9485b;">(304) 473-9980</a></li>
@@ -397,6 +414,7 @@ function staticRoutes(posts) {
         eyebrow: 'Writing',
         title: 'The blog.',
         lead: 'Notes on consciousness modeling, local-first AI, decision systems, and the slow craft of shipping useful things.',
+        tldr: 'Long-form posts by Jacob C. Smith, organized into three categories — Research (consciousness modeling, EMERGENT-MCF-EI, mathematics), Engineering (local-first AI, runtimes, tooling), and Essays (systems thinking, decision architecture).',
         body: `<ul style="padding-left:1.2rem;color:#ecebe8;">
           ${posts.map(p => `<li><a href="/blog/${p.slug}/" style="color:#c9485b;">${escHtml(p.title)}</a> — <span style="color:#9a9694;">${formatDate(p.date)}</span></li>`).join('\n          ')}
         </ul>`,

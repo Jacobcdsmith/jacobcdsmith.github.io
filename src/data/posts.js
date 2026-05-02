@@ -25,6 +25,7 @@ export const posts = postsManifest
       html: markdown ? marked.parse(markdown) : '',
       readingTime: readingTimeFromMarkdown(markdown),
       tags: Array.isArray(post.tags) ? post.tags : [],
+      category: post.category || 'Notes',
     }
   })
   .sort((a, b) => (a.date < b.date ? 1 : -1))
@@ -41,7 +42,7 @@ export function getRelatedPosts(slug, limit = 2) {
     .filter(p => p.slug !== slug)
     .map(p => ({
       post: p,
-      score: p.tags.filter(t => tags.has(t)).length,
+      score: (p.category === current.category ? 2 : 0) + p.tags.filter(t => tags.has(t)).length,
     }))
     .sort((a, b) => b.score - a.score || (a.post.date < b.post.date ? 1 : -1))
   return scored.slice(0, limit).map(s => s.post)
@@ -50,6 +51,12 @@ export function getRelatedPosts(slug, limit = 2) {
 export function allTags() {
   const set = new Set()
   for (const p of posts) for (const t of p.tags) set.add(t)
+  return Array.from(set).sort()
+}
+
+export function allCategories() {
+  const set = new Set()
+  for (const p of posts) set.add(p.category)
   return Array.from(set).sort()
 }
 

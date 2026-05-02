@@ -53,6 +53,8 @@ export default function BlogPost() {
       <Section>
         <header className="post-header">
           <div className="post-meta">
+            <span className="post-card-category">{post.category}</span>
+            <span>·</span>
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <span>·</span>
             <span>{post.readingTime} min read</span>
@@ -67,8 +69,20 @@ export default function BlogPost() {
             </div>
           )}
           <div className="post-byline">
-            <span>By</span>
-            <Link to="/about" className="post-byline-name">{profile.name}</Link>
+            <Link to="/about" className="post-byline-link" aria-label={`About ${profile.name}`}>
+              <img
+                src="/avatar.svg"
+                alt=""
+                width="40"
+                height="40"
+                className="post-byline-avatar"
+                loading="lazy"
+              />
+              <span className="post-byline-text">
+                <span className="post-byline-by">By</span>
+                <span className="post-byline-name">{profile.name}</span>
+              </span>
+            </Link>
           </div>
         </header>
 

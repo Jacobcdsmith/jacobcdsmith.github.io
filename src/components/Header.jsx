@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ThemeToggle from './ThemeToggle.jsx'
+import Button from './Button.jsx'
 
 const tabs = [
   { path: '/',           label: 'Home',       end: true },
@@ -9,7 +10,6 @@ const tabs = [
   { path: '/projects',   label: 'Projects'               },
   { path: '/experience', label: 'Experience'             },
   { path: '/blog',       label: 'Blog',       blogActive: true },
-  { path: '/contact',    label: 'Contact'                },
 ]
 
 export default function Header() {
@@ -43,9 +43,7 @@ export default function Header() {
           {tabs.map(tab => {
             const active = tab.blogActive
               ? location.pathname.startsWith('/blog')
-              : tab.end
-                ? location.pathname === tab.path
-                : location.pathname === tab.path
+              : location.pathname === tab.path
             return (
               <NavLink
                 key={tab.path}
@@ -57,10 +55,19 @@ export default function Header() {
               </NavLink>
             )
           })}
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => `nav-link nav-link-mobile-only${isActive ? ' is-active' : ''}`}
+          >
+            Contact
+          </NavLink>
         </nav>
 
         <div className="header-actions">
           <ThemeToggle />
+          <Button to="/contact" variant="primary" size="sm" trackName="header_cta_hire">
+            Work with me
+          </Button>
         </div>
       </div>
     </header>

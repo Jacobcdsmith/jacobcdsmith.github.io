@@ -4,7 +4,7 @@ import SEO from '../components/SEO.jsx'
 import Section from '../components/Section.jsx'
 import Tag from '../components/Tag.jsx'
 import NewsletterForm from '../components/NewsletterForm.jsx'
-import { posts, allTags } from '../data/posts.js'
+import { posts, allTags, allCategories } from '../data/posts.js'
 import profile from '../data/profile.js'
 import { breadcrumbSchema, websiteSchema } from '../lib/structured-data.js'
 
@@ -16,42 +16,41 @@ export default function BlogList() {
   const [searchParams, setSearchParams] = useSearchParams()
   const initialQuery = searchParams.get('q') || ''
   const initialTag = searchParams.get('tag') || ''
+  const initialCategory = searchParams.get('category') || ''
   const [query, setQuery] = useState(initialQuery)
   const [activeTag, setActiveTag] = useState(initialTag)
+  const [activeCategory, setActiveCategory] = useState(initialCategory)
   const tags = allTags()
+  const categories = allCategories()
 
-  const updateQuery = q => {
-    setQuery(q)
+  const updateParams = (key, value) => {
     const next = new URLSearchParams(searchParams)
-    if (q) next.set('q', q)
-    else next.delete('q')
+    if (value) next.set(key, value)
+    else next.delete(key)
     setSearchParams(next, { replace: true })
   }
-
-  const setTag = t => {
-    setActiveTag(t)
-    const next = new URLSearchParams(searchParams)
-    if (t) next.set('tag', t)
-    else next.delete('tag')
-    setSearchParams(next, { replace: true })
-  }
+  const updateQuery = q => { setQuery(q); updateParams('q', q) }
+  const setTag = t => { setActiveTag(t); updateParams('tag', t) }
+  const setCategory = c => { setActiveCategory(c); updateParams('category', c) }
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return posts.filter(p => {
+      if (activeCategory && p.category !== activeCategory) return false
       if (activeTag && !p.tags.includes(activeTag)) return false
       if (!q) return true
       return (
         p.title.toLowerCase().includes(q) ||
         p.excerpt.toLowerCase().includes(q) ||
         (p.markdown || '').toLowerCase().includes(q) ||
-        p.tags.some(t => t.toLowerCase().includes(q))
+        p.tags.some(t => t.toLowerCase().includes(q)) ||
+        p.category.toLowerCase().includes(q)
       )
     })
-  }, [query, activeTag])
+  }, [query, activeTag, activeCategory])
 
   const featured = posts[0]
-  const showFeatured = !query && !activeTag && featured
+  const showFeatured = !query && !activeTag && !activeCategory && featured
   const list = showFeatured ? filtered.slice(1) : filtered
 
   return (
@@ -80,6 +79,19 @@ export default function BlogList() {
         </div>
       </header>
 
+      <Section eyebrow="In short" title="The TL;DR" tone="muted">
+        <div className="answer-box">
+          <p className="answer-box-label">TL;DR</p>
+          <p>
+            Long-form posts by <strong>{profile.name}</strong>, organized into three categories —
+            <strong> Research</strong> (consciousness modeling, EMERGENT-MCF-EI, mathematics),
+            <strong> Engineering</strong> (local-first AI, runtimes, tooling), and
+            <strong> Essays</strong> (systems thinking, decision architecture). Search across post
+            text below, or filter by category and tag.
+          </p>
+        </div>
+      </Section>
+
       <Section>
         <div className="blog-toolbar">
           <input
@@ -90,8 +102,31 @@ export default function BlogList() {
             onChange={e => updateQuery(e.target.value)}
             aria-label="Search blog posts"
           />
+          {categories.length > 0 && (
+            <div className="category-filter" role="group" aria-label="Filter by category">
+              <span className="filter-label">Category:</span>
+              <button
+                type="button"
+                onClick={() => setCategory('')}
+                className={!activeCategory ? 'is-active' : ''}
+              >
+                All
+              </button>
+              {categories.map(c => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setCategory(c === activeCategory ? '' : c)}
+                  className={activeCategory === c ? 'is-active' : ''}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
           {tags.length > 0 && (
             <div className="tag-filter" role="group" aria-label="Filter by tag">
+              <span className="filter-label">Tag:</span>
               <button
                 type="button"
                 onClick={() => setTag('')}
@@ -115,7 +150,7 @@ export default function BlogList() {
 
         {showFeatured && featured && (
           <Link to={`/blog/${featured.slug}`} className="featured-post">
-            <span className="featured-eyebrow">Featured</span>
+            <span className="featured-eyebrow">Featured · {featured.category}</span>
             <h2 className="featured-title">{featured.title}</h2>
             <p className="featured-excerpt">{featured.excerpt}</p>
             <p className="featured-meta">
@@ -126,13 +161,15 @@ export default function BlogList() {
 
         {list.length === 0 ? (
           <div className="empty-state">
-            No posts match your search. Try a different term or clear the tag filter.
+            No posts match your search. Try a different term or clear the filters.
           </div>
         ) : (
           <div className="post-list">
             {list.map(p => (
               <article key={p.slug} className="post-card">
                 <div className="post-card-meta">
+                  <span className="post-card-category">{p.category}</span>
+                  <span>·</span>
                   <time dateTime={p.date}>{formatDate(p.date)}</time>
                   <span>·</span>
                   <span>{p.readingTime} min read</span>
