@@ -22,57 +22,24 @@ function describeEvent(ev) {
       }
     }
     case 'PullRequestEvent': {
-      const action = ev.payload?.action || 'opened'
+      if (ev.payload?.action !== 'opened') return null
       return {
         kind: 'pr',
-        label: `${cap(action)} PR in ${repo}`,
+        label: `Opened PR in ${repo}`,
       }
     }
-    case 'CreateEvent': {
-      const refType = ev.payload?.ref_type || 'item'
-      const ref = ev.payload?.ref ? ` "${ev.payload.ref}"` : ''
-      return {
-        kind: 'create',
-        label: `Created ${refType}${ref} in ${repo}`,
-      }
-    }
-    case 'IssuesEvent': {
-      const action = ev.payload?.action || 'opened'
-      return {
-        kind: 'issue',
-        label: `${cap(action)} issue in ${repo}`,
-      }
-    }
-    case 'IssueCommentEvent':
-      return { kind: 'comment', label: `Commented on issue in ${repo}` }
-    case 'WatchEvent':
-      return { kind: 'star', label: `Starred ${repo}` }
-    case 'ForkEvent':
-      return { kind: 'fork', label: `Forked ${repo}` }
-    case 'PullRequestReviewEvent':
-      return { kind: 'review', label: `Reviewed PR in ${repo}` }
     default:
       return null
   }
 }
 
-function cap(s) {
-  if (!s) return s
-  return s[0].toUpperCase() + s.slice(1)
-}
-
 export default function GitHubActivity({ username = 'Jacobcdsmith', limit = 10 }) {
   const [events, setEvents] = useState(null)
-  const [error, setError] = useState(false)
 
   useEffect(() => {
     let cancelled = false
     fetchUserEvents(username).then(data => {
       if (cancelled) return
-      if (!data) {
-        setError(true)
-        return
-      }
       setEvents(data)
     })
     return () => {
@@ -80,28 +47,14 @@ export default function GitHubActivity({ username = 'Jacobcdsmith', limit = 10 }
     }
   }, [username])
 
-  if (error) {
-    return (
-      <p className="github-activity-status">
-        GitHub activity is currently unavailable.
-      </p>
-    )
-  }
-
-  if (!events) {
-    return <p className="github-activity-status">Loading recent activity…</p>
-  }
+  if (!events || !Array.isArray(events)) return null
 
   const items = events
     .map(ev => ({ ev, desc: describeEvent(ev) }))
     .filter(x => x.desc)
     .slice(0, limit)
 
-  if (items.length === 0) {
-    return (
-      <p className="github-activity-status">No recent public activity.</p>
-    )
-  }
+  if (items.length === 0) return null
 
   return (
     <ul className="github-activity">
