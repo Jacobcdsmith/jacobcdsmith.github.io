@@ -1,0 +1,90 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Courier Prime",
+      "role": "monospace"
+    },
+    {
+      "family": "Times New Roman",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#0071A9",
+    "secondary": "#69727D",
+    "accent": "#FF0000",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#FF0000"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Times New Roman",
+      "heading": "Times New Roman"
+    },
+    "fontStacks": {
+      "heading": [
+        "Times New Roman"
+      ],
+      "body": [
+        "Times New Roman"
+      ],
+      "paragraph": [
+        "courier",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "16px",
+      "body": "15px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "6px"
+  },
+  "components": {},
+  "images": {
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": "/wp-content/uploads/2024/03/Noushirt-2.webp"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "No valid brand logo - the candidate is invisible and does not provide a clear representation of the brand.",
+    "confidence": 0.3,
+    "rejected": true,
+    "source": "llm"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "tech enthusiasts and developers"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0.9,
+    "overall": 0.45
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "No valid brand logo - the candidate is invisible and does not provide a clear representation of the brand.",
+        "confidence": 0.3
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": false,
+      "llmSucceeded": false
+    }
+  }
+}
