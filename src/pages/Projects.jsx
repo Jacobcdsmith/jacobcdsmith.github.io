@@ -4,6 +4,7 @@ import Tag from '../components/Tag.jsx'
 import Button from '../components/Button.jsx'
 import RepoStats from '../components/RepoStats.jsx'
 import GitHubActivity from '../components/GitHubActivity.jsx'
+import AgentGatewaySchematic from '../components/AgentGatewaySchematic.jsx'
 import profile from '../data/profile.js'
 import { breadcrumbSchema } from '../lib/structured-data.js'
 
@@ -157,6 +158,14 @@ export default function Projects() {
           </aside>
         </div>
       </header>
+
+      <Section
+        eyebrow="How it works"
+        title="Agent gateway, in motion."
+        lead="A schematic of how a request flows through the local-first agent stack: client to WebSocket gateway to SOUL.md identity layer to router to one of three subagents to tool calls to response. Hover to pause, click any node for detail."
+      >
+        <AgentGatewaySchematic />
+      </Section>
 
       <Section>
         <div className="card-grid">

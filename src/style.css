@@ -1591,3 +1591,217 @@ main { flex: 1; }
   }
   .github-activity-time { text-align: left; }
 }
+
+/* ---------- Agent gateway schematic (Projects page; reusable in blog) ---------- */
+.schematic {
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px dashed var(--border);
+  background: var(--bg-2);
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0;
+}
+@media (min-width: 768px) {
+  .schematic { padding: 2rem; }
+}
+
+.schematic-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--font-mono);
+  overflow: visible;
+}
+
+.schematic-wire {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.55;
+}
+
+.schematic-node { cursor: pointer; outline: none; }
+.schematic-node-rect {
+  fill: var(--bg);
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+  transition: fill var(--transition), stroke-width var(--transition);
+}
+.schematic-node-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  fill: var(--text);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.schematic-node:hover .schematic-node-rect,
+.schematic-node.is-active .schematic-node-rect {
+  fill: color-mix(in srgb, var(--color-primary) 14%, var(--bg));
+  stroke-width: 2.25;
+}
+.schematic-node.is-selected .schematic-node-rect {
+  fill: color-mix(in srgb, var(--color-primary) 22%, var(--bg));
+  stroke-width: 2.5;
+}
+.schematic-node:focus-visible .schematic-node-rect {
+  stroke-dasharray: 3 3;
+  stroke-width: 2.5;
+}
+
+/* The packet — animated request blip travelling the wires */
+.schematic-packet {
+  fill: var(--color-primary);
+  transform: translate(60px, 160px);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-primary) 70%, transparent));
+}
+.schematic-packet-codegen  { animation: schematic-packet-codegen  5.4s linear infinite; }
+.schematic-packet-redteam  { animation: schematic-packet-redteam  5.4s linear infinite; animation-delay: -1.8s; }
+.schematic-packet-resource { animation: schematic-packet-resource 5.4s linear infinite; animation-delay: -3.6s; }
+
+.schematic[data-paused='true'] .schematic-packet { animation-play-state: paused; }
+
+@keyframes schematic-packet-codegen {
+  0%      { transform: translate(60px, 160px); }
+  11.54%  { transform: translate(180px, 160px); }
+  25%     { transform: translate(320px, 160px); }
+  37.5%   { transform: translate(450px, 160px); }
+  45.19%  { transform: translate(530px, 160px); }
+  54.81%  { transform: translate(530px, 60px); }
+  62.5%   { transform: translate(610px, 60px); }
+  70.19%  { transform: translate(690px, 60px); }
+  79.81%  { transform: translate(690px, 160px); }
+  87.5%   { transform: translate(770px, 160px); }
+  100%    { transform: translate(900px, 160px); }
+}
+@keyframes schematic-packet-redteam {
+  0%      { transform: translate(60px, 160px); }
+  14.29%  { transform: translate(180px, 160px); }
+  30.95%  { transform: translate(320px, 160px); }
+  46.43%  { transform: translate(450px, 160px); }
+  65.48%  { transform: translate(610px, 160px); }
+  84.52%  { transform: translate(770px, 160px); }
+  100%    { transform: translate(900px, 160px); }
+}
+@keyframes schematic-packet-resource {
+  0%      { transform: translate(60px, 160px); }
+  11.54%  { transform: translate(180px, 160px); }
+  25%     { transform: translate(320px, 160px); }
+  37.5%   { transform: translate(450px, 160px); }
+  45.19%  { transform: translate(530px, 160px); }
+  54.81%  { transform: translate(530px, 260px); }
+  62.5%   { transform: translate(610px, 260px); }
+  70.19%  { transform: translate(690px, 260px); }
+  79.81%  { transform: translate(690px, 160px); }
+  87.5%   { transform: translate(770px, 160px); }
+  100%    { transform: translate(900px, 160px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schematic-packet { animation: none !important; }
+  .schematic-packet-codegen  { transform: translate(180px, 160px); }
+  .schematic-packet-redteam  { transform: translate(450px, 160px); }
+  .schematic-packet-resource { transform: translate(770px, 160px); }
+}
+
+/* Caption / detail panel below the schematic */
+.schematic-caption {
+  border-top: 1px dashed var(--border);
+  padding: 1rem 0 0;
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text);
+  position: relative;
+  min-height: 4.5rem;
+}
+.schematic-caption-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin: 0 0 0.25rem;
+}
+.schematic-caption-lead {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.schematic-caption-body {
+  margin: 0 0 0.6rem;
+  font-size: var(--fs-sm);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 62ch;
+}
+.schematic-caption-tools {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+.schematic-caption-tools-label {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.schematic-caption-close {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 0;
+}
+.schematic-caption-close:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.schematic-hint {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.schematic-hint-key {
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-right: 0.4rem;
+}
+.schematic-hint kbd {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  padding: 0.05rem 0.35rem;
+  margin: 0 0.15rem;
+  background: var(--bg);
+  color: var(--text);
+}

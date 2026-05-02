@@ -38,7 +38,9 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 │   ├── components/             # Header (bracket-wrapped brand via ::before/::after),
 │   │                           # Footer, ParticleCanvas (dark-mode only), SEO, Button,
 │   │                           # Section, Tag, Quote, FAQ, NewsletterForm, CVDownload,
-│   │                           # ThemeToggle, SocialShare, RelatedPosts, CTABanner
+│   │                           # ThemeToggle, SocialShare, RelatedPosts, CTABanner,
+│   │                           # AgentGatewaySchematic (interactive blueprint SVG;
+│   │                           # also embeddable in the agent gateway blog post)
 │   ├── data/                   # profile, services (4 original pillars), faq,
 │   │                           # testimonials.json (factual delivery cards),
 │   │                           # posts (synchronous markdown loader via import.meta.glob)
@@ -57,7 +59,7 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 - `/` Home — hero (original "messy reality into measurable systems" voice + audience trio + 3 pillars), TL;DR, services preview (4 pillars), recent posts, selected delivery (3 testimonial cards), FAQ, newsletter, CTA
 - `/about` About bio + CV download (operational analytics, AI red-teaming, local-first AI, embedded skill clusters)
 - `/services` Four scoped offerings (Operational Analytics / AI Red-Teaming / Local-First AI / Systems Audits & Decision Architecture) with proof links to Readyfuels and Nous Research embedded as evidence
-- `/projects` Project showcase (EMERGENT-MCF-EI, JCLAW, Hermes plugin, MCPStarfleetCommand, local WebSocket MCP gateway, WVRTP, UNIHIKER K10, ESP32-S3, this site, pro bono engagements)
+- `/projects` Project showcase (EMERGENT-MCF-EI, JCLAW, Hermes plugin, MCPStarfleetCommand, local WebSocket MCP gateway, WVRTP, UNIHIKER K10, ESP32-S3, this site, pro bono engagements). Featured "How it works" section above the grid renders an interactive `AgentGatewaySchematic` (cyanotype blueprint SVG; CLIENT → WS GATEWAY → SOUL.md → ROUTER → CODEGEN/RED-TEAM/RESOURCE → TOOL CALLS → RESPONSE) with three CSS-keyframe-animated request packets, hover-to-pause, click-to-reveal node detail, keyboard reachable, `prefers-reduced-motion` respected, screen-reader fallback list, light + dark theme.
 - `/experience` Career timeline (Independent Practice with Readyfuels + Nous Research delivery, EMERGENT-MCF-EI, JCLAW, NewForce Cohort 11, Bridging Innovations) + CV download
 - `/contact` Contact methods, free discovery call, NDAs welcome
 - `/blog` Blog index with search, category filters, featured post
