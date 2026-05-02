@@ -26,6 +26,7 @@ export const posts = postsManifest
       readingTime: readingTimeFromMarkdown(markdown),
       tags: Array.isArray(post.tags) ? post.tags : [],
       category: post.category || 'Notes',
+      hero: post.hero || null,
     }
   })
   .sort((a, b) => (a.date < b.date ? 1 : -1))

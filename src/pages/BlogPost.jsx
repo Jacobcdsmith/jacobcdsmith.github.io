@@ -5,9 +5,17 @@ import Tag from '../components/Tag.jsx'
 import SocialShare from '../components/SocialShare.jsx'
 import RelatedPosts from '../components/RelatedPosts.jsx'
 import NewsletterForm from '../components/NewsletterForm.jsx'
+import AgentGatewaySchematic from '../components/AgentGatewaySchematic.jsx'
 import { getPost, getRelatedPosts } from '../data/posts.js'
 import profile from '../data/profile.js'
 import { blogPostingSchema, breadcrumbSchema } from '../lib/structured-data.js'
+
+// Map of hero figure IDs (from posts.json `hero` field) to React components.
+// When a post declares `"hero": "agent-gateway-schematic"`, the matching
+// component is rendered above the prose body as an interactive figure.
+const HERO_FIGURES = {
+  'agent-gateway-schematic': AgentGatewaySchematic,
+}
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -30,6 +38,7 @@ export default function BlogPost() {
   }
 
   const related = getRelatedPosts(slug)
+  const HeroFigure = post.hero ? HERO_FIGURES[post.hero] : null
 
   return (
     <>
@@ -84,6 +93,12 @@ export default function BlogPost() {
             </div>
           )}
         </header>
+
+        {HeroFigure && (
+          <div className="post-hero-figure">
+            <HeroFigure />
+          </div>
+        )}
 
         <article
           className="prose"

@@ -23,7 +23,9 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 /
 ├── blog/
 │   ├── posts/                  # Markdown sources
-│   └── posts.json              # Post metadata (slug, date, title, excerpt, tags, category)
+│   └── posts.json              # Post metadata (slug, date, title, excerpt, tags,
+│                               #   category, optional `hero` key for an interactive
+│                               #   React hero figure — see HERO_FIGURES in BlogPost.jsx)
 ├── public/                     # Static assets shipped as-is
 │   ├── favicon.svg             # Cyanotype-blue `jcs` mark
 │   ├── og-default.svg          # Default Open Graph card (cyanotype blue)

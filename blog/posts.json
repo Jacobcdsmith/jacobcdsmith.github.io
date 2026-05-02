@@ -1,5 +1,14 @@
 [
   {
+    "slug": "embedded-agents-on-the-edge",
+    "title": "Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway",
+    "date": "2026-05-02",
+    "category": "Engineering",
+    "excerpt": "A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand.",
+    "tags": ["embedded", "mcp", "local-first", "unihiker", "esp32-s3"],
+    "hero": "agent-gateway-schematic"
+  },
+  {
     "slug": "consciousness-as-spectral-filter",
     "title": "Consciousness as a Spectral Filter: A Mathematical Framework",
     "date": "2026-04-15",
