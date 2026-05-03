@@ -81,7 +81,8 @@ the Python toolchain automatically.
 
 ## Reviewing the redaction audit
 
-Two audit logs are produced on every build:
+Two audit logs are produced on every build, both under `scripts/book/`
+(a source directory — never deployed):
 
 - `scripts/book/redaction.log` — **append-only history**: every run is
   concatenated. Useful for tracking redaction drift over time.
@@ -91,16 +92,31 @@ Two audit logs are produced on every build:
   spot-checking a build. The newest 10 runs are kept; older snapshots
   rotate out automatically.
 
-## Intermediate outputs
+Snippets in the logs always replace the matched span with a safe
+`‹REDACTED:N›` placeholder (where N is the matched length) so the audit
+itself never re-leaks the very PII or secrets the redactor just removed.
+Surrounding context (~24 chars) is also scrubbed for incidental email-
+or opaque-token-shaped runs.
 
-Before the PDF is built, the orchestrator writes one markdown file
-per chapter to `dist/book/chapters/NN-slug.md`. Each file holds the
-full blended-voice text of every selected conversation in that
-chapter, so you can:
+## Intermediate outputs (PRIVATE — never deployed)
 
-- diff two builds to see what the clustering / selection changed,
-- hand a chapter off to a copy editor without sharing the PDF,
-- or re-typeset with a different tool later.
+Before the PDF is built, the orchestrator writes private intermediates
+under `.local/book/` (outside the Vite build, never copied to `dist/`,
+never published):
+
+- `.local/book/chapters/NN-slug.md` — one markdown file per chapter,
+  full blended-voice text of every selected conversation. Use these
+  to diff two builds, hand a chapter to a copy editor, or re-typeset
+  with another tool later.
+- `.local/book/manifest.json` — machine-readable index of which
+  threads were placed in which chapter, with cluster keywords and
+  per-thread metadata.
+- `.local/book/conversations.normalized.json` — every KEPT conversation
+  (post-redaction, pre-filing-dropped threads excluded) in normalized
+  form, for end-to-end pipeline traceability.
+
+The ONLY book-pipeline outputs that are allowed in deployed paths
+(`dist/`, `attached_assets/`) are the PDF itself and its mirror copy.
 
 ## Status
 

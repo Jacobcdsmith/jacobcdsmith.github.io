@@ -28,11 +28,18 @@ from typeset import build_pdf               # noqa: E402
 SOURCE_JSON = ROOT / "attached_assets" / "conversations_1777770283870.json"
 WORDLIST    = HERE / "redact_terms.txt"
 AUDIT_LOG   = HERE / "redaction.log"
+# Public artifacts — the PDF and its mirror copy. These are the ONLY
+# book-pipeline outputs that are allowed inside `dist/` (the static-site
+# deploy target) or `attached_assets/`. Everything else is private.
 OUT_PDF     = ROOT / "dist" / "monologue-compilation-DRAFT.pdf"
 MIRROR_PDF  = ROOT / "attached_assets" / "monologue-compilation-DRAFT.pdf"
-CHAPTERS_DIR     = ROOT / "dist" / "book" / "chapters"
-MANIFEST_JSON    = ROOT / "dist" / "book" / "manifest.json"
-NORMALIZED_JSON  = ROOT / "dist" / "book" / "conversations.normalized.json"
+# Private intermediates — kept under `.local/` so they are never picked up
+# by the Vite build, never copied to `dist/`, and never deployed. Reviewers
+# inspect these locally; they MUST NOT be served from the website.
+WORK_DIR         = ROOT / ".local" / "book"
+CHAPTERS_DIR     = WORK_DIR / "chapters"
+MANIFEST_JSON    = WORK_DIR / "manifest.json"
+NORMALIZED_JSON  = WORK_DIR / "conversations.normalized.json"
 
 N_CLUSTERS    = 12
 PER_CHAPTER   = 5
@@ -56,6 +63,7 @@ def main() -> int:
     # Per-build audit log: keep one consolidated history file (appended) but
     # also write a fresh, single-run log next to it for easy review of just
     # this build. Older per-run logs auto-rotate (keep most recent 10).
+    # Both live under `scripts/book/` (a source dir, never deployed).
     log = AuditLog(AUDIT_LOG)
     runs_dir = AUDIT_LOG.parent / "redaction_runs"
     runs_dir.mkdir(parents=True, exist_ok=True)
@@ -102,17 +110,16 @@ def main() -> int:
           f"(dropped {dropped_prefiling} conversation(s) flagged pre-filing)")
 
     # Normalized full-conversation intermediate. Captures the post-redaction
-    # state of every kept conversation in machine-readable form so the
-    # pipeline is traceable end-to-end (parse -> redact -> THIS -> cluster
-    # -> typeset). Independent of which threads were ultimately *selected*
-    # for the book (that's in manifest.json).
+    # state of every KEPT conversation (i.e. `cleaned`, NOT `convs`, so any
+    # conversation dropped by the pre-filing guard never lands here). Lives
+    # under `.local/book/` so it is never deployed.
     import json as _json
     NORMALIZED_JSON.parent.mkdir(parents=True, exist_ok=True)
     NORMALIZED_JSON.write_text(
         _json.dumps(
             {
                 "source": str(SOURCE_JSON.relative_to(ROOT)),
-                "count": len(convs),
+                "count": len(cleaned),
                 "conversations": [
                     {
                         "id": c.id,
@@ -129,7 +136,7 @@ def main() -> int:
                             for t in c.turns
                         ],
                     }
-                    for c in convs
+                    for c in cleaned
                 ],
             },
             indent=2,

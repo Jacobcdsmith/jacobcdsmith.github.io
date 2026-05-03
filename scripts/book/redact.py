@@ -125,17 +125,39 @@ class AuditLog:
 
 # --- Public API ---------------------------------------------------------------
 def _snippets_for(pattern: re.Pattern[str], text: str, ctx: int = 24) -> list[str]:
-    """Return up to a few `…before<MATCH>after…` context strings for review."""
+    """Return up to a few `…before‹REDACTED:N›after…` context strings.
+
+    The matched span is REPLACED with a safe placeholder so the audit log
+    never re-leaks the very PII / secret the redactor just removed from the
+    PDF. Only the surrounding ~24 chars of context survive, and they pass
+    through `_scrub_context` to strip anything that itself looks like a
+    secret (e.g. neighbouring emails / tokens that haven't been redacted
+    by *this particular* pattern yet).
+    """
     snips: list[str] = []
     for m in pattern.finditer(text):
         a = max(0, m.start() - ctx)
         b = min(len(text), m.end() + ctx)
-        before = text[a:m.start()].replace("\n", " ")
-        after  = text[m.end():b].replace("\n", " ")
-        snips.append(f"…{before}<{m.group(0)[:40]}>{after}…")
+        before = _scrub_context(text[a:m.start()].replace("\n", " "))
+        after  = _scrub_context(text[m.end():b].replace("\n", " "))
+        snips.append(f"…{before}‹REDACTED:{len(m.group(0))}›{after}…")
         if len(snips) >= 3:
             break
     return snips
+
+
+_CONTEXT_SCRUBBERS = (
+    EMAIL_RE,
+    re.compile(r"[A-Za-z0-9+/_=-]{16,}"),  # any longish opaque run
+)
+
+
+def _scrub_context(s: str) -> str:
+    """Mask anything in the surrounding context that itself looks sensitive."""
+    out = s
+    for pat in _CONTEXT_SCRUBBERS:
+        out = pat.sub("‹*›", out)
+    return out
 
 
 def redact_text(text: str, conv_id: str, terms: Iterable[Term], log: AuditLog) -> str:
