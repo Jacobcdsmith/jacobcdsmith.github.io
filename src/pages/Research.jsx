@@ -7,15 +7,15 @@ import research from '../data/research.js'
 import { breadcrumbSchema } from '../lib/structured-data.js'
 
 const STATUS_LABEL = {
-  'public':     'Public',
-  'summary':    'Summary-only · pre-filing',
-  'on-request': 'On request',
+  'public':      'Public',
+  'summary':     'Summary-only · pre-filing',
+  'in-revision': 'Summary-only · in revision',
+  'on-request':  'On request',
 }
 
-const STATUS_TONE = {
-  'public':     'positive',
-  'summary':    'neutral',
-  'on-request': 'neutral',
+const SUMMARY_NOTE = {
+  'summary':     'Full text available on request post-filing',
+  'in-revision': 'Full text not yet available — in revision',
 }
 
 export default function Research() {
@@ -82,9 +82,9 @@ export default function Research() {
                     {r.fileLabel} →
                   </Button>
                 )}
-                {r.status === 'summary' && (
+                {(r.status === 'summary' || r.status === 'in-revision') && (
                   <p style={{ margin: 0, fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#7a8090' }}>
-                    Full text available on request post-filing
+                    {SUMMARY_NOTE[r.status]}
                   </p>
                 )}
               </div>

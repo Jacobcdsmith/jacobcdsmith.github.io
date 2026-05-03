@@ -12,7 +12,7 @@ export const research = [
   {
     slug: 'emergent-relational-ontology',
     title: 'Emergent Relational Ontology (ERO)',
-    status: 'summary',
+    status: 'in-revision',
     summary:
       'An in-progress relational ontology framework — a companion piece to the EMERGENT-MCF-EI consciousness modeling thread. Treats entities as stable patterns within a substrate of relations rather than as primitives with relations attached. Currently in revision; not yet ready for public release.',
     tags: ['ontology', 'systems-theory', 'foundations', 'in-revision'],
