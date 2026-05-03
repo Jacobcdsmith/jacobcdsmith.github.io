@@ -68,8 +68,27 @@ The TTFs ship with the repo so the build is deterministic offline.
 
 ## Requirements
 
-Python ≥ 3.11, plus: `scikit-learn`, `nltk`, `reportlab`, `pillow`,
-`numpy`. These are installed at the project level (see `replit.md`).
+Python ≥ 3.11. Install dependencies with:
+
+```bash
+pip install -r scripts/book/requirements.txt
+```
+
+Pinned in `scripts/book/requirements.txt`: `scikit-learn`, `nltk`,
+`reportlab`, `pillow`, `numpy`. The same set is mirrored in the
+top-level `pyproject.toml` so Replit's package manager can resolve
+the Python toolchain automatically.
+
+## Intermediate outputs
+
+Before the PDF is built, the orchestrator writes one markdown file
+per chapter to `dist/book/chapters/NN-slug.md`. Each file holds the
+full blended-voice text of every selected conversation in that
+chapter, so you can:
+
+- diff two builds to see what the clustering / selection changed,
+- hand a chapter off to a copy editor without sharing the PDF,
+- or re-typeset with a different tool later.
 
 ## Status
 

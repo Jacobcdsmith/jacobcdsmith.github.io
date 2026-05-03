@@ -30,6 +30,7 @@ WORDLIST    = HERE / "redact_terms.txt"
 AUDIT_LOG   = HERE / "redaction.log"
 OUT_PDF     = ROOT / "dist" / "monologue-compilation-DRAFT.pdf"
 MIRROR_PDF  = ROOT / "attached_assets" / "monologue-compilation-DRAFT.pdf"
+CHAPTERS_DIR = ROOT / "dist" / "book" / "chapters"
 
 N_CLUSTERS    = 12
 PER_CHAPTER   = 5
@@ -93,6 +94,41 @@ def main() -> int:
         print(f"        {i:2d}. {ch.title:40s}  "
               f"({ch.date_range[0]}–{ch.date_range[1]})  "
               f"n={len(ch.conversations)}")
+
+    # Emit per-chapter markdown intermediates so the typesetting stage
+    # can be inspected, diffed, or re-typeset by other tools without
+    # re-running the upstream pipeline.
+    CHAPTERS_DIR.mkdir(parents=True, exist_ok=True)
+    for old in CHAPTERS_DIR.glob("*.md"):
+        old.unlink()
+    import re as _re
+    def _slug(s: str) -> str:
+        return _re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "chapter"
+    for i, ch in enumerate(chapters, 1):
+        path = CHAPTERS_DIR / f"{i:02d}-{_slug(ch.title)}.md"
+        lines = [
+            f"# Chapter {i:02d} · {ch.title.upper()}",
+            "",
+            f"_{ch.date_range[0]} – {ch.date_range[1]}_  ",
+            f"_Keywords: {', '.join(ch.keywords[:8])}_",
+            "",
+            "---",
+            "",
+        ]
+        for conv in ch.conversations:
+            lines.append(f"## {conv.title}")
+            lines.append(
+                f"_{conv.created.strftime('%Y · %b %d')}  ·  "
+                f"{conv.message_count} turns  ·  "
+                f"{conv.char_count:,} characters_"
+            )
+            lines.append("")
+            lines.append(conv.blended_text)
+            lines.append("")
+            lines.append("---")
+            lines.append("")
+        path.write_text("\n".join(lines), encoding="utf-8")
+    print(f"[book] wrote {len(chapters)} chapter markdown files → {CHAPTERS_DIR}")
 
     OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
     print(f"[book] typesetting → {OUT_PDF}")

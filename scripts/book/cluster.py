@@ -172,7 +172,11 @@ def cluster_conversations(
             date_range=date_range,
         ))
 
-    chapters.sort(key=lambda ch: ch.conversations[0].create_time)
+    # Order chapters by cluster (deterministic) — explicitly NOT
+    # chronological, per the task plan: a reader should move through
+    # themes, not the calendar. Within a chapter, conversations remain
+    # in chronological order.
+    chapters.sort(key=lambda ch: ch.cluster_id)
     return chapters
 
 
