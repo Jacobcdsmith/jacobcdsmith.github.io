@@ -228,6 +228,7 @@ function visibleBlock({ eyebrow, title, lead, body, tldr }) {
         <a href="/about" style="color:#1d4dba;">About</a> ·
         <a href="/services" style="color:#1d4dba;">Services</a> ·
         <a href="/projects" style="color:#1d4dba;">Projects</a> ·
+        <a href="/research" style="color:#1d4dba;">Research</a> ·
         <a href="/experience" style="color:#1d4dba;">Experience</a> ·
         <a href="/blog" style="color:#1d4dba;">Blog</a> ·
         <a href="/contact" style="color:#1d4dba;">Contact</a>
@@ -401,6 +402,26 @@ function staticRoutes(posts) {
           <li><strong>jacobcdsmith.github.io</strong> — this site. Static React + Vite SPA with pre-rendered HTML.</li>
           <li><strong>Pro bono</strong> — regional hospitality client (ecommerce platform pivot evaluation), Spark / sparkwv.org (HostGator → Google Workspace email migration, zero downtime).</li>
         </ul>`,
+      }),
+    },
+    {
+      path: '/research',
+      title: 'Research',
+      description: 'First-party research and IP from Jacob C. Smith — Causal Compression Graphs (CCG), Emergent Relational Ontology (ERO), hysteretic computing IP, and multicomputational phase-transition work in quantum-classical hybrid systems.',
+      jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Research', url: `${BASE_URL}/research` }])],
+      visibleBody: visibleBlock({
+        eyebrow: 'Research',
+        title: 'First-party research & IP.',
+        lead: 'Reference material that sits separate from client work and from the long-form blog: theory papers, an ontology framework, and a small portfolio of pre-filing IP.',
+        tldr: 'Two public docs — Causal Compression Graphs (a theory paper on how reasoning emerges in LLMs through causal-structure discovery) and the Emergent Relational Ontology (a relational-substrate framework companion to the EMERGENT-MCF-EI consciousness work). Three pre-filing summaries on hysteretic computing and multicomputational phase transitions in quantum-classical hybrid systems. Email jacobcsmithd@gmail.com for post-filing materials or for the unpublished work under NDA.',
+        body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
+          <li><strong>Causal Compression Graphs (CCG)</strong> — public theory paper on how reasoning emerges in LLMs through causal-structure discovery in hidden representations. <a href="/research/causal-compression-graphs.md" style="color:#1d4dba;">Read (Markdown)</a>.</li>
+          <li><strong>Emergent Relational Ontology (ERO)</strong> — public ontology framework treating entities as stable patterns within a substrate of relations. <a href="/research/emergent-relational-ontology.md" style="color:#1d4dba;">Read (Markdown)</a>.</li>
+          <li><strong>Hysteretic Computing</strong> — pre-filing IP on first-order phase transitions and bistable metastability for licensable hardware. Summary only; full text on request post-filing.</li>
+          <li><strong>Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems</strong> — pre-filing theory of measurement-induced entanglement transitions and noise-modified Kibble-Zurek scaling. Summary only; full text on request post-filing.</li>
+          <li><strong>Operationalized Section 8: Multicomputation Branching</strong> — pre-filing hardening supplement that grounds multicomputation in the Feynman path integral and weak-value formalism. Summary only; full text on request post-filing.</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:0.95rem;color:#0a0f1f;">Additional unpublished IP exists and is available under NDA — email <a href="mailto:jacobcsmithd@gmail.com" style="color:#1d4dba;">jacobcsmithd@gmail.com</a>.</p>`,
       }),
     },
     {
@@ -579,6 +600,7 @@ function generateSitemap(posts) {
     { url: `${BASE_URL}/about`, priority: '0.9', changefreq: 'monthly', lastmod: today },
     { url: `${BASE_URL}/services`, priority: '0.9', changefreq: 'monthly', lastmod: today },
     { url: `${BASE_URL}/projects`, priority: '0.8', changefreq: 'monthly', lastmod: today },
+    { url: `${BASE_URL}/research`, priority: '0.8', changefreq: 'monthly', lastmod: today },
     { url: `${BASE_URL}/experience`, priority: '0.7', changefreq: 'monthly', lastmod: today },
     { url: `${BASE_URL}/contact`, priority: '0.6', changefreq: 'yearly', lastmod: today },
     { url: `${BASE_URL}/blog`, priority: '0.9', changefreq: 'weekly', lastmod: today },
@@ -636,6 +658,11 @@ function generateLlmsFull(posts) {
   out += `Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com); architects JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway. Embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.\n\n`
   out += `Practice areas: operational analytics, AI red-teaming and safety reviews, local-first AI systems, and decision-architecture audits. Open research on consciousness modeling (EMERGENT-MCF-EI).\n\n`
   out += `Contact: jacobcsmithd@gmail.com · (304) 473-9980 · github.com/Jacobcdsmith · linkedin.com/in/jacobcsmith\n\n`
+  out += `## Research & IP\n`
+  out += `First-party reference material, separate from client work and blog. Two public documents are linked from /research:\n`
+  out += `- Causal Compression Graphs (CCG): theory paper on how reasoning emerges in LLMs through causal-structure discovery in hidden representations. Public. ${BASE_URL}/research/causal-compression-graphs.md\n`
+  out += `- Emergent Relational Ontology (ERO): a relational ontology framework companion to the EMERGENT-MCF-EI consciousness modeling work. Public. ${BASE_URL}/research/emergent-relational-ontology.md\n`
+  out += `Three pre-filing items are listed by summary only (full text available on request post-filing): Hysteretic Computing IP (first-order phase transitions / bistable metastability for hardware licensing), Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems, and Operationalized Section 8: Multicomputation Branching (path-integral hardening supplement). Additional unpublished IP exists and is available under NDA.\n\n`
   out += `---\n\n## Blog Posts (full text)\n\n`
   for (const p of posts) {
     out += `### ${p.title}\n`

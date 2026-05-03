@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
 import Projects from './pages/Projects.jsx'
+import Research from './pages/Research.jsx'
 import Experience from './pages/Experience.jsx'
 import Contact from './pages/Contact.jsx'
 import BlogList from './pages/BlogList.jsx'
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/skills" element={<Navigate to="/about" replace />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/research" element={<Research />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<BlogList />} />

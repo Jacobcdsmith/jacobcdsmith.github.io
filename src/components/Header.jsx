@@ -8,6 +8,7 @@ const tabs = [
   { path: '/about',      label: 'About'                  },
   { path: '/services',   label: 'Services'               },
   { path: '/projects',   label: 'Projects'               },
+  { path: '/research',   label: 'Research'               },
   { path: '/experience', label: 'Experience'             },
   { path: '/blog',       label: 'Blog',       blogActive: true },
 ]

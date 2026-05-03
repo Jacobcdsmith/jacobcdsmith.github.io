@@ -43,11 +43,26 @@
   app on Vercel with QR-driven capture, Power Automate pipelines, and a
   companion 1,135-formula safety + KPI Excel workbook.
 
+## Research & IP
+- Causal Compression Graphs (CCG) — public theory paper on how reasoning
+  emerges in LLMs through causal-structure discovery in hidden
+  representations:
+  https://jacobcdsmith.github.io/research/causal-compression-graphs.md
+- Emergent Relational Ontology (ERO) — public ontology framework, companion
+  to the EMERGENT-MCF-EI consciousness modeling work:
+  https://jacobcdsmith.github.io/research/emergent-relational-ontology.md
+- Pre-filing summaries (full text on request post-filing): Hysteretic
+  Computing IP, Multicomputational Phase Transitions in Quantum-Classical
+  Hybrid Systems, Operationalized Section 8: Multicomputation Branching.
+- Additional unpublished IP available under NDA — email
+  jacobcsmithd@gmail.com.
+
 ## Key Pages
 - Home: https://jacobcdsmith.github.io/
 - About: https://jacobcdsmith.github.io/about
 - Services: https://jacobcdsmith.github.io/services
 - Projects: https://jacobcdsmith.github.io/projects
+- Research: https://jacobcdsmith.github.io/research
 - Experience: https://jacobcdsmith.github.io/experience
 - Contact: https://jacobcdsmith.github.io/contact
 - Blog: https://jacobcdsmith.github.io/blog
