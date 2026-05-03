@@ -79,6 +79,18 @@ Pinned in `scripts/book/requirements.txt`: `scikit-learn`, `nltk`,
 top-level `pyproject.toml` so Replit's package manager can resolve
 the Python toolchain automatically.
 
+## Reviewing the redaction audit
+
+Two audit logs are produced on every build:
+
+- `scripts/book/redaction.log` — **append-only history**: every run is
+  concatenated. Useful for tracking redaction drift over time.
+- `scripts/book/redaction_runs/redaction-<UTC-timestamp>.log` — **fresh,
+  single-run** snapshot containing only the replacements made by the
+  most recent build. **Reviewers should default to this file** when
+  spot-checking a build. The newest 10 runs are kept; older snapshots
+  rotate out automatically.
+
 ## Intermediate outputs
 
 Before the PDF is built, the orchestrator writes one markdown file
