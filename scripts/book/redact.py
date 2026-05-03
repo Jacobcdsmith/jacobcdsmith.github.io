@@ -123,10 +123,10 @@ def redact_text(text: str, conv_id: str, terms: Iterable[Term], log: AuditLog) -
             log.add(conv_id, kind, label, n)
             out = new
 
-    _sub(EMAIL_RE, "[REDACTED — EMAIL]", "email", "<email>")
-    _sub(URL_TOKEN_RE, r"\1/[REDACTED — URL TOKEN]", "url_token", "<url_token>")
+    _sub(EMAIL_RE, "[redacted email]", "email", "<email>")
+    _sub(URL_TOKEN_RE, r"\1/[redacted url]", "url_token", "<url_token>")
     for i, pat in enumerate(TOKEN_PATTERNS):
-        _sub(pat, "[REDACTED — TOKEN]", "token", f"<token_pattern_{i}>")
+        _sub(pat, "[redacted key]", "token", f"<token_pattern_{i}>")
     for t in terms:
         new, n = t.pattern.subn(t.replacement, out)
         if n:

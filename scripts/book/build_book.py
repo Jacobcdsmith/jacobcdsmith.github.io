@@ -30,7 +30,8 @@ WORDLIST    = HERE / "redact_terms.txt"
 AUDIT_LOG   = HERE / "redaction.log"
 OUT_PDF     = ROOT / "dist" / "monologue-compilation-DRAFT.pdf"
 MIRROR_PDF  = ROOT / "attached_assets" / "monologue-compilation-DRAFT.pdf"
-CHAPTERS_DIR = ROOT / "dist" / "book" / "chapters"
+CHAPTERS_DIR  = ROOT / "dist" / "book" / "chapters"
+MANIFEST_JSON = ROOT / "dist" / "book" / "manifest.json"
 
 N_CLUSTERS    = 12
 PER_CHAPTER   = 5
@@ -129,6 +130,50 @@ def main() -> int:
             lines.append("")
         path.write_text("\n".join(lines), encoding="utf-8")
     print(f"[book] wrote {len(chapters)} chapter markdown files → {CHAPTERS_DIR}")
+
+    # Machine-readable chapter manifest. Keeps the pipeline introspectable
+    # without re-parsing the prose: which threads went into which chapter,
+    # in what order, with their cluster keywords and per-thread metadata.
+    import json as _json
+    manifest = {
+        "generated_at": __import__("datetime").datetime.now(
+            tz=__import__("datetime").timezone.utc
+        ).isoformat(),
+        "source": str(SOURCE_JSON.relative_to(ROOT)),
+        "totals": {
+            "conversations_parsed": len(convs),
+            "messages_parsed": sum(c.message_count for c in convs),
+            "redaction_replacements": log.total,
+            "dropped_pre_filing": dropped_prefiling,
+            "chapters": len(chapters),
+            "threads_selected": sum(len(ch.conversations) for ch in chapters),
+        },
+        "chapters": [
+            {
+                "index": i,
+                "cluster_id": ch.cluster_id,
+                "title": ch.title,
+                "keywords": ch.keywords,
+                "date_range": list(ch.date_range),
+                "markdown": str(
+                    (CHAPTERS_DIR / f"{i:02d}-{_slug(ch.title)}.md").relative_to(ROOT)
+                ),
+                "threads": [
+                    {
+                        "id": conv.id,
+                        "title": conv.title,
+                        "created": conv.created.isoformat(),
+                        "message_count": conv.message_count,
+                        "char_count": conv.char_count,
+                    }
+                    for conv in ch.conversations
+                ],
+            }
+            for i, ch in enumerate(chapters, 1)
+        ],
+    }
+    MANIFEST_JSON.write_text(_json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"[book] wrote chapter manifest → {MANIFEST_JSON}")
 
     OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
     print(f"[book] typesetting → {OUT_PDF}")
