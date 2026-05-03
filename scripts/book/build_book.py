@@ -30,8 +30,9 @@ WORDLIST    = HERE / "redact_terms.txt"
 AUDIT_LOG   = HERE / "redaction.log"
 OUT_PDF     = ROOT / "dist" / "monologue-compilation-DRAFT.pdf"
 MIRROR_PDF  = ROOT / "attached_assets" / "monologue-compilation-DRAFT.pdf"
-CHAPTERS_DIR  = ROOT / "dist" / "book" / "chapters"
-MANIFEST_JSON = ROOT / "dist" / "book" / "manifest.json"
+CHAPTERS_DIR     = ROOT / "dist" / "book" / "chapters"
+MANIFEST_JSON    = ROOT / "dist" / "book" / "manifest.json"
+NORMALIZED_JSON  = ROOT / "dist" / "book" / "conversations.normalized.json"
 
 N_CLUSTERS    = 12
 PER_CHAPTER   = 5
@@ -99,6 +100,44 @@ def main() -> int:
         cleaned.append(c)
     print(f"[book] redaction: {log.total} replacements  "
           f"(dropped {dropped_prefiling} conversation(s) flagged pre-filing)")
+
+    # Normalized full-conversation intermediate. Captures the post-redaction
+    # state of every kept conversation in machine-readable form so the
+    # pipeline is traceable end-to-end (parse -> redact -> THIS -> cluster
+    # -> typeset). Independent of which threads were ultimately *selected*
+    # for the book (that's in manifest.json).
+    import json as _json
+    NORMALIZED_JSON.parent.mkdir(parents=True, exist_ok=True)
+    NORMALIZED_JSON.write_text(
+        _json.dumps(
+            {
+                "source": str(SOURCE_JSON.relative_to(ROOT)),
+                "count": len(convs),
+                "conversations": [
+                    {
+                        "id": c.id,
+                        "title": c.title,
+                        "created": c.created.isoformat(),
+                        "message_count": c.message_count,
+                        "char_count": c.char_count,
+                        "turns": [
+                            {
+                                "role": t.role,
+                                "ts": t.ts,
+                                "text": t.text,
+                            }
+                            for t in c.turns
+                        ],
+                    }
+                    for c in convs
+                ],
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    print(f"[book] wrote normalized conversations → {NORMALIZED_JSON} "
+          f"({NORMALIZED_JSON.stat().st_size / 1024:0.0f} KB)")
 
     print(f"[book] clustering into ~{N_CLUSTERS} chapters …")
     chapters = cluster_conversations(

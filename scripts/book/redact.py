@@ -83,15 +83,26 @@ class AuditLog:
         self.path = path
         self._records: list[dict] = []
 
-    def add(self, conv_id: str, kind: str, term: str, count: int) -> None:
+    def add(
+        self,
+        conv_id: str,
+        kind: str,
+        term: str,
+        count: int,
+        snippets: list[str] | None = None,
+    ) -> None:
         if count <= 0:
             return
-        self._records.append({
+        rec: dict = {
             "conv_id": conv_id,
             "kind": kind,
             "term": term,
             "count": count,
-        })
+        }
+        if snippets:
+            # Cap to a few short snippets so the log stays reviewable.
+            rec["snippets"] = [s[:140] for s in snippets[:3]]
+        self._records.append(rec)
 
     def write(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -113,14 +124,29 @@ class AuditLog:
 
 
 # --- Public API ---------------------------------------------------------------
+def _snippets_for(pattern: re.Pattern[str], text: str, ctx: int = 24) -> list[str]:
+    """Return up to a few `…before<MATCH>after…` context strings for review."""
+    snips: list[str] = []
+    for m in pattern.finditer(text):
+        a = max(0, m.start() - ctx)
+        b = min(len(text), m.end() + ctx)
+        before = text[a:m.start()].replace("\n", " ")
+        after  = text[m.end():b].replace("\n", " ")
+        snips.append(f"…{before}<{m.group(0)[:40]}>{after}…")
+        if len(snips) >= 3:
+            break
+    return snips
+
+
 def redact_text(text: str, conv_id: str, terms: Iterable[Term], log: AuditLog) -> str:
     out = text
 
     def _sub(pattern: re.Pattern[str], repl: str, kind: str, label: str) -> None:
         nonlocal out
+        snips = _snippets_for(pattern, out)
         new, n = pattern.subn(repl, out)
         if n:
-            log.add(conv_id, kind, label, n)
+            log.add(conv_id, kind, label, n, snippets=snips)
             out = new
 
     _sub(EMAIL_RE, "[redacted email]", "email", "<email>")
@@ -128,9 +154,10 @@ def redact_text(text: str, conv_id: str, terms: Iterable[Term], log: AuditLog) -
     for i, pat in enumerate(TOKEN_PATTERNS):
         _sub(pat, "[redacted key]", "token", f"<token_pattern_{i}>")
     for t in terms:
+        snips = _snippets_for(t.pattern, out)
         new, n = t.pattern.subn(t.replacement, out)
         if n:
-            log.add(conv_id, "wordlist", t.raw, n)
+            log.add(conv_id, "wordlist", t.raw, n, snippets=snips)
             out = new
     return out
 
