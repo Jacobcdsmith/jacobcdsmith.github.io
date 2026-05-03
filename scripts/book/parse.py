@@ -50,6 +50,40 @@ class Conversation:
         return "\n\n".join(t.text.strip() for t in self.turns if t.text.strip())
 
 
+_BINARY_MARKERS = (
+    "\x89PNG", "\u2030PNG",  # PNG magic (raw + mojibake-decoded)
+    "IHDR", "IDAT", "IEND",
+    "JFIF", "Exif",
+    "%PDF-", "%%EOF",
+    "PK\x03\x04",                 # ZIP / docx / xlsx
+    "GIF87a", "GIF89a",
+    "RIFF",
+    "ftypmp4", "ftypisom",
+    "data:image/", "data:application/",
+)
+
+
+def _looks_binary(text: str) -> bool:
+    """Heuristic: is this turn a raw asset blob the typesetter must skip?"""
+    if not text:
+        return False
+    head = text[:600]
+    if any(m in head for m in _BINARY_MARKERS):
+        return True
+    if any(m in text for m in _BINARY_MARKERS):
+        return True
+    # Long run of non-printable / control chars => almost certainly binary.
+    nonprint = sum(1 for ch in head if not (ch.isprintable() or ch in "\n\r\t "))
+    if len(head) >= 200 and nonprint / len(head) > 0.20:
+        return True
+    # Pathologically long lines without spaces are almost always blob payloads
+    # (base64 attachments, dumped binary, etc.) and have no editorial value.
+    longest = max((len(line) for line in text.splitlines()), default=0)
+    if longest > 4000:
+        return True
+    return False
+
+
 def _extract_parts(msg: dict[str, Any]) -> str:
     if not msg:
         return ""
@@ -116,6 +150,11 @@ def parse(json_path: Path) -> list[Conversation]:
             text = _extract_parts(msg)
             if not text:
                 continue
+            if _looks_binary(text):
+                # Replace the entire turn with a short editorial marker so
+                # the prose around it still reads naturally and the
+                # typesetter never emits raw asset bytes.
+                text = "[attachment omitted — binary payload]"
             turns.append(Turn(role=author, text=text, ts=msg.get("create_time")))
         if not turns:
             continue
