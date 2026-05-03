@@ -52,7 +52,21 @@ def main() -> int:
     terms = load_wordlist(WORDLIST)
     print(f"[book] loaded {len(terms)} wordlist term(s) from {WORDLIST.name}")
 
+    # Per-build audit log: keep one consolidated history file (appended) but
+    # also write a fresh, single-run log next to it for easy review of just
+    # this build. Older per-run logs auto-rotate (keep most recent 10).
     log = AuditLog(AUDIT_LOG)
+    runs_dir = AUDIT_LOG.parent / "redaction_runs"
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    run_log_path = runs_dir / (
+        __import__("datetime").datetime.now(
+            tz=__import__("datetime").timezone.utc
+        ).strftime("redaction-%Y%m%dT%H%M%SZ.log")
+    )
+    run_log = AuditLog(run_log_path)
+    old_runs = sorted(runs_dir.glob("redaction-*.log"))
+    for stale in old_runs[:-10]:
+        stale.unlink()
 
     # Pre-redaction filter: drop any conversation whose title or body still
     # contains a [REDACTED — PRE-FILING] marker AFTER redaction. This is a
@@ -71,6 +85,9 @@ def main() -> int:
         skip = False
         for t in c.turns:
             t.text = redact_text(t.text, c.id, terms, log)
+            # Mirror to the per-run log so it captures the same actions.
+            for r in log._records[len(run_log._records):]:
+                run_log._records.append(r)
             if PREFILING_MARKER in t.text:
                 skip = True
                 break
@@ -191,6 +208,11 @@ def main() -> int:
     build_pdf(chapters, OUT_PDF, excerpt_chars=EXCERPT_CHARS, stats=stats)
     shutil.copy2(OUT_PDF, MIRROR_PDF)
     log.write()
+    # Per-run log mirrors the records collected during this build only.
+    run_log._records = list(log._records)
+    run_log.path.write_text("", encoding="utf-8")  # fresh file, never appended
+    run_log.write()
+    print(f"[book] per-run audit log: {run_log_path}")
 
     size_kb = OUT_PDF.stat().st_size / 1024
     print(f"[book] done in {time.time() - t0:0.1f}s  "
