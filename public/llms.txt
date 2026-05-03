@@ -48,9 +48,8 @@
   emerges in LLMs through causal-structure discovery in hidden
   representations:
   https://jacobcdsmith.github.io/research/causal-compression-graphs.md
-- Emergent Relational Ontology (ERO) — public ontology framework, companion
-  to the EMERGENT-MCF-EI consciousness modeling work:
-  https://jacobcdsmith.github.io/research/emergent-relational-ontology.md
+- Emergent Relational Ontology (ERO) — summary only, in revision; companion
+  to the EMERGENT-MCF-EI consciousness modeling work.
 - Pre-filing summaries (full text on request post-filing): Hysteretic
   Computing IP, Multicomputational Phase Transitions in Quantum-Classical
   Hybrid Systems, Operationalized Section 8: Multicomputation Branching.

@@ -407,19 +407,19 @@ function staticRoutes(posts) {
     {
       path: '/research',
       title: 'Research',
-      description: 'First-party research and IP from Jacob C. Smith — Causal Compression Graphs (CCG), Emergent Relational Ontology (ERO), hysteretic computing IP, and multicomputational phase-transition work in quantum-classical hybrid systems.',
+      description: 'First-party research and IP from Jacob C. Smith — Causal Compression Graphs (CCG), the Emergent Relational Ontology, and a small portfolio of pre-filing IP in hardware computing and quantum-classical hybrid systems.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Research', url: `${BASE_URL}/research` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Research',
         title: 'First-party research & IP.',
-        lead: 'Reference material that sits separate from client work and from the long-form blog: theory papers, an ontology framework, and a small portfolio of pre-filing IP.',
-        tldr: 'Two public docs — Causal Compression Graphs (a theory paper on how reasoning emerges in LLMs through causal-structure discovery) and the Emergent Relational Ontology (a relational-substrate framework companion to the EMERGENT-MCF-EI consciousness work). Three pre-filing summaries on hysteretic computing and multicomputational phase transitions in quantum-classical hybrid systems. Email jacobcsmithd@gmail.com for post-filing materials or for the unpublished work under NDA.',
+        lead: 'Reference material that sits separate from client work and from the long-form blog: a theory paper, an ontology framework in revision, and a small portfolio of pre-filing IP.',
+        tldr: 'One public theory paper — Causal Compression Graphs, on how reasoning emerges in LLMs through causal-structure discovery. Four summary-only items: an in-revision relational ontology (ERO) and three pre-filing IP items in hardware computing and quantum-classical hybrid systems. Additional unpublished IP exists and is available under NDA. Email jacobcsmithd@gmail.com for post-filing materials or NDA access.',
         body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
           <li><strong>Causal Compression Graphs (CCG)</strong> — public theory paper on how reasoning emerges in LLMs through causal-structure discovery in hidden representations. <a href="/research/causal-compression-graphs.md" style="color:#1d4dba;">Read (Markdown)</a>.</li>
-          <li><strong>Emergent Relational Ontology (ERO)</strong> — public ontology framework treating entities as stable patterns within a substrate of relations. <a href="/research/emergent-relational-ontology.md" style="color:#1d4dba;">Read (Markdown)</a>.</li>
-          <li><strong>Hysteretic Computing</strong> — pre-filing IP on first-order phase transitions and bistable metastability for licensable hardware. Summary only; full text on request post-filing.</li>
-          <li><strong>Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems</strong> — pre-filing theory of measurement-induced entanglement transitions and noise-modified Kibble-Zurek scaling. Summary only; full text on request post-filing.</li>
-          <li><strong>Operationalized Section 8: Multicomputation Branching</strong> — pre-filing hardening supplement that grounds multicomputation in the Feynman path integral and weak-value formalism. Summary only; full text on request post-filing.</li>
+          <li><strong>Emergent Relational Ontology (ERO)</strong> — in-revision ontology framework, companion to the EMERGENT-MCF-EI consciousness work. Summary only; not yet ready for public release.</li>
+          <li><strong>Hysteretic Computing</strong> — pre-filing hardware IP. Summary only; full text on request post-filing.</li>
+          <li><strong>Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems</strong> — pre-filing theory work. Summary only; full text on request post-filing.</li>
+          <li><strong>Operationalized Section 8: Multicomputation Branching</strong> — pre-filing hardening supplement to the multicomputational phase-transitions work. Summary only; full text on request post-filing.</li>
         </ul>
         <p style="margin-top:1rem;font-size:0.95rem;color:#0a0f1f;">Additional unpublished IP exists and is available under NDA — email <a href="mailto:jacobcsmithd@gmail.com" style="color:#1d4dba;">jacobcsmithd@gmail.com</a>.</p>`,
       }),
@@ -659,10 +659,9 @@ function generateLlmsFull(posts) {
   out += `Practice areas: operational analytics, AI red-teaming and safety reviews, local-first AI systems, and decision-architecture audits. Open research on consciousness modeling (EMERGENT-MCF-EI).\n\n`
   out += `Contact: jacobcsmithd@gmail.com · (304) 473-9980 · github.com/Jacobcdsmith · linkedin.com/in/jacobcsmith\n\n`
   out += `## Research & IP\n`
-  out += `First-party reference material, separate from client work and blog. Two public documents are linked from /research:\n`
+  out += `First-party reference material, separate from client work and blog. One public document is linked from /research:\n`
   out += `- Causal Compression Graphs (CCG): theory paper on how reasoning emerges in LLMs through causal-structure discovery in hidden representations. Public. ${BASE_URL}/research/causal-compression-graphs.md\n`
-  out += `- Emergent Relational Ontology (ERO): a relational ontology framework companion to the EMERGENT-MCF-EI consciousness modeling work. Public. ${BASE_URL}/research/emergent-relational-ontology.md\n`
-  out += `Three pre-filing items are listed by summary only (full text available on request post-filing): Hysteretic Computing IP (first-order phase transitions / bistable metastability for hardware licensing), Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems, and Operationalized Section 8: Multicomputation Branching (path-integral hardening supplement). Additional unpublished IP exists and is available under NDA.\n\n`
+  out += `Four items are listed by summary only: Emergent Relational Ontology (ERO) — in-revision ontology framework, not yet ready for public release; and three pre-filing IP items (Hysteretic Computing, Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems, and Operationalized Section 8: Multicomputation Branching) for which full text is available on request post-filing. Additional unpublished IP exists and is available under NDA.\n\n`
   out += `---\n\n## Blog Posts (full text)\n\n`
   for (const p of posts) {
     out += `### ${p.title}\n`

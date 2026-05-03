@@ -47,15 +47,13 @@ export default function Research() {
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              Two public docs — <strong>Causal Compression Graphs</strong> (a theory paper on how
-              reasoning emerges in LLMs through causal-structure discovery) and the{' '}
-              <strong>Emergent Relational Ontology</strong> (a relational-substrate framework
-              companion to the EMERGENT-MCF-EI consciousness work). Three pre-filing summaries on{' '}
-              <strong>hysteretic computing</strong> and{' '}
-              <strong>multicomputational phase transitions</strong> in quantum-classical hybrid
-              systems. Email{' '}
+              One public theory paper — <strong>Causal Compression Graphs</strong>, on how
+              reasoning emerges in LLMs through causal-structure discovery. Four summary-only
+              items: an in-revision relational ontology (<strong>ERO</strong>) and three pre-filing
+              IP items in hardware computing and quantum-classical hybrid systems. Additional
+              unpublished IP exists and is available under NDA. Email{' '}
               <a href={`mailto:${profile.email}`}>{profile.email}</a> for post-filing materials or
-              for the unpublished work under NDA.
+              NDA access.
             </p>
           </aside>
         </div>

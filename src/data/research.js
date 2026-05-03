@@ -12,36 +12,34 @@ export const research = [
   {
     slug: 'emergent-relational-ontology',
     title: 'Emergent Relational Ontology (ERO)',
-    status: 'public',
+    status: 'summary',
     summary:
-      'A relational ontology framework: rather than treating entities as primitives with relations attached, it derives entities as stable patterns within a substrate of relations. Companion document to the consciousness modeling thread (EMERGENT-MCF-EI), with no filing risk. Useful as a foundation for systems that need to reason about identity, change, and emergence without baking object permanence into the metaphysics.',
-    file: '/research/emergent-relational-ontology.md',
-    fileLabel: 'Read the ontology (Markdown)',
-    tags: ['ontology', 'systems-theory', 'philosophy', 'foundations'],
+      'An in-progress relational ontology framework — a companion piece to the EMERGENT-MCF-EI consciousness modeling thread. Treats entities as stable patterns within a substrate of relations rather than as primitives with relations attached. Currently in revision; not yet ready for public release.',
+    tags: ['ontology', 'systems-theory', 'foundations', 'in-revision'],
   },
   {
     slug: 'hysteretic-computing-ip',
     title: 'Hysteretic Computing',
     status: 'summary',
     summary:
-      'A licensable hardware IP track distinct from the speedup IP: uses first-order phase transitions and bistable metastability to do computation in regimes that conventional second-order designs cannot reach. Pre-filing — the technical specifics, claim language, and parameter ranges are withheld here and available on request once filing is complete.',
-    tags: ['ip', 'hardware', 'phase-transitions', 'pre-filing'],
+      'A licensable hardware IP track separate from the speedup IP, aimed at hardware manufacturers. Pre-filing — technical specifics, claim language, and parameter ranges are withheld here and available on request once filing is complete.',
+    tags: ['ip', 'hardware', 'pre-filing'],
   },
   {
     slug: 'multicomputational-phase-transitions',
     title: 'Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems',
     status: 'summary',
     summary:
-      'Theoretical framing of abrupt behavioral changes that emerge when quantum and classical computational resources are integrated, including measurement-induced entanglement transitions, noise-modified Kibble-Zurek scaling, and the regimes where classical simulability gives way to quantum dominance. Pre-filing — full text, derivations, and proposed device architectures are withheld here and available on request post-filing.',
-    tags: ['quantum-classical', 'phase-transitions', 'pre-filing'],
+      'Theoretical framing of abrupt behavioral changes that emerge when quantum and classical computational resources are integrated, and the regimes where classical simulability gives way to quantum dominance. Pre-filing — full text, derivations, and proposed device architectures are withheld here and available on request post-filing.',
+    tags: ['quantum-classical', 'pre-filing'],
   },
   {
     slug: 'operationalized-multicomputation',
     title: 'Operationalized Section 8: Multicomputation Branching',
     status: 'summary',
     summary:
-      'Hardening supplement to the multicomputational phase-transitions work: reframes "multicomputation" away from Wolfram-style ontological hand-waving and into a rigorous operational definition grounded in the Feynman path integral and weak-value formalism — measurable ensembles of quantum trajectories under non-selective measurement. Pre-filing — full operational protocol available on request post-filing.',
-    tags: ['quantum-foundations', 'path-integral', 'pre-filing'],
+      'Hardening supplement to the multicomputational phase-transitions work: reframes "multicomputation" away from speculative metaphysics and into a rigorous, measurable operational definition. Pre-filing — full operational protocol available on request post-filing.',
+    tags: ['quantum-foundations', 'pre-filing'],
   },
 ]
 
