@@ -34,6 +34,17 @@ TOKEN_PATTERNS = [
     re.compile(r"\bAKIA[0-9A-Z]{16}\b"),                     # AWS access key id
     re.compile(r"\b[A-Za-z0-9/+]{40}\b(?=\s*(?:secret|aws))", re.IGNORECASE),
     re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b"),  # JWT
+    # Generic opaque-blob heuristics. Long hex (>= 32 chars) catches MD5,
+    # SHA-1, SHA-256, commit hashes, signed-URL signatures, hex-encoded
+    # secrets, etc. Long mixed base64-ish runs (>= 40 chars containing at
+    # least one digit AND at least one letter, no whitespace) catch most
+    # opaque tokens that don't fit a named family above.
+    re.compile(r"\b[a-fA-F0-9]{32,}\b"),
+    re.compile(r"(?<![A-Za-z0-9_+/=-])"
+               r"(?=[A-Za-z0-9+/_=-]*[A-Za-z])"
+               r"(?=[A-Za-z0-9+/_=-]*[0-9])"
+               r"[A-Za-z0-9+/_=-]{40,}"
+               r"(?![A-Za-z0-9_+/=-])"),
 ]
 
 
