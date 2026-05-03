@@ -118,3 +118,12 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 
 ## Snapshot / restore points
 - `.local/prior/` contains a snapshot of the page + data files from commit `68e6870` (the prior iteration before the content refresh and design redesign). Useful as a reference if the user ever wants to pull individual paragraphs back.
+
+## Monologue Compilation Book (offline pipeline)
+- Python pipeline at `scripts/book/` produces a typeset PDF from Jacob's full ChatGPT export (`attached_assets/conversations_*.json`). One command: `npm run build:book`.
+- Voice is **blended**: user prompts and assistant replies are concatenated in chronological order with no role labels — the thread reads as one continuous mind.
+- Pipeline: `parse.py` (walks the OpenAI export `mapping` tree) → `redact.py` (email + URL-token + sensitive-token regexes + `redact_terms.txt` wordlist with JSONL audit log) → `cluster.py` (TF-IDF + KMeans, ~12 chapters, top 5 threads per chapter scored by length × balance × engagement) → `typeset.py` (ReportLab; JetBrains Mono throughout, cyanotype `#1d4dba`, square corners, dashed rules, ALL-CAPS running headers).
+- Outputs: `dist/monologue-compilation-DRAFT.pdf` + mirror copy at `attached_assets/monologue-compilation-DRAFT.pdf`. Audit log appended to `scripts/book/redaction.log` per run.
+- Patent guard: any conversation whose title or body contains the `[REDACTED — PRE-FILING]` marker after redaction is **dropped from the book entirely**, not merely masked. Add patent-related terms to `redact_terms.txt` to expand the filter.
+- Python deps: `scikit-learn`, `nltk`, `reportlab`, `pillow`, `numpy` (project-level). JetBrains Mono TTFs are bundled in `scripts/book/fonts/`.
+- **Not linked from the site nav.** The book is a draft for Jacob's review; the optional `/book` SPA reader is a stretch goal that has not been built.

@@ -1,0 +1,16 @@
+# Redaction wordlist — one term per line, case-insensitive whole-word match.
+# Lines starting with `#` are comments. Empty lines ignored.
+# Format: TERM   ->   REPLACEMENT
+# If no `->` is present the term is replaced with [REDACTED].
+#
+# Patent-related (DO NOT publish; pre-filing protection):
+hysteretic computing -> [REDACTED — PRE-FILING]
+hysteretic computer -> [REDACTED — PRE-FILING]
+hysteretic memory -> [REDACTED — PRE-FILING]
+hysteretic logic -> [REDACTED — PRE-FILING]
+#
+# Pro-bono client (anonymized per Jacob's request):
+Squire on Main -> regional hospitality client
+Squire -> regional hospitality client
+#
+# Add more terms below. Whole-word, case-insensitive.
