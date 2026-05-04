@@ -23,7 +23,7 @@ export default function Research() {
     <>
       <SEO
         title="Research"
-        description="First-party research and IP from Jacob C. Smith — Causal Compression Graphs (CCG), Emergent Relational Ontology (ERO), hysteretic computing IP, and multicomputational phase-transition work in quantum-classical hybrid systems."
+        description="First-party research and IP from Jacob C. Smith — one public theory paper and a small portfolio of summary-only items (one in revision, three pre-filing). Additional unpublished IP available under NDA."
         path="/research"
         jsonLd={[
           breadcrumbSchema([
@@ -47,11 +47,8 @@ export default function Research() {
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              One public theory paper — <strong>Causal Compression Graphs</strong>, on how
-              reasoning emerges in LLMs through causal-structure discovery. Four summary-only
-              items: an in-revision relational ontology (<strong>ERO</strong>) and three pre-filing
-              IP items in hardware computing and quantum-classical hybrid systems. Additional
-              unpublished IP exists and is available under NDA. Email{' '}
+              One public theory paper. Four summary-only items — one in revision, three
+              pre-filing. Additional unpublished IP exists and is available under NDA. Email{' '}
               <a href={`mailto:${profile.email}`}>{profile.email}</a> for post-filing materials or
               NDA access.
             </p>
@@ -71,7 +68,7 @@ export default function Research() {
               <p className="project-summary">{r.summary}</p>
               <div className="project-tags">
                 {r.tags.map(t => (
-                  <Tag key={t} tone={t === 'pre-filing' ? STATUS_TONE.summary : 'neutral'}>
+                  <Tag key={t} tone="neutral">
                     {t}
                   </Tag>
                 ))}

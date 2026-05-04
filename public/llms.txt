@@ -44,15 +44,12 @@
   companion 1,135-formula safety + KPI Excel workbook.
 
 ## Research & IP
-- Causal Compression Graphs (CCG) — public theory paper on how reasoning
-  emerges in LLMs through causal-structure discovery in hidden
-  representations:
+- Causal Compression Graphs (CCG) — public theory paper:
   https://jacobcdsmith.github.io/research/causal-compression-graphs.md
-- Emergent Relational Ontology (ERO) — summary only, in revision; companion
-  to the EMERGENT-MCF-EI consciousness modeling work.
-- Pre-filing summaries (full text on request post-filing): Hysteretic
-  Computing IP, Multicomputational Phase Transitions in Quantum-Classical
-  Hybrid Systems, Operationalized Section 8: Multicomputation Branching.
+- Emergent Relational Ontology (ERO) — summary only, in revision.
+- Pre-filing items (details on request post-filing): Hysteretic Computing,
+  Multicomputational Phase Transitions in Quantum-Classical Hybrid Systems,
+  Operationalized Section 8: Multicomputation Branching.
 - Additional unpublished IP available under NDA — email
   jacobcsmithd@gmail.com.
 
