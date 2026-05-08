@@ -13,4 +13,37 @@ hysteretic logic -> [REDACTED — PRE-FILING]
 Squire on Main -> regional hospitality client
 Squire -> regional hospitality client
 #
-# Add more terms below. Whole-word, case-insensitive.
+# Location specifics — keep the book at "West Virginia" granularity, no
+# tighter. Buckhannon is Jacob's hometown; the surrounding small towns
+# only show up as "near Buckhannon" travel suggestions and would re-leak
+# the home location if left in.
+Buckhannon -> a small West Virginia town
+Roanoke, WV -> [REDACTED — LOCATION]
+Elkins, WV -> [REDACTED — LOCATION]
+#
+# Unreleased / private projects (Jacob's own work, not yet public):
+INSA -> [REDACTED — UNRELEASED PROJECT]
+Multiversal Consciousness Framework -> [REDACTED — UNRELEASED FRAMEWORK]
+MCF -> [REDACTED — UNRELEASED FRAMEWORK]
+Particle Biosimulation -> [REDACTED — UNRELEASED PROJECT]
+#
+# Private business name (not publicly affiliated with the author):
+Chandlar's Enterprises -> [REDACTED — PRIVATE BUSINESS]
+Chandlar -> [REDACTED — PRIVATE BUSINESS]
+#
+# Family / personal names (partner, son, son's nickname, author middle name).
+# Author's public byline "Jacob C. Smith" stays intact (first + last only).
+Chandler -> [REDACTED — FAMILY]
+Buggy -> [REDACTED — FAMILY]
+Morgan -> [REDACTED — FAMILY]
+Dylan -> [REDACTED — FAMILY]
+#
+# Resume-leak PII: precise location (ZIP / county), phone, prior employers
+# tied to the home town. Keeps the book at "West Virginia" granularity.
+26201 -> [REDACTED — ZIP]
+Upshur County -> [REDACTED — COUNTY]
+Upshur -> [REDACTED — COUNTY]
+Cole Truck Parts -> [REDACTED — PRIOR EMPLOYER]
+The Donut Shop -> [REDACTED — PRIOR EMPLOYER]
+Smithfield Street -> [REDACTED — STREET]
+472-5480 -> [REDACTED — PHONE]

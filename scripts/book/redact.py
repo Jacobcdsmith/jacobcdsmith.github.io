@@ -70,7 +70,10 @@ def load_wordlist(path: Path) -> list[Term]:
             left, right = s, "[REDACTED]"
         if not left:
             continue
-        pat = re.compile(r"\b" + re.escape(left) + r"\b", re.IGNORECASE)
+        pat = re.compile(
+            r"(?<![A-Za-z0-9])" + re.escape(left) + r"(?![A-Za-z0-9])",
+            re.IGNORECASE,
+        )
         terms.append(Term(pattern=pat, raw=left, replacement=right))
     # Sort longest-first so multi-word phrases match before sub-words.
     terms.sort(key=lambda t: -len(t.raw))
