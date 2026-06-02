@@ -1,5 +1,15 @@
 export const research = [
   {
+    slug: 'multiversal-consciousness-framework',
+    title: 'Multiversal Consciousness Framework (MCF)',
+    status: 'public',
+    summary:
+      'A geometric theory of consciousness as a frequency-tuned, manifold-structured phenomenon capable of resonating with multiple branches of a quantum multiverse. Public overview — full manuscript available on request.',
+    file: '/research/multiversal-consciousness-framework.md',
+    fileLabel: 'Read the paper (Markdown)',
+    tags: ['consciousness', 'physics', 'mathematics'],
+  },
+  {
     slug: 'causal-compression-graphs',
     title: 'Causal Compression Graphs (CCG)',
     status: 'public',

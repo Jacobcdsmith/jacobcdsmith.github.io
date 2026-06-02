@@ -1,5 +1,14 @@
 [
   {
+    "slug": "the-recursive-tree",
+    "title": "The Recursive Tree: Why I Built a Consciousness Simulator on a Phone",
+    "date": "2026-06-02",
+    "category": "Research",
+    "excerpt": "A generative art piece — recursive fractal tree, particle petals, bloom intensity — turns out to be a visual rendering of the Multiversal Consciousness Framework. Here's why I built it on a phone.",
+    "tags": ["consciousness", "art", "simulation", "research"],
+    "hero": "particle-canvas"
+  },
+  {
     "slug": "embedded-agents-on-the-edge",
     "title": "Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway",
     "date": "2026-05-02",
