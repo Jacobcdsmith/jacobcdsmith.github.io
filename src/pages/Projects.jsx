@@ -10,6 +10,20 @@ import { breadcrumbSchema } from '../lib/structured-data.js'
 
 const projects = [
   {
+    name: 'agent-flow-canvas',
+    repo: 'Jacobcdsmith/agent-flow-canvas',
+    status: 'Live · Open source',
+    summary:
+      'Browser-based visual builder for AI agent workflows. Drag nodes onto a canvas, wire them together, configure LLM gateways, and run the flow — all in your browser. BYO API keys, zero telemetry.',
+    detail:
+      'Built with React, ReactFlow, and Vite. Drag-and-drop workflow canvas with LLM, Tool, Router, Memory, Subagent, and Trigger nodes. Supports OpenAI, Anthropic, Gemini, Ollama, and any OpenAI-compatible provider — API keys stay in your browser. One click generates runnable Python or JavaScript. Run flows directly in-browser with real-time execution logging. Deployed on GitHub Pages, MIT licensed.',
+    tags: ['react', 'ai-agents', 'workflow-builder', 'open-source', 'typescript'],
+    actions: [
+      { label: 'Live demo', href: 'https://jacobcdsmith.github.io/agent-flow-canvas/', external: true },
+      { label: 'GitHub', href: 'https://github.com/Jacobcdsmith/agent-flow-canvas', external: true },
+    ],
+  },
+  {
     name: 'EMERGENT-MCF-EI',
     repo: 'Jacobcdsmith/CONSIM',
     status: 'Active research',
@@ -123,7 +137,7 @@ export default function Projects() {
     <>
       <SEO
         title="Projects"
-        description="EMERGENT-MCF-EI consciousness research, JCLAW agentic runtime, Hermes plugin (Nous Research), MCPStarfleetCommand, WVRTP facility inspection system (Readyfuels), UNIHIKER and ESP32-S3 work, plus operational analytics engagements."
+        description="Agent Flow Canvas — open-source visual AI agent workflow builder. EMERGENT-MCF-EI consciousness research, JCLAW agentic runtime, Hermes plugin (Nous Research), MCPStarfleetCommand, WVRTP facility inspection system (Readyfuels), UNIHIKER and ESP32-S3 work, plus operational analytics engagements."
         path="/projects"
         jsonLd={[
           breadcrumbSchema([
