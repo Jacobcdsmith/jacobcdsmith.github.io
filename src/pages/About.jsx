@@ -85,33 +85,33 @@ export default function About() {
         <div className="about-grid">
           <div className="about-prose">
             <p>
-              I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The
-              work tends to look like one of three things: a dashboard that finally makes a decision
-              clear, a red-team report that catches an AI feature before it embarrasses someone, or
-              a local-first runtime that lets a team use LLMs without surrendering their data.
+              I build agent infrastructure and local-first AI tools for teams that need to move
+              fast without surrendering their data to the cloud. The two things I’m known for right
+              now: <strong>JCLAW</strong> — a SQLite-backed agentic runtime with persistent
+              sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM
+              Studio, OpenRouter), conversation branching, and MCP dual-mode operation — and{‘ ‘}
+              <strong>MCP Starfleet Command</strong>, a bidirectional MCP client server with an
+              observability dashboard, one-click command execution, and full Claude compatibility.
             </p>
             <p>
-              Right now that thread runs through two named engagements. For{' '}
-              <strong>Readyfuels</strong> I shipped the WVRTP facility inspection system — a
-              React/Vite/TypeScript app on Vercel with QR-driven capture, Power Automate
-              pipelines, and protected routes — alongside a 1,135-formula safety + KPI Excel
-              workbook that operators actually use in the field. For <strong>Nous Research</strong>{' '}
-              I built the Hermes plugin: a three-subagent stack (codegen, red-team,
-              resource-gathering) running under a persistent <code>SOUL.md</code> identity layer
-              with OpenRouter multi-provider routing.
+              On the client side I ship operational systems that operators actually use. For{‘ ‘}
+              <strong>Readyfuels</strong> I built the WVRTP facility inspection system — a
+              React/Vite/TypeScript app on Vercel with QR-driven capture and Power Automate
+              pipelines — alongside a 1,135-formula Excel workbook for field safety scoring and
+              KPIs. For <strong>Nous Research</strong> I delivered the Hermes plugin: a
+              three-subagent stack (codegen, red-team, resource-gathering) running under a
+              persistent <code>SOUL.md</code> identity layer with OpenRouter multi-provider routing.
             </p>
             <p>
-              In parallel, I run a long research thread on consciousness modeling — building
-              GPU-accelerated lattice simulations and writing toward a paper on emergent
-              meta-cognitive filtering (EMERGENT-MCF-EI) — and architect a small constellation of
-              agent / MCP infrastructure: <em>JCLAW</em> (a SQLite-backed agentic runtime),{' '}
-              <em>MCPStarfleetCommand</em> (a dual-transport MCP server), and a local WebSocket
-              MCP gateway designed so cloud dependencies are severed by default. The same
-              systems-thinking that powers the research shows up in every client engagement: model
-              the dynamics, instrument the system, and build decisions you can defend.
+              Alongside the client work I run an open research thread on consciousness modeling.
+              The project is EMERGENT-MCF-EI: GPU-accelerated lattice simulations that model
+              consciousness as a dynamic spectral filter operating in frequency space, with a
+              Streamlit dashboard for live exploration of meta-cognitive filtering dynamics and a
+              forthcoming preprint. The same systems-thinking shows up in every engagement — model
+              the dynamics, instrument the system, build decisions you can defend.
             </p>
             <p>
-              On the embedded side I work in C/ESP-IDF on the ESP32-S3 and have built a UNIHIKER
+              On the embedded side I work in C/ESP-IDF on the ESP32-S3 and maintain a UNIHIKER
               K10 skill package covering MicroPython plus the full C/C++ SDK against the actual
               hardware schematic — with the UNIHIKER M10 scoped as the next personalized AI
               companion build. I am based in Buckhannon, West Virginia, work remotely with clients

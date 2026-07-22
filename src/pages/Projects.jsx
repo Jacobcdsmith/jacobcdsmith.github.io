@@ -10,6 +10,28 @@ import { breadcrumbSchema } from '../lib/structured-data.js'
 
 const projects = [
   {
+    name: 'JCLAW',
+    repo: 'Jacobcdsmith/jclaw-framework',
+    status: 'Active development',
+    summary:
+      'SQLite-backed agentic runtime that treats the LLM API as a programmable execution environment.',
+    detail:
+      'Persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter), conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation. Designed for sovereignty: zero telemetry, fully local.',
+    tags: ['llm', 'local-first', 'mcp', 'agent-stacks', 'sqlite'],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/jclaw-framework', external: true }],
+  },
+  {
+    name: 'MCPStarfleetCommand',
+    repo: 'Jacobcdsmith/MCPStarfleetCommand-',
+    status: 'Active development',
+    summary:
+      'Bidirectional MCP client server with observability dashboard. One-click command execution, compatible with Claude.',
+    detail:
+      'Designed alongside JCLAW so the same agent runtime can speak to local-only tools, cloud-hosted MCP servers, and a sovereignty-first WebSocket gateway from one configuration surface. Full bidirectional transport across stdio, SSE, and local WebSocket.',
+    tags: ['mcp', 'agent-infrastructure', 'tooling', 'claude'],
+    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/MCPStarfleetCommand-', external: true }],
+  },
+  {
     name: 'agent-flow-canvas',
     repo: 'Jacobcdsmith/agent-flow-canvas',
     status: 'Live · Open source',
@@ -35,17 +57,6 @@ const projects = [
     actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/CONSIM', external: true }],
   },
   {
-    name: 'JCLAW',
-    repo: 'Jacobcdsmith/jclaw-framework',
-    status: 'Active development',
-    summary:
-      'SQLite-backed agentic runtime that treats the LLM API as a programmable execution environment.',
-    detail:
-      'Persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter), conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation. Designed for sovereignty: zero telemetry, fully local.',
-    tags: ['llm', 'local-first', 'mcp', 'agent-stacks', 'sqlite'],
-    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/jclaw-framework', external: true }],
-  },
-  {
     name: 'Hermes plugin (Nous Research)',
     status: 'Shipped · Agent infrastructure',
     summary:
@@ -54,17 +65,6 @@ const projects = [
       'OpenRouter-based multi-provider routing, deterministic subagent contracts, and red-team-as-first-class behavior so the system tests itself. Built for the Hermes line at Nous Research.',
     tags: ['agent-stacks', 'openrouter', 'red-team', 'identity-layer'],
     actions: [{ label: 'Nous Research', href: 'https://nousresearch.com', external: true }],
-  },
-  {
-    name: 'MCPStarfleetCommand',
-    repo: 'Jacobcdsmith/MCPStarfleetCommand-',
-    status: 'Active development',
-    summary:
-      'Dual-transport MCP server for routing tools and resources across stdio, SSE, and a local WebSocket gateway.',
-    detail:
-      'Designed alongside JCLAW so the same agent runtime can speak to local-only tools, cloud-hosted MCP servers, and a sovereignty-first WebSocket gateway from one configuration surface.',
-    tags: ['mcp', 'agent-infrastructure', 'tooling'],
-    actions: [{ label: 'GitHub', href: 'https://github.com/Jacobcdsmith/MCPStarfleetCommand-', external: true }],
   },
   {
     name: 'Local WebSocket MCP gateway',
@@ -137,7 +137,7 @@ export default function Projects() {
     <>
       <SEO
         title="Projects"
-        description="Agent Flow Canvas — open-source visual AI agent workflow builder. EMERGENT-MCF-EI consciousness research, JCLAW agentic runtime, Hermes plugin (Nous Research), MCPStarfleetCommand, WVRTP facility inspection system (Readyfuels), UNIHIKER and ESP32-S3 work, plus operational analytics engagements."
+        description="JCLAW agentic runtime, MCPStarfleetCommand bidirectional MCP server, agent-flow-canvas workflow builder, EMERGENT-MCF-EI consciousness research, Hermes plugin (Nous Research), WVRTP facility inspection system (Readyfuels), UNIHIKER and ESP32-S3 work, plus operational analytics engagements."
         path="/projects"
         jsonLd={[
           breadcrumbSchema([
@@ -159,12 +159,13 @@ export default function Projects() {
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              Open research: <strong>EMERGENT-MCF-EI</strong> — a GPU-accelerated lattice
-              simulation modeling consciousness as a spectral filter. Agent / MCP infrastructure:{' '}
-              <strong>JCLAW</strong>, the <strong>Hermes plugin</strong> for{' '}
-              <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer">Nous Research</a>,{' '}
-              <strong>MCPStarfleetCommand</strong>, and a local WebSocket MCP gateway. Industrial:
-              the <strong>WVRTP facility inspection system</strong> for{' '}
+              Agent infrastructure: <strong>JCLAW</strong> — SQLite-backed agentic runtime with
+              multi-provider routing and MCP dual-mode operation — and{' '}
+              <strong>MCPStarfleetCommand</strong>, a bidirectional MCP client server with
+              observability dashboard and one-click command execution compatible with Claude. Open
+              research: <strong>EMERGENT-MCF-EI</strong> — GPU-accelerated lattice simulation
+              modeling consciousness as a spectral filter. Industrial: the{' '}
+              <strong>WVRTP facility inspection system</strong> for{' '}
               <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer">Readyfuels</a>.
               Embedded: a UNIHIKER K10 skill package and ESP32-S3 firmware. Most paid client work
               is operational analytics under NDA; references on request.
