@@ -17,6 +17,16 @@ export function personSchema() {
     },
     sameAs: [profile.github, profile.linkedin],
     description: profile.authorBio,
+    alumniOf: { '@type': 'EducationalOrganization', name: 'NewForce' },
+    knowsAbout: [
+      'Data Science',
+      'Machine Learning',
+      'Python',
+      'SQL',
+      'GPU-accelerated computing',
+      'Data Analytics',
+      'Statistical Modeling',
+    ],
   }
 }
 
@@ -26,7 +36,7 @@ export function professionalServiceSchema() {
     '@type': 'ProfessionalService',
     name: `${profile.name} — ${profile.role}`,
     url: profile.siteUrl,
-    image: `${profile.siteUrl}/og-default.svg`,
+    image: `${profile.siteUrl}/og-default.png`,
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',

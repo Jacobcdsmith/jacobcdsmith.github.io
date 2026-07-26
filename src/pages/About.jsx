@@ -9,12 +9,20 @@ import { personSchema, professionalServiceSchema, breadcrumbSchema } from '../li
 
 const skillClusters = [
   {
+    title: 'ML & Statistics',
+    skills: ['Supervised/unsupervised learning', 'time-series forecasting', 'statistical inference (ANOVA, correlation)', 'feature engineering', 'model validation', 'scikit-learn'],
+  },
+  {
     title: 'Data & Analytics',
     skills: ['SQL', 'Python', 'pandas', 'numpy', 'Tableau', 'Power BI', 'Streamlit', 'Excel formula systems', 'experiment design'],
   },
   {
-    title: 'AI / ML Systems',
-    skills: ['LLM evaluation', 'prompt engineering', 'subagent orchestration', 'persistent identity (SOUL.md)', 'red-teaming', 'MCP (stdio / SSE / WebSocket)', 'OpenRouter', 'llama.cpp', 'Ollama', 'LM Studio'],
+    title: 'Deep Learning & GPU',
+    skills: ['CUDA', 'PyTorch', 'JAX', 'GPU acceleration', 'real-time signal processing', 'anomaly detection'],
+  },
+  {
+    title: 'AI / Agent Systems',
+    skills: ['LLM evaluation', 'prompt engineering', 'subagent orchestration', 'red-teaming', 'MCP (stdio / SSE / WebSocket)', 'OpenRouter', 'Ollama', 'LM Studio'],
   },
   {
     title: 'Web & Industrial Tooling',
@@ -25,12 +33,8 @@ const skillClusters = [
     skills: ['ESP32-S3', 'ESP-IDF (C)', 'MicroPython', 'UNIHIKER K10 / M10', 'BLE / Wi-Fi / MQTT', 'modular firmware'],
   },
   {
-    title: 'Research & Modeling',
-    skills: ['consciousness modeling', 'spectral analysis', 'GPU lattice simulation', 'systems theory', 'decision architecture'],
-  },
-  {
     title: 'Tooling & Ops',
-    skills: ['Git', 'GitHub Actions', 'Linux', 'Docker', 'Linear', 'Replit', 'documentation-as-code'],
+    skills: ['Git', 'GitHub Actions', 'Linux', 'Docker', 'CI/CD', 'documentation-as-code'],
   },
 ]
 
@@ -56,26 +60,24 @@ export default function About() {
           <p className="page-eyebrow">About</p>
           <h1 className="page-title">{profile.name}.</h1>
           <p className="page-lead">
-            Independent systems engineer, AI red-teamer, and consciousness researcher based in
-            {' '}{profile.location}. I work at the intersection of operational analytics,
-            local-first AI tooling, and industrial systems.
+            Data scientist and ML engineer based in {profile.location}, transitioning from seven
+            years of enterprise sales into applied analytics and machine learning.
           </p>
           <aside className="answer-box">
             <p className="answer-box-label">TL;DR</p>
             <p>
-              <strong>{profile.name}</strong> is an independent systems engineer, AI red-teamer, and
-              consciousness researcher based in {profile.location}. He works remotely with teams
-              worldwide on operational analytics, AI red-teaming, and local-first AI tooling.
-              Current engagements include the WVRTP facility inspection system for{' '}
-              <strong>Readyfuels</strong> and the Hermes plugin for <strong>Nous Research</strong>.
-              He leads the EMERGENT-MCF-EI consciousness research thread and architects the{' '}
-              <em>JCLAW</em> agentic runtime, <em>MCPStarfleetCommand</em>, and a local WebSocket
-              MCP gateway.
+              <strong>{profile.name}</strong> is a data scientist and ML engineer based in{' '}
+              {profile.location}. After seven years in enterprise sales and account management
+              (FleetPride, Cole Truck Parts), he completed the NewForce Cohort 11 data science
+              program and now builds GPU-accelerated ML systems, production analytics, and shipped
+              client work — the WVRTP facility inspection system for <strong>Readyfuels</strong>{' '}
+              and the Hermes plugin for <strong>Nous Research</strong>. Open to full-time Data
+              Scientist / ML Engineer roles.
             </p>
           </aside>
           <div className="hero-actions">
             <CVDownload variant="primary" size="md" />
-            <Button to="/services" variant="ghost" size="md">See services</Button>
+            <Button to="/projects" variant="ghost" size="md">See projects</Button>
             <Button href={`mailto:${profile.email}`} variant="ghost" size="md">Email Jacob</Button>
           </div>
         </div>
@@ -85,37 +87,35 @@ export default function About() {
         <div className="about-grid">
           <div className="about-prose">
             <p>
-              I build agent infrastructure and local-first AI tools for teams that need to move
-              fast without surrendering their data to the cloud. The two things I’m known for right
-              now: <strong>JCLAW</strong> — a SQLite-backed agentic runtime with persistent
-              sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM
-              Studio, OpenRouter), conversation branching, and MCP dual-mode operation — and{‘ ‘}
-              <strong>MCP Starfleet Command</strong>, a bidirectional MCP client server with an
-              observability dashboard, one-click command execution, and full Claude compatibility.
+              Seven years in enterprise sales and account management taught me how decisions
+              actually get made inside a business — what data gets trusted, what gets ignored, and
+              why. The <strong>NewForce Cohort 11</strong> data science program gave me the tools to
+              build the systems that should have existed the whole time: SQL, Python, statistical
+              modeling, and dashboard architecture that stakeholders actually use.
             </p>
             <p>
-              On the client side I ship operational systems that operators actually use. For{‘ ‘}
-              <strong>Readyfuels</strong> I built the WVRTP facility inspection system — a
-              React/Vite/TypeScript app on Vercel with QR-driven capture and Power Automate
-              pipelines — alongside a 1,135-formula Excel workbook for field safety scoring and
-              KPIs. For <strong>Nous Research</strong> I delivered the Hermes plugin: a
+              On the ML side, <strong>CONSIM</strong> is a GPU-accelerated framework for real-time
+              pattern detection in high-dimensional time-series data — a 20x performance uplift over
+              a CPU baseline using CUDA/PyTorch and JAX, with phase-coherence tracking and
+              spectral-analysis modules for streaming anomaly detection. The{' '}
+              <strong>GitHub Language Analysis Platform</strong> is a data-analysis capstone
+              spanning 1,200+ repositories, from ANOVA-backed language comparisons to an interactive
+              React/Plotly dashboard.
+            </p>
+            <p>
+              On the delivery side: for <strong>Readyfuels</strong> I shipped the WVRTP facility
+              inspection system — a React/Vite/TypeScript app on Vercel with QR-driven capture and
+              Power Automate pipelines — alongside a 1,135-formula Excel workbook for field safety
+              scoring and KPIs. For <strong>Nous Research</strong> I built the Hermes plugin: a
               three-subagent stack (codegen, red-team, resource-gathering) running under a
               persistent <code>SOUL.md</code> identity layer with OpenRouter multi-provider routing.
             </p>
             <p>
-              Alongside the client work I run an open research thread on consciousness modeling.
-              The project is EMERGENT-MCF-EI: GPU-accelerated lattice simulations that model
-              consciousness as a dynamic spectral filter operating in frequency space, with a
-              Streamlit dashboard for live exploration of meta-cognitive filtering dynamics and a
-              forthcoming preprint. The same systems-thinking shows up in every engagement — model
-              the dynamics, instrument the system, build decisions you can defend.
-            </p>
-            <p>
-              On the embedded side I work in C/ESP-IDF on the ESP32-S3 and maintain a UNIHIKER
-              K10 skill package covering MicroPython plus the full C/C++ SDK against the actual
-              hardware schematic — with the UNIHIKER M10 scoped as the next personalized AI
-              companion build. I am based in Buckhannon, West Virginia, work remotely with clients
-              worldwide, and prefer engagements that produce an artifact someone can hold and own.
+              I also maintain <strong>JCLAW</strong> and <strong>kairos</strong>, local-first
+              AI/agent infrastructure built so data never has to leave the room, and do embedded
+              work in C/ESP-IDF on the ESP32-S3 plus a UNIHIKER K10 skill package. I am based in
+              Buckhannon, West Virginia, open to remote or relocation, and prefer roles and
+              engagements that produce an artifact someone can hold and own.
             </p>
           </div>
 
@@ -126,16 +126,16 @@ export default function About() {
                 <span className="fact-value">{profile.location}</span>
               </li>
               <li>
-                <span className="fact-label">Works with</span>
-                <span className="fact-value">Teams worldwide (remote)</span>
+                <span className="fact-label">Open to</span>
+                <span className="fact-value">Full-time roles (remote or relocation)</span>
               </li>
               <li>
                 <span className="fact-label">Focus</span>
-                <span className="fact-value">Analytics · AI · systems</span>
+                <span className="fact-value">Data science · ML · analytics</span>
               </li>
               <li>
-                <span className="fact-label">Available</span>
-                <span className="fact-value">For new engagements</span>
+                <span className="fact-label">Also available</span>
+                <span className="fact-value">For scoped engagements</span>
               </li>
               <li>
                 <span className="fact-label">Network</span>

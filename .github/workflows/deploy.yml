@@ -34,6 +34,8 @@ jobs:
 
       - name: Build (Vite + blog page generation)
         run: npm run build
+        env:
+          VITE_BUTTONDOWN_USERNAME: ${{ vars.VITE_BUTTONDOWN_USERNAME }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

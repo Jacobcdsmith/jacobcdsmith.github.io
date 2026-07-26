@@ -1,21 +1,43 @@
 # Jacob C. Smith
 
-> Independent systems engineer, AI red-teamer, and consciousness researcher
-> based in Buckhannon, West Virginia. Tagline: "I help teams turn messy reality
-> into measurable systems." Currently shipping the WVRTP facility inspection
+> Data scientist and ML engineer based in Buckhannon, West Virginia,
+> transitioning from seven years of enterprise sales and account management
+> into applied analytics and machine learning via the NewForce Cohort 11 data
+> science program. Tagline: "I turn messy, high-dimensional data into
+> decisions and systems that ship." Has shipped the WVRTP facility inspection
 > system for Readyfuels (https://readyfuels.com) and the Hermes plugin for
-> Nous Research (https://nousresearch.com). Practice areas: operational
-> analytics, AI red-teaming, local-first AI systems, and decision-architecture
-> audits.
+> Nous Research (https://nousresearch.com). Open to full-time Data Scientist /
+> ML Engineer roles.
 
 ## About
 - Site: https://jacobcdsmith.github.io
 - Email: jacobcsmithd@gmail.com
 - Phone: (304) 473-9980
 - GitHub: https://github.com/Jacobcdsmith
-- LinkedIn: https://linkedin.com/in/jacobcsmith
+- LinkedIn: https://linkedin.com/in/jacob-c-smith
 - Location: Buckhannon, West Virginia, USA
-- Availability: Open for new engagements (remote, worldwide)
+- Availability: Open to full-time Data Scientist / ML Engineer roles (remote or relocation); also available for scoped analytics/AI engagements
+
+## Background
+- 2021–2022: Outside Sales Representative, Cole Truck Parts
+- 2022–2024: Strategic Account Manager | Analytics Lead, FleetPride — 18% YoY territory growth, SQL-automated CRM reporting, Power BI demand forecasting at 82% accuracy
+- 2024–2025: NewForce Cohort 11 data science program graduate
+- Nov 2025–present: Independent data & AI systems work (see Active Projects)
+
+## Data Science & ML Projects
+- CONSIM: GPU-accelerated framework for real-time pattern detection in
+  high-dimensional time-series data. 20x performance uplift via CUDA/PyTorch
+  and JAX; phase-coherence tracking and spectral-analysis modules for
+  streaming anomaly detection.
+- GitHub Language Analysis Platform: data-analysis capstone across 1,200+
+  GitHub repositories — six-notebook pipeline (ANOVA-backed language
+  comparison, correlation analysis, 3D visualization) feeding a React/Plotly
+  dashboard. https://git-hub-language-capstone.vercel.app/
+- Enterprise Predictive Analytics Platform: classification engine, 78%
+  cross-validated accuracy over 200k+ records, REST API + TypeScript
+  dashboard.
+- Traffic Safety & Infrastructure Optimization: spatio-temporal analysis of
+  200k+ collision records informing a $1.2M infrastructure investment.
 
 ## Services
 - Operational analytics engagements (SQL, Python, BI dashboards, forecasts,
@@ -23,25 +45,28 @@
   Readyfuels)
 - AI red-teaming and safety reviews for LLM-powered features and agent stacks
   (delivery example: red-team subagent inside the Hermes plugin for
-  Nous Research)
-- Local-first AI systems (JCLAW, MCPStarfleetCommand, a local WebSocket MCP
-  gateway; llama.cpp / Ollama / vLLM where appropriate)
-- Systems audits and decision architecture for founders and ops leaders who
-  need an outside systems-thinker to map what is actually happening and what
-  to do next
+  Nous Research; concrete artifact: the NIGHTMARE penetration-testing suite)
+- Local-first AI systems (JCLAW, kairos, agent/MCP infrastructure)
+- Systems audits and decision architecture for founders and ops leaders
 
-## Active Projects
-- EMERGENT-MCF-EI: GPU-accelerated lattice simulation modeling consciousness
-  as a spectral filter; forthcoming preprint targeting arXiv q-bio.NC.
+## Active / Open-Source Projects
 - JCLAW: local-first LLM runtime with multi-provider routing, persistent
   sessions, conversation branching, agentic loops, and MCP dual-mode
   operation.
+- kairos: local-first knowledge workspace — parses docs/code/logs by
+  structure and traces concepts via explicit, typed relations; zero
+  embeddings, zero network calls.
 - Hermes plugin (for Nous Research): three-subagent stack (codegen,
   red-team, resource-gathering) under a persistent SOUL.md identity layer
   with OpenRouter routing.
 - WVRTP Facility Inspection System (for Readyfuels): React/Vite/TypeScript
-  app on Vercel with QR-driven capture, Power Automate pipelines, and a
-  companion 1,135-formula safety + KPI Excel workbook.
+  app on Vercel with QR-driven capture, browser geolocation, Power Automate
+  pipelines, and a companion 1,135-formula safety + KPI Excel workbook.
+  Case study: https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/
+- Wave Analyzer (OmniWave): Android real-time audio/RF spectrum analyzer
+  with AI signal classification.
+- agent-flow-canvas: browser-based visual builder for AI agent workflows.
+- UNIHIKER K10 skill package + ESP32-S3 firmware: embedded/edge work.
 
 ## Research & IP
 - Causal Compression Graphs (CCG) — public theory paper:
@@ -62,3 +87,4 @@
 - Experience: https://jacobcdsmith.github.io/experience
 - Contact: https://jacobcdsmith.github.io/contact
 - Blog: https://jacobcdsmith.github.io/blog
+- Résumé (PDF): https://jacobcdsmith.github.io/jacob-c-smith-resume.pdf

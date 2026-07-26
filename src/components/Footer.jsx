@@ -14,8 +14,8 @@ export default function Footer() {
               <span className="brand-name">Jacob C. Smith<span className="brand-dot">.</span></span>
             </Link>
             <p className="footer-tagline">
-              Independent practice in operational analytics, AI red-teaming, and local-first AI
-              systems. Based in {profile.location}.
+              Data scientist &amp; ML engineer transitioning from enterprise sales into applied
+              analytics and ML. Based in {profile.location}.
             </p>
             <NewsletterForm
               variant="footer"
@@ -45,7 +45,7 @@ export default function Footer() {
               <li><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
               <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="/rss.xml">RSS feed</a></li>
-              <li><a href={profile.resumePath} download>Download CV</a></li>
+              <li><a href={profile.resumePath} download>Download résumé</a></li>
               <li><a href="/llms.txt">llms.txt</a></li>
             </ul>
           </div>

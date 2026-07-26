@@ -127,7 +127,7 @@ function routeShell({
   type = 'website',
   publishedTime,
   tags = [],
-  ogImage = `${BASE_URL}/og-default.svg`,
+  ogImage = `${BASE_URL}/og-default.png`,
 }) {
   const canonical = `${BASE_URL}${path}`
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — ${ROLE}`
@@ -152,6 +152,15 @@ function routeShell({
   <link rel="canonical" href="${canonical}" />
   <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} — Blog" href="${BASE_URL}/rss.xml" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Search Console / Bing Webmaster verification placeholder — keep
+       in sync with index.html. Replace with the real codes once the
+       properties exist, then submit ${BASE_URL}/sitemap.xml in both.
+  <meta name="google-site-verification" content="REPLACE_WITH_REAL_CODE" />
+  <meta name="msvalidate.01" content="REPLACE_WITH_REAL_CODE" />
+  -->
 
   <meta property="og:title" content="${escHtml(fullTitle)}" />
   <meta property="og:description" content="${escHtml(description)}" />
@@ -172,6 +181,7 @@ ${tagMeta}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
 
   <!-- Plausible analytics. data-domain MUST match the live site hostname and
        the site registered in the Plausible dashboard. Keep in sync with the
@@ -247,8 +257,10 @@ const personJson = {
   email: 'mailto:jacobcsmithd@gmail.com',
   telephone: '+13044739980',
   address: { '@type': 'PostalAddress', addressLocality: 'Buckhannon', addressRegion: 'WV', addressCountry: 'US' },
-  sameAs: ['https://github.com/Jacobcdsmith', 'https://linkedin.com/in/jacobcsmith'],
+  sameAs: [profile.github, profile.linkedin],
   description: PERSON_DESCRIPTION,
+  alumniOf: { '@type': 'EducationalOrganization', name: 'NewForce' },
+  knowsAbout: ['Data Science', 'Machine Learning', 'Python', 'SQL', 'GPU-accelerated computing', 'Data Analytics', 'Statistical Modeling'],
 }
 
 const profServiceJson = {
@@ -256,7 +268,7 @@ const profServiceJson = {
   '@type': 'ProfessionalService',
   name: `${SITE_NAME} — ${ROLE}`,
   url: BASE_URL,
-  image: `${BASE_URL}/og-default.svg`,
+  image: `${BASE_URL}/og-default.png`,
   priceRange: '$$',
   address: { '@type': 'PostalAddress', addressLocality: 'Buckhannon', addressRegion: 'WV', addressCountry: 'US' },
   areaServed: 'Worldwide (remote)',
@@ -317,24 +329,24 @@ function staticRoutes(posts) {
     {
       path: '/',
       title: null,
-      description: 'Jacob C. Smith — independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research.',
+      description: 'Jacob C. Smith — data scientist and ML engineer based in Buckhannon, West Virginia, transitioning from enterprise sales into applied analytics and machine learning. GPU-accelerated ML systems, production analytics, and shipped industrial tooling for Readyfuels. Open to full-time roles.',
       jsonLd: [personJson, profServiceJson, websiteJson, faqJson(homeFaq)],
       visibleBody: visibleBlock({
-        eyebrow: `Independent practice · Buckhannon, WV`,
-        title: 'I help teams turn messy reality into measurable systems.',
-        lead: 'Independent systems engineer, AI red-teamer, and consciousness researcher. Operational analytics, AI red-teaming, local-first AI systems, and decision-architecture audits — for teams that have outgrown spreadsheets but haven’t yet earned a data team.',
-        tldr: 'Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Architects the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway. Embedded work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.',
+        eyebrow: `Data Scientist & ML Engineer · Buckhannon, WV`,
+        title: 'I turn messy, high-dimensional data into decisions and systems that ship.',
+        lead: 'Data scientist and ML engineer transitioning from seven years of enterprise sales into applied analytics and machine learning. GPU-accelerated ML systems, production dashboards, and shipped industrial tooling — for teams that need answers, not another tool.',
+        tldr: 'Jacob C. Smith is a data scientist and ML engineer based in Buckhannon, West Virginia, transitioning from enterprise sales (FleetPride, Cole Truck Parts) into applied analytics and ML through the NewForce Cohort 11 data science program. Builds GPU-accelerated ML systems (CONSIM), production analytics, and ships real client work — the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Open to full-time Data Scientist / ML Engineer roles.',
         body: `
           <p style="margin:1.5rem 0;">
-            <a href="/contact" style="color:#1d4dba;font-weight:500;">Work with me →</a> &nbsp;
-            <a href="/blog" style="color:#1d4dba;">Read the writing →</a> &nbsp;
-            <a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download CV →</a>
+            <a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;font-weight:500;">Download résumé →</a> &nbsp;
+            <a href="/projects" style="color:#1d4dba;">See the projects →</a> &nbsp;
+            <a href="/contact" style="color:#1d4dba;">Get in touch →</a>
           </p>
           <h2 style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;font-size:1.1rem;letter-spacing:0.05em;margin:2rem 0 0.85rem;color:#0a0f1f;">Three things I do</h2>
           <ul style="padding-left:1.2rem;color:#0a0f1f;">
-            <li><strong>Operational analytics</strong> — dashboards, forecasts, KPI / safety formula systems you can defend in a meeting.</li>
-            <li><strong>AI red-teaming</strong> — adversarial reviews of LLM features and agent stacks. Delivered as a subagent inside the Hermes plugin for Nous Research.</li>
-            <li><strong>Local-first AI tools</strong> — JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway built so cloud dependencies are severed by design.</li>
+            <li><strong>Applied data science &amp; ML</strong> — GPU-accelerated signal processing (CONSIM), predictive models, and analysis capstones across 1,200+ repos.</li>
+            <li><strong>Operational analytics</strong> — dashboards, forecasts, and KPI / safety formula systems shipped for Readyfuels (WVRTP).</li>
+            <li><strong>Local-first AI tools</strong> — JCLAW, kairos, and agent/MCP infrastructure built so data never has to leave the room.</li>
           </ul>
           <p><a href="/services" style="color:#1d4dba;">See all services →</a></p>
         `,
@@ -343,17 +355,17 @@ function staticRoutes(posts) {
     {
       path: '/about',
       title: 'About',
-      description: 'Jacob C. Smith — independent systems engineer, AI red-teamer, and consciousness researcher bridging operational analytics, local-first AI tooling, and industrial systems work.',
+      description: 'Jacob C. Smith — data scientist and ML engineer transitioning from enterprise sales into applied analytics and machine learning, based in Buckhannon, West Virginia.',
       jsonLd: [personJson, bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'About', url: `${BASE_URL}/about` }])],
       visibleBody: visibleBlock({
         eyebrow: 'About',
         title: 'Jacob C. Smith.',
-        lead: 'Independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia.',
-        tldr: 'Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Works remotely with teams worldwide on operational analytics, AI red-teaming, and local-first AI tooling. Current engagements include the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com). Leads the EMERGENT-MCF-EI consciousness research thread; architects the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway.',
-        body: `<p>I help teams that have outgrown spreadsheets but haven’t yet earned a data team. The work tends to look like one of three things: a dashboard that finally makes a decision clear, a red-team report that catches an AI feature before it embarrasses someone, or a local-first runtime that lets a team use LLMs without surrendering their data.</p>
-        <p>Right now that thread runs through two named engagements. For <strong>Readyfuels</strong> I shipped the WVRTP facility inspection system — a React/Vite/TypeScript app on Vercel with QR-driven capture, Power Automate pipelines, and protected routes — alongside a 1,135-formula safety + KPI Excel workbook used by operators in the field. For <strong>Nous Research</strong> I built the Hermes plugin: a three-subagent stack (codegen, red-team, resource-gathering) under a persistent SOUL.md identity layer with OpenRouter multi-provider routing.</p>
-        <p>In parallel I run a long research thread on consciousness modeling (EMERGENT-MCF-EI) and architect a small constellation of agent / MCP infrastructure: <strong>JCLAW</strong>, <strong>MCPStarfleetCommand</strong>, and a local WebSocket MCP gateway designed so cloud dependencies are severed by default. Embedded work in C/ESP-IDF on the ESP32-S3 and a UNIHIKER K10 skill package round out the practice.</p>
-        <p><a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download CV →</a></p>`,
+        lead: 'Data scientist and ML engineer based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales into applied analytics and machine learning.',
+        tldr: 'Jacob C. Smith is a data scientist and ML engineer based in Buckhannon, West Virginia. After seven years in enterprise sales and account management (FleetPride, Cole Truck Parts), he completed the NewForce Cohort 11 data science program and now builds GPU-accelerated ML systems, production analytics, and shipped client work — the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com). Open to full-time Data Scientist / ML Engineer roles.',
+        body: `<p>Seven years in enterprise sales and account management taught me how decisions actually get made inside a business — what data gets trusted, what gets ignored, and why. The NewForce Cohort 11 data science program gave me the tools to build the systems that should have existed the whole time: SQL, Python, statistical modeling, and dashboard architecture that stakeholders actually use.</p>
+        <p>On the ML side, <strong>CONSIM</strong> is a GPU-accelerated framework for real-time pattern detection in high-dimensional time-series data — a 20x performance uplift over a CPU baseline using CUDA/PyTorch and JAX, with phase-coherence tracking and spectral-analysis modules for streaming anomaly detection. The <strong>GitHub Language Analysis Platform</strong> is a data-analysis capstone spanning 1,200+ repositories, from ANOVA-backed language comparisons to an interactive React/Plotly dashboard.</p>
+        <p>On the delivery side: for <strong>Readyfuels</strong> I shipped the WVRTP facility inspection system — a React/Vite/TypeScript app on Vercel with QR-driven capture and Power Automate pipelines — alongside a 1,135-formula safety + KPI Excel workbook used by operators in the field. For <strong>Nous Research</strong> I built the Hermes plugin, a three-subagent agent stack. I also maintain <strong>JCLAW</strong> and <strong>kairos</strong>, local-first AI/agent infrastructure built so data never has to leave the room.</p>
+        <p><a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download résumé →</a></p>`,
       }),
     },
     {
@@ -383,20 +395,23 @@ function staticRoutes(posts) {
     {
       path: '/projects',
       title: 'Projects',
-      description: 'EMERGENT-MCF-EI consciousness research, JCLAW agentic runtime, Hermes plugin (Nous Research), MCPStarfleetCommand, WVRTP facility inspection system (Readyfuels), UNIHIKER and ESP32-S3 work, plus operational analytics engagements.',
+      description: 'GitHub Language Analysis Platform, CONSIM GPU-accelerated signal processing, WVRTP facility inspection system (Readyfuels), JCLAW agentic runtime, Hermes plugin (Nous Research), kairos, Wave Analyzer, a red-teaming console, plus embedded and operational analytics work.',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Projects', url: `${BASE_URL}/projects` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Projects',
         title: 'Things I’m building.',
-        lead: 'A mix of open research, agent / MCP infrastructure, industrial systems work, and client engagements.',
-        tldr: 'Open research: EMERGENT-MCF-EI (consciousness as a spectral filter). Agent / MCP infrastructure: JCLAW, the Hermes plugin for Nous Research, MCPStarfleetCommand, and a local WebSocket MCP gateway. Industrial: the WVRTP facility inspection system for Readyfuels. Embedded: a UNIHIKER K10 skill package and ESP32-S3 firmware. Most paid client work is operational analytics under NDA.',
+        lead: 'A mix of data analysis capstones, GPU-accelerated ML, shipped client work, and agent / local-first AI infrastructure.',
+        tldr: 'Data & ML: the GitHub Language Analysis Platform (1,200+ repo capstone) and CONSIM, a GPU-accelerated signal-processing framework with a 20x performance uplift via CUDA/PyTorch/JAX. Industrial: the WVRTP facility inspection system for Readyfuels. Agent infrastructure: JCLAW, the Hermes plugin for Nous Research, and kairos, a local-first knowledge tool. Also: an Android RF/audio spectrum analyzer, a red-teaming console, and embedded work on the UNIHIKER K10 and ESP32-S3. Most paid client work is operational analytics under NDA.',
         body: `<ul style="padding-left:1.2rem;color:#0a0f1f;">
-          <li><strong>EMERGENT-MCF-EI</strong> — GPU-accelerated lattice simulation modeling consciousness as a spectral filter; forthcoming preprint (q-bio.NC).</li>
+          <li><strong>GitHub Language Analysis Platform</strong> — data-analysis capstone across 1,200+ repos; Jupyter notebook pipeline feeding a React/Plotly dashboard. <a href="https://git-hub-language-capstone.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Live demo</a>.</li>
+          <li><strong>CONSIM</strong> — GPU-accelerated framework for real-time pattern detection in high-dimensional time-series data; 20x performance uplift via CUDA/PyTorch/JAX.</li>
+          <li><strong>WVRTP Facility Inspection System</strong> — React/Vite/TypeScript on Vercel for <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Readyfuels</a>; QR + Power Automate; companion 1,135-formula safety + KPI workbook. <a href="/blog/wvrtp-satellites-to-street-signs" style="color:#1d4dba;">Read the case study</a>.</li>
           <li><strong>JCLAW</strong> — SQLite-backed agentic runtime with multi-provider routing, MCP, branching, evals.</li>
           <li><strong>Hermes plugin</strong> — three-subagent stack with persistent SOUL.md identity for <a href="https://nousresearch.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Nous Research</a>.</li>
-          <li><strong>MCPStarfleetCommand</strong> — dual-transport MCP server.</li>
-          <li><strong>Local WebSocket MCP gateway</strong> — cloud dependencies severed by design.</li>
-          <li><strong>WVRTP Facility Inspection System</strong> — React/Vite/TypeScript on Vercel for <a href="https://readyfuels.com" target="_blank" rel="noopener noreferrer" style="color:#1d4dba;">Readyfuels</a>; QR + Power Automate; companion 1,135-formula safety + KPI workbook.</li>
+          <li><strong>kairos</strong> — local-first knowledge workspace; explicit, typed, provenance-first search with zero embeddings.</li>
+          <li><strong>agent-flow-canvas</strong> — browser-based visual builder for AI agent workflows, zero backend.</li>
+          <li><strong>Wave Analyzer (OmniWave)</strong> — Android real-time audio/RF spectrum analyzer with AI signal classification.</li>
+          <li><strong>NIGHTMARE Penetration Testing Suite</strong> — web-based console for authorized security testing; concrete artifact behind the AI red-teaming practice.</li>
           <li><strong>UNIHIKER K10 skill package</strong> — MicroPython + full C/C++ SDK against the real hardware schematic.</li>
           <li><strong>ESP32-S3 firmware</strong> — modular ESP-IDF / C work with documented module boundaries.</li>
           <li><strong>jacobcdsmith.github.io</strong> — this site. Static React + Vite SPA with pre-rendered HTML.</li>
@@ -427,14 +442,14 @@ function staticRoutes(posts) {
     {
       path: '/experience',
       title: 'Experience',
-      description: 'Independent practice in operational analytics, AI red-teaming, and local-first AI; current engagements with Readyfuels (WVRTP) and Nous Research (Hermes plugin); JCLAW + MCP infrastructure; ESP32-S3 + UNIHIKER embedded work; EMERGENT-MCF-EI research; NewForce Cohort 11.',
+      description: 'Career transition from enterprise sales (FleetPride, Cole Truck Parts) into data science via NewForce Cohort 11; GPU-accelerated ML (CONSIM); shipped client work with Readyfuels (WVRTP) and Nous Research (Hermes plugin).',
       jsonLd: [bcrumb([{ name: 'Home', url: BASE_URL }, { name: 'Experience', url: `${BASE_URL}/experience` }])],
       visibleBody: visibleBlock({
         eyebrow: 'Experience',
         title: 'Selected work.',
-        lead: 'A short version. For the long version, download the CV or email for references on specific engagements.',
-        tldr: 'Jacob C. Smith runs an independent practice in operational analytics, AI red-teaming, and local-first AI systems out of Buckhannon, West Virginia. Current engagements: the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. In parallel he leads the EMERGENT-MCF-EI consciousness research thread and architects the JCLAW agentic runtime, MCPStarfleetCommand, and a local WebSocket MCP gateway. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.',
-        body: `<p><a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download CV →</a></p>`,
+        lead: 'A short version. For the long version, download the résumé or email for references on specific engagements.',
+        tldr: 'Jacob C. Smith spent seven years in enterprise sales and account management (FleetPride, Cole Truck Parts) before completing the NewForce Cohort 11 data science program. He now builds GPU-accelerated ML systems (CONSIM), production analytics, and has shipped the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Open to full-time Data Scientist / ML Engineer roles.',
+        body: `<p><a href="/jacob-c-smith-resume.pdf" style="color:#1d4dba;">Download résumé →</a></p>`,
       }),
     },
     {
@@ -451,7 +466,7 @@ function staticRoutes(posts) {
           <li>Email: <a href="mailto:jacobcsmithd@gmail.com" style="color:#1d4dba;">jacobcsmithd@gmail.com</a></li>
           <li>Phone: <a href="tel:+13044739980" style="color:#1d4dba;">(304) 473-9980</a></li>
           <li>GitHub: <a href="https://github.com/Jacobcdsmith" style="color:#1d4dba;">github.com/Jacobcdsmith</a></li>
-          <li>LinkedIn: <a href="https://linkedin.com/in/jacobcsmith" style="color:#1d4dba;">linkedin.com/in/jacobcsmith</a></li>
+          <li>LinkedIn: <a href="https://linkedin.com/in/jacob-c-smith" style="color:#1d4dba;">linkedin.com/in/jacob-c-smith</a></li>
           <li>Location: Buckhannon, West Virginia, USA</li>
         </ul>`,
       }),
@@ -640,7 +655,7 @@ function generateRss(posts) {
   <channel>
     <title>${SITE_NAME} — Blog</title>
     <link>${BASE_URL}/blog</link>
-    <description>Long-form writing on consciousness modeling, local-first AI, decision systems, and the practice of building.</description>
+    <description>Long-form writing on data science, ML systems, local-first AI, and the practice of building.</description>
     <language>en-us</language>
     <lastBuildDate>${now}</lastBuildDate>
     <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
@@ -655,9 +670,9 @@ function generateLlmsFull(posts) {
   out += `\nGenerated: ${new Date().toISOString()}\n`
   out += `Site: ${BASE_URL}\n\n`
   out += `## About\n`
-  out += `Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. Currently shipping the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com); architects JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway. Embedded / edge work on ESP32-S3 and UNIHIKER K10/M10. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.\n\n`
-  out += `Practice areas: operational analytics, AI red-teaming and safety reviews, local-first AI systems, and decision-architecture audits. Open research on consciousness modeling (EMERGENT-MCF-EI).\n\n`
-  out += `Contact: jacobcsmithd@gmail.com · (304) 473-9980 · github.com/Jacobcdsmith · linkedin.com/in/jacobcsmith\n\n`
+  out += `Jacob C. Smith is a data scientist and ML engineer based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales and account management (FleetPride, Cole Truck Parts) into applied analytics and machine learning via the NewForce Cohort 11 data science program. Builds GPU-accelerated ML systems (CONSIM) and production analytics; has shipped the WVRTP facility inspection system for Readyfuels (https://readyfuels.com) and the Hermes plugin for Nous Research (https://nousresearch.com). Also maintains JCLAW and kairos, local-first AI/agent infrastructure. Open to full-time Data Scientist / ML Engineer roles.\n\n`
+  out += `Practice areas: data science and ML engineering, operational analytics, AI red-teaming and safety reviews, and local-first AI systems.\n\n`
+  out += `Contact: jacobcsmithd@gmail.com · (304) 473-9980 · github.com/Jacobcdsmith · linkedin.com/in/jacob-c-smith\n\n`
   out += `## Research & IP\n`
   out += `First-party reference material, separate from client work and blog. One public document is linked from /research:\n`
   out += `- Causal Compression Graphs (CCG): public theory paper. ${BASE_URL}/research/causal-compression-graphs.md\n`

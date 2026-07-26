@@ -4,7 +4,10 @@
    Inspired by nousresearch.com (light) + readyfuels.com (dark).
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* Font loading moved to a <link rel="stylesheet"> in index.html (and the
+   pre-rendered head in scripts/generate-blog-pages.mjs) so the browser can
+   discover and fetch it in parallel with everything else — a CSS @import
+   here would block on this whole file downloading first. */
 
 /* ---------- Tokens (LIGHT default — archival cyanotype) ---------- */
 :root {

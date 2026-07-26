@@ -3,13 +3,13 @@
 [![Live Site](https://img.shields.io/badge/Live-jacobcdsmith.github.io-1d4dba?style=for-the-badge)](https://jacobcdsmith.github.io)
 [![License](https://img.shields.io/badge/License-MIT-1d4dba?style=for-the-badge)](LICENSE)
 
-> **Systems Engineer · AI Red-Teamer · Consciousness Researcher**
+> **Data Scientist · ML Engineer · Career Transitioner**
 
-This repository is the source for [jacobcdsmith.github.io](https://jacobcdsmith.github.io) — the public-facing site and blog for Jacob C. Smith, an independent systems engineer and AI researcher based in Buckhannon, West Virginia.
+This repository is the source for [jacobcdsmith.github.io](https://jacobcdsmith.github.io) — the public-facing site and blog for Jacob C. Smith, a data scientist and ML engineer based in Buckhannon, West Virginia, transitioning from enterprise sales into applied analytics and machine learning.
 
-The site presents the practice (operational analytics, AI red-teaming, local-first AI systems, decision-architecture audits), the current named engagements (the WVRTP facility inspection system for [Readyfuels](https://readyfuels.com) and the Hermes plugin for [Nous Research](https://nousresearch.com)), the open project work (JCLAW, MCPStarfleetCommand, EMERGENT-MCF-EI consciousness research, ESP32-S3 / UNIHIKER K10 embedded work), and a writing surface.
+The site presents the résumé and job search (open to full-time Data Scientist / ML Engineer roles), data/ML projects (CONSIM GPU-accelerated signal processing, the GitHub Language Analysis Platform), shipped client work (the WVRTP facility inspection system for [Readyfuels](https://readyfuels.com) and the Hermes plugin for [Nous Research](https://nousresearch.com)), agent/local-first AI infrastructure (JCLAW, kairos), embedded work, and a writing surface. Scoped consulting engagements remain available alongside the job search.
 
-Tagline: *"I help teams turn messy reality into measurable systems."*
+Tagline: *"I turn messy, high-dimensional data into decisions and systems that ship."*
 
 ---
 
@@ -49,9 +49,9 @@ Default theme follows the OS preference and falls back to light.
 │   └── posts.json              # Post metadata (slug, date, title, tags, category)
 ├── public/                     # Static assets shipped as-is
 │   ├── favicon.svg
-│   ├── og-default.svg
+│   ├── og-default.svg / .png
 │   ├── llms.txt                # Short LLM-friendly site overview
-│   └── jacob-c-smith-resume.pdf  # CV download (placeholder — replace before launch)
+│   └── jacob-c-smith-resume.pdf  # Résumé download (source: scripts/resume/resume.html)
 ├── scripts/
 │   └── generate-blog-pages.mjs # Post-build: pre-renders all routes + posts,
 │                               # generates sitemap.xml, robots.txt, rss.xml,
@@ -149,7 +149,7 @@ Tokens live in `src/style.css`. Light is the default; `[data-theme='dark']` over
 - The regional hospitality client (referenced under pro-bono engagements) must NOT be named anywhere in copy, alt text, links, schema, or comments. Refer to it generically (e.g. *regional hospitality client*).
 - Spark / sparkwv.org, NewForce, and Bridging Innovations Morgantown are public references and may be named.
 - Readyfuels (https://readyfuels.com) and Nous Research (https://nousresearch.com) are explicitly named external organizations with permission to reference. Always link with `target="_blank" rel="noopener noreferrer"`.
-- The site does not advertise an active W-2 job search; positioning is independent practice taking engagements.
+- The site actively signals an open job search (full-time Data Scientist / ML Engineer roles) alongside availability for scoped consulting engagements.
 
 ---
 
@@ -165,5 +165,5 @@ MIT — see [LICENSE](LICENSE).
 
 - Email: [jacobcsmithd@gmail.com](mailto:jacobcsmithd@gmail.com)
 - Phone: [(304) 473-9980](tel:+13044739980)
-- LinkedIn: [linkedin.com/in/jacobcsmith](https://linkedin.com/in/jacobcsmith)
+- LinkedIn: [linkedin.com/in/jacob-c-smith](https://linkedin.com/in/jacob-c-smith)
 - GitHub: [github.com/Jacobcdsmith](https://github.com/Jacobcdsmith)

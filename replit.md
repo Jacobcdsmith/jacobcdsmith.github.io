@@ -1,11 +1,11 @@
 # Jacob C. Smith Portfolio
 
 ## Project Overview
-Public-facing professional site and blog for Jacob C. Smith — independent **systems engineer, AI red-teamer, and consciousness researcher** based in Buckhannon, West Virginia. Tagline: *"I help teams turn messy reality into measurable systems."*
+Public-facing professional site and blog for Jacob C. Smith — **data scientist and ML engineer** based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales and account management (FleetPride, Cole Truck Parts) into applied analytics and machine learning via the NewForce Cohort 11 data science program. Tagline: *"I turn messy, high-dimensional data into decisions and systems that ship."*
 
-The practice runs four threads, presented as four service pillars: (1) operational analytics engagements (SQL/Python/BI plus formula-heavy KPI & safety scoring systems), (2) AI red-teaming & safety reviews of LLM features and agent stacks, (3) local-first AI systems (JCLAW, MCP infrastructure), (4) systems audits & decision architecture for founders and ops leaders. Current named engagements: the WVRTP facility inspection system for **Readyfuels** (https://readyfuels.com) and the **Hermes plugin** for **Nous Research** (https://nousresearch.com). Open research: EMERGENT-MCF-EI consciousness modeling, plus JCLAW / MCPStarfleetCommand / a local WebSocket MCP gateway. Embedded work on ESP32-S3 and a UNIHIKER K10 skill package. NewForce Cohort 11 graduate; Bridging Innovations Morgantown member.
+Primary positioning is an **active job search** for full-time Data Scientist / ML Engineer roles (résumé front-and-center, `profile.availability` surfaced in the hero). Alongside that: data/ML projects (CONSIM GPU-accelerated signal processing, the GitHub Language Analysis Platform capstone), shipped client work — the WVRTP facility inspection system for **Readyfuels** (https://readyfuels.com) and the **Hermes plugin** for **Nous Research** (https://nousresearch.com) — and local-first AI/agent infrastructure (JCLAW, kairos). Scoped consulting engagements (the four service pillars: operational analytics, AI red-teaming, local-first AI systems, systems audits) remain available as a secondary offering, not the headline identity.
 
-Audiences: prospective clients & teams (analytics / AI / systems work), researchers & builders (the writing), and curious visitors. The site does NOT signal an active job search — it represents an independent practice taking engagements.
+Audiences: employers & recruiters (résumé, projects, shipped work — primary), clients & teams (analytics / AI engagements — secondary), and researchers & builders (the writing).
 
 ## Aesthetic
 Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (white background, ALL-CAPS monospace headings, dashed dividers, underlined section titles) and **readyfuels.com** (navy dark mode, bracket-wrapped wordmark `[JACOB C. SMITH]`). Square corners (radius 0–2px), no shadows, JetBrains Mono is the primary heading face with Inter for body prose. Cyanotype blue `#1d4dba` is the single accent color across light mode; dark mode is Readyfuels-style navy `#0a1230` with brighter blue `#4d8aff`. Default theme follows OS preference but falls back to light.
@@ -28,7 +28,8 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 │                               #   React hero figure — see HERO_FIGURES in BlogPost.jsx)
 ├── public/                     # Static assets shipped as-is
 │   ├── favicon.svg             # Cyanotype-blue `jcs` mark
-│   ├── og-default.svg          # Default Open Graph card (cyanotype blue)
+│   ├── og-default.svg / .png   # Default Open Graph card (source SVG + rendered PNG used in meta tags)
+│   ├── favicon.ico / apple-touch-icon.png  # Rasterized from favicon.svg for legacy/iOS support
 │   ├── llms.txt                # Short LLM-friendly site overview
 │   └── jacob-c-smith-resume.pdf  # CV download (placeholder PDF — replace before launch)
 ├── scripts/
@@ -58,11 +59,11 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 ```
 
 ## Routes
-- `/` Home — hero (original "messy reality into measurable systems" voice + audience trio + 3 pillars), TL;DR, services preview (4 pillars), recent posts, selected delivery (3 testimonial cards), FAQ, newsletter, CTA
-- `/about` About bio + CV download (operational analytics, AI red-teaming, local-first AI, embedded skill clusters)
-- `/services` Four scoped offerings (Operational Analytics / AI Red-Teaming / Local-First AI / Systems Audits & Decision Architecture) with proof links to Readyfuels and Nous Research embedded as evidence
-- `/projects` Project showcase (EMERGENT-MCF-EI, JCLAW, Hermes plugin, MCPStarfleetCommand, local WebSocket MCP gateway, WVRTP, UNIHIKER K10, ESP32-S3, this site, pro bono engagements). Featured "How it works" section above the grid renders an interactive `AgentGatewaySchematic` (cyanotype blueprint SVG; CLIENT → WS GATEWAY → SOUL.md → ROUTER → CODEGEN/RED-TEAM/RESOURCE → TOOL CALLS → RESPONSE) with three CSS-keyframe-animated request packets, hover-to-pause, click-to-reveal node detail, keyboard reachable, `prefers-reduced-motion` respected, screen-reader fallback list, light + dark theme.
-- `/experience` Career timeline (Independent Practice with Readyfuels + Nous Research delivery, EMERGENT-MCF-EI, JCLAW, NewForce Cohort 11, Bridging Innovations) + CV download
+- `/` Home — hero ("messy, high-dimensional data into decisions that ship" voice + employer/client/peer audience trio + 3 pillars), TL;DR, services preview (4 pillars), recent posts, selected delivery (3 testimonial cards), FAQ, newsletter, CTA
+- `/about` About bio + résumé download (ML & stats, data & analytics, deep learning/GPU, AI/agent systems, web/industrial, embedded skill clusters)
+- `/services` Four scoped offerings (Operational Analytics / AI Red-Teaming / Local-First AI / Systems Audits & Decision Architecture) with proof links to Readyfuels and Nous Research embedded as evidence — positioned as secondary to the job search
+- `/projects` Project showcase (GitHub Language Analysis Platform, CONSIM, WVRTP, JCLAW, Hermes plugin, kairos, agent-flow-canvas, Wave Analyzer, NIGHTMARE pentesting suite, UNIHIKER K10, ESP32-S3, this site, pro bono engagements). Featured "How it works" section above the grid renders an interactive `AgentGatewaySchematic` (cyanotype blueprint SVG; CLIENT → WS GATEWAY → SOUL.md → ROUTER → CODEGEN/RED-TEAM/RESOURCE → TOOL CALLS → RESPONSE) with three CSS-keyframe-animated request packets, hover-to-pause, click-to-reveal node detail, keyboard reachable, `prefers-reduced-motion` respected, screen-reader fallback list, light + dark theme.
+- `/experience` Career timeline (FleetPride, Cole Truck Parts, NewForce Cohort 11, data/ML projects, Readyfuels + Nous Research delivery, Bridging Innovations) + résumé download
 - `/contact` Contact methods, free discovery call, NDAs welcome
 - `/blog` Blog index with search, category filters, featured post
 - `/blog/:slug` Blog post with reading time, tags, social share, related posts
@@ -91,10 +92,13 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 - **Output Directory:** `dist`
 - The `404.html` redirect script + `index.html` query-string decoder enable client-side routing on GH Pages.
 
-## Known placeholders to replace before launch
-- `public/jacob-c-smith-resume.pdf` — currently a minimal valid placeholder PDF (follow-up task #6)
-- WVRTP case study (anonymized) is a follow-up task (#7) — not yet on the site
-- `VITE_BUTTONDOWN_USERNAME` build-time env var must be set to the Buttondown account username for the newsletter form to actually subscribe people. When unset (e.g. during local dev or PR previews), the form gracefully falls back to a `mailto:` to `profile.email`.
+## Known placeholders / follow-ups
+- `public/jacob-c-smith-resume.pdf` — real one-page résumé rendered from `scripts/resume/resume.html` (Chromium print-to-PDF). Keep both in sync with `src/data/profile.js` / Experience.
+- WVRTP case study — done: `blog/posts/wvrtp-satellites-to-street-signs.md`, linked from the Projects page WVRTP card.
+- `VITE_BUTTONDOWN_USERNAME` — wired into `.github/workflows/deploy.yml` as `${{ vars.VITE_BUTTONDOWN_USERNAME }}`, but the repository variable itself still needs to be set (Settings → Secrets and variables → Actions → Variables) with the real Buttondown username. Until then the build gets an empty value and the newsletter form falls back to `mailto:`.
+- Google Search Console / Bing Webmaster verification — not yet done (requires the account owner). Placeholder `<meta>` tags are commented out in `index.html` and `scripts/generate-blog-pages.mjs`'s `routeShell` head — uncomment and fill in the real verification codes once the properties exist, then submit `https://jacobcdsmith.github.io/sitemap.xml` in both.
+- Per-post OG images (`scripts/generate-blog-pages.mjs` → `postOgSvg`) are still SVG, not PNG. The site-wide default (`og-default.png`) was converted since it's what most link unfurlers (LinkedIn, Slack, iMessage) hit; per-post images are lower-traffic and would need a headless-render step added to the build (not currently a project dependency).
+- Full git-history purge of the removed `attached_assets/` material (patent drafts, IP docs, ChatGPT export) — the tree-level removal is done on this branch, but scrubbing it out of prior commits on `main` requires a separate `git filter-repo` + force-push directly against `main`, outside this branch's scope. Do that as a deliberate, explicitly-confirmed step, not bundled into a normal PR.
 
 ## Plausible analytics
 - `data-domain="jacobcdsmith.github.io"` is the **confirmed production value**, matching `profile.siteUrl`, the canonical/OG URLs, and the GitHub Pages hostname. The "placeholder" comment has been removed in both occurrences.
@@ -120,7 +124,8 @@ Archival / cyanotype-blue, monospace-heavy. Inspired by **nousresearch.com** (wh
 - `.local/prior/` contains a snapshot of the page + data files from commit `68e6870` (the prior iteration before the content refresh and design redesign). Useful as a reference if the user ever wants to pull individual paragraphs back.
 
 ## Monologue Compilation Book (offline pipeline)
-- Python pipeline at `scripts/book/` produces a typeset PDF from Jacob's full ChatGPT export (`attached_assets/conversations_*.json`). One command: `npm run build:book`.
+- Python pipeline at `scripts/book/` produces a typeset PDF from Jacob's full ChatGPT export. One command: `npm run build:book`.
+- **Source material is intentionally not in this repo.** `attached_assets/` (the ChatGPT export, patent drafts, and other IP documents) was removed from the tree and is now git-ignored — this is a public repository and that material must never be committed here. Supply the export locally out-of-band before running the pipeline.
 - Voice is **blended**: user prompts and assistant replies are concatenated in chronological order with no role labels — the thread reads as one continuous mind.
 - Pipeline: `parse.py` (walks the OpenAI export `mapping` tree) → `redact.py` (email + URL-token + sensitive-token regexes + `redact_terms.txt` wordlist with JSONL audit log) → `cluster.py` (TF-IDF + KMeans, ~12 chapters, top 5 threads per chapter scored by length × balance × engagement) → `typeset.py` (ReportLab; JetBrains Mono throughout, cyanotype `#1d4dba`, square corners, dashed rules, ALL-CAPS running headers).
 - Outputs: `dist/monologue-compilation-DRAFT.pdf` + mirror copy at `attached_assets/monologue-compilation-DRAFT.pdf`. Audit log appended to `scripts/book/redaction.log` per run.

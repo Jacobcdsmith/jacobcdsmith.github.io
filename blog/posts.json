@@ -1,5 +1,13 @@
 [
   {
+    "slug": "wvrtp-satellites-to-street-signs",
+    "title": "From Satellites to Street Signs: How the WVRTP App Finds You",
+    "date": "2026-07-26",
+    "category": "Engineering",
+    "excerpt": "A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365.",
+    "tags": ["case-study", "react", "geolocation", "power-automate", "industrial"]
+  },
+  {
     "slug": "the-recursive-tree",
     "title": "The Recursive Tree: Why I Built a Consciousness Simulator on a Phone",
     "date": "2026-06-02",
