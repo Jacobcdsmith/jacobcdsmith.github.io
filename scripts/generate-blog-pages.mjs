@@ -260,7 +260,7 @@ const personJson = {
   sameAs: [profile.github, profile.linkedin],
   description: PERSON_DESCRIPTION,
   alumniOf: { '@type': 'EducationalOrganization', name: 'NewForce' },
-  knowsAbout: ['Data Science', 'Machine Learning', 'Python', 'SQL', 'GPU-accelerated computing', 'Data Analytics', 'Statistical Modeling'],
+  knowsAbout: ['Data Science', 'Machine Learning', 'Python', 'SQL', 'JavaScript', 'Full-Stack Web Development', 'GPU-accelerated computing', 'Data Analytics', 'Statistical Modeling', 'API Integration'],
 }
 
 const profServiceJson = {
