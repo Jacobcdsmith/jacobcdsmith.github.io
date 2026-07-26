@@ -18,3 +18,9 @@ Thumbs.db
 
 # Old files kept for reference
 _old_index.html
+
+# Personal source material for the offline Monologue Compilation Book pipeline
+# (scripts/book/) — patent drafts, IP docs, and the raw ChatGPT export must
+# never live in this public repo. Supply them out-of-band when running
+# `npm run build:book` locally.
+attached_assets/

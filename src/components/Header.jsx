@@ -67,7 +67,7 @@ export default function Header() {
         <div className="header-actions">
           <ThemeToggle />
           <Button to="/contact" variant="primary" size="sm" trackName="header_cta_hire">
-            Work with me
+            Get in touch
           </Button>
         </div>
       </div>

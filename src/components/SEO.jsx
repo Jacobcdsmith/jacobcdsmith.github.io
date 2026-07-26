@@ -18,7 +18,7 @@ export default function SEO({
     : `${profile.name} — ${profile.role}`
   const desc = description || profile.subtagline
   const url = `${profile.siteUrl}${path}`
-  const ogImage = image || `${profile.siteUrl}/og-default.svg`
+  const ogImage = image || `${profile.siteUrl}/og-default.png`
 
   const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
 

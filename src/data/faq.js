@@ -1,27 +1,27 @@
 export const homeFaq = [
   {
     q: 'Who is Jacob C. Smith?',
-    a: 'Jacob C. Smith is an independent systems engineer, AI red-teamer, and consciousness researcher based in Buckhannon, West Virginia. He helps teams turn operational data into decisions, audits AI systems for safety issues, builds local-first AI tooling, and ships industrial software. Currently shipping the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research, alongside the JCLAW agentic runtime and ongoing research on emergent meta-cognitive filtering.',
+    a: 'Jacob C. Smith is a data scientist and ML engineer based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales and account management (FleetPride, Cole Truck Parts) into applied analytics and machine learning via the NewForce Cohort 11 data science program. He builds GPU-accelerated ML systems, production analytics, and has shipped the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. He is open to full-time Data Scientist / ML Engineer roles.',
   },
   {
-    q: 'What services does Jacob offer?',
-    a: 'Operational analytics engagements (SQL, Python, BI dashboards, Excel formula systems for safety + KPIs), AI red-teaming and safety reviews for LLM-powered features and agent stacks, local-first AI system design (JCLAW, MCP infrastructure), and systems audits for founders and ops leaders. See the Services page for scoped offerings.',
+    q: 'What is Jacob looking for?',
+    a: 'A full-time Data Scientist or Machine Learning Engineer role, remote or on-site. He is also available for scoped operational-analytics and AI-tooling engagements — see the Services page.',
   },
   {
     q: 'What is Jacob currently working on?',
-    a: 'The WVRTP facility inspection system and a 1,135-formula safety + KPI Excel workbook for Readyfuels; the Hermes agent plugin (three-subagent stack with persistent SOUL.md identity layer) for Nous Research; JCLAW, MCPStarfleetCommand, and a local WebSocket MCP gateway on the agent / MCP infrastructure side; and ESP32-S3 plus UNIHIKER K10 firmware and SDK work on the embedded side.',
+    a: 'CONSIM, a GPU-accelerated signal-processing framework (20x performance uplift via CUDA/PyTorch/JAX); the GitHub Language Analysis Platform, a data-analysis capstone across 1,200+ repositories; the WVRTP facility inspection system and a 1,135-formula safety + KPI Excel workbook for Readyfuels; the Hermes agent plugin for Nous Research; and JCLAW / kairos on the local-first AI infrastructure side.',
   },
   {
-    q: 'What is the EMERGENT-MCF-EI project?',
-    a: 'EMERGENT-MCF-EI is a research project modeling consciousness as a dynamic spectral filter operating in frequency space. It includes a GPU-accelerated lattice simulation, a Streamlit dashboard, and a forthcoming paper targeting Neurons and Cognition (arXiv q-bio.NC).',
+    q: 'What is CONSIM?',
+    a: 'CONSIM is a GPU-accelerated framework for real-time pattern detection in high-dimensional time-series data, built with CUDA/PyTorch and JAX. It achieves a 20x performance uplift over a CPU baseline and includes phase-coherence tracking and spectral-analysis modules for streaming anomaly detection.',
   },
   {
     q: 'What is JCLAW?',
     a: 'JCLAW is a SQLite-backed agentic runtime that treats the LLM API as a programmable execution environment. It supports persistent sessions, multi-provider routing (Anthropic, OpenAI, Groq, Gemini, Ollama, LM Studio, OpenRouter), conversation branching, response diffing, agentic loops, evals, and MCP dual-mode operation.',
   },
   {
-    q: 'How do I work with Jacob?',
-    a: 'Start by emailing jacobcsmithd@gmail.com with a one-paragraph description of the problem you are trying to solve. Most engagements begin with a free 30-minute discovery call to confirm fit before any scoping work.',
+    q: 'How do I get in touch with Jacob?',
+    a: 'Start by emailing jacobcsmithd@gmail.com with a one-paragraph description of the role or problem. For consulting engagements, most start with a free 30-minute discovery call to confirm fit before any scoping work.',
   },
 ]
 

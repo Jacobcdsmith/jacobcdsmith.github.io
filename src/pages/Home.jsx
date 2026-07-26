@@ -42,32 +42,32 @@ export default function Home() {
         <div className="container">
           <div className="hero-grid">
             <div>
-              <p className="hero-eyebrow">Independent practice · {profile.location}</p>
+              <p className="hero-eyebrow">Data Scientist &amp; ML Engineer · {profile.location}</p>
               <h1 className="hero-title">
-                I help teams turn messy reality into <span className="accent">measurable systems</span>.
+                I turn messy, high-dimensional data into <span className="accent">decisions that ship</span>.
               </h1>
               <p className="hero-sub">
-                For <strong>clients</strong> who need analytics or AI tooling that ships, for{' '}
-                <strong>peers</strong> who want the writing, and for{' '}
-                <strong>curious visitors</strong> who just want a tour.
+                For <strong>employers</strong> hiring Data Scientists / ML Engineers, for{' '}
+                <strong>clients</strong> who need analytics or AI tooling that ships, and for{' '}
+                <strong>peers</strong> who want the writing.
               </p>
 
               <div className="hero-actions">
-                <Button to="/contact" variant="primary" size="lg" trackName="hero_cta_hire">
-                  Work with me
+                <CVDownload variant="primary" size="lg" label="Download résumé" />
+                <Button to="/projects" variant="ghost" size="lg" trackName="hero_cta_projects">
+                  See the projects
                 </Button>
-                <Button to="/blog" variant="ghost" size="lg" trackName="hero_cta_blog">
-                  Read the writing
+                <Button to="/contact" variant="ghost" size="lg" trackName="hero_cta_hire">
+                  Get in touch
                 </Button>
-                <CVDownload variant="ghost" size="lg" />
               </div>
 
               <div className="hero-meta">
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">●</span> Available for engagements
+                  <span aria-hidden="true">●</span> {profile.availability}
                 </span>
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">›</span> SQL · Python · LLM systems · BI · MCP · ESP-IDF
+                  <span aria-hidden="true">›</span> Python · SQL · PyTorch/JAX · GPU computing · BI
                 </span>
               </div>
             </div>
@@ -75,19 +75,19 @@ export default function Home() {
             <aside className="hero-card" aria-label="What I focus on">
               <p className="hero-card-title">Three things I do</p>
               <div className="hero-pillars">
+                <Link to="/projects" className="hero-pillar">
+                  <span className="hero-pillar-label">Applied data science &amp; ML</span>
+                  <span className="hero-pillar-text">GPU-accelerated signal processing (CONSIM), predictive models, analysis capstones.</span>
+                  <span className="hero-pillar-link">→ projects</span>
+                </Link>
                 <Link to="/services#analytics-engagements" className="hero-pillar">
                   <span className="hero-pillar-label">Operational analytics</span>
-                  <span className="hero-pillar-text">Dashboards, forecasts, and KPI / safety formula systems you can defend.</span>
-                  <span className="hero-pillar-link">→ services</span>
-                </Link>
-                <Link to="/services#ai-red-teaming" className="hero-pillar">
-                  <span className="hero-pillar-label">AI red-teaming</span>
-                  <span className="hero-pillar-text">Find the failure modes before launch. (See: Hermes red-team subagent.)</span>
+                  <span className="hero-pillar-text">Dashboards, forecasts, and KPI / safety formula systems shipped for Readyfuels.</span>
                   <span className="hero-pillar-link">→ services</span>
                 </Link>
                 <Link to="/projects" className="hero-pillar">
                   <span className="hero-pillar-label">Local-first AI tools</span>
-                  <span className="hero-pillar-text">JCLAW, MCPStarfleetCommand, local WebSocket MCP gateway.</span>
+                  <span className="hero-pillar-text">JCLAW, kairos, and agent/MCP infrastructure.</span>
                   <span className="hero-pillar-link">→ projects</span>
                 </Link>
               </div>
@@ -101,13 +101,12 @@ export default function Home() {
         <aside className="answer-box">
           <p className="answer-box-label">TL;DR</p>
           <p>
-            <strong>{profile.name}</strong> is an independent systems engineer, AI red-teamer, and
-            consciousness researcher based in {profile.location}. I take three kinds of work:
-            operational analytics engagements, AI red-teaming and safety reviews, and local-first
-            AI system design. Currently shipping the WVRTP facility inspection system for{' '}
-            <strong>Readyfuels</strong> and the Hermes plugin for <strong>Nous Research</strong>;
-            ongoing open research on consciousness modeling (EMERGENT-MCF-EI), the JCLAW agentic
-            runtime, and embedded work on ESP32-S3 / UNIHIKER K10.
+            <strong>{profile.name}</strong> is a data scientist and ML engineer based in{' '}
+            {profile.location}, transitioning from seven years of enterprise sales into applied
+            analytics and machine learning. Builds GPU-accelerated ML systems (CONSIM), production
+            analytics, and local-first AI infrastructure (JCLAW, kairos); has shipped the WVRTP
+            facility inspection system for <strong>Readyfuels</strong> and the Hermes plugin for{' '}
+            <strong>Nous Research</strong>. NewForce Cohort 11 graduate — {profile.availability.toLowerCase()}.
           </p>
         </aside>
 
@@ -146,7 +145,7 @@ export default function Home() {
       <Section
         eyebrow="Writing"
         title="Recent posts"
-        lead="Notes on consciousness modeling, agent stacks, local-first AI, decision systems, and the practice of building."
+        lead="Notes on data science, ML systems, local-first AI, and the practice of building."
         tone="muted"
       >
         <div className="post-list">

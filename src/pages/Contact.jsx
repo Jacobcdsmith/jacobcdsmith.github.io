@@ -80,7 +80,7 @@ export default function Contact() {
             <li>
               <span className="contact-label">LinkedIn</span>
               <a className="contact-value" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-                jacobcsmith
+                jacob-c-smith
               </a>
             </li>
             <li>

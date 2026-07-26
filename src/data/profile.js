@@ -1,39 +1,40 @@
 export const profile = {
   name: 'Jacob C. Smith',
   shortName: 'Jacob Smith',
-  role: 'Systems Engineer & AI Researcher',
-  tagline: 'I help teams turn messy reality into measurable systems.',
+  role: 'Data Scientist & Machine Learning Engineer',
+  tagline: 'I turn messy, high-dimensional data into decisions and systems that ship.',
   subtagline:
-    'Independent systems engineer, AI red-teamer, and consciousness researcher building local-first tools, decision systems, and operational analytics — currently shipping industrial tooling for Readyfuels and agent infrastructure for Nous Research.',
+    'Data scientist and ML engineer transitioning from seven years of enterprise sales and account management into applied analytics and machine learning — GPU-accelerated ML systems (CONSIM), production dashboards, and shipped industrial tooling for Readyfuels. NewForce Cohort 11 graduate, open to full-time Data Scientist / ML Engineer roles.',
   location: 'Buckhannon, West Virginia',
   email: 'jacobcsmithd@gmail.com',
   phone: '+13044739980',
   phoneDisplay: '(304) 473-9980',
   github: 'https://github.com/Jacobcdsmith',
-  linkedin: 'https://linkedin.com/in/jacobcsmith',
+  linkedin: 'https://linkedin.com/in/jacob-c-smith',
   rss: '/rss.xml',
   resumePath: '/jacob-c-smith-resume.pdf',
   siteUrl: 'https://jacobcdsmith.github.io',
+  availability: 'Open to full-time Data Scientist / ML Engineer roles',
   authorBio:
-    'Systems engineer, AI red-teamer, and consciousness researcher bridging operational analytics, local-first AI tooling, and industrial systems work. Currently shipping the WVRTP facility inspection system for Readyfuels, the Hermes plugin for Nous Research, and the JCLAW agentic runtime; ongoing research thread on emergent meta-cognitive filtering.',
+    'Data scientist and machine learning engineer based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales and account management (FleetPride, Cole Truck Parts) into applied analytics and ML through the NewForce Cohort 11 data science program. Builds GPU-accelerated ML systems (CONSIM), production analytics, and ships real client work — the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Open to full-time Data Scientist / Machine Learning Engineer roles.',
   audiences: [
+    {
+      key: 'employers',
+      label: 'Employers & recruiters',
+      blurb: 'Data Scientist / ML Engineer, career-transition background. Resume, projects, and shipped work — start here.',
+      cta: { label: 'About & résumé', href: '/about' },
+    },
     {
       key: 'clients',
       label: 'Clients & teams',
-      blurb: 'Need analytics, automation, AI tooling, or industrial systems that actually ship? Start here.',
+      blurb: 'Also available for scoped analytics, automation, and AI-tooling engagements.',
       cta: { label: 'See services', href: '/services' },
     },
     {
       key: 'peers',
       label: 'Researchers & builders',
-      blurb: 'Read the writing on consciousness modeling, agent stacks, local-first AI, and systems theory.',
+      blurb: 'Read the writing on ML systems, agent stacks, local-first AI, and applied research.',
       cta: { label: 'Read the blog', href: '/blog' },
-    },
-    {
-      key: 'curious',
-      label: 'Curious visitors',
-      blurb: 'A short tour: what I do, what I’ve built, and how I think.',
-      cta: { label: 'About me', href: '/about' },
     },
   ],
 }

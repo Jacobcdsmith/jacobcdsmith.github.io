@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jacob C. Smith — Resume</title>
+<style>
+  @page { size: Letter; margin: 0.4in 0.6in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+    color: #16181f;
+    font-size: 9.2pt;
+    line-height: 1.26;
+  }
+  h1, h2, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  header { border-bottom: 2px solid #1d4dba; padding-bottom: 6px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-end; }
+  h1 { font-size: 17pt; margin: 0; letter-spacing: -0.5px; color: #0a0f1f; }
+  .role { color: #1d4dba; font-weight: 600; font-size: 9.6pt; letter-spacing: 0.5px; margin-top: 2px; }
+  .contact { text-align: right; font-size: 8pt; color: #4b5263; line-height: 1.4; }
+  .contact a { color: #1d4dba; text-decoration: none; }
+  h2 {
+    font-size: 8.4pt; text-transform: uppercase; letter-spacing: 1.5px; color: #1d4dba;
+    border-bottom: 1px dashed #b9c3e0; padding-bottom: 2px; margin: 7px 0 3px;
+  }
+  h2:first-of-type { margin-top: 0; }
+  p { margin: 0 0 3px; }
+  ul { margin: 1px 0 0; padding-left: 14px; }
+  li { margin-bottom: 0; }
+  .skills-grid { display: grid; grid-template-columns: 115px 1fr; gap: 1px 10px; font-size: 8.8pt; }
+  .skills-grid dt { font-weight: 600; color: #0a0f1f; }
+  .skills-grid dd { margin: 0; color: #333; }
+  .entry { margin-bottom: 3px; }
+  .entry-head { display: flex; justify-content: space-between; font-size: 10pt; }
+  .entry-title { font-weight: 700; color: #0a0f1f; }
+  .entry-org { font-weight: 500; color: #1d4dba; }
+  .entry-meta { color: #7a8090; font-size: 9pt; white-space: nowrap; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Jacob C. Smith</h1>
+    <div class="role">Data Scientist &amp; Machine Learning Engineer</div>
+  </div>
+  <div class="contact">
+    Buckhannon, WV (Remote) · (304) 473-9980<br>
+    <a href="mailto:jacobcsmithd@gmail.com">jacobcsmithd@gmail.com</a><br>
+    <a href="https://linkedin.com/in/jacob-c-smith">linkedin.com/in/jacob-c-smith</a> ·
+    <a href="https://github.com/Jacobcdsmith">github.com/Jacobcdsmith</a><br>
+    <a href="https://jacobcdsmith.github.io">jacobcdsmith.github.io</a>
+  </div>
+</header>
+
+<h2>Professional Summary</h2>
+<p>Data scientist and ML engineer transitioning from seven years of enterprise sales and account management into applied analytics and machine learning. Proven expertise deploying GPU-accelerated systems (PyTorch/JAX) for real-time signal processing and building production-grade ML pipelines. Combines technical rigor in statistical modeling with stakeholder-facing experience translating complex data into measurable business outcomes — evidenced by shipped client work for an industrial operator and an AI research lab.</p>
+
+<h2>Technical Expertise</h2>
+<div class="skills-grid">
+  <dt>ML &amp; Statistics</dt><dd>Supervised/unsupervised learning, time-series forecasting, statistical inference (ANOVA, correlation), feature engineering, model validation, scikit-learn</dd>
+  <dt>Engineering</dt><dd>Python (Pandas, NumPy, Numba), SQL (PostgreSQL, ETL pipelines), REST APIs, Git/GitHub, CI/CD, Linux, infrastructure automation</dd>
+  <dt>Deep Learning</dt><dd>GPU acceleration, CUDA, PyTorch, JAX, real-time signal processing, anomaly detection</dd>
+  <dt>BI &amp; Delivery</dt><dd>Tableau, Power BI (DAX), Streamlit, dashboard architecture, stakeholder management, technical documentation</dd>
+</div>
+
+<h2>Featured Projects</h2>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">CONSIM</span> — <span class="entry-org">GPU-Accelerated Signal Processing</span></span><span class="entry-meta">2024 – present</span></div>
+  <ul>
+    <li>Engineered a GPU-accelerated framework for real-time pattern detection in high-dimensional time-series data.</li>
+    <li>Achieved a <strong>20x performance uplift</strong> using CUDA/PyTorch and JAX for parallelized mutual-information computation.</li>
+    <li>Implemented phase-coherence tracking and spectral-analysis modules for streaming anomaly detection.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">GitHub Language Analysis Platform</span> — <span class="entry-org">Data Analysis Capstone</span></span><span class="entry-meta">2025</span></div>
+  <ul>
+    <li>Built a six-notebook analysis pipeline (exploration, ANOVA-backed language comparison, correlation, 3D visualization, feature engineering) across 1,200+ GitHub repositories.</li>
+    <li>Shipped a companion React/Plotly dashboard embedding sunburst, treemap, and animated-evolution visualizations.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">Enterprise Predictive Analytics Platform</span></span><span class="entry-meta">2024</span></div>
+  <ul>
+    <li>Developed a classification engine with <strong>78% cross-validated accuracy</strong> using scikit-learn over 200k+ records.</li>
+    <li>Built a modular REST API for model inference and a TypeScript dashboard for non-technical executive visibility.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">Traffic Safety &amp; Infrastructure Optimization</span> — <span class="entry-org">Data Analyst</span></span><span class="entry-meta">2024</span></div>
+  <ul>
+    <li>Conducted spatio-temporal analysis of 200k+ collision records to identify high-risk hotspots.</li>
+    <li>Delivered evidence-based reporting that informed a <strong>$1.2M infrastructure investment</strong> strategy.</li>
+  </ul>
+</div>
+
+<h2>Professional Experience</h2>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">Independent — Data &amp; AI Systems</span></span><span class="entry-meta">Nov 2025 – present</span></div>
+  <ul>
+    <li>Shipped the WVRTP facility inspection system for <strong>Readyfuels</strong>: a React/Vite/TypeScript app with QR-driven capture, browser geolocation, and a Power Automate pipeline into Microsoft 365 — plus a 1,135-formula Excel workbook for field safety scoring and KPIs.</li>
+    <li>Built the Hermes plugin for <strong>Nous Research</strong>: a three-subagent stack (codegen, red-team, resource-gathering) with multi-provider LLM routing.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">Strategic Account Manager | Analytics Lead</span> — <span class="entry-org">FleetPride</span></span><span class="entry-meta">2022 – 2024 · Buckhannon, WV</span></div>
+  <ul>
+    <li>Scaled territory revenue by <strong>18% YoY (&#36;500k+)</strong> by deploying predictive bundling models and customer segmentation.</li>
+    <li>Automated CRM reporting via SQL, identifying churn risk and driving a <strong>25% increase</strong> in contract renewals.</li>
+    <li>Developed demand-forecasting models in Power BI with <strong>82% accuracy</strong> to optimize inventory across distributed nodes.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-head"><span><span class="entry-title">Outside Sales Representative</span> — <span class="entry-org">Cole Truck Parts</span></span><span class="entry-meta">2021 – 2022 · Jane Lew, WV</span></div>
+  <ul>
+    <li>Optimized B2B acquisition strategy through CRM lead scoring, improving regional conversion rates by <strong>18%</strong>.</li>
+  </ul>
+</div>
+
+<div class="two-col">
+  <div>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head"><span class="entry-title">NewForce Cohort 11</span><span class="entry-meta">2024–2025</span></div>
+      <p style="margin-top:2px;">Intensive Data Science Program — SQL window functions, Python statistical computing, dashboard architecture.</p>
+    </div>
+  </div>
+  <div>
+    <h2>Certifications &amp; Awards</h2>
+    <ul>
+      <li>1st Place, DataCamp Dog Breed Classification Competition</li>
+      <li>DataCamp: Data Manipulation in SQL</li>
+      <li>DataCamp: Advanced Window Functions</li>
+      <li>DataCamp: Exploratory Data Analysis</li>
+    </ul>
+  </div>
+</div>
+
+<p style="margin-top:12px;text-align:center;color:#7a8090;font-size:9pt;">Remote preferred · Open to full-time Data Scientist / ML Engineer roles · Available immediately</p>
+
+</body>
+</html>
