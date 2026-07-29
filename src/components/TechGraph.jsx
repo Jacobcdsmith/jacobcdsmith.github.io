@@ -28,7 +28,7 @@ export default function TechGraph({ id = 'tech-graph' }) {
       <svg
         className="tech-graph-svg"
         viewBox={`0 0 ${width} ${height}`}
-        role="img"
+        role="group"
         aria-labelledby={`${id}-title ${id}-desc`}
         preserveAspectRatio="xMidYMid meet"
       >
