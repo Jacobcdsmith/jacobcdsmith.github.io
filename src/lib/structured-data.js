@@ -23,9 +23,12 @@ export function personSchema() {
       'Machine Learning',
       'Python',
       'SQL',
+      'JavaScript',
+      'Full-Stack Web Development',
       'GPU-accelerated computing',
       'Data Analytics',
       'Statistical Modeling',
+      'API Integration',
     ],
   }
 }

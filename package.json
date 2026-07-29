@@ -1,7 +1,7 @@
 {
   "name": "jacobcdsmith.github.io",
   "version": "1.0.0",
-  "description": "Jacob C. Smith - Systems Engineer & AI Researcher portfolio",
+  "description": "Jacob C. Smith - Data Scientist & ML Engineer portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
   "author": "Jacob C. Smith",
   "license": "MIT",
   "dependencies": {
+    "d3-force": "^3.0.0",
     "marked": "^18.0.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

@@ -67,7 +67,7 @@ export default function Home() {
                   <span aria-hidden="true">●</span> {profile.availability}
                 </span>
                 <span className="hero-meta-item">
-                  <span aria-hidden="true">›</span> Python · SQL · PyTorch/JAX · GPU computing · BI
+                  <span aria-hidden="true">›</span> Python · SQL · PyTorch/JAX · JavaScript/React · GPU computing
                 </span>
               </div>
             </div>

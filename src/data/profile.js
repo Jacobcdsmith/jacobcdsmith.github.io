@@ -4,7 +4,7 @@ export const profile = {
   role: 'Data Scientist & Machine Learning Engineer',
   tagline: 'I turn messy, high-dimensional data into decisions and systems that ship.',
   subtagline:
-    'Data scientist and ML engineer transitioning from seven years of enterprise sales and account management into applied analytics and machine learning — GPU-accelerated ML systems (CONSIM), production dashboards, and shipped industrial tooling for Readyfuels. NewForce Cohort 11 graduate, open to full-time Data Scientist / ML Engineer roles.',
+    'Data scientist and ML engineer transitioning from seven years of enterprise sales and account management into applied analytics and machine learning — GPU-accelerated ML systems (CONSIM), production dashboards, full-stack web apps (React/JavaScript, SQL, API integration), and shipped industrial tooling for Readyfuels. NewForce Cohort 11 graduate, open to full-time Data Scientist / ML Engineer roles.',
   location: 'Buckhannon, West Virginia',
   email: 'jacobcsmithd@gmail.com',
   phone: '+13044739980',
@@ -16,7 +16,7 @@ export const profile = {
   siteUrl: 'https://jacobcdsmith.github.io',
   availability: 'Open to full-time Data Scientist / ML Engineer roles',
   authorBio:
-    'Data scientist and machine learning engineer based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales and account management (FleetPride, Cole Truck Parts) into applied analytics and ML through the NewForce Cohort 11 data science program. Builds GPU-accelerated ML systems (CONSIM), production analytics, and ships real client work — the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Open to full-time Data Scientist / Machine Learning Engineer roles.',
+    'Data scientist and machine learning engineer based in Buckhannon, West Virginia, transitioning from seven years of enterprise sales and account management (FleetPride, Cole Truck Parts) into applied analytics and ML through the NewForce Cohort 11 data science program. Builds GPU-accelerated ML systems (CONSIM), production analytics, and full-stack web applications (JavaScript, HTML/CSS, React, SQL, API integration); ships real client work — the WVRTP facility inspection system for Readyfuels and the Hermes plugin for Nous Research. Open to full-time Data Scientist / Machine Learning Engineer roles.',
   audiences: [
     {
       key: 'employers',

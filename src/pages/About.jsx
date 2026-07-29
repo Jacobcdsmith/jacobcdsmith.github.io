@@ -25,16 +25,16 @@ const skillClusters = [
     skills: ['LLM evaluation', 'prompt engineering', 'subagent orchestration', 'red-teaming', 'MCP (stdio / SSE / WebSocket)', 'OpenRouter', 'Ollama', 'LM Studio'],
   },
   {
-    title: 'Web & Industrial Tooling',
-    skills: ['React', 'Vite', 'TypeScript', 'Vercel', 'Power Automate', 'Microsoft 365', 'protected routes', 'QR capture flows'],
+    title: 'Full-Stack & Web Development',
+    skills: ['JavaScript', 'HTML/CSS', 'React', 'Vite', 'TypeScript', 'Vercel', 'REST APIs', 'Power Automate', 'Microsoft 365', 'protected routes'],
   },
   {
     title: 'Embedded & Edge',
     skills: ['ESP32-S3', 'ESP-IDF (C)', 'MicroPython', 'UNIHIKER K10 / M10', 'BLE / Wi-Fi / MQTT', 'modular firmware'],
   },
   {
-    title: 'Tooling & Ops',
-    skills: ['Git', 'GitHub Actions', 'Linux', 'Docker', 'CI/CD', 'documentation-as-code'],
+    title: 'Tooling & Systems Integration',
+    skills: ['Git', 'GitHub Actions', 'Linux', 'Docker', 'CI/CD', 'API / webhook integration', 'Elixir (exploratory)', 'documentation-as-code'],
   },
 ]
 
@@ -109,6 +109,14 @@ export default function About() {
               scoring and KPIs. For <strong>Nous Research</strong> I built the Hermes plugin: a
               three-subagent stack (codegen, red-team, resource-gathering) running under a
               persistent <code>SOUL.md</code> identity layer with OpenRouter multi-provider routing.
+            </p>
+            <p>
+              I'm not narrowly a modeling-only data scientist — I ship the full stack around the
+              model. That means JavaScript, HTML/CSS, and React on the front end (this site and the
+              WVRTP app are both built and deployed by me end to end), SQL and API/webhook
+              integration wiring services together, and some exploratory work in Elixir/Phoenix.
+              If a role needs someone who can move between a Jupyter notebook, a dashboard, and a
+              deployed web app in the same week, that's the shape of practice this reflects.
             </p>
             <p>
               I also maintain <strong>JCLAW</strong> and <strong>kairos</strong>, local-first
