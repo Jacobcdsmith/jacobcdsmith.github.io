@@ -57,7 +57,17 @@ const items = [
     location: 'Remote / WV',
     bullets: [
       'Intensive data science program: SQL window functions, Python statistical computing, dashboard architecture.',
-      '1st place, DataCamp Dog Breed Classification competition; DataCamp certifications in Data Manipulation in SQL, Advanced Window Functions, and Exploratory Data Analysis.',
+      '1st place, DataCamp Dog Breed Classification competition.',
+      'DataCamp Certified: AI Engineer for Data Scientists Associate, Python Data Associate; plus Data Literacy and AI Fundamentals certifications.',
+    ],
+  },
+  {
+    title: 'Data Analyst Program',
+    org: 'Mountain West Technical College',
+    period: '',
+    location: 'Remote',
+    bullets: [
+      'Completed a data analyst training program covering data collection, analysis, and reporting fundamentals.',
     ],
   },
   {
@@ -120,8 +130,12 @@ export default function Experience() {
               <h3>{item.title}</h3>
               <div className="timeline-meta">
                 <span>{item.org}</span>
-                <span>·</span>
-                <span>{item.period}</span>
+                {item.period && (
+                  <>
+                    <span>·</span>
+                    <span>{item.period}</span>
+                  </>
+                )}
                 <span>·</span>
                 <span>{item.location}</span>
               </div>
