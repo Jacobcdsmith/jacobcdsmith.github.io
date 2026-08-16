@@ -91,7 +91,9 @@ function spaAssetTags() {
   // of where rel sits among the attributes.
   const linkRe = /<link\b[^>]*\brel=["'](?:stylesheet|modulepreload)["'][^>]*>/g
   let m
-  while ((m = linkRe.exec(html))) headTags.push(m[0])
+  while ((m = linkRe.exec(html))) {
+    if (m[0].includes('href="/assets/')) headTags.push(m[0])
+  }
   const bodyTags = []
   // Match <script …src="/assets/..." …></script> regardless of attribute order.
   const scriptRe = /<script\b[^>]*\bsrc=["']\/assets\/[^"']+["'][^>]*><\/script>/g
