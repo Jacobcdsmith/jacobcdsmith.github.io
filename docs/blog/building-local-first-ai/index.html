@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1230" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+  <script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <title>Building Local-First AI: Why Zero Telemetry Changes Everything | Jacob C. Smith</title>
+  <meta name="description" content="When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW." />
+  <meta name="author" content="Jacob C. Smith" />
+  <link rel="canonical" href="https://jacobcdsmith.github.io/blog/building-local-first-ai/" />
+  <link rel="alternate" type="application/rss+xml" title="Jacob C. Smith — Blog" href="https://jacobcdsmith.github.io/rss.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Search Console / Bing Webmaster verification placeholder — keep
+       in sync with index.html. Replace with the real codes once the
+       properties exist, then submit https://jacobcdsmith.github.io/sitemap.xml in both.
+  <meta name="google-site-verification" content="REPLACE_WITH_REAL_CODE" />
+  <meta name="msvalidate.01" content="REPLACE_WITH_REAL_CODE" />
+  -->
+
+  <meta property="og:title" content="Building Local-First AI: Why Zero Telemetry Changes Everything | Jacob C. Smith" />
+  <meta property="og:description" content="When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jacobcdsmith.github.io/blog/building-local-first-ai/" />
+  <meta property="og:image" content="https://jacobcdsmith.github.io/og/building-local-first-ai.svg" />
+  <meta property="og:site_name" content="Jacob C. Smith" />
+  <meta property="article:published_time" content="2026-03-18" />
+  <meta property="article:author" content="Jacob C. Smith" />
+  <meta property="article:tag" content="ai" />
+  <meta property="article:tag" content="local-first" />
+  <meta property="article:tag" content="privacy" />
+  <meta property="article:tag" content="development" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Building Local-First AI: Why Zero Telemetry Changes Everything | Jacob C. Smith" />
+  <meta name="twitter:description" content="When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW." />
+  <meta name="twitter:image" content="https://jacobcdsmith.github.io/og/building-local-first-ai.svg" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Building Local-First AI: Why Zero Telemetry Changes Everything","description":"When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW.","datePublished":"2026-03-18","author":{"@type":"Person","name":"Jacob C. Smith","url":"https://jacobcdsmith.github.io"},"publisher":{"@type":"Person","name":"Jacob C. Smith"},"url":"https://jacobcdsmith.github.io/blog/building-local-first-ai/","image":"https://jacobcdsmith.github.io/og/building-local-first-ai.svg","keywords":"ai, local-first, privacy, development","wordCount":759,"mainEntityOfPage":"https://jacobcdsmith.github.io/blog/building-local-first-ai/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jacobcdsmith.github.io"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://jacobcdsmith.github.io/blog"},{"@type":"ListItem","position":3,"name":"Building Local-First AI: Why Zero Telemetry Changes Everything","item":"https://jacobcdsmith.github.io/blog/building-local-first-ai/"}]}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+
+  <!-- Plausible analytics. data-domain MUST match the live site hostname and
+       the site registered in the Plausible dashboard. Keep in sync with the
+       same <script> tag in /index.html. If the production hostname ever
+       changes (e.g. a custom domain replaces GitHub Pages), update both
+       places together. -->
+  <script defer data-domain="jacobcdsmith.github.io" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <link rel="stylesheet" crossorigin href="/assets/main-CBI3qTTH.css">
+</head>
+<body>
+  <noscript>
+    <style>.crawl-only{display:block !important;}</style>
+  </noscript>
+  <div id="app">
+    <!-- Static crawler-visible content; replaced by SPA on hydration. -->
+    <div class="crawl-only" style="max-width:780px;margin:2rem auto;padding:1.5rem;font-family:Inter,system-ui,sans-serif;color:#0a0f1f;background:#ffffff;">
+      
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.85rem;">Blog</p>
+    <h1 style="font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;font-size:2rem;line-height:1.2;letter-spacing:0;margin:0 0 1rem;color:#0a0f1f;font-weight:700;">Building Local-First AI: Why Zero Telemetry Changes Everything</h1>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#7a8090;margin:0 0 1.5rem;">March 18, 2026 · 3 min read · by Jacob C. Smith</p>
+    <p style="font-size:1.1rem;color:#7a8090;margin:0 0 2rem;">When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW.</p>
+    <article style="font-size:1.05rem;line-height:1.75;"><h1>Building Local-First AI: Why Zero Telemetry Changes Everything</h1>
+<p><em>March 18, 2026 · 7 min read</em></p>
+<hr>
+<p>I&#39;ve been building JCLAW—a local-first LLM runtime—for about eight months. The original motivation was privacy. I wanted to run language models without sending queries to external servers, without logs I don&#39;t control, without inference happening on hardware I can&#39;t inspect.</p>
+<p>Privacy was the reason I started. It&#39;s not the most interesting thing I found.</p>
+<h2>What Changes When You Own the Stack</h2>
+<p>When you run inference locally with zero telemetry, several things shift simultaneously:</p>
+<p><strong>Latency becomes mechanical, not network-dependent.</strong> Your query round-trip is now bounded by RAM bandwidth and compute throughput—deterministic, tunable, debuggable. Not bounded by traffic shaping, rate limits, or geographic routing. When something is slow, you know exactly why.</p>
+<p><strong>The model becomes a tool, not a service.</strong> This sounds like marketing copy. It&#39;s not. When you can kill the process, inspect the weights, swap the context window, or pipe the output directly to another program without going through an API, the relationship changes. You&#39;re not sending a request to a black box. You&#39;re running a computation on your machine.</p>
+<p><strong>Failure modes become comprehensible.</strong> API-based LLM failures are opaque—the error comes back as a status code and a vague message. Local inference failures are traceable. Segfaults have call stacks. Memory pressure is visible in system monitors. You can attach a debugger.</p>
+<h2>The Architecture</h2>
+<p>JCLAW has three layers:</p>
+<pre><code>Gate Server (Express + WebSocket)
+  ├── JSON-RPC protocol router (~30 methods)
+  ├── React + Vite dashboard (LCARS aesthetic)
+  └── Shared tool execution engine
+
+Storage Layer (SQLite with WAL + FTS5)
+  ├── Sessions and message history
+  ├── Prompt library with versioning
+  ├── Eval results and benchmarks
+  └── Sandbox configuration
+
+Runtime Modules
+  ├── Chat (streaming, multi-turn, branching)
+  ├── Eval (benchmark suites, regression tracking)
+  ├── Embeddings (local vector search)
+  └── Diffing (word/line-level response comparison)
+</code></pre>
+<p>The interesting design constraint was making the Gate Server serve both a human-facing dashboard and Claude Code&#39;s MCP protocol simultaneously. Same tool execution engine, two interfaces. This forced a clean separation between tool logic and transport layer that made the whole system more maintainable.</p>
+<h2>Session Forking</h2>
+<p>The feature I use most isn&#39;t streaming chat. It&#39;s session forking.</p>
+<p>At any message in a conversation, you can fork—create a branch that diverges from that point. The original session is preserved. The fork inherits all prior context. You can explore alternative reasoning paths without losing your work.</p>
+<p>This turns out to be how I actually want to use language models. Not as a linear conversation but as a branching tree of explorations. The chat metaphor was always a poor fit; it was just the default because APIs are stateless. Local-first removes that constraint.</p>
+<h2>Prompt Injection Sandboxing</h2>
+<p>Running models locally doesn&#39;t automatically make them safe. The prompt injection problem—getting a model to execute instructions embedded in its context window—is substrate-independent.</p>
+<p>JCLAW has a sandboxing layer that:</p>
+<ol>
+<li>Classifies incoming context for injection patterns before forwarding to the model</li>
+<li>Maintains a separate &quot;trusted&quot; context window that external content can&#39;t overwrite</li>
+<li>Logs all tool calls with their originating context for post-hoc audit</li>
+</ol>
+<p>It&#39;s not bulletproof. Nothing is. But it makes the attack surface explicit and auditable.</p>
+<h2>What I Learned About Language Models</h2>
+<p>Running your own inference changes how you think about what these things actually are.</p>
+<p>The biggest shift: <strong>they&#39;re not oracles</strong>. They&#39;re compression artifacts. The weights encode statistical patterns extracted from training data; inference is the process of decompressing those patterns against your prompt. Understanding this mechanistically changes how you write prompts, how you interpret outputs, and how you design systems that incorporate model output.</p>
+<p>The second shift: <strong>context is everything</strong>. Local control over the context window—what goes in, what gets truncated, what persists across turns—is the actual lever for getting useful behavior out of these systems. API wrappers give you a narrow interface to context management. Local control gives you the full surface.</p>
+<h2>The Tradeoff</h2>
+<p>Local inference has real costs. The setup overhead is significant. Model quality per parameter is still below frontier API providers. Some tasks need scale that a local GPU can&#39;t provide.</p>
+<p>The tradeoff is worth it for a specific use case: <strong>development, research, and any workflow where you need to understand and control the full stack</strong>. For consumer applications where ease of use matters more than control, API-based solutions are still the right answer.</p>
+<p>For me, JCLAW is the right answer. I know exactly what&#39;s running, exactly where my data goes, and exactly what I&#39;m trading off. That clarity is worth the setup cost.</p>
+</article>
+    <p style="margin-top:2rem;font-size:0.85rem;color:#7a8090;"><a href="/blog" style="color:#1d4dba;">← All posts</a></p>
+  
+    </div>
+  </div>
+  <script>
+    (function(l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&');
+        });
+        window.history.replaceState(null, null,
+          decoded.shift() + (decoded.length ? '?' + decoded.join('&') : '') + l.hash
+        );
+      }
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/main-C2oNRRyX.js"></script>
+</body>
+</html>
