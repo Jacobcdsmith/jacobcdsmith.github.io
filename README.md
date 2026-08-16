@@ -85,7 +85,7 @@ To build the production bundle (Vite build + static page generation):
 
 ```bash
 npm run build
-# Output: dist/
+# Output: dist/ (and a committed docs/ mirror for GitHub Pages)
 ```
 
 ---

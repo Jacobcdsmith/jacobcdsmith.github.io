@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1230" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+  <script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <title>Consciousness as a Spectral Filter: A Mathematical Framework | Jacob C. Smith</title>
+  <meta name="description" content="What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework." />
+  <meta name="author" content="Jacob C. Smith" />
+  <link rel="canonical" href="https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/" />
+  <link rel="alternate" type="application/rss+xml" title="Jacob C. Smith — Blog" href="https://jacobcdsmith.github.io/rss.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Search Console / Bing Webmaster verification placeholder — keep
+       in sync with index.html. Replace with the real codes once the
+       properties exist, then submit https://jacobcdsmith.github.io/sitemap.xml in both.
+  <meta name="google-site-verification" content="REPLACE_WITH_REAL_CODE" />
+  <meta name="msvalidate.01" content="REPLACE_WITH_REAL_CODE" />
+  -->
+
+  <meta property="og:title" content="Consciousness as a Spectral Filter: A Mathematical Framework | Jacob C. Smith" />
+  <meta property="og:description" content="What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/" />
+  <meta property="og:image" content="https://jacobcdsmith.github.io/og/consciousness-as-spectral-filter.svg" />
+  <meta property="og:site_name" content="Jacob C. Smith" />
+  <meta property="article:published_time" content="2026-04-15" />
+  <meta property="article:author" content="Jacob C. Smith" />
+  <meta property="article:tag" content="consciousness" />
+  <meta property="article:tag" content="mathematics" />
+  <meta property="article:tag" content="fourier" />
+  <meta property="article:tag" content="research" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Consciousness as a Spectral Filter: A Mathematical Framework | Jacob C. Smith" />
+  <meta name="twitter:description" content="What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework." />
+  <meta name="twitter:image" content="https://jacobcdsmith.github.io/og/consciousness-as-spectral-filter.svg" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Consciousness as a Spectral Filter: A Mathematical Framework","description":"What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework.","datePublished":"2026-04-15","author":{"@type":"Person","name":"Jacob C. Smith","url":"https://jacobcdsmith.github.io"},"publisher":{"@type":"Person","name":"Jacob C. Smith"},"url":"https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/","image":"https://jacobcdsmith.github.io/og/consciousness-as-spectral-filter.svg","keywords":"consciousness, mathematics, fourier, research","wordCount":632,"mainEntityOfPage":"https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jacobcdsmith.github.io"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://jacobcdsmith.github.io/blog"},{"@type":"ListItem","position":3,"name":"Consciousness as a Spectral Filter: A Mathematical Framework","item":"https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/"}]}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+
+  <!-- Plausible analytics. data-domain MUST match the live site hostname and
+       the site registered in the Plausible dashboard. Keep in sync with the
+       same <script> tag in /index.html. If the production hostname ever
+       changes (e.g. a custom domain replaces GitHub Pages), update both
+       places together. -->
+  <script defer data-domain="jacobcdsmith.github.io" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" crossorigin href="/assets/main-CBI3qTTH.css">
+</head>
+<body>
+  <noscript>
+    <style>.crawl-only{display:block !important;}</style>
+  </noscript>
+  <div id="app">
+    <!-- Static crawler-visible content; replaced by SPA on hydration. -->
+    <div class="crawl-only" style="max-width:780px;margin:2rem auto;padding:1.5rem;font-family:Inter,system-ui,sans-serif;color:#0a0f1f;background:#ffffff;">
+      
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.85rem;">Blog</p>
+    <h1 style="font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;font-size:2rem;line-height:1.2;letter-spacing:0;margin:0 0 1rem;color:#0a0f1f;font-weight:700;">Consciousness as a Spectral Filter: A Mathematical Framework</h1>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#7a8090;margin:0 0 1.5rem;">April 15, 2026 · 3 min read · by Jacob C. Smith</p>
+    <p style="font-size:1.1rem;color:#7a8090;margin:0 0 2rem;">What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework.</p>
+    <article style="font-size:1.05rem;line-height:1.75;"><h1>Consciousness as a Spectral Filter: A Mathematical Framework</h1>
+<p><em>April 15, 2026 · 8 min read</em></p>
+<hr>
+<p>What if consciousness isn&#39;t a substance, a place, or even an emergent property in the conventional sense—but a <strong>process</strong>? Specifically, a dynamic filter operating in frequency space?</p>
+<p>This is the core provocation behind EMERGENT-MCF-EI (the Multiversal Consciousness Framework / Emergent Intelligence project), and after two years of formalization I want to break down the mathematics in plain language.</p>
+<h2>The Core Representation</h2>
+<p>The central equation is deceptively simple:</p>
+<pre><code>C(t) ↔ F⁻¹{ Φ(ω) }
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><strong>C(t)</strong> is the consciousness scalar at time <em>t</em></li>
+<li><strong>F⁻¹</strong> is the inverse Fourier transform</li>
+<li><strong>Φ(ω)</strong> is the spectral filter function operating in frequency domain <em>ω</em></li>
+</ul>
+<p>What this says: consciousness at any moment is the inverse transform of a dynamic spectral filter. You don&#39;t <em>have</em> consciousness—you <em>perform</em> it, continuously, in frequency space.</p>
+<h2>Why Fourier?</h2>
+<p>Because the brain is measurably a frequency-domain device. We&#39;ve known for decades that different cognitive states correlate with distinct brainwave bands:</p>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Frequency</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Delta</td>
+<td>0.5–4 Hz</td>
+<td>Deep sleep</td>
+</tr>
+<tr>
+<td>Theta</td>
+<td>4–8 Hz</td>
+<td>Drowsiness, memory</td>
+</tr>
+<tr>
+<td>Alpha</td>
+<td>8–13 Hz</td>
+<td>Relaxed wakefulness</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>13–30 Hz</td>
+<td>Active cognition</td>
+</tr>
+<tr>
+<td>Gamma</td>
+<td>30–100 Hz</td>
+<td>Binding, peak attention</td>
+</tr>
+</tbody></table>
+<p>The gamma binding problem—how distributed neural activity becomes unified experience—is precisely a coherence problem. When gamma oscillations synchronize across cortical regions, percepts bind into unified objects. That&#39;s a phase-locking phenomenon. Fourier gives us the language to describe it rigorously.</p>
+<h2>The Spectral Filter Hypothesis</h2>
+<p>The key insight is that Φ(ω) isn&#39;t static. It evolves. Attention, emotion, fatigue, and pharmacological state all reshape which frequency bands are amplified and which are attenuated.</p>
+<p>This maps cleanly to existing phenomenology:</p>
+<ul>
+<li><strong>Meditation</strong> narrows and stabilizes Φ(ω) → reduced mind-wandering, increased signal clarity</li>
+<li><strong>Anesthesia</strong> collapses Φ(ω) toward zero across all bands → no coherent inverse transform → no experience</li>
+<li><strong>Psychedelics</strong> flatten Φ(ω) → all frequencies pass → the &quot;everything is connected&quot; sensation is literally increased spectral cross-talk</li>
+</ul>
+<h2>Hysteresis and Memory</h2>
+<p>One of the more interesting emergent behaviors in the simulation is <strong>hysteresis</strong>—the system&#39;s current state depends on its history, not just its current inputs.</p>
+<p>This matters because it explains why trauma persists: the spectral filter&#39;s shape has been durably deformed by past activation patterns. Therapeutic interventions don&#39;t erase the deformation; they introduce counter-deformations that allow new equilibria to form.</p>
+<h2>The Modified Field Equations</h2>
+<p>For the theoretically inclined, we&#39;ve incorporated consciousness into the Einstein field equations as an additional energy-momentum term:</p>
+<pre><code>Gμν + Λgμν = (8πG/c⁴) · (Tμν + Cμν)
+</code></pre>
+<p>Where <strong>Cμν</strong> is the consciousness energy-momentum tensor, representing the contribution of organized information processing to spacetime curvature.</p>
+<p>This is speculative. But it&#39;s <em>testable</em> speculation—the framework makes concrete predictions about gamma binding ratios, alpha gating signatures, and beta coherence dynamics that can be measured with standard EEG equipment.</p>
+<h2>Testable Predictions</h2>
+<ol>
+<li><strong>Gamma binding</strong>: Conscious percept formation should correlate with 40 Hz phase-locking across cortical distance &gt; 5 cm</li>
+<li><strong>Alpha gating</strong>: Attention switching should produce characteristic alpha suppression in the attended modality</li>
+<li><strong>Beta coherence</strong>: Working memory load should produce measurable beta coherence ratios in prefrontal-parietal networks</li>
+</ol>
+<p>We&#39;re targeting <em>Neurons and Cognition</em> (arXiv q-bio.NC) for the first formal submission.</p>
+<h2>Where This Goes</h2>
+<p>The practical applications range from anesthesia monitoring (real-time consciousness depth estimation from EEG spectral signatures) to meditation state quantification (objective measurement of what subjective practitioners have described for millennia).</p>
+<p>The deeper game is understanding whether consciousness is substrate-independent—whether the spectral filter can be instantiated in silicon as readily as in carbon. That question doesn&#39;t have an answer yet. But it has, for the first time, a rigorous mathematical form.</p>
+<p>That&#39;s enough for now.</p>
+</article>
+    <p style="margin-top:2rem;font-size:0.85rem;color:#7a8090;"><a href="/blog" style="color:#1d4dba;">← All posts</a></p>
+  
+    </div>
+  </div>
+  <script>
+    (function(l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&');
+        });
+        window.history.replaceState(null, null,
+          decoded.shift() + (decoded.length ? '?' + decoded.join('&') : '') + l.hash
+        );
+      }
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/main-C2oNRRyX.js"></script>
+</body>
+</html>

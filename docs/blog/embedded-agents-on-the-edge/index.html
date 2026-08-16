@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1230" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+  <script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <title>Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway | Jacob C. Smith</title>
+  <meta name="description" content="A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand." />
+  <meta name="author" content="Jacob C. Smith" />
+  <link rel="canonical" href="https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/" />
+  <link rel="alternate" type="application/rss+xml" title="Jacob C. Smith — Blog" href="https://jacobcdsmith.github.io/rss.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Search Console / Bing Webmaster verification placeholder — keep
+       in sync with index.html. Replace with the real codes once the
+       properties exist, then submit https://jacobcdsmith.github.io/sitemap.xml in both.
+  <meta name="google-site-verification" content="REPLACE_WITH_REAL_CODE" />
+  <meta name="msvalidate.01" content="REPLACE_WITH_REAL_CODE" />
+  -->
+
+  <meta property="og:title" content="Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway | Jacob C. Smith" />
+  <meta property="og:description" content="A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/" />
+  <meta property="og:image" content="https://jacobcdsmith.github.io/og/embedded-agents-on-the-edge.svg" />
+  <meta property="og:site_name" content="Jacob C. Smith" />
+  <meta property="article:published_time" content="2026-05-02" />
+  <meta property="article:author" content="Jacob C. Smith" />
+  <meta property="article:tag" content="embedded" />
+  <meta property="article:tag" content="mcp" />
+  <meta property="article:tag" content="local-first" />
+  <meta property="article:tag" content="unihiker" />
+  <meta property="article:tag" content="esp32-s3" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway | Jacob C. Smith" />
+  <meta name="twitter:description" content="A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand." />
+  <meta name="twitter:image" content="https://jacobcdsmith.github.io/og/embedded-agents-on-the-edge.svg" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway","description":"A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand.","datePublished":"2026-05-02","author":{"@type":"Person","name":"Jacob C. Smith","url":"https://jacobcdsmith.github.io"},"publisher":{"@type":"Person","name":"Jacob C. Smith"},"url":"https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/","image":"https://jacobcdsmith.github.io/og/embedded-agents-on-the-edge.svg","keywords":"embedded, mcp, local-first, unihiker, esp32-s3","wordCount":2207,"mainEntityOfPage":"https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jacobcdsmith.github.io"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://jacobcdsmith.github.io/blog"},{"@type":"ListItem","position":3,"name":"Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway","item":"https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/"}]}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+
+  <!-- Plausible analytics. data-domain MUST match the live site hostname and
+       the site registered in the Plausible dashboard. Keep in sync with the
+       same <script> tag in /index.html. If the production hostname ever
+       changes (e.g. a custom domain replaces GitHub Pages), update both
+       places together. -->
+  <script defer data-domain="jacobcdsmith.github.io" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" crossorigin href="/assets/main-CBI3qTTH.css">
+</head>
+<body>
+  <noscript>
+    <style>.crawl-only{display:block !important;}</style>
+  </noscript>
+  <div id="app">
+    <!-- Static crawler-visible content; replaced by SPA on hydration. -->
+    <div class="crawl-only" style="max-width:780px;margin:2rem auto;padding:1.5rem;font-family:Inter,system-ui,sans-serif;color:#0a0f1f;background:#ffffff;">
+      
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.85rem;">Blog</p>
+    <h1 style="font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;font-size:2rem;line-height:1.2;letter-spacing:0;margin:0 0 1rem;color:#0a0f1f;font-weight:700;">Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway</h1>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#7a8090;margin:0 0 1.5rem;">May 2, 2026 · 10 min read · by Jacob C. Smith</p>
+    <p style="font-size:1.1rem;color:#7a8090;margin:0 0 2rem;">A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand.</p>
+    <article style="font-size:1.05rem;line-height:1.75;"><h1>Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway</h1>
+<p><em>May 2, 2026 · 14 min read</em></p>
+<hr>
+<p>Most of the agent infrastructure being built right now lives in someone else’s data center. A model in one cloud, a vector store in another, a tool server behind a third API key, all stitched together by network calls you don’t control and can’t inspect. That stack is fine for prototypes. It is the wrong shape for anything that has to live in a real place — a vehicle, a facility, a kitchen, a pocket.</p>
+<p>For the last several months I’ve been building the opposite: an agent stack that runs on hardware I can hold. A UNIHIKER K10 skill package, ESP32-S3 firmware with explicit module boundaries, and a local WebSocket MCP gateway that brokers between them and the LLM runtime (JCLAW) on my workstation. No cloud hop required. No telemetry I didn’t write. No silent fallback to a hosted endpoint when the network blinks.</p>
+<p>This post is the long version of why, and a working tour of how.</p>
+<h2>Why Local + Embedded Matters</h2>
+<p>There are three reasons to push agent infrastructure down to the device, and they compound.</p>
+<p><strong>Sovereignty.</strong> When the model, the tool surface, and the storage all live on hardware you own, the question of <em>who can read this conversation</em> has a single, honest answer: you. Not a vendor’s privacy policy, not a region setting, not a checkbox you ticked at signup. The data path is the wire from sensor to inference to actuator, and it doesn’t leave the room unless you explicitly route it out. For research workflows, regulated industries, and anything involving children, patients, or trade secrets, this isn’t a preference. It’s a requirement.</p>
+<p><strong>Latency.</strong> A round trip to a hosted LLM is bounded by the slowest hop between you and the provider — typically 200–800 ms before a token is generated, plus whatever the provider’s queue depth adds today. A round trip to a local model is bounded by RAM bandwidth and compute. The difference matters most where you’d expect: anything with a human in the loop, anything driving an actuator, anything that has to acknowledge a button press in less time than the user’s patience. Embedded sensors firing fifty samples a second do not negotiate with a 503.</p>
+<p><strong>Dependence-cost.</strong> Every dependency on a remote service is a future tax. Pricing changes, rate limits change, models get deprecated, terms of service get rewritten. A system whose useful lifetime depends on a vendor staying on its current trajectory is a system you’re renting, not building. Local-first, embedded-first agents amortize: the up-front engineering is real, but it’s a fixed cost against an asset you keep.</p>
+<p>The pitch isn’t that cloud agents are bad. The pitch is that for an entire category of useful work, the right substrate is a piece of hardware on your network, not a tab in your browser.</p>
+<h2>The UNIHIKER K10 Skill Package</h2>
+<p>The UNIHIKER K10 is a single-board computer with a built-in display, microphone, speaker, accelerometer, light sensor, and the radios you’d expect — Wi-Fi, Bluetooth. It runs MicroPython out of the box and exposes a full C/C++ SDK underneath. It is, in other words, the right shape for an embedded skill: enough I/O to do real perception, enough compute to host a useful subagent, and a footprint small enough to actually deploy.</p>
+<p>The skill package I’ve been building covers both rungs of that ladder.</p>
+<p><strong>What’s in the package.</strong> A library of reusable skills — voice capture and wake-word handling, on-device sensor fusion, display primitives that match the K10’s screen, BLE peripheral provisioning, and a pre-wired transport layer that speaks the same MCP-shaped frames the local gateway expects. Each skill is a small, opinionated module with a single responsibility and a documented contract. The point is not breadth. The point is that you can compose three of them and have a working device-side agent endpoint in an afternoon.</p>
+<p><strong>MicroPython vs C/C++ SDK trade-offs.</strong> MicroPython is the right default. You get an interactive REPL on the device, a five-second edit-flash-test loop, and bindings to most of the on-board peripherals without writing any glue. The cost is the runtime: heap fragmentation under sustained load, GC pauses you can’t schedule, and a hard ceiling on how much real-time work you can do before the interpreter becomes the bottleneck. The C/C++ SDK is the right answer for anything that touches an interrupt, anything that needs deterministic timing, and anything that has to run for weeks without a watchdog reset. The trade-off the package codifies: prototype skills in MicroPython, port to C/C++ when the profiler tells you to, and keep the wire format identical so the gateway never knows which side of the line a given skill is on.</p>
+<p><strong>Hardware schematic notes.</strong> The package documents the real K10 schematic — pin assignments, shared bus conflicts, the I²C addresses that are already occupied by the on-board sensors, the GPIOs that are safe to repurpose and the ones that will brick the board if you drive them at boot. This is the kind of information that gets lost in vendor documentation and rediscovered painfully by every new builder. Codifying it once is the highest-leverage thing the skill package does.</p>
+<p>The K10 is the <em>near</em> edge. The <em>far</em> edge is the ESP32-S3.</p>
+<h2>The ESP32-S3 Firmware Work</h2>
+<p>The ESP32-S3 is the workhorse: dual-core Xtensa, vector instructions for the kind of small-model inference that fits in a few megabytes, USB-OTG, native Wi-Fi and BLE, and a price point that lets you put one in everything. It’s also a microcontroller, which means everything you take for granted on a Linux box — virtual memory, a process model, a filesystem you can trust — is either absent or implemented by a config option you have to know to turn on.</p>
+<p>I’ve been writing C against ESP-IDF, and the firmware is structured as four explicit module boundaries.</p>
+<p><strong>Connectivity.</strong> Wi-Fi station, Wi-Fi softAP for first-time provisioning, BLE GATT for out-of-band setup, and an mTLS-secured WebSocket client that reconnects on its own with exponential backoff. The connectivity module owns the radios and exposes a single interface to everything above it: <em>send this frame, receive this frame, here is the link state</em>. No other module is allowed to touch the network stack. This is the boundary that takes the most discipline to hold and pays back the most when something fails at 3 a.m. in the field.</p>
+<p><strong>Peripheral drivers.</strong> Sensors, actuators, displays, anything wired to a GPIO. Each driver is a small state machine with an explicit init, an explicit teardown, and a single in-flight operation at a time. No hidden globals, no shared mutable state across drivers. When a driver fails, it fails loudly with an error code that maps to a documented failure mode — not a silent retry that hides the problem until the device is dead in someone’s hand.</p>
+<p><strong>Provisioning.</strong> The least glamorous module and arguably the most important. First-boot provisioning, factory reset, OTA update with a signed manifest and a known-good rollback partition, and a structured way to inject device-specific identity (serial number, room assignment, owner key) without rebuilding the firmware image. The shipping bar for embedded work is not “it boots on the bench.” It’s “a non-technical person can take it out of a box, get it on their network, and update it eighteen months from now without help.”</p>
+<p><strong>Application logic.</strong> Whatever the device is <em>for</em> — the actual subagent it hosts, the local skill it runs, the inference it performs. This module is the only one that knows the device’s purpose. It consumes the other three through their interfaces and produces MCP-shaped frames that go out over the connectivity layer.</p>
+<p><strong>Reproducible flashing.</strong> The firmware build is pinned: ESP-IDF version, toolchain version, sdkconfig hash, all in the repo, all checked at build time. The output is a single signed image plus a manifest. Flashing is one command and produces the same artifact on my workstation, in CI, and on someone else’s machine. This sounds obvious until you’ve tried to debug a field failure on a device whose firmware no one can reproduce.</p>
+<p><strong>Field-deployment notes.</strong> Real deployment is the part of embedded work the tutorials skip. The firmware logs structured events to a circular buffer in flash, surfaces a small introspection endpoint over the same WebSocket the gateway uses, and treats every external dependency (NTP, DNS, the gateway itself) as untrusted and recoverable. Power-loss tolerance is tested, not assumed: every write to flash is journaled, every state machine has a defined recovery path from any partial state. The device assumes nothing about its environment except that the environment is hostile.</p>
+<p>The K10 and the ESP32-S3 hand their work off through the same chokepoint: the gateway.</p>
+<h2>The Local WebSocket MCP Gateway</h2>
+<p>The interactive schematic at the top of this post is the gateway in motion. CLIENT to WS GATEWAY to SOUL.md identity layer to ROUTER to one of three subagents (codegen, red-team, resource) to TOOL CALLS to RESPONSE. Click any node for detail; the request packets pause when you hover.</p>
+<p>The gateway is the smallest of the three pieces of code, and the most consequential.</p>
+<p><strong>Wire format.</strong> Frames are JSON objects shaped like the Model Context Protocol — a <code>method</code>, a <code>params</code> payload, an <code>id</code> that pairs request and response. Every frame carries a routing envelope (origin, destination, capability scope) on top of the MCP body. Identity stamping happens in the gateway, not in the clients: a request from the K10 and a request from a desktop client are normalized to the same internal shape before the router sees them. This is what lets the same red-team subagent that reviews a JCLAW response also review a sensor reading from an ESP32 — they’re both just MCP frames once they’re past the gateway.</p>
+<p><strong>Why WebSocket vs stdio/SSE.</strong> MCP servers historically default to stdio, which is fine when both sides are processes on the same machine and one is the parent of the other. SSE is fine when the channel is one-way and the consumer is a browser. Neither shape fits a gateway whose job is to broker bidirectional traffic between a workstation, a microcontroller across the room, a touchscreen device on a desk, and a subagent that needs to call back into any of them. WebSocket is the only common transport that:</p>
+<ul>
+<li>Survives NAT in both directions on a normal home/office LAN</li>
+<li>Carries arbitrary binary or text frames without re-encoding</li>
+<li>Has battle-tested implementations on every relevant runtime, including ESP-IDF</li>
+<li>Supports mTLS without smuggling certificates through a sidecar</li>
+<li>Lets the device initiate the connection (so the gateway never needs to be reachable from outside the LAN)</li>
+</ul>
+<p>The last point is the security argument. By making clients always dial the gateway — never the other way around — the gateway can sit behind whatever firewall is convenient and still serve hardware in three different rooms.</p>
+<p><strong>How it pairs with JCLAW and MCPStarfleetCommand.</strong> JCLAW is the LLM runtime and the codegen subagent. MCPStarfleetCommand is the dual-transport MCP server that exposes my workstation’s tools (filesystem, shell, code search, evals) to anything that speaks MCP. The gateway is what lets the K10 and the ESP32-S3 use those tools the same way a desktop client does. A skill on the K10 that needs to write a structured note to disk doesn’t need its own filesystem driver and its own credentials store — it sends an MCP frame to the gateway, the gateway routes it to MCPStarfleetCommand, the result comes back over the same socket. Identity, audit logging, and red-team review all happen in one place, on infrastructure I control, instead of being smeared across every device in the network.</p>
+<p>The shape, in one sentence: the gateway is a one-process MCP broker that makes a microcontroller and a workstation indistinguishable to the agent runtime.</p>
+<h2>Where the Work Is Heading</h2>
+<p>The natural successor to all of this is the UNIHIKER M10 — a more capable, more personal version of the K10 with enough compute to host a real on-device subagent, not just a thin client. The thread I’m pulling on is a <em>personalized AI companion</em> built on the M10: a device with a persistent identity layer (its own SOUL.md), local memory it actually owns, and the ability to negotiate with the workstation’s gateway for capabilities it doesn’t have on board. Voice in, voice out, screen for the things voice can’t do, network only for the things the local model can’t. The product question is not “can it do everything a hosted assistant can do” — it can’t, and shouldn’t pretend to. The product question is whether the things it <em>can</em> do, it does on hardware that lives with you and answers to you.</p>
+<p>That’s the bet underneath all of this work: that the next generation of useful agents will be defined less by which frontier model they call and more by where they live, what they remember, and who has the keys.</p>
+<p>I’m building toward the version where the answer to all three is: you do.</p>
+<hr>
+<p><em>If you’re working on embedded agents, MCP infrastructure, or local-first AI and want to compare notes — or you have a problem in this shape and want help — get in touch.</em></p>
+</article>
+    <p style="margin-top:2rem;font-size:0.85rem;color:#7a8090;"><a href="/blog" style="color:#1d4dba;">← All posts</a></p>
+  
+    </div>
+  </div>
+  <script>
+    (function(l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&');
+        });
+        window.history.replaceState(null, null,
+          decoded.shift() + (decoded.length ? '?' + decoded.join('&') : '') + l.hash
+        );
+      }
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/main-C2oNRRyX.js"></script>
+</body>
+</html>

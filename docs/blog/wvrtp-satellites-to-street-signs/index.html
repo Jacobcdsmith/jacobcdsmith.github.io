@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1230" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+  <script>(function(){try{var s=localStorage.getItem('jcs-theme');var t=(s==='light'||s==='dark')?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+
+  <title>From Satellites to Street Signs: How the WVRTP App Finds You | Jacob C. Smith</title>
+  <meta name="description" content="A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365." />
+  <meta name="author" content="Jacob C. Smith" />
+  <link rel="canonical" href="https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/" />
+  <link rel="alternate" type="application/rss+xml" title="Jacob C. Smith — Blog" href="https://jacobcdsmith.github.io/rss.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Google Search Console / Bing Webmaster verification placeholder — keep
+       in sync with index.html. Replace with the real codes once the
+       properties exist, then submit https://jacobcdsmith.github.io/sitemap.xml in both.
+  <meta name="google-site-verification" content="REPLACE_WITH_REAL_CODE" />
+  <meta name="msvalidate.01" content="REPLACE_WITH_REAL_CODE" />
+  -->
+
+  <meta property="og:title" content="From Satellites to Street Signs: How the WVRTP App Finds You | Jacob C. Smith" />
+  <meta property="og:description" content="A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/" />
+  <meta property="og:image" content="https://jacobcdsmith.github.io/og/wvrtp-satellites-to-street-signs.svg" />
+  <meta property="og:site_name" content="Jacob C. Smith" />
+  <meta property="article:published_time" content="2026-07-26" />
+  <meta property="article:author" content="Jacob C. Smith" />
+  <meta property="article:tag" content="case-study" />
+  <meta property="article:tag" content="react" />
+  <meta property="article:tag" content="geolocation" />
+  <meta property="article:tag" content="power-automate" />
+  <meta property="article:tag" content="industrial" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="From Satellites to Street Signs: How the WVRTP App Finds You | Jacob C. Smith" />
+  <meta name="twitter:description" content="A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365." />
+  <meta name="twitter:image" content="https://jacobcdsmith.github.io/og/wvrtp-satellites-to-street-signs.svg" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"From Satellites to Street Signs: How the WVRTP App Finds You","description":"A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365.","datePublished":"2026-07-26","author":{"@type":"Person","name":"Jacob C. Smith","url":"https://jacobcdsmith.github.io"},"publisher":{"@type":"Person","name":"Jacob C. Smith"},"url":"https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/","image":"https://jacobcdsmith.github.io/og/wvrtp-satellites-to-street-signs.svg","keywords":"case-study, react, geolocation, power-automate, industrial","wordCount":669,"mainEntityOfPage":"https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jacobcdsmith.github.io"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://jacobcdsmith.github.io/blog"},{"@type":"ListItem","position":3,"name":"From Satellites to Street Signs: How the WVRTP App Finds You","item":"https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/"}]}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+
+  <!-- Plausible analytics. data-domain MUST match the live site hostname and
+       the site registered in the Plausible dashboard. Keep in sync with the
+       same <script> tag in /index.html. If the production hostname ever
+       changes (e.g. a custom domain replaces GitHub Pages), update both
+       places together. -->
+  <script defer data-domain="jacobcdsmith.github.io" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" crossorigin href="/assets/main-CBI3qTTH.css">
+</head>
+<body>
+  <noscript>
+    <style>.crawl-only{display:block !important;}</style>
+  </noscript>
+  <div id="app">
+    <!-- Static crawler-visible content; replaced by SPA on hydration. -->
+    <div class="crawl-only" style="max-width:780px;margin:2rem auto;padding:1.5rem;font-family:Inter,system-ui,sans-serif;color:#0a0f1f;background:#ffffff;">
+      
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#1d4dba;margin:0 0 0.85rem;">Blog</p>
+    <h1 style="font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;font-size:2rem;line-height:1.2;letter-spacing:0;margin:0 0 1rem;color:#0a0f1f;font-weight:700;">From Satellites to Street Signs: How the WVRTP App Finds You</h1>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#7a8090;margin:0 0 1.5rem;">July 26, 2026 · 3 min read · by Jacob C. Smith</p>
+    <p style="font-size:1.1rem;color:#7a8090;margin:0 0 2rem;">A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365.</p>
+    <article style="font-size:1.05rem;line-height:1.75;"><h1>From Satellites to Street Signs: How the WVRTP App Finds You</h1>
+<p><em>July 26, 2026 · 5 min read</em></p>
+<hr>
+<p>In industrial maintenance at the West Virginia Regional Technology Park (WVRTP), data integrity is the difference between a safe facility and a catastrophic failure. The WVRTP inspection app is a static React SPA built to solve a specific human problem: proving that inspectors are physically standing at the equipment they&#39;re documenting.</p>
+<h2>Why location matters</h2>
+<p>The core driver for location tracking is accountability. By capturing GPS coordinates the moment a form is submitted, the system provides proof of presence — it prevents &quot;pencil-whipping,&quot; the practice of checking off inspection boxes from a desk or breakroom without visiting the boilers, HVAC units, or pressure vessels in question.</p>
+<p>To do that, the app has to bridge the gap between satellite data and a human-readable location.</p>
+<h2>Two languages of location</h2>
+<p>A phone understands the world through precise numerical grids; managers and auditors need human context. The app captures both:</p>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Primary user</th>
+<th>Format example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPS coordinates</td>
+<td>Machines / computers</td>
+<td>38.3500° N, 81.7133° W</td>
+</tr>
+<tr>
+<td>Street address</td>
+<td>Human admins / inspectors</td>
+<td>1740 Union Carbide Dr, South Charleston, WV</td>
+</tr>
+</tbody></table>
+<p>The technical process always starts with the raw numerical coordinates from the phone&#39;s hardware.</p>
+<h2>Phase 1: capturing the raw data</h2>
+<p>Because the app is a static SPA running in the mobile browser, it doesn&#39;t need to be installed to access location hardware — it uses the browser Geolocation API directly. <code>navigator.geolocation.getCurrentPosition</code> is configured with a high-accuracy flag and a 10-second timeout so the app never hangs on a weak signal.</p>
+<p>The sequence: an inspector scans a QR code, the page load triggers the location request, the browser prompts for permission, and it locks onto latitude/longitude via GPS and Wi-Fi positioning. At this point the app has the numbers but not the name of the building or street.</p>
+<h2>Phase 2: reverse geocoding</h2>
+<p>To translate coordinates into a readable address, the app calls <strong>Nominatim</strong>, an OpenStreetMap-powered reverse-geocoding service. Nominatim was chosen because it&#39;s free and requires no API key — ideal for a lightweight industrial tool — though its usage policy requires a specific <code>User-Agent</code> header (<code>WVRTPInspectionApp/1.0</code>).</p>
+<p>A sample response looks like:</p>
+<pre><code class="language-json">{
+  &quot;lat&quot;: &quot;38.3500&quot;,
+  &quot;lon&quot;: &quot;-81.7133&quot;,
+  &quot;display_name&quot;: &quot;1740 Union Carbide Dr, South Charleston, Kanawha County, West Virginia, 25303, United States&quot;,
+  &quot;address&quot;: {
+    &quot;road&quot;: &quot;Union Carbide Dr&quot;,
+    &quot;city&quot;: &quot;South Charleston&quot;,
+    &quot;state&quot;: &quot;West Virginia&quot;,
+    &quot;postcode&quot;: &quot;25303&quot;
+  }
+}
+</code></pre>
+<h2>From phone to spreadsheet</h2>
+<p>When the inspector submits, the app bundles the inspection results and location data into a <strong>flat JSON payload</strong>: timestamp, equipment ID (pre-filled from the QR code), latitude/longitude, and the human-readable address from Nominatim.</p>
+<p>Because the payload is flat rather than nested, Power Automate needs no complex parsing logic — it performs a 1:1 field mapping straight into a shared Excel spreadsheet. No backend database, no server to maintain, and the whole pipeline stays inside WVRTP&#39;s existing Microsoft 365 tenant.</p>
+<h2>Accuracy and limitations</h2>
+<p>Field technology has constraints a lab doesn&#39;t:</p>
+<ul>
+<li><strong>Indoor accuracy</strong> — GPS is often obstructed by industrial roofing; indoors, accuracy typically drops to 50–100 meters. Enough to prove the inspector is on-campus, not enough for room-level precision.</li>
+<li><strong>HTTPS requirement</strong> — the Geolocation API is a secure-context feature and only works over HTTPS.</li>
+<li><strong>Non-blocking failure</strong> — if a user denies permission or the signal fails, the form still submits so the inspection record isn&#39;t lost, even with blank location fields.</li>
+<li><strong>Photo omissions</strong> — the payload currently captures only the photo&#39;s filename, not the binary file; image storage is a planned enhancement.</li>
+</ul>
+<p>By layering satellite data, an open-source reverse-geocoder, and low-code cloud automation, the WVRTP app creates a seamless path from a physical boiler to a digital record in a spreadsheet — without a backend, an ops team, or a procurement cycle.</p>
+<hr>
+<p><em>Built for <a href="https://readyfuels.com">Readyfuels</a>. More on the delivery side of this project is in <a href="/projects">Projects</a>.</em></p>
+</article>
+    <p style="margin-top:2rem;font-size:0.85rem;color:#7a8090;"><a href="/blog" style="color:#1d4dba;">← All posts</a></p>
+  
+    </div>
+  </div>
+  <script>
+    (function(l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&');
+        });
+        window.history.replaceState(null, null,
+          decoded.shift() + (decoded.length ? '?' + decoded.join('&') : '') + l.hash
+        );
+      }
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/main-C2oNRRyX.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Jacob C. Smith">
+  <rect width="64" height="64" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#1d4dba" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="32" y="40" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="22" font-weight="700" fill="#1d4dba"
+        letter-spacing="1">JS</text>
+</svg>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jacob C. Smith — Blog</title>
+    <link>https://jacobcdsmith.github.io/blog</link>
+    <description>Long-form writing on data science, ML systems, local-first AI, and the practice of building.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Aug 2026 02:43:36 GMT</lastBuildDate>
+    <atom:link href="https://jacobcdsmith.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Satellites to Street Signs: How the WVRTP App Finds You</title>
+      <link>https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/</link>
+      <guid>https://jacobcdsmith.github.io/blog/wvrtp-satellites-to-street-signs/</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <description>A case study on the WVRTP facility inspection system for Readyfuels: how a static React SPA proves an inspector is physically on-site using the browser Geolocation API, OpenStreetMap reverse-geocoding, and a backend-free pipeline straight into Microsoft 365.</description>
+      <category>case-study</category>
+      <category>react</category>
+      <category>geolocation</category>
+      <category>power-automate</category>
+      <category>industrial</category>
+    </item>
+    <item>
+      <title>The Recursive Tree: Why I Built a Consciousness Simulator on a Phone</title>
+      <link>https://jacobcdsmith.github.io/blog/the-recursive-tree/</link>
+      <guid>https://jacobcdsmith.github.io/blog/the-recursive-tree/</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+      <description>A generative art piece — recursive fractal tree, particle petals, bloom intensity — turns out to be a visual rendering of the Multiversal Consciousness Framework. Here's why I built it on a phone.</description>
+      <category>consciousness</category>
+      <category>art</category>
+      <category>simulation</category>
+      <category>research</category>
+    </item>
+    <item>
+      <title>Embedded Agents on the Edge: UNIHIKER K10, ESP32-S3, and a Local MCP Gateway</title>
+      <link>https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/</link>
+      <guid>https://jacobcdsmith.github.io/blog/embedded-agents-on-the-edge/</guid>
+      <pubDate>Sat, 02 May 2026 00:00:00 GMT</pubDate>
+      <description>A deep dive on the embedded + edge-AI thread of the practice — why local-first matters for agent infrastructure, what's in the UNIHIKER K10 skill package, how the ESP32-S3 firmware is structured, and how the local WebSocket MCP gateway brokers it all back to JCLAW and MCPStarfleetCommand.</description>
+      <category>embedded</category>
+      <category>mcp</category>
+      <category>local-first</category>
+      <category>unihiker</category>
+      <category>esp32-s3</category>
+    </item>
+    <item>
+      <title>Consciousness as a Spectral Filter: A Mathematical Framework</title>
+      <link>https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/</link>
+      <guid>https://jacobcdsmith.github.io/blog/consciousness-as-spectral-filter/</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>What if consciousness isn't a substance or a place, but a process—specifically, a dynamic filter operating in frequency space? Here I unpack the core mathematics behind the EMERGENT-MCF-EI framework.</description>
+      <category>consciousness</category>
+      <category>mathematics</category>
+      <category>fourier</category>
+      <category>research</category>
+    </item>
+    <item>
+      <title>Peace as Voltage: Why Harmony Requires High-Tension Infrastructure</title>
+      <link>https://jacobcdsmith.github.io/blog/peace-as-voltage/</link>
+      <guid>https://jacobcdsmith.github.io/blog/peace-as-voltage/</guid>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Stability is not the absence of conflict. It is the successful management of opposing forces through robust infrastructure. A deep dive into the 'high-tension wiring' model of conflict resolution.</description>
+      <category>philosophy</category>
+      <category>systems</category>
+      <category>conflict-resolution</category>
+    </item>
+    <item>
+      <title>Building Local-First AI: Why Zero Telemetry Changes Everything</title>
+      <link>https://jacobcdsmith.github.io/blog/building-local-first-ai/</link>
+      <guid>https://jacobcdsmith.github.io/blog/building-local-first-ai/</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description>When you run an LLM locally with zero telemetry, something changes. Not just privacy—the entire relationship between developer and model shifts. Here's what I learned building JCLAW.</description>
+      <category>ai</category>
+      <category>local-first</category>
+      <category>privacy</category>
+      <category>development</category>
+    </item>
+  </channel>
+</rss>

@@ -12,11 +12,13 @@
  *  6. dist/404.html             — GitHub Pages SPA redirect
  *  7. dist/llms.txt             — short LLM-friendly site overview
  *  8. dist/llms-full.txt        — full prose dump for LLM consumption
+ *  9. docs/                     — committed mirror of dist/ for GitHub Pages
+ *                                  branch-source builds that expect /docs
  *
  * Run automatically after `vite build` via the "build" npm script.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, copyFileSync, readdirSync, existsSync } from 'fs'
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, readdirSync, existsSync, rmSync, cpSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { marked } from 'marked'
@@ -29,6 +31,7 @@ marked.use({ renderer: { html() { return '' } } })
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
 const DIST = resolve(ROOT, 'dist')
+const DOCS = resolve(ROOT, 'docs')
 const BLOG_DIR = resolve(ROOT, 'blog')
 const PUBLIC_DIR = resolve(ROOT, 'public')
 
@@ -688,6 +691,12 @@ function generateLlmsFull(posts) {
   return out
 }
 
+function syncDocsBuild() {
+  rmSync(DOCS, { recursive: true, force: true })
+  cpSync(DIST, DOCS, { recursive: true })
+  console.log('  ✓ docs/ mirror')
+}
+
 // ─── Main ───────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -773,6 +782,9 @@ async function main() {
   // 8. llms-full.txt — full prose dump
   writeFileSync(resolve(DIST, 'llms-full.txt'), generateLlmsFull(posts), 'utf-8')
   console.log('  ✓ llms-full.txt')
+
+  // 9. Keep a committed /docs mirror for the repo's Pages branch-source build.
+  syncDocsBuild()
 
   console.log('\nStatic site generated successfully.')
 }
